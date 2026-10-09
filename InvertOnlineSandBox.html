@@ -1,0 +1,1830 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Rueda Escritorio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme:light;
+  --violet:#6439FF; --violet-dk:#5128E0; --violet-deep:#3D1B88; --indigo:#06083F;
+  --lav:#EEEDF8; --lav2:#E3E1F2; --lav3:#D7D4EC;
+  --bg:#FFFFFF; --card:#FFFFFF; --card2:#F5F4FB;
+  --line:#E2E0EE; --line2:#C7C2DD;
+  --tx:#1A1A2E; --tx2:#5B5C8C; --tx3:#8C8DA8;
+  --up:#0E9E72; --upsoft:#DEF4EC; --down:#D33B52; --downsoft:#FBE4E8;
+  --warn:#8A5B07; --warnsoft:#FBF0D8; --train:#E8B23A;
+  --shadow:0 1px 2px rgba(6,8,63,.07), 0 26px 64px -30px rgba(6,8,63,.55);
+  --fui:'Barlow',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fmo:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:#DCDAEA;color:var(--tx);font-family:var(--fui);font-size:15px;line-height:1.45}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+input,select{font:inherit;color:inherit}
+h1,h2,h3,h4{margin:0;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+table{border-collapse:collapse;width:100%}
+.mono{font-family:var(--fmo);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:3px}
+
+/* ============ VENTANA ============ */
+.desk{min-height:100dvh;padding:16px;display:flex;justify-content:center;align-items:flex-start}
+.win{width:100%;max-width:1320px;height:calc(100dvh - 32px);min-height:560px;background:var(--bg);
+  border-radius:11px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);border:1px solid var(--line2)}
+.titlebar{flex:none;background:var(--indigo);color:#fff;display:flex;align-items:center;gap:13px;padding:0 14px;height:38px}
+.dots{display:flex;gap:7px;flex:none}
+.dots i{width:11px;height:11px;border-radius:50%;display:block}
+.dots i:nth-child(1){background:#FF5F57}.dots i:nth-child(2){background:#FEBC2E}.dots i:nth-child(3){background:#28C840}
+.titlebar .wt{font-size:12.5px;color:#A395BD}
+.titlebar .sp{flex:1}
+.titlebar .prog{width:104px;height:5px;background:rgba(255,255,255,.17);border-radius:99px;overflow:hidden}
+.titlebar .prog i{display:block;height:100%;width:0;background:#8B6BFF;transition:width .25s}
+.titlebar .ptx{font-family:var(--fmo);font-size:11px;color:#A395BD;white-space:nowrap}
+.tbtn{border:1px solid rgba(255,255,255,.26);border-radius:5px;padding:4px 10px;font-size:12px;color:#fff;white-space:nowrap}
+.tbtn:hover{background:rgba(255,255,255,.13)}
+
+.strip{flex:none;background:var(--train);color:#20160A;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:5px 16px;font-family:var(--fmo);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+.strip .sp{flex:1}
+.strip button{background:rgba(32,22,10,.15);border-radius:4px;padding:3px 9px;font-family:var(--fmo);
+  font-size:10.5px;letter-spacing:.05em;font-weight:600;color:#20160A;text-transform:uppercase}
+.strip button:hover{background:rgba(32,22,10,.29)}
+.mkt{display:inline-flex;align-items:center;gap:5px}
+.mkt .dot{width:6px;height:6px;border-radius:50%;background:#0E7A56}
+.mkt.cerrado .dot{background:#B4342A}
+
+/* ============ APPBAR ============ */
+.appbar{flex:none;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:18px;padding:11px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.34rem;letter-spacing:-.035em;flex:none}
+.brand svg{width:34px;height:34px;display:block;flex:none}
+.brand .w1{font-weight:700;color:var(--indigo)}
+.brand .w2{font-weight:500;color:var(--violet)}
+.searchwrap{flex:1 1 300px;max-width:470px;display:flex}
+.searchwrap input{flex:1;min-width:0;border:1px solid var(--line2);border-right:none;border-radius:5px 0 0 5px;padding:9px 13px;font-size:.9rem;background:#fff}
+.searchwrap input:focus{outline:none;border-color:var(--violet)}
+.searchwrap button{border:1px solid var(--line2);border-left:none;border-radius:0 5px 5px 0;padding:0 15px;color:var(--tx2);background:#fff}
+.searchwrap button:hover{color:var(--violet);border-color:var(--violet)}
+.abicons{margin-left:auto;display:flex;align-items:center;gap:14px}
+.abicons button{color:var(--violet);font-size:1.05rem;line-height:1}
+.abicons button:hover{opacity:.7}
+.hola{font-size:.93rem;white-space:nowrap}.hola b{font-weight:700}
+
+/* ============ NAV SUPERIOR ============ */
+.topnav{flex:none;background:var(--violet);display:flex;align-items:stretch;flex-wrap:wrap;padding:0 6px;position:relative;z-index:30}
+.dd{position:relative;display:flex}
+.navitem{display:flex;align-items:center;gap:6px;padding:13px 18px;color:#fff;font-size:1rem;font-weight:500;white-space:nowrap}
+.navitem:hover{background:rgba(255,255,255,.14)}
+.navitem[aria-current="true"]{background:rgba(255,255,255,.2);font-weight:600}
+.navitem .cv{font-size:10px;opacity:.85;transition:transform .15s}
+.dd.open .navitem .cv{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:100%;left:0;min-width:286px;background:#fff;border:1px solid var(--line);
+  border-radius:0 0 7px 7px;box-shadow:0 14px 34px -12px rgba(6,8,63,.4);z-index:40;padding:5px;display:none}
+.dd.open .dd-menu{display:block}
+.dd-menu button{display:flex;align-items:center;gap:8px;width:100%;padding:8px 11px;border-radius:5px;font-size:.9rem;color:var(--tx);white-space:nowrap}
+.dd-menu button:hover{background:var(--lav);color:var(--violet)}
+.dd-menu button[data-out]{color:var(--tx3)}
+.dd-menu button[data-out]::after{content:"fuera de alcance";margin-left:auto;font-family:var(--fmo);font-size:8.5px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--tx3);border:1px dashed var(--line2);
+  padding:1px 5px;border-radius:3px;white-space:nowrap;flex:none}
+.dd-sep{height:1px;background:var(--line);margin:5px 8px}
+.scope-chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--fmo);font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tx3);border:1px dashed var(--line2);border-radius:3px;padding:2px 7px;white-space:nowrap;flex:none}
+.panel.fueraalcance{background:#F4F4F7;border:1px dashed var(--line2)}
+.panel.fueraalcance .accthd h2,.panel.fueraalcance .balrow{opacity:.62}
+.tabs1 button[data-out]{color:var(--tx3)}
+.tabs1 button[data-out]::after{content:"fuera de alcance";font-family:var(--fmo);font-size:8.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--tx3);border:1px dashed var(--line2);padding:1px 5px;border-radius:3px;margin-left:2px}
+.badge-new{font-size:9.5px;font-weight:700;background:var(--violet);color:#fff;border-radius:99px;padding:1px 7px;letter-spacing:.01em;flex:none}
+.dd-menu button .sub-arrow{margin-left:auto;color:var(--tx3);font-size:.9rem;flex:none}
+
+/* ============ COTIZACIONES ============ */
+.indices{display:flex;gap:0;border-bottom:1px solid var(--line);margin:-6px 0 4px}
+.indices .ix{padding:9px 26px 9px 0;margin-right:26px;border-right:1px solid var(--line);font-size:.88rem;white-space:nowrap}
+.indices .ix:last-child{border-right:none}
+.indices .ix b{font-weight:700}
+.tabs1{display:flex;gap:4px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tabs1 button{display:flex;align-items:center;gap:7px;padding:11px 16px;font-size:.95rem;font-weight:600;color:var(--tx3);border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs1 button[aria-pressed="true"]{color:var(--violet);border-bottom-color:var(--violet)}
+.tabs1 button:hover{color:var(--violet)}
+.tabs2{display:flex;gap:2px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tabs2 button{padding:9px 14px;font-size:.88rem;font-weight:500;color:var(--tx3);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs2 button[aria-pressed="true"]{color:var(--violet);font-weight:700;border-bottom-color:var(--violet)}
+.tabs2 button:hover{color:var(--violet)}
+.mktbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mktbar label{font-size:.86rem;color:var(--tx2);display:flex;align-items:center;gap:7px}
+.mktbar .sp{flex:1}
+.mktbar .fsel,.mktbar .finp{padding:5px 9px;font-size:.85rem;min-width:0}
+.rtpill{background:#C9F5DF;color:#0A6B4A;border-radius:99px;padding:6px 20px;font-size:.85rem;font-weight:700;white-space:nowrap}
+.viewbtn{width:30px;height:28px;border:1px solid var(--line2);border-radius:4px;display:grid;place-items:center;color:var(--tx3);font-size:.9rem}
+.viewbtn[aria-pressed="true"]{border-color:var(--violet);color:var(--violet)}
+
+table.cot{min-width:1180px}
+table.cot thead th{background:#EEF0FA;color:var(--tx2);font-family:var(--fui);font-size:.79rem;font-weight:700;
+  letter-spacing:0;text-transform:none;text-align:center;padding:12px 9px;border-bottom:1px solid var(--line2);vertical-align:middle}
+table.cot thead th .srt{color:var(--tx3);font-size:.65rem;margin-left:3px}
+table.cot td{padding:9px;font-size:.84rem;text-align:center;vertical-align:middle}
+table.cot td.sim{text-align:left;padding-left:14px;border-left:4px solid transparent;white-space:nowrap}
+table.cot tr.up td.sim{border-left-color:#2DBE86} table.cot tr.dn td.sim{border-left-color:#E0566B}
+table.cot .simwrap{display:flex;align-items:center;gap:9px}
+table.cot .simico{width:26px;height:26px;border-radius:4px;background:var(--lav2);display:grid;place-items:center;font-size:.8rem;flex:none}
+table.cot .simtk{font-family:var(--fmo);font-weight:700;font-size:.86rem;display:flex;align-items:center;gap:6px}
+table.cot .simnm{font-size:.72rem;color:var(--tx3);margin-top:1px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tipo-badge{font-size:8.5px;font-weight:700;letter-spacing:.05em;border:1px solid var(--line2);color:var(--tx3);border-radius:3px;padding:0 4px}
+table.cot td.num2{font-family:var(--fmo);font-variant-numeric:tabular-nums;white-space:nowrap}
+table.cot td.bid{background:#E9F7F0;font-weight:700} table.cot th.bid{background:#DFF2E8}
+table.cot td.ask{background:#FCECEE;font-weight:700} table.cot th.ask{background:#F8E0E4}
+table.cot td.qbid{background:#F2FBF7} table.cot th.qbid{background:#DFF2E8}
+table.cot td.qask{background:#FEF5F6} table.cot th.qask{background:#F8E0E4}
+.varcell{display:inline-flex;align-items:center;gap:5px;font-family:var(--fmo);font-variant-numeric:tabular-nums}
+.varcell.up{color:#12885E} .varcell.dn{color:#C43A4E}
+.lnkcomprar{color:var(--violet);font-weight:600;font-size:.85rem;text-decoration:underline;text-underline-offset:2px}
+.lnkcomprar:hover{color:var(--violet-dk)}
+.starbtn{color:var(--tx3);font-size:1rem}.starbtn:hover{color:var(--violet)}
+
+/* ficha estilo IOL */
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.fcard{border:1px solid var(--line2);border-radius:5px;background:#fff;overflow:hidden}
+.fcard > h3{font-size:1.18rem;font-weight:700;color:var(--tx);padding:15px 18px 12px}
+.fcard .fbody{padding:0 18px 16px}
+.dcgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+.dcrow{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.85rem}
+.dcrow .k{color:var(--tx2);min-width:0}
+.dcrow .v{margin-left:auto;font-weight:700;font-family:var(--fmo);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;flex:none}
+table.mini2{width:100%}
+table.mini2 th{background:#fff;color:var(--tx2);font-family:var(--fui);font-size:.79rem;font-weight:600;text-transform:none;letter-spacing:0;padding:8px 10px;border-bottom:1px solid var(--line2);text-align:left}
+table.mini2 td{padding:8px 10px;font-size:.82rem;font-family:var(--fmo);font-variant-numeric:tabular-nums;border-bottom:1px solid var(--line)}
+table.mini2 td.b{font-weight:700;color:#12885E} table.mini2 td.a{font-weight:700;color:#C43A4E}
+.areachart{display:block;width:100%;height:190px}
+
+/* ============ FORMULARIO DE ORDEN ============ */
+.formpanel{background:var(--lav);border-radius:7px;padding:22px 26px;display:flex;flex-direction:column;gap:15px;max-width:790px}
+.frow{display:grid;grid-template-columns:172px minmax(0,1fr);gap:14px;align-items:start}
+.frow > label{font-size:.9rem;font-weight:700;padding-top:9px;line-height:1.25}
+.fsel,.finp{background:#fff;border:1px solid var(--line2);border-radius:4px;padding:8px 11px;font-size:.92rem;min-width:140px}
+.fsel:focus,.finp:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px rgba(100,57,255,.14)}
+.finp{font-family:var(--fmo);font-weight:600;font-variant-numeric:tabular-nums}
+.finp:disabled{background:#F1F0F7;color:var(--tx3)}
+.radiogrid{display:grid;grid-template-columns:auto minmax(0,190px);gap:9px 14px;align-items:center}
+.rl{display:flex;align-items:center;gap:7px;font-size:.9rem;font-weight:500;cursor:pointer;white-space:nowrap}
+.rl input{accent-color:var(--violet);width:15px;height:15px;cursor:pointer}
+.siminfo{margin-top:7px;font-size:.84rem;color:var(--tx2);line-height:1.4}
+.siminfo .ok{color:var(--violet);font-weight:600}
+.siminfo .err{color:var(--down);font-weight:600}
+.submitrow{display:flex;justify-content:center;max-width:790px}
+.qmark{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--violet);
+  color:var(--violet);font-size:.8rem;font-weight:700;vertical-align:middle;margin-left:8px;cursor:pointer}
+.montitulo{display:flex;align-items:center;gap:9px;font-size:1.22rem;font-weight:700;margin-bottom:11px}
+.montos{max-width:900px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0;align-items:baseline}
+.montos > div{padding:6px 0;font-size:.86rem;line-height:1.35;color:var(--tx)}
+.montos > div:nth-child(even){font-family:var(--fmo);font-variant-numeric:tabular-nums;text-align:right;
+  white-space:nowrap;padding-left:24px;margin-left:24px;border-left:1px solid var(--line2)}
+.montos > div.hi{color:var(--violet);font-weight:700}
+
+/* ============ MAIN ============ */
+.main{flex:1;overflow-y:auto;background:var(--bg);padding:26px 34px 48px;min-width:0}
+.page{max-width:1160px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.screen[hidden]{display:none!important}
+.pagetop{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.ptitle{color:var(--violet);font-size:2.15rem;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.pmeta{margin-left:auto;font-size:.85rem;color:var(--tx3);white-space:nowrap}
+.sech{font-size:1.32rem;font-weight:700;letter-spacing:-.02em}
+.subt{color:var(--tx2);font-size:.93rem;margin-top:3px}
+
+/* paneles lavanda del estado de cuenta */
+.panel{background:var(--lav);border-radius:9px;padding:22px 24px}
+.acctgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.accthd{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.accthd .flag{font-size:1.5rem;line-height:1}
+.accthd h2{font-size:1.2rem;font-weight:700}
+.selmini{margin-left:auto;background:#fff;border:1px solid var(--line2);border-radius:5px;padding:7px 10px;font-size:.88rem;font-weight:500}
+.balrow{display:flex;align-items:baseline;gap:12px;margin-top:20px}
+.balrow .k{font-size:.94rem;font-weight:600}
+.balrow .v{margin-left:auto;font-family:var(--fmo);font-weight:600;font-size:1.02rem;font-variant-numeric:tabular-nums}
+.balrow.sec{margin-top:6px}
+.acctbtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.acctbtns2{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+
+.btn-s{background:var(--violet);color:#fff;border-radius:5px;padding:10px 22px;font-size:.92rem;font-weight:500;text-align:center;white-space:nowrap}
+.btn-s:hover{background:var(--violet-dk)}
+.btn-o{background:#fff;color:var(--violet);border:1px solid var(--violet);border-radius:5px;padding:10px 22px;font-size:.92rem;font-weight:500;text-align:center;white-space:nowrap}
+.btn-o:hover{background:var(--lav)}
+.btn-s:disabled,.btn-o:disabled{opacity:.42;cursor:not-allowed}
+.btn-s.w,.btn-o.w{display:block;width:100%}
+.btn-s.sm,.btn-o.sm{padding:7px 15px;font-size:.85rem}
+
+.recgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.rec{background:var(--lav);border-radius:9px;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.rec .rhd{display:flex;align-items:center;gap:12px}
+.rec .ric{font-size:1.8rem;line-height:1}
+.rec h3{font-size:1.18rem;font-weight:700}
+.rec p{font-size:.9rem;color:var(--tx2);line-height:1.45}
+.rec .rsp{flex:1}
+.rec .rpx{font-size:.9rem;color:var(--tx2)}
+.rec .rbtns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.reclinks{display:flex;flex-direction:column;gap:11px}
+.reclinks button{color:var(--violet);font-size:.93rem;font-weight:500}
+.reclinks button:hover{text-decoration:underline}
+
+details.acc{border-top:1px solid var(--line)}
+details.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:16px 0;font-size:1.22rem;font-weight:700}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"⌄";color:#3B82F6;font-size:1.3rem;line-height:.6;transition:transform .18s}
+details.acc[open] summary::after{transform:rotate(180deg)}
+details.acc .accbody{padding:0 0 22px}
+
+/* componentes internos */
+.card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:16px}
+.card.p0{padding:0;overflow:hidden}
+.cardhd{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.cardhd h3{font-size:.95rem;font-weight:600}.cardhd .sp{flex:1}
+.lbl{font-family:var(--fmo);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--tx3)}
+.big{font-size:1.95rem;font-weight:700;letter-spacing:-.025em;font-variant-numeric:tabular-nums;line-height:1.08}
+.row{display:flex;align-items:center;gap:12px}.row .sp{flex:1;min-width:0}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid12{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:start}
+.sub{font-size:.82rem;color:var(--tx3);line-height:1.35}
+.delta{font-family:var(--fmo);font-size:.82rem;font-weight:500;padding:1px 6px;border-radius:4px;white-space:nowrap}
+.delta.up{color:var(--up);background:var(--upsoft)}.delta.dn{color:var(--down);background:var(--downsoft)}
+.segment{display:inline-flex;background:var(--card2);border-radius:6px;padding:3px;gap:3px}
+.segment button{padding:5px 13px;border-radius:4px;font-size:.84rem;font-weight:600;color:var(--tx2);text-align:center}
+.segment button[aria-pressed="true"]{background:#fff;color:var(--violet);box-shadow:0 1px 2px rgba(6,8,63,.14)}
+.segment.full{display:flex}.segment.full button{flex:1}
+
+#carteraBox,#mkList,#mvBox{overflow-x:auto}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);font-size:.88rem}
+thead th{font-family:var(--fmo);font-weight:500;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--tx3);background:var(--card2);white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr.clk{cursor:pointer}tbody tr.clk:hover{background:var(--lav)}
+td.n,th.n{text-align:right;font-family:var(--fmo);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tickcell{font-family:var(--fmo);font-weight:600;white-space:nowrap}
+.namecell{font-size:.78rem;color:var(--tx3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+
+.saldos{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.saldos .sl{background:#fff;display:flex;align-items:center;gap:9px;padding:9px 13px;font-size:.86rem}
+.saldos .sl .n{margin-left:auto;font-family:var(--fmo);font-weight:600;font-variant-numeric:tabular-nums}
+.saldos .tag{width:7px;height:7px;border-radius:2px;flex:none}
+.tag.disp{background:var(--up)}.tag.comp{background:var(--warn)}.tag.liq{background:var(--violet)}
+
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.84rem;font-weight:600;color:var(--tx2)}
+.inp{width:100%;background:#fff;border:1px solid var(--line2);border-radius:6px;padding:10px 12px;
+  font-family:var(--fmo);font-size:1rem;font-weight:600;font-variant-numeric:tabular-nums}
+.inp:focus{border-color:var(--violet);outline:none;box-shadow:0 0 0 3px var(--lav)}
+.hint{font-size:.79rem;color:var(--tx3);line-height:1.4}
+.kv{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.kv .r{background:#fff;display:flex;gap:10px;padding:8px 13px;font-size:.86rem}
+.kv .r .k{color:var(--tx2)}.kv .r .v{margin-left:auto;font-family:var(--fmo);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.kv .r.tot{background:var(--card2);font-weight:700}.kv .r.tot .k{color:var(--tx)}
+.alert{border-radius:7px;padding:10px 13px;font-size:.85rem;line-height:1.45;border-left:3px solid}
+.alert .t{font-weight:700;display:block;margin-bottom:2px}
+.alert.warn{background:var(--warnsoft);border-color:var(--warn);color:var(--warn)}
+.alert.info{background:var(--lav);border-color:var(--violet);color:var(--violet-deep)}
+.alert.bad{background:var(--downsoft);border-color:var(--down);color:var(--down)}
+.alert.good{background:var(--upsoft);border-color:var(--up);color:var(--up)}
+.radio{display:flex;flex-direction:column;gap:8px}
+.radio button{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line2);border-radius:7px;padding:11px 13px;width:100%}
+.radio button[aria-pressed="true"]{border-color:var(--violet);background:var(--lav)}
+.radio .bul{width:15px;height:15px;border-radius:50%;border:2px solid var(--line2);flex:none;margin-top:3px}
+.radio button[aria-pressed="true"] .bul{border-color:var(--violet);border-width:5px}
+.radio .tt{display:block;font-size:.88rem;font-weight:600}.radio .ss{display:block;font-size:.78rem;color:var(--tx3);margin-top:2px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line2);border-radius:99px;padding:5px 14px;font-size:.85rem;font-weight:500;color:var(--tx2);background:#fff}
+.tabs button[aria-pressed="true"]{background:var(--violet);border-color:var(--violet);color:#fff;font-weight:600}
+.tabs button[data-out]{border-style:dashed;color:var(--tx3)}
+.spark{display:block;width:100%;height:92px}
+.empty{text-align:center;padding:28px;color:var(--tx3);font-size:.88rem;line-height:1.5}
+.pill{display:inline-block;font-family:var(--fmo);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--card2);color:var(--tx3)}
+.pill.w{background:var(--warnsoft);color:var(--warn)}.pill.g{background:var(--upsoft);color:var(--up)}.pill.b{background:var(--downsoft);color:var(--down)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.tile{background:var(--lav);border-radius:8px;padding:15px;display:flex;flex-direction:column;gap:4px}
+.tile:hover{background:var(--lav2)}
+.tile .tt{font-size:.92rem;font-weight:600}.tile .ss{font-size:.79rem;color:var(--tx2);line-height:1.35}
+.sticky{position:sticky;top:0}
+
+/* ============ OVERLAYS ============ */
+.veil{position:fixed;inset:0;background:rgba(6,8,63,.72);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:90}
+.veil[hidden]{display:none!important}
+.sheet{background:#fff;border-radius:11px;max-width:440px;width:100%;padding:22px;box-shadow:var(--shadow);
+  max-height:88dvh;overflow-y:auto;display:flex;flex-direction:column;gap:13px}
+.sheet h3{font-size:1.18rem;font-weight:700;line-height:1.2}
+.sheet p{font-size:.91rem;line-height:1.5;color:var(--tx2)}
+.sheet .eyebrow{font-family:var(--fmo);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn)}
+#splash .sheet{max-width:620px}
+.brandbig{display:flex;align-items:center;gap:13px;font-size:1.9rem;letter-spacing:-.035em}
+.brandbig svg{width:48px;height:48px;display:block;flex:none}
+.brandbig .w1{font-weight:700;color:var(--indigo)}
+.brandbig .w2{font-weight:500;color:var(--violet)}
+.tracks{display:flex;flex-direction:column;gap:9px}
+.track{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line2);border-radius:8px;padding:13px 15px;width:100%}
+.track:hover{border-color:var(--violet);background:var(--lav)}
+.track .n{font-family:var(--fmo);font-size:.78rem;font-weight:600;color:#fff;background:var(--violet);width:26px;height:26px;border-radius:5px;display:grid;place-items:center;flex:none}
+.track .tt{display:block;font-size:.96rem;font-weight:700;line-height:1.25}
+.track .ss{display:block;font-size:.83rem;color:var(--tx2);line-height:1.4;margin-top:3px}
+.track .mods{display:block;font-family:var(--fmo);font-size:10px;letter-spacing:.07em;color:var(--tx3);margin-top:6px;text-transform:uppercase}
+.track.rec2{border-color:var(--violet);border-width:2px}
+.finelist{font-size:.79rem;color:var(--tx3);line-height:1.55;display:flex;flex-direction:column;gap:3px}
+
+#ring{position:fixed;z-index:70;border-radius:7px;pointer-events:none;
+  box-shadow:0 0 0 9999px rgba(6,8,63,.58), 0 0 0 3px #8B6BFF;
+  transition:top .18s ease,left .18s ease,width .18s ease,height .18s ease}
+#ring[hidden]{display:none!important}
+#tip{position:fixed;z-index:72;max-width:340px;width:calc(100vw - 28px);background:#fff;border-radius:10px;
+  padding:15px;box-shadow:var(--shadow);border:1px solid var(--line2);display:flex;flex-direction:column;gap:9px}
+#tip[hidden]{display:none!important}
+#tip .step{font-family:var(--fmo);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--violet)}
+#tip h4{font-size:1.03rem;font-weight:700;line-height:1.25}
+#tip p{font-size:.88rem;line-height:1.5;color:var(--tx2)}
+#tip .acts{display:flex;gap:8px;align-items:center;margin-top:2px}#tip .acts .sp{flex:1}
+#tip .tapme{font-family:var(--fmo);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);
+  display:flex;align-items:center;gap:7px;font-weight:600}
+#tip .tapme::before{content:"";width:8px;height:8px;border-radius:50%;background:#8B6BFF;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+.mini{border:1px solid var(--line2);border-radius:5px;padding:5px 11px;font-size:.83rem;font-weight:500;color:var(--tx2)}
+.mini:hover{border-color:var(--violet);color:var(--violet)}
+.mini.pri{background:var(--violet);border-color:var(--violet);color:#fff}.mini.pri:hover{background:var(--violet-dk)}
+
+@media (max-width:1040px){
+  .acctgrid,.recgrid,.grid12{grid-template-columns:minmax(0,1fr)}
+  .grid3{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+  .sticky{position:static}
+}
+@media (max-width:760px){
+  .desk{padding:0}
+  .win{height:100dvh;border-radius:0;border:none;max-width:none}
+  .titlebar .wt,.dots{display:none}
+  .main{padding:18px 14px 34px}
+  .ptitle{font-size:1.7rem}
+  .pmeta{margin-left:0;white-space:normal}
+  .navitem{padding:10px 12px;font-size:.88rem}
+  .dd-menu{left:0;right:auto;min-width:min(280px,calc(100vw - 20px))}
+  .panel,.rec{padding:17px 16px}
+  .strip{font-size:9.5px;gap:8px;padding:5px 12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="desk">
+ <div class="win">
+
+  <div class="titlebar">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="wt" id="winTitle">Rueda — Simulador de capacitación</span>
+    <span class="sp"></span>
+    <span class="prog"><i id="cbBar"></i></span>
+    <span class="ptx" id="cbTx">0 / 0</span>
+    <button class="tbtn" id="btnCambiar">Cambiar capacitación</button>
+  </div>
+
+  <div class="strip">
+    <span>● Modo capacitación · dinero y precios ficticios</span>
+    <span class="sp"></span>
+    <span class="mkt" id="mktPill"><span class="dot"></span><span id="mktTx">Mercado abierto</span></span>
+    <span class="mono" id="reloj">LUN 14 SEP · 11:42</span>
+    <button id="btnDia" data-tour="reloj-avanzar">Avanzar 1 día hábil</button>
+  </div>
+
+  <div class="appbar">
+    <span class="brand"><svg viewBox="0 0 100 100" role="img" aria-label="Rueda"><circle cx="50" cy="50" r="50" fill="#6439FF"/><circle cx="50" cy="50" r="27" fill="none" stroke="#FFFFFF" stroke-width="12.5" stroke-linecap="round" stroke-dasharray="126 44" transform="rotate(-96 50 50)"/><circle cx="47.2" cy="23.3" r="8.4" fill="#2FE3B0"/></svg><span class="w1">rueda</span><span class="w2">simulador</span></span>
+    <span class="searchwrap">
+      <input id="buscador" placeholder="Buscar Cotizaciones, Títulos o Empresas" list="simbolos" aria-label="Buscar">
+      <button id="btnBuscar" aria-label="Buscar">🔍</button>
+    </span>
+    <span class="abicons">
+      <button data-out="Favoritos|Tu lista de especies marcadas para seguirlas de cerca. Queda fuera del alcance de esta capacitación." aria-label="Favoritos">★</button>
+      <button data-out="Últimas vistas|Historial de las especies que miraste. Queda fuera del alcance.">🕐</button>
+      <button data-out="Centro de ayuda|Preguntas frecuentes y tutoriales de la plataforma. Queda fuera del alcance: acá el que enseña es el simulador.">?</button>
+      <button data-out="Notificaciones|Avisos sobre tus órdenes, pagos de renta y novedades del mercado. Queda fuera del alcance.">🔔</button>
+      <span class="hola">¡Hola, <b>Iván Nicolás!</b></span>
+    </span>
+  </div>
+
+  <datalist id="simbolos"></datalist>
+
+  <nav class="topnav" id="topnav">
+    <div class="dd" data-dd="cuenta">
+      <button class="navitem" data-tour="nav-micuenta">Mi Cuenta <span class="cv">▾</span></button>
+      <div class="dd-menu">
+        <button data-go="inicio" data-tour="menu-estado">Estado de cuenta</button>
+        <button data-go="movimientos" data-tour="menu-movimientos">Movimientos</button>
+        <div class="dd-sep"></div>
+        <button data-go="ingresar" data-tour="menu-ingresar">Ingresar dinero</button>
+        <button data-go="retirar" data-tour="menu-retirar">Retirar dinero</button>
+        <div class="dd-sep"></div>
+        <button data-go="cuenta" data-tour="menu-perfil">Mi perfil de inversor</button>
+        <button data-out="Configuración de la cuenta|Datos personales, claves, seguridad y notificaciones. Queda fuera del alcance de esta capacitación.">Configuración</button>
+      </div>
+    </div>
+
+    <button class="navitem" data-go="portafolio" data-tour="nav-portafolio">Portafolio</button>
+
+    <div class="dd" data-dd="operar">
+      <button class="navitem" data-tour="nav-operar">Operar <span class="cv">▾</span></button>
+      <div class="dd-menu">
+        <button data-go="comprar" data-tour="menu-comprar">Comprar</button>
+        <button data-go="vender" data-tour="menu-vender">Vender</button>
+        <button data-out="Caucionar|Prestar o tomar dinero a muy corto plazo dejando títulos en garantía. Se opera desde acá en la plataforma real, pero no forma parte del ciclo de inversión que cubre esta capacitación.">Caucionar<span class="sub-arrow">›</span></button>
+        <button data-out="Suscribir|Entrar a una emisión nueva en el mercado primario: obligaciones negociables recién emitidas o cuotapartes de un fondo. Queda fuera del alcance.">Suscribir</button>
+        <button data-out="Rescatar|Salir de un fondo común de inversión y recuperar el dinero. Queda fuera del alcance.">Rescatar</button>
+        <button data-out="Opciones|Contratos que dan el derecho a comprar o vender una acción a un precio fijo. Es un instrumento avanzado y queda fuera del alcance.">Opciones</button>
+        <button data-out="Planes de Inversión|Inversión automática de un monto fijo todos los meses. Queda fuera del alcance de esta capacitación.">Planes de Inversión</button>
+        <div class="dd-sep"></div>
+        <button data-go="mep" data-mepmodo="compra" data-tour="menu-mep">Compra Dólar MEP Simple</button>
+        <button data-go="mep" data-mepmodo="venta" data-tour="menu-mep-venta">Venta Dólar MEP Simple <span class="badge-new">¡Nuevo!</span></button>
+        <button data-out="Portafolio Simple|Paquetes con varios CEDEARs, acciones u obligaciones negociables que se compran de una sola vez. En esta capacitación armás la cartera vos, instrumento por instrumento, para entender qué estás comprando.">Portafolio Simple <span class="badge-new">¡Nuevo!</span></button>
+        <button data-out="Envía dinero a EE.UU. (CCL)|Transferir dólares a tu cuenta de inversión en el exterior usando Contado con Liquidación. Tiene sus propias reglas y plazos, y queda fuera del alcance.">Envía dinero a EE.UU. (CCL) <span class="badge-new">¡Nuevo!</span></button>
+      </div>
+    </div>
+
+    <button class="navitem" data-go="mercado" data-tour="nav-cotizaciones">Cotizaciones</button>
+
+    <div class="dd" data-dd="herr">
+      <button class="navitem">Herramientas <span class="cv">▾</span></button>
+      <div class="dd-menu">
+        <button data-out="Descargar estado de cuenta|El resumen de tu cuenta en PDF, junto con los informes para liquidar Bienes Personales y Ganancias. Son reportes: se leen después, no forman parte del ciclo de la inversión. Quedan fuera del alcance de esta capacitación.">Descargar estado de cuenta</button>
+        <button data-out="Simulador de rendimientos|Proyecta cuánto valdría tu inversión a distintos plazos y tasas. Queda fuera del alcance.">Simulador de rendimientos</button>
+        <button data-out="Alertas de precio|Avisos automáticos cuando un activo llega a un precio que definís. Queda fuera del alcance.">Alertas de precio</button>
+        <button data-out="API para desarrolladores|Acceso programático para automatizar operaciones y descargar datos. Queda fuera del alcance.">API</button>
+      </div>
+    </div>
+
+    <button class="navitem" data-out="Estrategias de Inversión|Carteras y estrategias armadas por el equipo de análisis, con seguimiento y rebalanceo. Es contenido de asesoramiento y queda fuera del alcance de esta capacitación.">Estrategias de Inversión</button>
+    <button class="navitem" data-out="Academia|Cursos, videos y notas para aprender a invertir dentro de la plataforma. En esta capacitación el que enseña es el simulador, así que queda fuera del alcance.">Academia</button>
+  </nav>
+
+  <main class="main" id="main">
+
+    <!-- ================= ESTADO DE CUENTA ================= -->
+    <section class="screen page" id="s-inicio">
+      <div class="pagetop">
+        <h1 class="ptitle">Estado de cuenta</h1>
+        <div class="pmeta">Saldo al <span id="saldoAl">—</span> | Cuenta comitente nro: 418.203</div>
+      </div>
+
+      <div class="acctgrid">
+        <div class="panel" data-tour="cuenta-arg">
+          <div class="accthd">
+            <span class="flag">🇦🇷</span><h2>Cuenta de inversión de Argentina</h2>
+            <select class="selmini" id="selTipoCuenta"><option>Tradicional</option><option>Simple</option></select>
+          </div>
+          <div class="balrow"><span class="k">Saldo total valorizado</span><span class="v" id="balArs">AR$ 0,00</span></div>
+          <div class="balrow sec"><span class="k"></span><span class="v" id="balUsd">US$ 0,00</span></div>
+          <div class="acctbtns">
+            <button class="btn-o" data-go="portafolio" data-tour="btn-miportafolio">Mi Portafolio</button>
+            <button class="btn-s" data-go="ingresar" data-tour="qa-ingresar">Ingresar dinero</button>
+          </div>
+        </div>
+
+        <div class="panel fueraalcance" data-tour="cuenta-usa">
+          <div class="accthd"><span class="flag">🇺🇸</span><h2>Cuenta de inversión de Estados Unidos</h2><span class="scope-chip" style="margin-left:auto">Fuera de alcance</span></div>
+          <div class="balrow"><span class="k">Saldo total valorizado</span><span class="v">US$ 0,00</span></div>
+          <div class="acctbtns">
+            <button class="btn-o" data-out="Cuenta de inversión de Estados Unidos|Es una cuenta comitente aparte, con su propio fondeo, para comprar acciones, ETFs y bonos directamente en el mercado estadounidense. Queda fuera del alcance de esta capacitación: acá invertís en empresas del exterior vía CEDEARs, que se compran en pesos desde la cuenta argentina.">Mi Portafolio</button>
+            <button class="btn-s" data-out="Cuenta de inversión de Estados Unidos|Es una cuenta comitente aparte, con su propio fondeo, para comprar acciones, ETFs y bonos directamente en el mercado estadounidense. Queda fuera del alcance de esta capacitación: acá invertís en empresas del exterior vía CEDEARs, que se compran en pesos desde la cuenta argentina.">Ingresar dinero</button>
+          </div>
+          <div class="acctbtns2">
+            <button class="btn-s" data-out="Enviar dinero a Estados Unidos (CCL)|Transferir dólares desde tu cuenta argentina a la de EE.UU. usando Contado con Liquidación. Funciona igual que el Dólar MEP —dos patas de bono— pero liquidando afuera. Queda fuera del alcance de esta capacitación.">Enviar dinero a Estados Unidos</button>
+          </div>
+          <p class="hint" style="margin-top:14px;border-top:1px dashed var(--line2);padding-top:12px">
+            Esta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar
+            <strong>CEDEARs</strong>, que se compran en pesos desde acá.</p>
+        </div>
+      </div>
+
+      <h2 class="sech">Te recomendamos</h2>
+      <div class="recgrid">
+        <div class="rec" data-tour="rec-mep">
+          <div class="rhd"><span class="ric">💵</span><h3>Dólar MEP Simple</h3></div>
+          <p>Dólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.</p>
+          <div class="rsp"></div>
+          <div class="rpx">Ult. precio: <strong class="mono" id="recMepPx">AR$ 0,00</strong></div>
+          <div class="rbtns">
+            <button class="btn-o sm" data-go="mep" data-tour="qa-mep-vender">Vender</button>
+            <button class="btn-s sm" data-go="mep" data-tour="qa-mep">Comprar</button>
+          </div>
+        </div>
+
+        <div class="rec">
+          <div class="rhd"><span class="ric">🥧</span><h3>Portafolio Simple</h3></div>
+          <p>Son paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.</p>
+          <div class="rsp"></div>
+          <div class="rpx">Desde: <strong class="mono">AR$ 74.287,50</strong></div>
+          <div class="rbtns">
+            <button class="btn-s sm" data-out="Portafolio Simple|Paquetes con varios CEDEARs, acciones u obligaciones negociables que se compran de una sola vez. En esta capacitación armás la cartera vos, instrumento por instrumento, para entender qué estás comprando.">Comprar</button>
+          </div>
+        </div>
+
+        <div class="rec">
+          <div class="rhd"><h3>¿En qué invierto?</h3></div>
+          <div class="reclinks">
+            <button data-out="¿Cómo le gano a la inflación?|Nota del equipo de análisis con instrumentos sugeridos para cubrirse de la inflación. Es contenido de asesoramiento y queda fuera del alcance.">¿Cómo le gano a la inflación? ></button>
+            <button data-out="¿Cómo invertir tus dólares?|Nota del equipo de análisis sobre alternativas en dólares. Es contenido de asesoramiento y queda fuera del alcance.">¿Cómo invertir tus dólares? ></button>
+            <button data-out="Estrategias de corto plazo (AT)|Ideas de trading basadas en análisis técnico. Queda fuera del alcance de esta capacitación.">Estrategias de corto plazo (AT) ></button>
+            <button data-out="Portafolios sugeridos|Carteras modelo armadas según tu perfil de inversor. En esta capacitación armás la cartera vos.">Portafolios sugeridos ></button>
+          </div>
+        </div>
+      </div>
+
+      <details class="acc" id="accSaldos" data-tour="detalle-saldos">
+        <summary>Detalle de saldos</summary>
+        <div class="accbody">
+          <div class="grid12">
+            <div class="saldos" id="saldosBox" data-tour="saldo-detalle"></div>
+            <div class="panel">
+              <p style="font-size:.87rem;color:var(--tx2);line-height:1.5">
+                Tu dinero puede estar en tres estados a la vez. <strong>Disponible</strong> es lo único que podés usar o retirar hoy.
+                <strong>Comprometido</strong> es lo que ya gastaste en una compra que todavía no liquidó.
+                <strong>A liquidar</strong> es lo que cobraste por una venta y se acredita el día hábil siguiente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="acc" id="accStats">
+        <summary>Estadísticas</summary>
+        <div class="accbody"><div class="grid3" id="statsBox"></div></div>
+      </details>
+    </section>
+
+    <!-- ================= PORTAFOLIO ================= -->
+    <section class="screen page" id="s-portafolio" hidden>
+      <div class="pagetop">
+        <h1 class="ptitle">Mi Portafolio</h1>
+        <div class="pmeta">Cuenta de inversión de Argentina</div>
+      </div>
+      <div class="row">
+        <div class="sp"><p class="subt">Tenencia valorizada a precios de mercado</p></div>
+        <div class="segment" data-tour="toggle-moneda">
+          <button data-mon="ARS" aria-pressed="true">Ver en pesos</button>
+          <button data-mon="USD" aria-pressed="false">Ver en dólares</button>
+        </div>
+      </div>
+      <div class="grid3" id="statsBox2"></div>
+      <div class="card p0" data-tour="pos-lista">
+        <div class="cardhd"><h3>Tenencia</h3><span class="sp"></span><span class="sub" id="carteraSub"></span></div>
+        <div id="carteraBox"></div>
+      </div>
+    </section>
+
+    <!-- ================= COTIZACIONES ================= -->
+    <section class="screen page" id="s-mercado" hidden style="max-width:none">
+      <div class="indices" id="indices"></div>
+      <h1 class="ptitle" id="mkTitulo">Cotización de Cedears Argentina - Panel Todos</h1>
+      <div class="tabs1">
+        <button aria-pressed="true">🇦🇷 Argentina</button>
+        <button data-out="Cotizaciones de Estados Unidos|Precios de acciones, ETFs y bonos que cotizan en el mercado estadounidense. Se operan con la cuenta de inversión de EE.UU., que queda fuera del alcance de esta capacitación.">🇺🇸 Estados Unidos</button>
+        <button data-out="Favoritos|Tu lista de especies marcadas para seguirlas de cerca. Queda fuera del alcance.">☆ Favoritos</button>
+        <button data-out="Índices|Merval, S&amp;P 500, Nasdaq y otros índices de referencia. Queda fuera del alcance.">🌐 Índices</button>
+      </div>
+      <div class="tabs2" id="mkTabs">
+        <button data-tab="accion" data-tour="tab-acciones">Acciones</button>
+        <button data-tab="cedear" aria-pressed="true" data-tour="tab-cedears">Cedears</button>
+        <button data-out="Opciones|Contratos que dan el derecho a comprar o vender una acción a un precio fijo. Instrumento avanzado, fuera del alcance.">Opciones</button>
+        <button data-out="Bonos|Deuda del Estado nacional y provincial. Solo usamos el AL30 por debajo del Dólar MEP; operarlos directo queda fuera del alcance.">Bonos</button>
+        <button data-out="Letras|Deuda del Tesoro a muy corto plazo en pesos. Queda fuera del alcance.">Letras</button>
+        <button data-tab="on" data-tour="tab-ons">Obligaciones Negociables</button>
+        <button data-out="Fondos Comunes de Inversión|Carteras administradas por un equipo profesional. Queda fuera del alcance.">Fondos</button>
+        <button data-out="Cauciones|Préstamos de muy corto plazo garantizados con títulos. Queda fuera del alcance.">Cauciones</button>
+        <button data-out="Cheques de pago diferido|Cheques de empresas que se negocian con descuento. Queda fuera del alcance.">Cheques</button>
+        <button data-out="Monedas|Cotizaciones de las distintas variantes del dólar y otras monedas. Para operar dólares usá Dólar MEP Simple.">Monedas</button>
+      </div>
+      <div class="mktbar">
+        <label>Mostrar <select class="fsel" id="mkShow"><option>10</option><option selected>25</option><option>50</option></select></label>
+        <label>Cambiar Panel <select class="fsel" id="mkPanel"><option>Todos</option><option>Líderes</option></select></label>
+        <button class="viewbtn" aria-pressed="true" title="Vista lista">☰</button>
+        <button class="viewbtn" data-out="Vista en mosaico|Muestra cada especie como una tarjeta en vez de una fila. Queda fuera del alcance de esta capacitación.">▦</button>
+        <span class="sp"></span>
+        <span class="rtpill" id="rtPill">Precios simulados</span>
+        <label>Buscar: <input class="finp" id="mkBuscar" placeholder="Símbolo - Ej: PAMP" style="font-size:.85rem"></label>
+      </div>
+      <div class="card p0" id="mkList"></div>
+    </section>
+
+    <!-- ================= FICHA DEL ACTIVO ================= -->
+    <section class="screen page" id="s-activo" hidden style="max-width:none">
+      <button class="mini" id="backMk" style="align-self:flex-start">‹ Volver a Cotizaciones</button>
+      <div id="fichaBox" style="display:flex;flex-direction:column;gap:18px"></div>
+    </section>
+
+    <!-- ================= COMPRAR ================= -->
+    <section class="screen page" id="s-comprar" hidden>
+      <h1 class="ptitle">Comprar <span class="qmark" data-out="Ayuda de la pantalla Comprar|Explica cada campo del formulario de orden. En esta capacitación esa ayuda te la damos con la guía paso a paso.">?</span></h1>
+      <div class="formpanel" data-tour="form-comprar">
+        <div class="frow"><label>Mercado</label><div>
+          <select class="fsel" id="cMercado"><option value="ar">Argentina</option><option value="us">Estados Unidos — fuera de alcance</option></select></div></div>
+        <div class="frow"><label>Plazo de liquidación</label><div>
+          <select class="fsel" id="cPlazo" data-tour="campo-plazo"><option value="24">Normal — 24 hs (T+1)</option><option value="ci">Contado inmediato</option></select></div></div>
+        <div class="frow"><label>Símbolo</label><div>
+          <input class="finp" id="cSimbolo" list="simbolos" placeholder="Ej: KO" data-tour="campo-simbolo">
+          <div class="siminfo" id="cInfo"></div></div></div>
+        <div class="frow"><label>Cantidad/Monto</label><div class="radiogrid" data-tour="campo-cantidad">
+          <label class="rl"><input type="radio" name="cqm" value="cant" checked> Cantidad</label><input class="finp" id="cCant" inputmode="numeric" value="10">
+          <label class="rl"><input type="radio" name="cqm" value="monto"> Monto</label><input class="finp" id="cMonto" inputmode="decimal" value="" disabled>
+        </div></div>
+        <div class="frow"><label>Modalidad</label><div class="radiogrid" data-tour="campo-modalidad">
+          <label class="rl"><input type="radio" name="cmod" value="mercado" checked> Precio mercado</label><span></span>
+          <label class="rl"><input type="radio" name="cmod" value="limite"> Precio límite</label><input class="finp" id="cLim" inputmode="decimal" disabled>
+        </div></div>
+        <div class="frow"><label>Validez</label><div>
+          <select class="fsel" id="cValidez"><option>Día</option><option>Hasta fin de mes</option></select></div></div>
+      </div>
+      <div id="cMsg" style="max-width:790px"></div>
+      <div class="submitrow"><button class="btn-s" style="padding:11px 48px" id="btnComprarSubmit" data-tour="btn-comprar-submit">Comprar</button></div>
+      <div style="margin-top:14px">
+        <div class="montitulo"><span>🇦🇷</span>Monto disponible para Argentina</div>
+        <div class="montos" id="montosCompra" data-tour="montos-disponibles"></div>
+        <p class="hint" style="margin-top:12px;max-width:860px">El dinero que podés usar depende del plazo. Lo que cobraste por una venta a 24 hs
+        ya sirve para comprar a 24 hs, pero todavía no para contado inmediato ni para retirar.</p>
+      </div>
+    </section>
+
+    <!-- ================= VENDER ================= -->
+    <section class="screen page" id="s-vender" hidden>
+      <h1 class="ptitle">Vender</h1>
+      <div class="formpanel" data-tour="form-vender">
+        <div class="frow"><label>Plazo de liquidación</label><div>
+          <select class="fsel" id="vPlazo" data-tour="campo-plazo-venta"><option value="24">Normal — 24 hs (T+1)</option><option value="ci">Contado inmediato</option></select></div></div>
+        <div class="frow"><label>Símbolo</label><div>
+          <select class="fsel" id="vSimbolo" data-tour="campo-simbolo-venta"></select>
+          <div class="siminfo" id="vInfo"></div></div></div>
+        <div class="frow"><label>Cantidad</label><div>
+          <input class="finp" id="vCant" inputmode="numeric" value="" data-tour="campo-cantidad-venta"></div></div>
+        <div class="frow"><label>Modalidad</label><div class="radiogrid">
+          <label class="rl"><input type="radio" name="vmod" value="mercado" checked> Precio mercado</label><span></span>
+          <label class="rl"><input type="radio" name="vmod" value="limite"> Precio límite</label><input class="finp" id="vLim" inputmode="decimal" disabled>
+        </div></div>
+        <div class="frow"><label>Validez</label><div>
+          <select class="fsel" id="vValidez"><option>Día</option><option>Hasta fin de mes</option></select></div></div>
+      </div>
+      <div id="vMsg" style="max-width:790px"></div>
+      <div class="submitrow"><button class="btn-s" style="padding:11px 48px" id="btnVenderSubmit" data-tour="btn-vender-submit">Vender</button></div>
+      <div style="margin-top:14px">
+        <div class="montitulo"><span>🇦🇷</span>Monto disponible para Argentina</div>
+        <div class="montos" id="montosVenta"></div>
+      </div>
+      <div>
+        <div class="montitulo"><span>🇺🇸</span>Monto disponible para Estados Unidos<span class="scope-chip">Fuera de alcance</span></div>
+        <div class="montos" id="montosUsa"></div>
+      </div>
+    </section>
+
+    <!-- ================= BOLETO ================= -->
+    <section class="screen page" id="s-boleto" hidden>
+      <div style="max-width:640px;margin:0 auto;width:100%" id="boletoBox" data-tour="boleto-detalle"></div>
+    </section>
+
+    <!-- ================= INGRESAR ================= -->
+    <section class="screen page" id="s-ingresar" hidden>
+      <div class="pagetop"><h1 class="ptitle">Ingresar dinero</h1></div>
+      <p class="subt">Transferí desde tu banco o billetera a tu cuenta de inversión</p>
+      <div class="grid12">
+        <div class="card" style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <div class="lbl">Alias de tu cuenta comitente</div>
+            <div class="mono" style="font-size:1.14rem;font-weight:600;margin-top:4px">rueda.imwinkelried.ars</div>
+            <p class="hint" style="margin-top:5px">Comitente Nº 418.203 · a nombre de Iván N. Imwinkelried</p>
+          </div>
+          <div class="field">
+            <label>Cuenta de origen</label>
+            <div class="radio" id="origenBox" data-tour="origen-list">
+              <button data-org="propia" aria-pressed="false" data-tour="origen-propia"><span class="bul"></span>
+                <span><span class="tt">Banco Nación · Caja de ahorro $</span><span class="ss">Titular: Iván N. Imwinkelried — mismo CUIT que tu cuenta</span></span></button>
+              <button data-org="tercero" aria-pressed="false" data-tour="origen-tercero"><span class="bul"></span>
+                <span><span class="tt">Banco Galicia · Caja de ahorro $</span><span class="ss">Titular: María G. Suárez — otro CUIT</span></span></button>
+            </div>
+          </div>
+          <div id="origenMsg"></div>
+          <div class="field">
+            <label for="inpIngreso">Monto a transferir</label>
+            <input class="inp" id="inpIngreso" inputmode="decimal" value="600000" data-tour="monto-ingreso">
+          </div>
+          <button class="btn-s w" id="btnIngresar" data-tour="confirmar-ingreso">Confirmar transferencia</button>
+        </div>
+        <div class="panel">
+          <div class="lbl">Qué tenés que saber</div>
+          <ul style="margin:10px 0 0;padding-left:17px;display:flex;flex-direction:column;gap:9px;font-size:.87rem;color:var(--tx2);line-height:1.45">
+            <li>La cuenta comitente <strong>no es una caja de ahorro</strong>: existe para comprar y vender títulos.</li>
+            <li>Solo podés fondearla desde cuentas <strong>de tu misma titularidad</strong>. Es normativa de prevención de lavado.</li>
+            <li>La primera transferencia puede demorar unas horas mientras se valida el origen. Las siguientes son inmediatas.</li>
+            <li>El saldo sin invertir <strong>rinde automáticamente</strong> desde el día que entra.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MEP ================= -->
+    <section class="screen page" id="s-mep" hidden>
+      <div class="pagetop"><h1 class="ptitle" id="mepTitulo">Compra Dólar MEP Simple</h1></div>
+      <p class="subt" id="mepBajada">Dólares legales, sin parking, acreditados hoy mismo en tu cuenta</p>
+      <div class="grid12">
+        <div class="card" style="display:flex;flex-direction:column;gap:16px">
+          <div class="segment" id="mepSeg" style="align-self:flex-start">
+            <button data-mepmodo="compra" aria-pressed="true">Comprar dólares</button>
+            <button data-mepmodo="venta" aria-pressed="false">Vender dólares</button>
+          </div>
+          <div class="field">
+            <label for="inpMep" id="mepLabel">Cuánto querés convertir</label>
+            <input class="inp" id="inpMep" inputmode="decimal" value="400000" data-tour="mep-monto">
+            <p class="hint"><span id="mepMin">Mínimo $5.000</span> · Disponible: <span class="mono" id="mepDisp">$ 0,00</span></p>
+          </div>
+          <div class="kv" data-tour="mep-tc">
+            <div class="r"><span class="k">Tipo de cambio implícito</span><span class="v" id="mepTc">—</span></div>
+            <div class="r tot"><span class="k" id="mepRecibeLbl">Vas a recibir</span><span class="v" id="mepUsd">US$ 0,00</span></div>
+          </div>
+          <button class="btn-s w" id="btnMep" data-tour="mep-confirmar">Comprar dólar MEP</button>
+          <p class="hint">Se opera de lunes a viernes de 10:30 a 17:00. Fuera de ese horario la orden queda para el próximo día hábil.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <button class="panel row" id="btnDentro" data-tour="mep-verpordentro" style="width:100%;padding:15px 18px">
+            <span class="sp"><span style="font-weight:700;font-size:.95rem">Ver por dentro</span><span class="sub" style="display:block">Qué hace el sistema en realidad</span></span>
+            <span id="dentroChev" style="color:var(--violet);font-size:1.1rem">›</span>
+          </button>
+          <div id="mepPatas" hidden data-tour="mep-patas"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RETIRAR ================= -->
+    <section class="screen page" id="s-retirar" hidden>
+      <div class="pagetop"><h1 class="ptitle">Retirar dinero</h1></div>
+      <p class="subt">A una cuenta bancaria de tu misma titularidad</p>
+      <div class="grid12">
+        <div class="card" style="display:flex;flex-direction:column;gap:16px">
+          <div class="segment" id="retMon"><button data-mon="ARS" aria-pressed="true">Pesos</button><button data-mon="USD" aria-pressed="false">Dólares</button></div>
+          <div>
+            <div class="lbl">Cuenta destino</div>
+            <div style="font-weight:600;font-size:.93rem;margin-top:3px" id="retDest">Banco Nación · Caja de ahorro $</div>
+            <p class="hint">Titular: Iván N. Imwinkelried</p>
+          </div>
+          <div class="field">
+            <label for="inpRet">Monto a retirar</label>
+            <input class="inp" id="inpRet" inputmode="decimal" value="0" data-tour="monto-retiro">
+            <p class="hint">Disponible para retirar: <span class="mono" id="retDisp">$ 0,00</span></p>
+          </div>
+          <div id="retMsg"></div>
+          <button class="btn-s w" id="btnRetirar" data-tour="confirmar-retiro">Confirmar retiro</button>
+        </div>
+        <div class="panel">
+          <div class="lbl">Por qué a veces no te deja</div>
+          <p style="font-size:.87rem;color:var(--tx2);line-height:1.5;margin-top:8px">
+            Solo se puede retirar el saldo <strong>disponible</strong>. El dinero de una venta a 24 h queda “a liquidar”
+            hasta el día hábil siguiente: lo ves en tu cuenta, pero todavía no se puede sacar.
+          </p>
+          <div class="saldos" style="margin-top:13px" id="retSaldos"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MOVIMIENTOS ================= -->
+    <section class="screen page" id="s-movimientos" hidden>
+      <div class="pagetop">
+        <h1 class="ptitle">Movimientos</h1>
+        <div class="pmeta"><button class="btn-o sm" data-out="Descargar estado de cuenta|El resumen de tu cuenta en PDF, junto con los informes para liquidar Bienes Personales y Ganancias. Son reportes: se leen después, no forman parte del ciclo de la inversión. Quedan fuera del alcance de esta capacitación.">Descargar estado de cuenta</button></div>
+      </div>
+      <p class="subt">La bitácora de tu cuenta: cada ingreso, cada orden, cada liquidación y cada retiro, con su estado</p>
+      <div class="card p0" id="mvBox"></div>
+    </section>
+
+    <!-- ================= PERFIL ================= -->
+    <section class="screen page" id="s-cuenta" hidden>
+      <div class="pagetop"><h1 class="ptitle">Mi perfil de inversor</h1>
+        <div class="pmeta">Comitente Nº 418.203 · Iván N. Imwinkelried</div></div>
+      <div class="grid12">
+        <div class="panel" data-tour="perfil-card">
+          <div class="lbl">Tu perfil</div>
+          <div class="big" style="margin-top:6px;font-size:1.7rem;color:var(--violet)" id="perfilTx">Conservador</div>
+          <p class="sub" style="margin-top:4px;font-size:.92rem" id="perfilSub"></p>
+          <p style="font-size:.87rem;color:var(--tx2);line-height:1.5;margin-top:13px">
+            El perfil ordena las sugerencias y te avisa cuando un activo es más volátil de lo que declaraste.
+            En la plataforma real <strong>no te bloquea</strong>: podés comprar igual lo que quieras.
+          </p>
+          <button class="btn-s sm" style="margin-top:15px" id="btnTest" data-tour="btn-test">Rehacer el test</button>
+        </div>
+        <div class="card">
+          <div class="lbl">Datos de la cuenta</div>
+          <div class="kv" style="margin-top:9px">
+            <div class="r"><span class="k">Número de comitente</span><span class="v">418.203</span></div>
+            <div class="r"><span class="k">Titular</span><span class="v" style="font-family:var(--fui)">Iván N. Imwinkelried</span></div>
+            <div class="r"><span class="k">Cuentas</span><span class="v" style="font-family:var(--fui)">Pesos y dólares</span></div>
+            <div class="r"><span class="k">Custodia de títulos</span><span class="v" style="font-family:var(--fui)">Caja de Valores</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+ </div>
+</div>
+
+<div id="ring" hidden></div>
+<div id="tip" hidden>
+  <span class="step" id="tipStep">Paso 1</span>
+  <h4 id="tipTitle"></h4><p id="tipBody"></p>
+  <div id="tipTap" class="tapme" hidden>Hacé clic en lo que está resaltado</div>
+  <div class="acts"><button class="mini" id="tipQuit">Salir de la guía</button><span class="sp"></span>
+    <button class="mini" id="tipSkip" hidden>Saltar</button>
+    <button class="mini pri" id="tipNext">Siguiente</button></div>
+</div>
+
+<div class="veil" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true">
+    <span class="eyebrow" id="mdEyebrow">Fuera de alcance</span>
+    <h3 id="mdTitle"></h3><div id="mdBody"></div>
+    <button class="btn-o w" id="mdClose">Entendido</button>
+  </div>
+</div>
+
+<div class="veil" id="splash">
+  <div class="sheet" role="dialog" aria-modal="true">
+    <div id="splashWelcome">
+      <div class="brandbig"><svg viewBox="0 0 100 100" role="img" aria-label="Rueda"><circle cx="50" cy="50" r="50" fill="#6439FF"/><circle cx="50" cy="50" r="27" fill="none" stroke="#FFFFFF" stroke-width="12.5" stroke-linecap="round" stroke-dasharray="126 44" transform="rotate(-96 50 50)"/><circle cx="47.2" cy="23.3" r="8.4" fill="#2FE3B0"/></svg><span><span class="w1">rueda</span><span class="w2">simulador</span></span></div>
+      <h3 style="margin-top:15px">Simulador de inversiones para capacitación</h3>
+      <p style="margin-top:8px;font-size:.94rem;line-height:1.55;color:var(--tx2)">
+        Una plataforma de inversión completa, con dinero ficticio y precios simulados, para recorrer el ciclo
+        entero: desde que entra la plata hasta que vendés el activo y la retirás. Te vamos guiando paso a paso,
+        indicándote dónde hacer clic.
+      </p>
+      <div class="finelist" style="margin-top:15px">
+        <span>· El dinero, los precios y las cuentas son ficticios.</span>
+        <span>· No es una plataforma real de inversión ni da recomendaciones.</span>
+        <span>· Los tiempos están acelerados: un día hábil se avanza con un botón.</span>
+      </div>
+      <button class="btn-s w" style="margin-top:20px" id="btnIniciar">Iniciar capacitación</button>
+    </div>
+    <div id="splashTracks" hidden>
+      <span class="eyebrow" style="color:var(--violet)">Elegí tu itinerario</span>
+      <h3 style="margin-top:6px">¿Para qué te querés capacitar?</h3>
+      <p style="margin-top:6px">Cada itinerario te lleva de la mano por un tramo del ciclo. Podés cambiarlo cuando quieras.</p>
+      <div class="tracks" style="margin-top:15px" id="tracksBox"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== DATOS ===================== */
+const AL30_ARS = 73852, AL30D_USD = 49.90;
+const TC_MEP = AL30_ARS / AL30D_USD;
+
+const INST = {
+  GGAL:{id:'GGAL',n:'Grupo Financiero Galicia',t:'accion',m:'ARS',p:7450,v:2.31,r:3,d:'Banco privado líder del sistema financiero argentino.'},
+  YPFD:{id:'YPFD',n:'YPF S.A.',t:'accion',m:'ARS',p:48200,v:-1.14,r:3,d:'Principal productora de petróleo y gas del país.'},
+  PAMP:{id:'PAMP',n:'Pampa Energía',t:'accion',m:'ARS',p:3980,v:0.82,r:3,d:'Generación eléctrica y producción de gas.'},
+  AAPL:{id:'AAPL',n:'Apple Inc.',t:'cedear',m:'ARS',pu:228.40,ratio:20,v:1.42,r:2,d:'CEDEAR de Apple, que cotiza en el Nasdaq.'},
+  KO:{id:'KO',n:'Coca-Cola Company',t:'cedear',m:'ARS',pu:71.20,ratio:5,v:0.34,r:2,d:'CEDEAR de Coca-Cola, que cotiza en el NYSE.'},
+  TSLA:{id:'TSLA',n:'Tesla Inc.',t:'cedear',m:'ARS',pu:342.90,ratio:15,v:-2.61,r:3,d:'CEDEAR de Tesla. Históricamente muy volátil.'},
+  YMCJO:{id:'YMCJO',n:'YPF ON Clase XXXIX',t:'on',m:'USD',p:99.40,v:0.08,r:1,vn:100,tna:8.5,vto:'2031',renta:'Semestral · marzo y septiembre',d:'Deuda de YPF en dólares, con pago de interés dos veces por año.'},
+  PNDCO:{id:'PNDCO',n:'Pan American Energy ON',t:'on',m:'USD',p:101.20,v:-0.12,r:1,vn:1000,tna:7.75,vto:'2030',renta:'Semestral · mayo y noviembre',d:'Deuda de Pan American Energy en dólares. Lámina mínima alta.'}
+};
+const PERFILES = {1:{n:'Conservador',s:'Priorizás no perder capital por sobre el rendimiento'},
+  2:{n:'Moderado',s:'Aceptás algo de volatilidad a cambio de mayor rendimiento'},
+  3:{n:'Agresivo',s:'Tolerás caídas fuertes buscando el máximo rendimiento'}};
+
+const ST = {saldo:{ARS:{d:0,c:0,l:0},USD:{d:0,c:0,l:0}}, pos:{}, mov:[], pend:[], dia:0, perfil:1,
+  monVista:'ARS', retMon:'ARS', pantalla:'inicio', mkTab:'cedear', activo:null, lado:'compra',
+  origen:null, primerIngreso:true, boleto:null, nBoleto:100841, abierto:true};
+
+/* ===================== HELPERS ===================== */
+const $ = s=>document.querySelector(s), $$ = s=>Array.from(document.querySelectorAll(s));
+const nf = (n,d=2)=>new Intl.NumberFormat('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n||0);
+const money = (n,m)=>(m==='USD'?'US$ ':'$ ')+nf(n);
+const moneyAR = (n,m)=>(m==='USD'?'US$ ':'AR$ ')+nf(n);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function precio(i){ return i.t==='cedear' ? (i.pu/i.ratio)*TC_MEP : i.p; }
+function montoOp(i,c){ return i.t==='on' ? c*i.p/100 : c*precio(i); }
+function costos(m,t){ const ar={accion:.005,cedear:.005,on:.0025}[t]??.005;
+  const com=m*ar, der=m*.0008, iva=(com+der)*.21; return {com,der,iva,tot:com+der+iva}; }
+const DIAS=['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'], MESES=['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+function fechaSim(e=0){ const d=new Date(2026,8,14); let n=ST.dia+e;
+  while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()!==0&&d.getDay()!==6) n--; } return d; }
+const fmtF = d=>`${DIAS[d.getDay()]} ${String(d.getDate()).padStart(2,'0')} ${MESES[d.getMonth()]}`;
+const fmtFL = d=>`${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+function addMov(mt,md,mn,mon,pill){ ST.mov.unshift({mt,md,mn,mon,pill,f:fmtFL(fechaSim())}); }
+function num(el){ return parseFloat(String(el.value).replace(/\./g,'').replace(',','.'))||0; }
+
+/* ===================== RENDER ===================== */
+function valorCartera(mon){
+  let t = ST.saldo[mon].d+ST.saldo[mon].c+ST.saldo[mon].l;
+  const o = mon==='ARS'?'USD':'ARS', so = ST.saldo[o].d+ST.saldo[o].c+ST.saldo[o].l;
+  t += mon==='ARS' ? so*TC_MEP : so/TC_MEP;
+  for(const k in ST.pos){ const i=INST[k], m=montoOp(i,ST.pos[k].c);
+    t += (i.m===mon) ? m : (mon==='ARS'? m*TC_MEP : m/TC_MEP); }
+  return t;
+}
+function resultadoCartera(mon){
+  let pl=0;
+  for(const k in ST.pos){ const i=INST[k], p=ST.pos[k];
+    const val=montoOp(i,p.c), cost=p.c*p.pp/(i.t==='on'?100:1);
+    let x=val-cost; if(i.m!==mon) x = mon==='ARS'? x*TC_MEP : x/TC_MEP; pl+=x; }
+  return pl;
+}
+function saldosHTML(){
+  let h='';
+  for(const m of ['ARS','USD']){ const s=ST.saldo[m];
+    if(s.d||s.c||s.l||m==='ARS'){
+      h+=`<div class="sl"><span class="tag disp"></span>Disponible ${m==='ARS'?'en pesos':'en dólares'}<span class="n">${money(s.d,m)}</span></div>`;
+      if(s.c) h+=`<div class="sl"><span class="tag comp"></span>Comprometido ${m==='ARS'?'en pesos':'en dólares'}<span class="n">${money(s.c,m)}</span></div>`;
+      if(s.l) h+=`<div class="sl"><span class="tag liq"></span>A liquidar ${m==='ARS'?'en pesos':'en dólares'}<span class="n">${money(s.l,m)}</span></div>`;
+    }}
+  return h;
+}
+function statsHTML(mv){
+  const pl = resultadoCartera(mv);
+  return `<div class="panel"><div class="lbl">Valor de tu cuenta</div><div class="big" style="margin-top:5px">${money(valorCartera(mv),mv)}</div>
+      <div class="sub" style="margin-top:3px">saldos + tenencia, valuado en ${mv==='ARS'?'pesos':'dólares'}</div></div>
+    <div class="panel"><div class="lbl">Disponible para operar</div><div class="big" style="margin-top:5px">${money(ST.saldo[mv].d,mv)}</div>
+      <div class="sub" style="margin-top:3px">sin contar comprometido ni a liquidar</div></div>
+    <div class="panel"><div class="lbl">Resultado de la tenencia</div>
+      <div class="big" style="margin-top:5px;color:${pl>=0?'var(--up)':'var(--down)'}">${pl>=0?'+':''}${money(pl,mv)}</div>
+      <div class="sub" style="margin-top:3px">no realizado — todavía no vendiste</div></div>`;
+}
+
+function renderInicio(){
+  $('#saldoAl').textContent = fmtFL(fechaSim())+' 11:42hs';
+  $('#balArs').textContent = 'AR$ '+nf(valorCartera('ARS'));
+  $('#balUsd').textContent = 'US$ '+nf(valorCartera('USD'));
+  $('#recMepPx').textContent = 'AR$ '+nf(TC_MEP);
+  $('#saldosBox').innerHTML = saldosHTML();
+  $('#statsBox').innerHTML = statsHTML('ARS');
+}
+
+function renderPortafolio(){
+  const mv = ST.monVista;
+  $$('#s-portafolio [data-mon]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mon===mv));
+  $('#statsBox2').innerHTML = statsHTML(mv);
+  const ks = Object.keys(ST.pos);
+  $('#carteraSub').textContent = ks.length ? `${ks.length} especie${ks.length>1?'s':''}` : '';
+  $('#carteraBox').innerHTML = ks.length ? `<table><thead><tr>
+      <th>Especie</th><th class="n">Cantidad</th><th class="n">Precio</th><th class="n">Valorizado</th><th class="n">Resultado</th></tr></thead><tbody>
+      ${ks.map(k=>{ const i=INST[k], p=ST.pos[k], px=i.t==='on'?i.p:precio(i);
+        const val=montoOp(i,p.c), cost=p.c*p.pp/(i.t==='on'?100:1), d=val-cost, pct=cost?d/cost*100:0;
+        return `<tr class="clk" data-inst="${k}" data-tour="pos-${k}">
+          <td><span class="tickcell">${k}</span><div class="namecell">${esc(i.n)}</div></td>
+          <td class="n">${nf(p.c,0)}${i.t==='on'?' VN':''}</td>
+          <td class="n">${money(px,i.m)}<div class="namecell" style="max-width:none">compra ${money(p.pp,i.m)}</div></td>
+          <td class="n">${money(val,i.m)}</td>
+          <td class="n" style="color:${d>=0?'var(--up)':'var(--down)'}">${d>=0?'+':''}${nf(pct,2)}%
+            <div class="namecell" style="max-width:none;color:${d>=0?'var(--up)':'var(--down)'};opacity:.75">${d>=0?'+':''}${money(d,i.m)}</div></td></tr>`; }).join('')}
+      </tbody></table>`
+    : `<div class="empty">Todavía no tenés inversiones.<br>Entrá a <strong>Cotizaciones</strong> para ver los instrumentos disponibles.</div>`;
+}
+
+/* ---------- datos de mercado derivados (determinísticos) ---------- */
+function seedOf(t){ let h=0; for(const c of t) h=(h*31+c.charCodeAt(0))%100000; return h; }
+function mercadoDe(i){
+  const px = i.t==='on' ? i.p : precio(i);
+  const s  = seedOf(i.id) + ST.dia*37;
+  const r  = n => ((s*9301+49297*n)%233280)/233280;          // 0..1 estable
+  const tick = i.m==='USD' ? 0.01 : (px>1000 ? 10 : 0.01);
+  const spread = Math.max(tick, px*0.0011);
+  const bid = px - spread/2, ask = px + spread/2;
+  const cierre = px/(1+i.v/100);
+  const apertura = cierre*(1+(r(1)-0.5)*0.008);
+  const max = Math.max(px,apertura)*(1+r(2)*0.006);
+  const min = Math.min(px,apertura)*(1-r(3)*0.006);
+  const qb = Math.round(40+r(4)*900), qa = Math.round(40+r(5)*900);
+  const monto = Math.round(px*(500+r(6)*9000));
+  return {px,bid,ask,cierre,apertura,max,min,qb,qa,monto,tick,spread};
+}
+function puntas(i){
+  const m = mercadoDe(i), out={compra:[],venta:[]};
+  for(let k=0;k<5;k++){
+    const s = seedOf(i.id)+k*13+ST.dia;
+    const r = ((s*9301+49297)%233280)/233280;
+    out.compra.push({q:Math.round(30+r*1200), p:m.bid - k*m.tick});
+    out.venta.push({q:Math.round(30+((r*7)%1)*1200), p:m.ask + k*m.tick});
+  }
+  return out;
+}
+/* precio al que realmente se ejecuta una orden "a mercado" */
+function precioMercado(i, lado){ const m = mercadoDe(i); return lado==='compra' ? m.ask : m.bid; }
+
+function renderIndices(){
+  const d = ST.dia;
+  const mv = 2933614*(1+((seedOf('MERVAL')+d*17)%400-200)/40000);
+  const bo = 128374590*(1+((seedOf('BOLSA')+d*23)%400-200)/40000);
+  const vmv = ((seedOf('MV')+d*11)%300-150)/100, vbo = ((seedOf('BO')+d*7)%300-150)/100;
+  const ix = (n,v,pc)=>`<div class="ix"><b>${n}:</b> <span class="mono">${nf(v)}</span>
+    <span class="varcell ${pc>=0?'up':'dn'}">${pc>=0?'▲':'▼'} ${nf(pc,2)}%</span></div>`;
+  $('#indices').innerHTML = ix('Merval',mv,vmv)+ix('Bolsa',bo,vbo);
+}
+
+const NOMBRE_PANEL = {accion:'Acciones', cedear:'Cedears', on:'Obligaciones Negociables'};
+function renderMercado(){
+  renderIndices();
+  $$('#mkTabs [data-tab]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.tab===ST.mkTab));
+  $('#mkTitulo').textContent = `Cotización de ${NOMBRE_PANEL[ST.mkTab]} Argentina - Panel ${$('#mkPanel').value}`;
+  const filtro = ($('#mkBuscar').value||'').trim().toUpperCase();
+  const lim = parseInt($('#mkShow').value,10)||25;
+  const its = Object.values(INST).filter(i=>i.t===ST.mkTab && (!filtro || i.id.includes(filtro))).slice(0,lim);
+  const tipo = {accion:'ACCIÓN', cedear:'CEDEAR', on:'ON'};
+  const th = (t,cls='')=>`<th class="${cls}">${t}<span class="srt">⇅</span></th>`;
+  $('#mkList').innerHTML = its.length ? `<table class="cot"><thead><tr>
+      ${th('Símbolo')}${th('Último Operado')}${th('Variación Diaria')}
+      ${th('Cantidad Compra','qbid')}${th('Precio Compra','bid')}${th('Precio Venta','ask')}${th('Cantidad Venta','qask')}
+      ${th('Apertura')}${th('Mínimo')}${th('Máximo')}${th('Último Cierre')}${th('Monto Operado')}
+      <th></th><th></th></tr></thead><tbody>
+    ${its.map(i=>{ const m=mercadoDe(i), sg=i.v>=0;
+      return `<tr class="${sg?'up':'dn'}" data-inst="${i.id}" data-tour="inst-${i.id}" style="cursor:pointer">
+      <td class="sim"><span class="simwrap"><span class="simico">🏛</span><span>
+        <span class="simtk">${i.id} <span class="tipo-badge">${tipo[i.t]}</span></span>
+        <span class="simnm">${esc(i.n)}</span></span></span></td>
+      <td class="num2">${nf(m.px)}</td>
+      <td><span class="varcell ${sg?'up':'dn'}">${sg?'▲':'▼'} ${nf(i.v,2)}%</span></td>
+      <td class="num2 qbid">${nf(m.qb,0)}</td>
+      <td class="num2 bid">${nf(m.bid)}</td>
+      <td class="num2 ask">${nf(m.ask)}</td>
+      <td class="num2 qask">${nf(m.qa,0)}</td>
+      <td class="num2">${nf(m.apertura)}</td>
+      <td class="num2">${nf(m.min)}</td>
+      <td class="num2">${nf(m.max)}</td>
+      <td class="num2">${nf(m.cierre)}</td>
+      <td class="num2">${nf(m.monto,0)}</td>
+      <td><span class="lnkcomprar" data-comprar="${i.id}">Comprar</span></td>
+      <td><button class="starbtn" data-out="Favoritos|Marcar esta especie para seguirla de cerca desde el panel de favoritos. Queda fuera del alcance.">☆</button></td>
+    </tr>`; }).join('')}
+    </tbody></table>
+    ${ST.mkTab==='on'?`<div style="padding:12px 16px;border-top:1px solid var(--line)"><p class="hint">Las obligaciones negociables cotizan por cada 100 valores nominales (VN) y en dólares. El precio de la columna “Último Operado” no es el de un dólar invertido, y solo se puede comprar en múltiplos de la lámina mínima.</p></div>`:''}
+    <div style="padding:11px 16px;border-top:1px solid var(--line)"><p class="hint">
+      <strong>Precio Compra</strong> es lo máximo que alguien está dispuesto a pagar ahora; <strong>Precio Venta</strong>, lo mínimo que alguien pide.
+      Una orden a mercado se ejecuta contra esas puntas, no contra el “Último Operado”.</p></div>`
+    : `<div class="empty">No hay especies que coincidan con “${esc(filtro)}”.</div>`;
+}
+
+function sparkline(seed){
+  let v=50,s=seed,pts=[];
+  for(let i=0;i<40;i++){ s=(s*9301+49297)%233280; v+=((s/233280)-.48)*8; v=Math.max(12,Math.min(88,v)); pts.push(`${(i/39*100).toFixed(1)},${(100-v).toFixed(1)}`); }
+  return `<svg class="spark" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="${pts.join(' ')}" fill="none" stroke="var(--violet)" stroke-width="1.8" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+function areaChart(seed){
+  let v=50,s=seed,pts=[];
+  for(let i=0;i<48;i++){ s=(s*9301+49297)%233280; v+=((s/233280)-.48)*7; v=Math.max(14,Math.min(86,v)); pts.push([i/47*100, 100-v]); }
+  const line = pts.map(p=>`${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ');
+  return `<svg class="areachart" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8FA8DC" stop-opacity=".75"/><stop offset="100%" stop-color="#8FA8DC" stop-opacity=".05"/></linearGradient></defs>
+    <polygon points="0,100 ${line} 100,100" fill="url(#ag)"/>
+    <polyline points="${line}" fill="none" stroke="#5B7FC7" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+function renderFicha(){
+  const i = INST[ST.activo]; if(!i) return;
+  const m = mercadoDe(i), tiene = ST.pos[i.id], pu = puntas(i);
+  const cur = i.m==='USD' ? 'US$ ' : 'AR$ ';
+  const dc = (k,v)=>`<div class="dcrow"><span class="k">${k}</span><span class="v">${v}</span></div>`;
+
+  let propios = '';
+  if(i.t==='cedear') propios = dc('Ratio de conversión', `${i.ratio} : 1`)+dc('Acción en EE.UU.',`US$ ${nf(i.pu)}`)
+    + dc('Tipo de cambio implícito', `$ ${nf(TC_MEP)}`) + dc('Plazo de liquidación','24 hs (T+1)');
+  else if(i.t==='on') propios = dc('Tasa anual', nf(i.tna,2)+' %')+dc('Pago de renta', i.renta)
+    + dc('Vencimiento', i.vto)+dc('Lámina mínima', nf(i.vn,0)+' VN')+dc('Cotiza por','cada 100 VN');
+  else propios = dc('Panel','Líder')+dc('Moneda','Pesos')+dc('Plazo de liquidación','24 hs (T+1)');
+
+  const horas=['12:34','12:24','12:24','12:18','12:07'];
+  $('#fichaBox').innerHTML = `
+    <div class="row" style="flex-wrap:wrap;gap:14px">
+      <div class="sp">
+        <div class="mono" style="font-size:1.5rem;font-weight:700">${i.id}</div>
+        <div class="sub" style="font-size:.92rem">${esc(i.n)}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="big" style="font-size:1.9rem">${cur}${nf(m.px)}</div>
+        <span class="varcell ${i.v>=0?'up':'dn'}" style="font-size:.95rem">${i.v>=0?'▲':'▼'} ${nf(i.v,2)}%</span>
+      </div>
+      <div style="display:flex;gap:10px;flex:none">
+        <button class="btn-s" data-act="comprar" data-tour="btn-comprar">Comprar</button>
+        <button class="btn-o" data-act="vender" data-tour="btn-vender" ${tiene?'':'disabled'}>Vender</button>
+      </div>
+    </div>
+
+    <div class="fgrid">
+      <div class="fcard"><h3>Datos de cotizaciones</h3><div class="fbody"><div class="dcgrid">
+        <div>${dc('Precio Apertura', cur+nf(m.apertura))}${dc('Último Cierre', cur+nf(m.cierre))}
+             ${dc('Máximo', cur+nf(m.max))}${dc('Mínimo', cur+nf(m.min))}
+             ${dc('Monto operado', cur+nf(m.monto,0))}</div>
+        <div>${dc('Fecha/Hora', fmtFL(fechaSim())+' 11:42')}${propios}</div>
+      </div></div></div>
+
+      <div class="fcard"><h3>Gráfico intradiario</h3><div class="fbody">
+        ${areaChart(seedOf(i.id)+ST.dia*97)}
+        <p class="hint" style="margin-top:8px">Serie simulada de la rueda de hoy. En la plataforma real acá hay datos históricos y análisis técnico.</p>
+      </div></div>
+
+      <div class="fcard" data-tour="caja-puntas"><h3>Caja de Puntas</h3><div class="fbody">
+        <table class="mini2"><thead><tr><th>Cantidad Compra</th><th>Precio Compra</th><th>Precio Venta</th><th>Cantidad Venta</th></tr></thead>
+        <tbody>${pu.compra.map((c,k)=>`<tr><td>${nf(c.q,0)}</td><td class="b">${cur}${nf(c.p)}</td>
+          <td class="a">${cur}${nf(pu.venta[k].p)}</td><td>${nf(pu.venta[k].q,0)}</td></tr>`).join('')}</tbody></table>
+        <p class="hint" style="margin-top:10px">Si comprás a mercado, pagás la <strong>mejor punta vendedora</strong>: ${cur}${nf(m.ask)}.
+        Si vendés a mercado, cobrás la <strong>mejor punta compradora</strong>: ${cur}${nf(m.bid)}. Por eso el precio de tu orden no es el “último operado”.</p>
+      </div></div>
+
+      <div class="fcard"><h3>Operaciones Intradiarias</h3><div class="fbody">
+        <table class="mini2"><thead><tr><th>Hora</th><th>Precio</th><th>Monto</th><th>Volumen</th></tr></thead>
+        <tbody>${horas.map((h,k)=>{ const r=((seedOf(i.id)+k*31)%200-100)/100;
+          const px=m.px*(1+r/1000), vol=Math.round(1+((seedOf(i.id)+k*7)%120));
+          return `<tr><td>${h}</td><td>${cur}${nf(px)}</td><td>${cur}${nf(px*vol,0)}</td><td>${vol}</td></tr>`; }).join('')}</tbody></table>
+      </div></div>
+    </div>
+
+    ${i.r>ST.perfil?`<div class="alert warn"><span class="t">Supera tu perfil de inversor</span>Tu perfil es ${PERFILES[ST.perfil].n} y este activo tiene un riesgo mayor. En la plataforma real esto no te bloquea: podés comprarlo igual.</div>`:''}
+    <p class="hint">${esc(i.d)}</p>
+    <button class="tile" data-out="Análisis técnico|Gráficos con indicadores, medias móviles y volumen, más datos históricos y alarmas de precio. Queda fuera del alcance de esta capacitación." style="align-items:flex-start;max-width:340px">
+      <span class="tt">Datos históricos · Gráfico avanzado · Alarmas ›</span><span class="ss">Herramientas de análisis</span></button>`;
+}
+
+/* ---------- montos disponibles por plazo ---------- */
+function montosHTML(mon, plazos, hi){
+  const s = ST.saldo[mon];
+  const val = {ci: s.d, '24': s.d + s.l, '48': s.d + s.l};
+  const nom = {ci:'contado inmediato', '24':'24hs', '48':'48hs'};
+  const mn  = mon==='ARS' ? 'Peso Argentino' : 'Dólar Estadounidense';
+  let h='';
+  for(const pl of plazos){
+    const on = hi===pl ? ' hi' : '';
+    h += `<div class="${on}">Monto disponible para operaciones en ${nom[pl]} en ${mn}</div>`
+       + `<div class="${on}">${mon==='ARS'?'AR$ ':'US$ '}${nf(val[pl])}</div>`;
+  }
+  return h;
+}
+function pintarMontos(el, bloques){ el.innerHTML = bloques.join(''); }
+
+/* ---------- pantalla COMPRAR ---------- */
+function llenarDatalist(){
+  $('#simbolos').innerHTML = Object.values(INST).map(i=>`<option value="${i.id}">${esc(i.n)}</option>`).join('');
+}
+function instDe(sim){ return INST[String(sim||'').trim().toUpperCase()] || null; }
+
+function renderComprar(){
+  const i = instDe($('#cSimbolo').value);
+  const info = $('#cInfo');
+  if(!i){ info.innerHTML = $('#cSimbolo').value.trim()
+      ? `<span class="err">No encontramos ese símbolo.</span> Probá KO, AAPL, TSLA, GGAL, YPFD, PAMP, YMCJO o PNDCO.`
+      : `Escribí el símbolo de la especie. Si no lo sabés, buscala en Cotizaciones y entrá desde ahí.`; }
+  else {
+    const px = i.t==='on'? i.p : precio(i);
+    let extra = '';
+    if(i.t==='cedear') extra = ` · ratio ${i.ratio}:1`;
+    if(i.t==='on') extra = ` · cotiza cada 100 VN · lámina mínima ${nf(i.vn,0)} VN`;
+    info.innerHTML = `<span class="ok">${i.id}</span> — ${esc(i.n)} · último ${money(px,i.m)} · punta vendedora <strong>${money(precioMercado(i,'compra'),i.m)}</strong>${extra}`;
+    if(!$('#cLim').value) $('#cLim').value = nf(precioMercado(i,'compra'));
+  }
+  const plazo = $('#cPlazo').value;
+  pintarMontos($('#montosCompra'), [ montosHTML('ARS',['ci','24','48'],plazo), montosHTML('USD',['ci','24','48'],plazo) ]);
+}
+
+/* ---------- pantalla VENDER ---------- */
+function renderVender(){
+  const sel = $('#vSimbolo'), prev = sel.value;
+  const ks = Object.keys(ST.pos);
+  sel.innerHTML = ks.length
+    ? `<option value="">(Seleccionar)</option>` + ks.map(k=>`<option value="${k}">${k} — ${esc(INST[k].n)}</option>`).join('')
+    : `<option value="">(No tenés especies en cartera)</option>`;
+  if(ks.includes(prev)) sel.value = prev;
+  const i = INST[sel.value];
+  if(i){
+    const px = i.t==='on'? i.p : precio(i), p = ST.pos[i.id];
+    $('#vInfo').innerHTML = `<span class="ok">${i.id}</span> — tenés <strong>${nf(p.c,0)}</strong> ${i.t==='on'?'VN':'unidades'} · punta compradora <strong>${money(precioMercado(i,'venta'),i.m)}</strong>`;
+    if(!$('#vCant').value) $('#vCant').value = p.c;
+    if(!$('#vLim').value) $('#vLim').value = nf(precioMercado(i,'venta'));
+  } else {
+    $('#vInfo').innerHTML = ks.length ? `Elegí cuál de tus especies querés vender.`
+      : `Todavía no tenés nada para vender. Comprá algo primero desde Operar → Comprar.`;
+  }
+  const plazo = $('#vPlazo').value;
+  pintarMontos($('#montosVenta'), [ montosHTML('ARS',['24','48'],plazo), montosHTML('USD',['24','48'],plazo) ]);
+  pintarMontos($('#montosUsa'), [ montosHTML('USD',['ci','24','48'],null) ]);
+}
+
+/* ---------- confirmación de orden ---------- */
+function armarOrden(lado){
+  const esC = lado==='compra';
+  const i = esC ? instDe($('#cSimbolo').value) : INST[$('#vSimbolo').value];
+  const msg = esC ? $('#cMsg') : $('#vMsg');
+  const err = t => { msg.innerHTML = `<div class="alert bad" style="margin-top:14px"><span class="t">No se puede enviar la orden</span>${t}</div>`; return null; };
+  msg.innerHTML = '';
+  if(esC && $('#cMercado').value==='us') return err('El mercado de Estados Unidos queda fuera del alcance de esta capacitación. Elegí Argentina.');
+  if(!i) return err('Elegí un símbolo válido.');
+  if(!ST.abierto) return err('El mercado está cerrado. Tu orden quedaría <strong>pendiente</strong> hasta la próxima rueda.');
+
+  const plazoCI = (esC ? $('#cPlazo').value : $('#vPlazo').value) === 'ci';
+  const modo = document.querySelector(`input[name="${esC?'cmod':'vmod'}"]:checked`).value;
+  const mkt = precioMercado(i, lado);
+  const px = modo==='limite' ? num(esC?$('#cLim'):$('#vLim')) : mkt;
+  if(modo==='limite' && px<=0) return err('Ingresá un precio límite mayor a cero.');
+
+  let cant;
+  if(esC && document.querySelector('input[name="cqm"]:checked').value==='monto'){
+    const monto = num($('#cMonto'));
+    if(monto<=0) return err('Ingresá un monto mayor a cero.');
+    cant = i.t==='on' ? Math.floor(monto/(px/100)/i.vn)*i.vn : Math.floor(monto/px);
+    if(cant<=0) return err(i.t==='on'
+      ? `Con ${money(monto,i.m)} no alcanza para la lámina mínima de ${nf(i.vn,0)} VN de ${i.id}, que cuesta ${money(i.vn*px/100,i.m)}.`
+      : `Con ${money(monto,i.m)} no alcanza ni para una unidad de ${i.id}, que cotiza ${money(px,i.m)}.`);
+  } else {
+    cant = num(esC?$('#cCant'):$('#vCant'));
+  }
+  if(cant<=0) return err('Ingresá una cantidad mayor a cero.');
+  if(i.t==='on' && cant % i.vn !== 0)
+    return err(`Esta obligación negociable se opera en múltiplos de <strong>${nf(i.vn,0)} VN</strong>. Probá con ${nf(Math.max(i.vn,Math.round(cant/i.vn)*i.vn),0)} VN. Acordate: la cantidad va en valores nominales, no en dólares.`);
+
+  const bruto = i.t==='on' ? cant*px/100 : cant*px;
+  const c = costos(bruto, i.t);
+  const tot = esC ? bruto+c.tot : bruto-c.tot;
+
+  if(esC){
+    const disp = plazoCI ? ST.saldo[i.m].d : ST.saldo[i.m].d + ST.saldo[i.m].l;
+    if(tot > disp) return err(`Necesitás ${money(tot,i.m)} y tenés ${money(disp,i.m)} disponibles para operaciones en ${plazoCI?'contado inmediato':'24 hs'}${i.m==='USD'?'. Comprá dólar MEP primero.':'.'}`);
+    if(modo==='limite' && px < mkt*0.985){
+      msg.innerHTML = `<div class="alert warn" style="margin-top:14px"><span class="t">La orden se envía pero no se ejecuta</span>
+        Pusiste un precio límite de ${money(px,i.m)} y el mercado está en ${money(mkt,i.m)}. Tu orden queda esperando a alguien que venda a ese precio, y puede no ejecutarse nunca.</div>`;
+      addMov(`Orden de compra ${i.id}`,`Límite ${money(px,i.m)} — sin ejecutar`,0,i.m,['En mercado','w']); renderMov(); return null;
+    }
+  } else {
+    const p = ST.pos[i.id];
+    if(!p || cant > p.c) return err(`Tenés ${nf(p?.c||0,0)} ${i.t==='on'?'VN':'unidades'} en cartera.`);
+  }
+  return {lado, i, cant, px, bruto, c, tot, plazoCI, modo};
+}
+
+function confirmarOrdenModal(lado){
+  const o = armarOrden(lado); if(!o) return;
+  ST.ordenPend = o;
+  const esC = lado==='compra';
+  modal(`Confirmá tu ${esC?'compra':'venta'}`, `
+    <div class="kv">
+      <div class="r"><span class="k">Especie</span><span class="v" style="font-family:var(--fui)">${o.i.id} · ${esc(o.i.n)}</span></div>
+      <div class="r"><span class="k">Cantidad</span><span class="v">${nf(o.cant,0)} ${o.i.t==='on'?'VN':'un.'}</span></div>
+      <div class="r"><span class="k">Precio ${o.modo==='limite'?'límite':'estimado'}</span><span class="v">${money(o.px,o.i.m)}</span></div>
+      <div class="r"><span class="k">Plazo de liquidación</span><span class="v" style="font-family:var(--fui)">${o.plazoCI?'Contado inmediato':'24 hs (T+1)'}</span></div>
+      <div class="r"><span class="k">Liquida el</span><span class="v">${fmtFL(fechaSim(o.plazoCI?0:1))}</span></div>
+    </div>
+    <div class="kv" style="margin-top:11px" data-tour="costos-confirmacion">
+      <div class="r"><span class="k">Monto bruto</span><span class="v">${money(o.bruto,o.i.m)}</span></div>
+      <div class="r"><span class="k">Comisión</span><span class="v">${money(o.c.com,o.i.m)}</span></div>
+      <div class="r"><span class="k">Derechos de mercado</span><span class="v">${money(o.c.der,o.i.m)}</span></div>
+      <div class="r"><span class="k">IVA 21%</span><span class="v">${money(o.c.iva,o.i.m)}</span></div>
+      <div class="r tot"><span class="k">${esC?'Total a pagar':'Total a recibir'}</span><span class="v">${money(o.tot,o.i.m)}</span></div>
+    </div>
+    ${esC && o.i.r>ST.perfil ? `<div class="alert warn" style="margin-top:11px"><span class="t">Supera tu perfil</span>Sos ${PERFILES[ST.perfil].n} y este activo es más volátil. Podés seguir igual.</div>`:''}
+    ${!esC && !o.plazoCI ? `<div class="alert info" style="margin-top:11px"><span class="t">Ojo con el plazo</span>Con 24 hs el dinero queda “a liquidar”: lo vas a ver en tu cuenta, pero no lo vas a poder retirar hasta el ${fmtFL(fechaSim(1))}.</div>`:''}
+    <button class="btn-s w" style="margin-top:14px" id="btnConfirmarOrden" data-tour="confirmar-orden">Confirmar ${esC?'compra':'venta'}</button>`,
+    `Paso 2 de 2 · revisá antes de enviar`, 'Cancelar');
+  $('#btnConfirmarOrden').addEventListener('click', ejecutarOrden);
+}
+
+function ejecutarOrden(){
+  const o = ST.ordenPend; if(!o) return;
+  const {i,cant,px,bruto,c,tot,plazoCI,lado} = o;
+  $('#modal').hidden = true;
+  if(lado==='compra'){
+    ST.saldo[i.m].d -= tot;
+    if(ST.saldo[i.m].d < 0){ ST.saldo[i.m].l += ST.saldo[i.m].d; ST.saldo[i.m].d = 0; }
+    if(!plazoCI){ ST.saldo[i.m].c += tot; ST.pend.push({tipo:'compra',mon:i.m,monto:tot,dia:ST.dia+1}); }
+    const p = ST.pos[i.id] || {c:0,pp:0};
+    p.pp = (p.pp*p.c + px*cant)/(p.c+cant); p.c += cant; ST.pos[i.id]=p;
+    addMov(`Compra ${i.id}`,`${nf(cant,0)} ${i.t==='on'?'VN':'un.'} a ${money(px,i.m)}${plazoCI?' · CI':' · liquida '+fmtFL(fechaSim(1))}`,-tot,i.m, plazoCI?['Liquidado','g']:['Liquida mañana','w']);
+  } else {
+    const p = ST.pos[i.id];
+    p.c -= cant; if(p.c<=0) delete ST.pos[i.id];
+    if(plazoCI) ST.saldo[i.m].d += tot;
+    else { ST.saldo[i.m].l += tot; ST.pend.push({tipo:'venta',mon:i.m,monto:tot,dia:ST.dia+1}); }
+    addMov(`Venta ${i.id}`,`${nf(cant,0)} ${i.t==='on'?'VN':'un.'} a ${money(px,i.m)}${plazoCI?' · CI':' · acredita '+fmtFL(fechaSim(1))}`,tot,i.m, plazoCI?['Disponible','g']:['A liquidar','w']);
+  }
+  ST.nBoleto++;
+  ST.boleto = {n:ST.nBoleto,i,cant,px,bruto,c,tot,lado,ci:plazoCI,f:fmtFL(fechaSim()),fl:fmtFL(fechaSim(plazoCI?0:1))};
+  ST.ordenPend = null;
+  $('#cMsg').innerHTML=''; $('#vMsg').innerHTML=''; $('#vCant').value=''; $('#cMonto').value='';
+  renderAll(); renderBoleto_(); go('boleto');
+}
+
+function renderMov(){
+  $('#mvBox').innerHTML = ST.mov.length ? `<table><thead><tr>
+    <th>Fecha</th><th>Movimiento</th><th>Detalle</th><th>Estado</th><th class="n">Importe</th></tr></thead><tbody>
+    ${ST.mov.map(m=>`<tr><td class="n" style="text-align:left">${m.f}</td>
+      <td style="font-weight:600">${esc(m.mt)}</td><td style="color:var(--tx3);font-size:.82rem">${esc(m.md)}</td>
+      <td>${m.pill?`<span class="pill ${m.pill[1]||''}">${esc(m.pill[0])}</span>`:''}</td>
+      <td class="n" style="color:${m.mn>0?'var(--up)':'var(--tx)'}">${m.mn>0?'+':''}${money(m.mn,m.mon)}</td></tr>`).join('')}
+    </tbody></table>` : `<div class="empty">Todavía no hay movimientos.</div>`;
+}
+function renderCuenta(){ $('#perfilTx').textContent=PERFILES[ST.perfil].n; $('#perfilSub').textContent=PERFILES[ST.perfil].s; }
+function renderMep(){
+  const venta = ST.mepModo==='venta';
+  $('#mepTitulo').textContent = venta ? 'Venta Dólar MEP Simple' : 'Compra Dólar MEP Simple';
+  $('#mepBajada').textContent = venta ? 'Pasá tus dólares a pesos con un clic, al tipo de cambio del mercado'
+                                      : 'Dólares legales, sin parking, acreditados hoy mismo en tu cuenta';
+  $('#mepLabel').textContent = venta ? 'Cuántos dólares querés vender' : 'Cuánto querés convertir';
+  $('#btnMep').textContent = venta ? 'Vender dólar MEP' : 'Comprar dólar MEP';
+  $$('#mepSeg [data-mepmodo]').forEach(x=>x.setAttribute('aria-pressed', (x.dataset.mepmodo==='venta')===venta));
+  $('#mepDisp').textContent = venta ? money(ST.saldo.USD.d,'USD') : money(ST.saldo.ARS.d,'ARS');
+  $('#mepMin').textContent = venta ? 'Mínimo US$ 5' : 'Mínimo $5.000';
+  const m = num($('#inpMep'));
+  let vn, gast, recibe;
+  if(venta){ vn = Math.floor(m/(AL30D_USD/100)); gast = vn*AL30D_USD/100; recibe = vn*AL30_ARS/100; }
+  else { vn = Math.floor(m/(AL30_ARS/100)); gast = vn*AL30_ARS/100; recibe = vn*AL30D_USD/100; }
+  $('#mepTc').textContent = '$ '+nf(TC_MEP);
+  $('#mepRecibeLbl').textContent = 'Vas a recibir';
+  $('#mepUsd').textContent = venta ? '$ '+nf(recibe) : 'US$ '+nf(recibe);
+  $('#mepPatas').innerHTML = `<div class="kv">
+    <div class="r" style="background:var(--card2)"><span class="k" style="font-weight:700">Lo que hace el sistema por vos</span></div>
+    ${venta ? `
+    <div class="r"><span class="k">1 · Compra ${nf(vn,0)} VN de AL30D, en dólares</span><span class="v">US$ ${nf(gast)}</span></div>
+    <div class="r"><span class="k">2 · Vende esos ${nf(vn,0)} VN como AL30, en pesos</span><span class="v">$ ${nf(recibe)}</span></div>` : `
+    <div class="r"><span class="k">1 · Compra ${nf(vn,0)} VN de AL30, en pesos</span><span class="v">$ ${nf(gast)}</span></div>
+    <div class="r"><span class="k">2 · Vende esos ${nf(vn,0)} VN como AL30D, en dólares</span><span class="v">US$ ${nf(recibe)}</span></div>`}
+    <div class="r"><span class="k">Las dos patas en Contado Inmediato</span><span class="v" style="font-family:var(--fui)">hoy</span></div>
+    <div class="r tot"><span class="k">Tipo de cambio resultante</span><span class="v">$ ${nf(venta ? recibe/(gast||1) : gast/(recibe||1))}</span></div></div>
+    <p class="hint" style="margin-top:10px">AL30 es un bono del Estado argentino que cotiza en las dos monedas. Comprarlo en una y venderlo en la otra es, legalmente, operar dólar MEP.</p>`;
+}
+function renderRetiro(){
+  const m = ST.retMon;
+  $('#retDisp').textContent = money(ST.saldo[m].d,m);
+  $('#retDest').textContent = m==='ARS'?'Banco Nación · Caja de ahorro $':'Banco Nación · Caja de ahorro US$';
+  $$('#retMon [data-mon]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mon===m));
+  $('#retSaldos').innerHTML = saldosHTML();
+}
+function renderAll(){
+  renderInicio(); renderPortafolio(); renderMercado(); renderMov(); renderCuenta(); renderMep(); renderRetiro();
+  renderComprar(); renderVender();
+  $('#reloj').textContent = fmtF(fechaSim())+' · 11:42';
+  $('#mktPill').classList.toggle('cerrado', !ST.abierto);
+  $('#mktTx').textContent = ST.abierto?'Mercado abierto':'Mercado cerrado';
+  if(ST.pantalla==='activo') renderFicha();
+}
+
+const SCREEN_NAV = {inicio:'nav-micuenta', portafolio:'nav-portafolio', mercado:'nav-cotizaciones',
+  comprar:'nav-operar', vender:'nav-operar', mep:'nav-operar', activo:'nav-cotizaciones'};
+function go(p){
+  ST.pantalla = p;
+  $$('.screen').forEach(s=>s.hidden = s.id!=='s-'+p);
+  $$('.navitem').forEach(b=>b.removeAttribute('aria-current'));
+  const navsel = SCREEN_NAV[p]; if(navsel){ const nb=document.querySelector(`[data-tour="${navsel}"]`); if(nb) nb.setAttribute('aria-current','true'); }
+  cerrarMenus();
+  if(p==='activo') renderFicha();
+  if(p==='mercado') renderMercado();
+  if(p==='inicio') renderInicio();
+  if(p==='portafolio') renderPortafolio();
+  if(p==='movimientos') renderMov();
+  if(p==='cuenta') renderCuenta();
+  if(p==='mep') renderMep();
+  if(p==='comprar') renderComprar();
+  if(p==='vender'){ if(ST.vSel) $('#vSimbolo').value=ST.vSel; renderVender(); if(ST.vSel){ $('#vSimbolo').value=ST.vSel; renderVender(); } }
+  if(p==='retirar'){ const m=ST.retMon; $('#inpRet').value = Math.floor(ST.saldo[m].d+ST.saldo[m].l); renderRetiro(); }
+  $('#main').scrollTop = 0;
+}
+
+/* ===================== MENÚS ===================== */
+function cerrarMenus(){ $$('.dd').forEach(d=>d.classList.remove('open')); }
+$('#topnav').addEventListener('click', e=>{
+  const ni = e.target.closest('.navitem'); if(!ni) return;
+  const dd = ni.closest('.dd');
+  if(dd){ const wasOpen = dd.classList.contains('open'); cerrarMenus(); if(!wasOpen) dd.classList.add('open'); }
+});
+document.addEventListener('click', e=>{ if(!e.target.closest('.dd')) cerrarMenus(); });
+$$('[data-mepmodo]').forEach(b=>b.addEventListener('click', ()=>{ ST.mepModo=b.dataset.mepmodo; renderMep(); }));
+
+/* ===================== MODAL ===================== */
+function modal(title, body, eyebrow='Fuera de alcance', btn='Entendido'){
+  $('#mdClose').onclick = null;
+  $('#mdEyebrow').textContent = eyebrow; $('#mdTitle').textContent = title;
+  $('#mdBody').innerHTML = body; $('#mdClose').textContent = btn; $('#modal').hidden = false;
+}
+$('#mdClose').addEventListener('click', ()=>$('#modal').hidden=true);
+$('#modal').addEventListener('click', e=>{ if(e.target.id==='modal') $('#modal').hidden=true; });
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-out]'); if(!b) return;
+  e.preventDefault(); e.stopPropagation(); cerrarMenus();
+  const [t,d] = b.dataset.out.split('|');
+  modal(t, `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">${esc(d)}</p>
+    <div class="alert info" style="margin-top:12px"><span class="t">Esto queda fuera de la capacitación</span>
+    El curso cubre el ciclo completo de una inversión: ingreso de dinero, dólar MEP, compra, tenencia, venta, retiro y reportes.</div>`);
+}, true);
+
+/* ===================== NEGOCIO ===================== */
+function ingresarDinero(){
+  if(!ST.origen){ $('#origenMsg').innerHTML=`<div class="alert warn"><span class="t">Elegí una cuenta de origen</span>El dinero tiene que venir de una cuenta bancaria.</div>`; return; }
+  if(ST.origen==='tercero'){
+    $('#origenMsg').innerHTML=`<div class="alert bad"><span class="t">Transferencia rechazada</span>La cuenta de origen está a nombre de otra persona. Solo podés fondear tu cuenta de inversión desde cuentas de tu misma titularidad (mismo CUIT). Es una exigencia de la normativa de prevención de lavado.</div>`;
+    addMov('Transferencia rechazada','Origen de otro titular',0,'ARS',['Rechazada','b']); renderMov(); return;
+  }
+  const m = num($('#inpIngreso'));
+  if(m<=0){ $('#origenMsg').innerHTML=`<div class="alert warn"><span class="t">Monto inválido</span>Ingresá un monto mayor a cero.</div>`; return; }
+  ST.saldo.ARS.d += m;
+  addMov('Ingreso de dinero', ST.primerIngreso?'Banco Nación — primera acreditación':'Banco Nación', m,'ARS',['Acreditado','g']);
+  const pr = ST.primerIngreso; ST.primerIngreso=false; renderAll();
+  modal('Dinero acreditado', `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Se acreditaron <strong>${money(m,'ARS')}</strong> en tu cuenta comitente.</p>
+    ${pr?`<div class="alert info" style="margin-top:11px"><span class="t">La primera vez demora</span>En la plataforma real la primera transferencia puede tardar algunas horas mientras se valida la cuenta de origen. Las siguientes son inmediatas.</div>`:''}
+    <div class="alert good" style="margin-top:11px"><span class="t">Tu plata no queda quieta</span>El saldo sin invertir rinde de forma automática desde hoy.</div>`, 'Listo','Ver estado de cuenta');
+  $('#mdClose').onclick = ()=>{ $('#modal').hidden=true; $('#mdClose').onclick=null; go('inicio'); };
+}
+
+function comprarMep(){
+  const venta = ST.mepModo==='venta';
+  const m = num($('#inpMep'));
+  const monOrigen = venta?'USD':'ARS';
+  const min = venta?5:5000;
+  if(m<min){ modal('Monto mínimo',`<p style="font-size:.91rem;color:var(--tx2)">El mínimo para operar dólar MEP es de ${venta?'US$ 5':'$5.000'}.</p>`,'Revisá el monto'); return; }
+  if(m>ST.saldo[monOrigen].d){ modal('Saldo insuficiente',`<p style="font-size:.91rem;color:var(--tx2)">Tenés ${money(ST.saldo[monOrigen].d,monOrigen)} disponibles y estás pidiendo ${money(m,monOrigen)}.</p>`,'No se puede operar'); return; }
+  if(!ST.abierto){ modal('Mercado cerrado',`<p style="font-size:.91rem;color:var(--tx2)">El dólar MEP se opera de lunes a viernes de 10:30 a 17:00. Tu orden queda para el próximo día hábil.</p>`,'Orden pendiente'); return; }
+  let vn, gast, recibe;
+  if(venta){ vn = Math.floor(m/(AL30D_USD/100)); gast = vn*AL30D_USD/100; recibe = vn*AL30_ARS/100;
+    ST.saldo.USD.d -= gast; ST.saldo.ARS.d += recibe;
+    addMov('Venta de dólar MEP', `${nf(vn,0)} VN de AL30D · TC $${nf(recibe/(gast||1))}`, -gast,'USD',['Contado inmediato','']);
+    addMov('Acreditación de pesos','Venta de AL30', recibe,'ARS',['Acreditado','g']);
+  } else {
+    vn = Math.floor(m/(AL30_ARS/100)); gast = vn*AL30_ARS/100; recibe = vn*AL30D_USD/100;
+    ST.saldo.ARS.d -= gast; ST.saldo.USD.d += recibe;
+    addMov('Compra de dólar MEP', `${nf(vn,0)} VN de AL30 · TC $${nf(gast/(recibe||1))}`, -gast,'ARS',['Contado inmediato','']);
+    addMov('Acreditación de dólares','Venta de AL30D', recibe,'USD',['Acreditado','g']);
+  }
+  renderAll();
+  modal(venta?'Vendiste dólar MEP':'Compraste dólar MEP',
+    `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Entregaste <strong>${money(gast,monOrigen)}</strong> y recibiste <strong>${money(recibe, venta?'ARS':'USD')}</strong>, a un tipo de cambio de $${nf(venta?recibe/(gast||1):gast/(recibe||1))}.</p>
+     <div class="alert info" style="margin-top:11px"><span class="t">Lo que pasó por debajo</span>El sistema operó ${nf(vn,0)} VN de AL30 en sus dos especies, las dos patas en Contado Inmediato. Por eso el dinero está hoy en tu cuenta.</div>`,
+    'Operación ejecutada','Ver estado de cuenta');
+  $('#mdClose').onclick = ()=>{ $('#modal').hidden=true; $('#mdClose').onclick=null; go('inicio'); };
+}
+
+function renderBoleto_(){
+  const b = ST.boleto; if(!b) return;
+  $('#boletoBox').innerHTML = `
+    <div class="alert good"><span class="t">Orden ejecutada</span>Se emitió el boleto Nº ${b.n}. Es el comprobante de la operación.</div>
+    <div class="panel" style="margin-top:16px">
+      <div class="lbl">Boleto de ${b.lado==='compra'?'compra':'venta'}</div>
+      <div class="mono" style="font-size:1.4rem;font-weight:600;margin-top:3px">Nº ${b.n}</div>
+      <div class="kv" style="margin-top:14px">
+        <div class="r"><span class="k">Instrumento</span><span class="v" style="font-family:var(--fui)">${b.i.id} · ${esc(b.i.n)}</span></div>
+        <div class="r"><span class="k">Cantidad</span><span class="v">${nf(b.cant,0)} ${b.i.t==='on'?'VN':'un.'}</span></div>
+        <div class="r"><span class="k">Precio</span><span class="v">${money(b.px,b.i.m)}</span></div>
+        <div class="r"><span class="k">Fecha de concertación</span><span class="v">${b.f}</span></div>
+        <div class="r"><span class="k">Fecha de liquidación</span><span class="v">${b.fl}${b.ci?' (CI)':''}</span></div>
+      </div>
+      <div class="kv" style="margin-top:11px">
+        <div class="r"><span class="k">Monto bruto</span><span class="v">${money(b.bruto,b.i.m)}</span></div>
+        <div class="r"><span class="k">Comisión</span><span class="v">${money(b.c.com,b.i.m)}</span></div>
+        <div class="r"><span class="k">Derechos de mercado</span><span class="v">${money(b.c.der,b.i.m)}</span></div>
+        <div class="r"><span class="k">IVA 21%</span><span class="v">${money(b.c.iva,b.i.m)}</span></div>
+        <div class="r tot"><span class="k">${b.lado==='compra'?'Debitado':'Acreditado'}</span><span class="v">${money(b.tot,b.i.m)}</span></div>
+      </div>
+      <p class="hint" style="margin-top:12px">Los costos totales fueron ${money(b.c.tot,b.i.m)}, un ${nf(b.c.tot/b.bruto*100,2)}% del monto operado.</p>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="btn-o" data-go="movimientos">Ver movimientos</button>
+      <button class="btn-s" data-go="inicio">Ir al estado de cuenta</button></div>`;
+}
+
+function retirar(){
+  const m = ST.retMon, monto = num($('#inpRet'));
+  if(monto<=0){ $('#retMsg').innerHTML=`<div class="alert warn"><span class="t">Monto inválido</span>Ingresá cuánto querés retirar.</div>`; return; }
+  if(monto > ST.saldo[m].d){
+    const liq = ST.saldo[m].l;
+    $('#retMsg').innerHTML=`<div class="alert bad"><span class="t">No tenés ese dinero disponible</span>
+      Disponible: <strong>${money(ST.saldo[m].d,m)}</strong>${liq?`<br>A liquidar: <strong>${money(liq,m)}</strong> — se acredita el ${fmtFL(fechaSim(1))}.<br><br>El dinero de una venta a 24 h no se puede retirar el mismo día. Avanzá un día hábil con el botón de arriba y volvé a intentar.`:''}</div>`;
+    return;
+  }
+  ST.saldo[m].d -= monto;
+  addMov('Retiro de dinero','Banco Nación · misma titularidad',-monto,m,['Transferido','g']);
+  $('#retMsg').innerHTML=''; $('#inpRet').value='0'; renderAll();
+  modal('Retiro enviado', `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Transferimos <strong>${money(monto,m)}</strong> a tu cuenta del Banco Nación. Sin costo.</p>
+    <div class="alert good" style="margin-top:11px"><span class="t">Cerraste el ciclo</span>Ingresó plata, la invertiste, vendiste, esperaste la liquidación y la sacaste. Eso es una inversión completa.</div>`,'Listo','Ver movimientos');
+  $('#mdClose').onclick = ()=>{ $('#modal').hidden=true; $('#mdClose').onclick=null; go('movimientos'); };
+}
+
+function avanzarDia(){
+  ST.dia++; let n=0;
+  ST.pend = ST.pend.filter(p=>{
+    if(p.dia>ST.dia) return true; n++;
+    if(p.tipo==='compra'){ ST.saldo[p.mon].c -= p.monto; addMov('Liquidación de compra','Débito efectivo del día',0,p.mon,['Liquidado','g']); }
+    else { ST.saldo[p.mon].l -= p.monto; ST.saldo[p.mon].d += p.monto; addMov('Liquidación de venta','El dinero pasó a disponible',0,p.mon,['Disponible','g']); }
+    return false;
+  });
+  for(const k in INST){ const i=INST[k], d=(Math.random()-.47)*2.4;
+    i.v = +(i.v*0.4+d).toFixed(2);
+    if(i.t==='cedear') i.pu = +(i.pu*(1+d/100)).toFixed(2); else i.p = +(i.p*(1+d/100)).toFixed(i.t==='on'?2:0); }
+  renderAll();
+  if(n) modal('Pasó un día hábil', `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Es ${fmtF(fechaSim())}. Se liquidaron ${n} operación${n>1?'es':''} pendiente${n>1?'s':''}.</p>
+    <div class="alert good" style="margin-top:11px"><span class="t">Esto es T+1</span>En el mercado real esto pasa solo, un día hábil después de operar. Acá lo hacemos con un botón para no esperar.</div>`,'Reloj del simulador');
+}
+
+/* ===================== TEST DE PERFIL ===================== */
+const TEST = [
+  {q:'Si tu inversión cae 15% en un mes, ¿qué hacés?', a:[['Vendo todo, no puedo dormir',1],['Espero, pero me preocupa',2],['Compro más, está barato',3]]},
+  {q:'¿En cuánto tiempo vas a necesitar esta plata?', a:[['Menos de un año',1],['Entre uno y tres años',2],['Más de tres años',3]]},
+  {q:'¿Qué preferís?', a:[['Ganar poco y seguro',1],['Ganar más aceptando altibajos',2],['Buscar el máximo rendimiento',3]]}
+];
+let tIdx=0, tSum=0;
+function abrirTest(){ tIdx=0; tSum=0; pasoTest(); }
+function pasoTest(){
+  if(tIdx>=TEST.length){
+    ST.perfil = Math.max(1,Math.min(3,Math.round(tSum/TEST.length))); renderCuenta();
+    modal('Tu perfil de inversor', `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Sos <strong>${PERFILES[ST.perfil].n}</strong>. ${PERFILES[ST.perfil].s}.</p>
+      <div class="alert info" style="margin-top:11px"><span class="t">Qué hace el perfil</span>Ordena las sugerencias y te avisa cuando un activo es más riesgoso de lo que declaraste. En la plataforma real <strong>no te bloquea</strong>.</div>`,'Test completado');
+    return;
+  }
+  const t = TEST[tIdx];
+  modal(t.q, `<div class="radio" id="testOpts">${t.a.map(o=>`<button data-v="${o[1]}"><span class="bul"></span><span><span class="tt">${esc(o[0])}</span></span></button>`).join('')}</div>`,
+    `Test de perfil · pregunta ${tIdx+1} de ${TEST.length}`,'Cancelar');
+  $('#testOpts').addEventListener('click', e=>{
+    const b=e.target.closest('[data-v]'); if(!b) return;
+    tSum+=+b.dataset.v; tIdx++; $('#modal').hidden=true; setTimeout(pasoTest,180);
+  });
+}
+
+/* ===================== TOURS ===================== */
+const info = (t,b,g,s)=>({title:t,body:b,target:g,screen:s,act:'next'});
+const tap  = (t,b,g,s)=>({title:t,body:b,target:g,screen:s,act:'click'});
+
+const S_INGRESO = [
+  tap('Empezá por acá','Para invertir, primero tiene que haber plata en tu cuenta de inversión. En la tarjeta de Argentina, hacé clic en “Ingresar dinero”.','[data-tour="qa-ingresar"]','inicio'),
+  info('Esto no es una cuenta bancaria','Es una cuenta comitente: existe para comprar y vender títulos. El alias de la izquierda es adonde vas a transferir desde tu banco.','[data-tour="origen-list"]','ingresar'),
+  tap('Probá algo que va a fallar','Elegí la cuenta de María G. Suárez, que está a nombre de otra persona. Quiero que veas qué pasa.','[data-tour="origen-tercero"]','ingresar'),
+  tap('Ahora sí, la tuya','Solo podés fondear desde cuentas de tu misma titularidad. Elegí la del Banco Nación.','[data-tour="origen-propia"]','ingresar'),
+  tap('Confirmá la transferencia','Ya está cargado un monto de ejemplo, podés cambiarlo. Cuando estés listo, confirmá.','[data-tour="confirmar-ingreso"]','ingresar')
+];
+const S_MEP = [
+  tap('Comprar dólares','En “Te recomendamos” está Dólar MEP Simple. Hacé clic en Comprar. También está en Operar → Compra Dólar MEP Simple.','[data-tour="qa-mep"]','inicio'),
+  info('El tipo de cambio','Acá ves cuántos dólares vas a recibir y a qué tipo de cambio. No hay límite de monto ni trámite: el mínimo es $5.000.','[data-tour="mep-tc"]','mep'),
+  tap('Mirá qué hace por debajo','Esto no es “comprar dólares” como en una casa de cambio. Hacé clic en “Ver por dentro”.','[data-tour="mep-verpordentro"]','mep'),
+  info('Son dos operaciones de bonos','El sistema compra un bono en pesos (AL30) y lo vende en dólares (AL30D). Esa diferencia es el dólar MEP. Las dos patas van en Contado Inmediato, por eso los dólares llegan hoy.','[data-tour="mep-patas"]','mep'),
+  tap('Comprá','Confirmá la operación.','[data-tour="mep-confirmar"]','mep')
+];
+const S_COMPRA = [
+  tap('Andá a Cotizaciones','En el menú de arriba, hacé clic en “Cotizaciones” para ver qué se puede comprar.','[data-tour="nav-cotizaciones"]','inicio'),
+  tap('Buscá los CEDEARs','Un CEDEAR te deja comprar una empresa extranjera desde acá, en pesos.','[data-tour="tab-cedears"]','mercado'),
+  tap('Elegí Coca-Cola','Vamos con KO, que es la más tranquila del grupo.','[data-tour="inst-KO"]','mercado'),
+  info('El ratio es la clave','Un CEDEAR no es una acción entera: acá hacen falta 5 para equivaler a una acción de Coca-Cola. El precio en pesos sale de dividir el precio en dólares por el ratio y multiplicar por el tipo de cambio.','[data-tour="caja-puntas"]','activo'),
+  info('Hay dos precios, no uno','La caja de puntas muestra a cuánto compran y a cuánto venden los demás. Si comprás a mercado vas a pagar la punta vendedora, que es un poco más cara que el último operado.','[data-tour="caja-puntas"]','activo'),
+  tap('Comprar','Esto te lleva a la pantalla de orden con el símbolo ya cargado. También podés llegar por Operar → Comprar y escribirlo a mano.','[data-tour="btn-comprar"]','activo'),
+  info('Esta es la orden','Seis campos. Mercado, plazo, símbolo, cuánto, a qué precio y hasta cuándo vale la orden.','[data-tour="form-comprar"]','comprar'),
+  info('Cantidad o monto','Podés pedir “10 CEDEARs” o “$200.000 de CEDEARs”. Con monto, el sistema calcula cuántos entran y redondea para abajo.','[data-tour="campo-cantidad"]','comprar'),
+  info('A mercado o con límite','A mercado se ejecuta ya, al mejor precio que haya. Con límite ponés tu precio y esperás: puede no ejecutarse nunca.','[data-tour="campo-modalidad"]','comprar'),
+  info('Mirá esto antes de seguir','Tu dinero disponible cambia según el plazo. En contado inmediato tenés menos que a 24 hs, porque lo que cobraste por una venta reciente todavía no liquidó.','[data-tour="montos-disponibles"]','comprar'),
+  tap('Enviá la orden','Hacé clic en Comprar. Todavía no se ejecuta: primero te muestra el detalle.','[data-tour="btn-comprar-submit"]','comprar'),
+  info('Acá está el costo','Comisión, derechos de mercado e IVA. Este es el momento de mirarlo: es lo que te van a cobrar de verdad.','[data-tour="costos-confirmacion"]','comprar'),
+  tap('Confirmá','Esto no es un pago: es una orden que sale al mercado.','[data-tour="confirmar-orden"]','comprar')
+];
+const S_TENENCIA = [
+  info('El boleto','Este es el comprobante de la operación. Abajo de todo ves cuánto te costó operar, en plata y en porcentaje.','[data-tour="boleto-detalle"]','boleto'),
+  tap('Andá a Portafolio','En el menú de arriba, hacé clic en “Portafolio”.','[data-tour="nav-portafolio"]','boleto'),
+  info('Tu cartera','Acá está tu inversión, con el precio de compra, el actual y el resultado. Si comprás un CEDEAR, ese resultado depende de dos cosas a la vez: la acción y el dólar.','[data-tour="pos-lista"]','portafolio'),
+  info('Probá cambiar la moneda','El mismo portafolio rinde distinto medido en pesos y en dólares. Cambiá el selector y compará los tres números de arriba.','[data-tour="toggle-moneda"]','portafolio')
+];
+const S_ON = [
+  tap('Abrí el menú Operar','Esta vez vamos directo a la pantalla de compra.','[data-tour="nav-operar"]','inicio'),
+  tap('Comprar','Entrá al formulario de orden.','[data-tour="menu-comprar"]','inicio'),
+  info('Escribí el símbolo','Ya cargamos YMCJO, una obligación negociable de YPF en dólares. Fijate lo que aparece debajo del campo: cotiza cada 100 VN y tiene lámina mínima.','[data-tour="campo-simbolo"]','comprar'),
+  info('La cantidad va en VN','No ponés dólares: ponés valores nominales, y en múltiplos de la lámina mínima. Comprar 1.000 VN no es comprar US$ 1.000.','[data-tour="campo-cantidad"]','comprar'),
+  tap('Probá que falle','Dejá 500 VN, que no es múltiplo de la lámina, y mandá la orden. Quiero que veas el rechazo.','[data-tour="btn-comprar-submit"]','comprar'),
+  info('Ahí está','Corregí la cantidad a un múltiplo válido — 1.000 VN sirve — y volvé a mandarla.','[data-tour="campo-cantidad"]','comprar'),
+  tap('Mandala de nuevo','Con la cantidad corregida.','[data-tour="btn-comprar-submit"]','comprar'),
+  tap('Confirmá','Revisá el detalle y confirmá.','[data-tour="confirmar-orden"]','comprar'),
+  info('Ya sos acreedor de YPF','Desde ahora te van a pagar intereses dos veces por año, en dólares, hasta el vencimiento.','[data-tour="boleto-detalle"]','boleto')
+];
+const S_VENTA = [
+  tap('Abrí el menú Operar','La venta tiene su propia pantalla.','[data-tour="nav-operar"]','inicio'),
+  tap('Vender','Entrá al formulario.','[data-tour="menu-vender"]','inicio'),
+  info('Acá el símbolo es una lista','A diferencia de la compra, solo podés elegir entre lo que ya tenés en cartera.','[data-tour="campo-simbolo-venta"]','vender'),
+  info('Mirá el plazo','“Normal” son 24 hs (T+1): el dinero de la venta no queda disponible hoy. Dejalo así, es lo que hay que entender.','[data-tour="campo-plazo-venta"]','vender'),
+  tap('Mandá la venta','Hacé clic en Vender.','[data-tour="btn-vender-submit"]','vender'),
+  tap('Confirmá','Leé el aviso sobre el plazo y confirmá.','[data-tour="confirmar-orden"]','vender'),
+  tap('Volvé al estado de cuenta','Abrí el menú “Mi Cuenta”.','[data-tour="nav-micuenta"]','boleto'),
+  tap('Estado de cuenta','Entrá para ver qué pasó con tu plata.','[data-tour="menu-estado"]','boleto'),
+  tap('Abrí “Detalle de saldos”','Es el acordeón de más abajo. Hacé clic para desplegarlo.','[data-tour="detalle-saldos"]','inicio'),
+  info('Acá está la trampa','El dinero de la venta figura como “a liquidar”, no como disponible. Lo ves, pero todavía no es tuyo para sacarlo.','[data-tour="saldo-detalle"]','inicio')
+];
+const S_RETIRO = [
+  tap('Abrí el menú Mi Cuenta','El retiro de dinero vive acá arriba.','[data-tour="nav-micuenta"]','inicio'),
+  tap('Retirar dinero','Quiero que veas que no te deja sacar todo.','[data-tour="menu-retirar"]','inicio'),
+  info('El monto ya está cargado','Es el total que vendiste. Confirmá igual: va a fallar, y está bien que falle.','[data-tour="monto-retiro"]','retirar'),
+  tap('Confirmá igual','Adelante, probá.','[data-tour="confirmar-retiro"]','retirar'),
+  tap('Ahora hacé pasar un día','En el mercado real esperarías hasta mañana. Acá hacés clic en este botón.','[data-tour="reloj-avanzar"]','retirar'),
+  info('Ahora sí está disponible','El dinero pasó de “a liquidar” a “disponible”. Eso es la liquidación en T+1. Mirá el panel de la derecha.','[data-tour="monto-retiro"]','retirar'),
+  tap('Retiralo','Confirmá el retiro.','[data-tour="confirmar-retiro"]','retirar')
+];
+const TOURS = {
+  mep:{n:'Ingresar dinero y comprar dólar MEP',d:'Fondeás la cuenta desde tu banco y convertís pesos a dólares legales, entendiendo qué hace el sistema por debajo.',mods:'M2 · M3',min:'6 min',
+    setup(){ reset(); },
+    steps:[info('Vas a hacer entrar plata y comprar dólares','Dos cosas: transferir desde tu banco a la cuenta de inversión, y convertir parte de esos pesos a dólar MEP. Te voy indicando dónde hacer clic.',null,'inicio'),
+      ...S_INGRESO, ...S_MEP, info('Listo','Tenés pesos y dólares en tu cuenta de inversión. El dólar MEP no fue una compra de moneda: fueron dos operaciones de bonos hechas por vos.',null,'inicio')]},
+  cedear:{n:'Comprar mi primer CEDEAR',d:'Recorrés el mercado, leés una ficha, entendés el ratio de conversión y ponés una orden de compra con sus costos.',mods:'M4 · M5',min:'7 min',
+    setup(){ reset(); ST.saldo.ARS.d=900000; addMov('Ingreso de dinero','Banco Nación',900000,'ARS',['Acreditado','g']); },
+    steps:[info('Ya tenés pesos en la cuenta','Para esta práctica dejamos $900.000 acreditados. Vamos a comprar una empresa extranjera desde Argentina, en pesos.',null,'inicio'),
+      ...S_COMPRA, ...S_TENENCIA, info('Eso es un CEDEAR','Compraste una fracción de una acción del exterior, pagando en pesos. Tu resultado ahora depende de la acción y del dólar al mismo tiempo.',null,'portafolio')]},
+  on:{n:'Invertir en Obligaciones Negociables',d:'El instrumento que mejor le calza a un ahorrista: renta previsible en dólares. Aprendés a leer VN, lámina mínima y calendario de renta.',mods:'M4',min:'6 min',
+    setup(){ reset(); ST.saldo.USD.d=3000; addMov('Acreditación de dólares','Compra de dólar MEP',3000,'USD',['Acreditado','g']);
+      $('#cSimbolo').value='YMCJO'; $('#cCant').value='500'; },
+    steps:[info('Tenés dólares para invertir','Dejamos US$ 3.000 en la cuenta. Vamos a prestárselos a una empresa a cambio de un interés fijo.',null,'inicio'),
+      ...S_ON, info('Renta en dólares','A diferencia de una acción, acá sabés de antemano cuánto vas a cobrar y cuándo. Por eso es el instrumento de entrada para quien recién empieza.',null,'inicio')]},
+  venta:{n:'Vender, esperar la liquidación y retirar',d:'La parte que más confunde: vendés, ves la ganancia, y todavía no podés sacar la plata. Acá se entiende por qué.',mods:'M6 · M7',min:'7 min',
+    setup(){ reset(); ST.saldo.ARS.d=40000; ST.pos.KO={c:30,pp:precio(INST.KO)*0.94};
+      addMov('Compra KO','30 un. — operación anterior',-30*precio(INST.KO)*0.94,'ARS',['Liquidado','g']);
+      ST.vSel='KO'; },
+    steps:[info('Ya tenés una inversión hecha','Compraste 30 CEDEARs de Coca-Cola hace unos días y están en ganancia. Vamos a venderlos y a sacar la plata.',null,'inicio'),
+      ...S_VENTA, ...S_RETIRO, info('Eso es la liquidación','Vender y cobrar no son el mismo acto. Entre uno y otro pasa un día hábil, y durante ese día el dinero existe pero no se toca.',null,'inicio')]},
+  completo:{n:'Ciclo completo de una inversión',d:'De punta a punta: entra el dinero, comprás dólares, invertís, seguís la tenencia, vendés, esperás la liquidación y el dinero vuelve a estar disponible.',mods:'M2 → M7',min:'18 min',rec:true,
+    setup(){ reset(); },
+    steps:[info('El ciclo completo','Vamos a recorrer una inversión entera, desde que entra la plata hasta que la sacás. Ocho tramos. Tomate el tiempo que necesites.',null,'inicio'),
+      ...S_INGRESO, ...S_MEP, ...S_COMPRA, ...S_TENENCIA, ...S_VENTA, ...S_RETIRO,
+      info('Cerraste el ciclo','Ingresaste dinero, compraste dólar MEP, invertiste, seguiste tu tenencia, vendiste, esperaste la liquidación y retiraste. El ciclo termina donde empezó: con la plata disponible.',null,'movimientos')]},
+  libre:{n:'Explorar por mi cuenta',d:'Sin guía. La cuenta arranca con pesos y dólares acreditados para que pruebes lo que quieras.',mods:'Todo',min:'—',
+    setup(){ reset(); ST.saldo.ARS.d=1200000; ST.saldo.USD.d=2000;
+      addMov('Ingreso de dinero','Banco Nación',1200000,'ARS',['Acreditado','g']);
+      addMov('Acreditación de dólares','Compra de dólar MEP',2000,'USD',['Acreditado','g']); },
+    steps:[]}
+};
+
+function reset(){
+  ST.saldo={ARS:{d:0,c:0,l:0},USD:{d:0,c:0,l:0}}; ST.pos={}; ST.mov=[]; ST.pend=[]; ST.dia=0;
+  ST.origen=null; ST.primerIngreso=true; ST.boleto=null; ST.abierto=true; ST.monVista='ARS'; ST.retMon='ARS'; ST.lado='compra';
+  $('#inpIngreso').value='600000'; $('#inpMep').value='400000'; $('#inpRet').value='0';
+  $('#origenMsg').innerHTML=''; $('#retMsg').innerHTML='';
+  $$('#origenBox [data-org]').forEach(b=>b.setAttribute('aria-pressed','false'));
+  $('#mepPatas').hidden=true; $('#dentroChev').textContent='›';
+  ST.mepModo='compra'; ST.vSel=null; ST.ordenPend=null;
+  $('#cSimbolo').value=''; $('#cCant').value='10'; $('#cMonto').value=''; $('#cLim').value='';
+  $('#cMercado').value='ar'; $('#cPlazo').value='24'; $('#vPlazo').value='24';
+  $('#vCant').value=''; $('#vLim').value=''; $('#cMsg').innerHTML=''; $('#vMsg').innerHTML='';
+  const r1=document.querySelector('input[name="cqm"][value="cant"]'); if(r1) r1.checked=true;
+  const r2=document.querySelector('input[name="cmod"][value="mercado"]'); if(r2) r2.checked=true;
+  const r3=document.querySelector('input[name="vmod"][value="mercado"]'); if(r3) r3.checked=true;
+  $('#cCant').disabled=false; $('#cMonto').disabled=true; $('#cLim').disabled=true; $('#vLim').disabled=true;
+  $('#accSaldos').open=false; $('#accStats').open=false;
+  cerrarMenus();
+}
+
+/* ===================== MOTOR DEL TOUR ===================== */
+const T = {tour:null,i:0,active:false};
+function startTour(k){
+  const t = TOURS[k]; T.tour=t; T.i=0; T.active=t.steps.length>0;
+  t.setup(); renderAll(); go('inicio');
+  $('#winTitle').textContent = 'Rueda — '+t.n;
+  if(!T.active){ hideTour(); $('#cbBar').style.width='0%'; $('#cbTx').textContent='sin guía'; return; }
+  showStep(); requestAnimationFrame(loop);
+}
+function revelarTarget(sel){
+  if(!sel) return;
+  const el = document.querySelector(sel); if(!el) return;
+  const menu = el.closest('.dd-menu');
+  if(menu){ cerrarMenus(); menu.closest('.dd').classList.add('open'); }
+  const det = el.closest('details.acc'); if(det) det.open = true;
+}
+function showStep(){
+  const s = T.tour.steps[T.i]; if(!s){ finishTour(); return; }
+  if(s.screen && ST.pantalla!==s.screen) go(s.screen);
+  revelarTarget(s.target);
+  $('#tipStep').textContent = `Paso ${T.i+1} de ${T.tour.steps.length}`;
+  $('#tipTitle').textContent = s.title; $('#tipBody').textContent = s.body;
+  $('#tipTap').hidden = s.act!=='click';
+  $('#tipNext').hidden = s.act==='click';
+  $('#tipSkip').hidden = s.act!=='click';
+  $('#tip').hidden = false;
+  $('#cbBar').style.width = (T.i/T.tour.steps.length*100)+'%';
+  $('#cbTx').textContent = `${T.i+1} / ${T.tour.steps.length}`;
+  setTimeout(()=>{ const el = s.target && document.querySelector(s.target);
+    if(el && !el.closest('.dd-menu')) el.scrollIntoView({block:'center',behavior:'smooth'}); },60);
+  position();
+}
+function position(){
+  const s = T.tour?.steps[T.i]; if(!s) return;
+  const tip=$('#tip'), ring=$('#ring');
+  const el = s.target ? document.querySelector(s.target) : null;
+  const vw=innerWidth, vh=innerHeight, tw=tip.offsetWidth||320, th=tip.offsetHeight||160;
+  const enModal = !!(el && el.closest('.veil'));
+  ring.style.zIndex = enModal ? 95 : 70;
+  tip.style.zIndex  = enModal ? 96 : 72;
+  if(el && el.offsetParent!==null){
+    const r = el.getBoundingClientRect();
+    if(r.width===0&&r.height===0) ring.hidden=true;
+    else { ring.hidden=false; const p=5;
+      ring.style.top=(r.top-p)+'px'; ring.style.left=(r.left-p)+'px';
+      ring.style.width=(r.width+p*2)+'px'; ring.style.height=(r.height+p*2)+'px'; }
+    let top = r.bottom+14; if(top+th > vh-10) top = Math.max(10, r.top-th-14);
+    let left = r.left + r.width/2 - tw/2;
+    left = Math.max(12, Math.min(left, vw-tw-12));
+    tip.style.top=top+'px'; tip.style.left=left+'px';
+  } else { ring.hidden=true;
+    tip.style.top = Math.max(12,(vh-th)/2)+'px'; tip.style.left = Math.max(12,(vw-tw)/2)+'px'; }
+}
+function loop(){ if(!T.active) return; position(); requestAnimationFrame(loop); }
+function hideTour(){ T.active=false; $('#tip').hidden=true; $('#ring').hidden=true; }
+function next(){ T.i++; if(T.i>=T.tour.steps.length) finishTour(); else showStep(); }
+function finishTour(){
+  hideTour(); $('#cbBar').style.width='100%'; $('#cbTx').textContent='completado';
+  modal('Capacitación completada', `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Terminaste “${esc(T.tour.n)}”. Podés seguir usando la cuenta libremente o elegir otro itinerario.</p>`,'Bien hecho','Elegir otro itinerario');
+  $('#mdClose').onclick = ()=>{ $('#modal').hidden=true; $('#mdClose').onclick=null; abrirChooser(); };
+}
+$('#tipNext').addEventListener('click', next);
+$('#tipSkip').addEventListener('click', next);
+$('#tipQuit').addEventListener('click', ()=>{ hideTour(); $('#cbTx').textContent='guía cerrada'; });
+document.addEventListener('click', e=>{
+  if(!T.active) return;
+  const s = T.tour.steps[T.i];
+  if(s.act!=='click' || !s.target) return;
+  if(e.target.closest(s.target)) setTimeout(next, 240);
+}, true);
+
+/* ===================== CHOOSER ===================== */
+function abrirChooser(){ $('#splash').hidden=false; $('#splashWelcome').hidden=true; $('#splashTracks').hidden=false; hideTour(); }
+$('#tracksBox').innerHTML = Object.entries(TOURS).map(([k,t],i)=>`
+  <button class="track ${t.rec?'rec2':''}" data-track="${k}"><span class="n">${i+1}</span>
+  <span><span class="tt">${esc(t.n)}${t.rec?' · recomendado':''}</span><span class="ss">${esc(t.d)}</span>
+  <span class="mods">${esc(t.mods)} · ${esc(t.min)}</span></span></button>`).join('');
+$('#btnIniciar').addEventListener('click', ()=>{ $('#splashWelcome').hidden=true; $('#splashTracks').hidden=false; });
+$('#btnCambiar').addEventListener('click', abrirChooser);
+$('#tracksBox').addEventListener('click', e=>{
+  const b=e.target.closest('[data-track]'); if(!b) return;
+  $('#splash').hidden=true; startTour(b.dataset.track);
+});
+
+/* ===================== LISTENERS ===================== */
+document.addEventListener('click', e=>{
+  const g = e.target.closest('[data-go]'); if(g && !g.dataset.out){ go(g.dataset.go); return; }
+  const inst = e.target.closest('[data-inst]'); if(inst){ ST.activo=inst.dataset.inst; ST.lado='compra'; go('activo'); return; }
+  const act = e.target.closest('[data-act]');
+  if(act && !act.disabled){ const dest = act.dataset.act==='comprar'?'comprar':'vender';
+    if(dest==='comprar'){ $('#cSimbolo').value = ST.activo; $('#cCant').value = INST[ST.activo].t==='on'? INST[ST.activo].vn : 10; $('#cLim').value=''; }
+    else { ST.vSel = ST.activo; $('#vCant').value=''; $('#vLim').value=''; }
+    go(dest); return; }
+});
+$('#backMk').addEventListener('click', ()=>go('mercado'));
+$('#mkTabs').addEventListener('click', e=>{ const b=e.target.closest('[data-tab]'); if(b){ ST.mkTab=b.dataset.tab; $('#mkBuscar').value=''; renderMercado(); } });
+$('#s-mercado').addEventListener('input', e=>{ if(e.target.id==='mkBuscar') renderMercado(); });
+$('#s-mercado').addEventListener('change', e=>{ if(e.target.id==='mkShow'||e.target.id==='mkPanel') renderMercado(); });
+$('#s-mercado').addEventListener('click', e=>{
+  const c = e.target.closest('[data-comprar]');
+  if(c){ e.stopPropagation(); const id=c.dataset.comprar;
+    $('#cSimbolo').value=id; $('#cCant').value = INST[id].t==='on'? INST[id].vn : 10; $('#cLim').value='';
+    go('comprar'); }
+}, true);
+$('#s-portafolio').addEventListener('click', e=>{ const b=e.target.closest('[data-mon]'); if(b){ ST.monVista=b.dataset.mon; renderPortafolio(); } });
+$('#retMon').addEventListener('click', e=>{ const b=e.target.closest('[data-mon]'); if(b){ ST.retMon=b.dataset.mon;
+  $('#inpRet').value = Math.floor(ST.saldo[ST.retMon].d+ST.saldo[ST.retMon].l); $('#retMsg').innerHTML=''; renderRetiro(); } });
+$('#origenBox').addEventListener('click', e=>{
+  const b=e.target.closest('[data-org]'); if(!b) return;
+  ST.origen=b.dataset.org;
+  $$('#origenBox [data-org]').forEach(x=>x.setAttribute('aria-pressed', x===b));
+  $('#origenMsg').innerHTML = b.dataset.org==='tercero'
+    ? `<div class="alert warn"><span class="t">Atención</span>Esta cuenta está a nombre de otra persona. Probá confirmar y mirá qué pasa.</div>` : '';
+});
+$('#btnIngresar').addEventListener('click', ingresarDinero);
+$('#inpMep').addEventListener('input', renderMep);
+$('#btnDentro').addEventListener('click', ()=>{ const p=$('#mepPatas'); p.hidden=!p.hidden; $('#dentroChev').textContent = p.hidden?'›':'⌄'; });
+$('#btnMep').addEventListener('click', comprarMep);
+$('#btnRetirar').addEventListener('click', retirar);
+$('#btnDia').addEventListener('click', avanzarDia);
+$('#btnTest').addEventListener('click', abrirTest);
+$('#s-comprar').addEventListener('input', e=>{
+  if(e.target.id==='cSimbolo'){ $('#cLim').value=''; renderComprar(); }
+});
+$('#s-comprar').addEventListener('change', e=>{
+  if(e.target.id==='cPlazo') renderComprar();
+  if(e.target.id==='cMercado' && e.target.value==='us'){
+    modal('Cuenta de inversión de Estados Unidos', `<p style="font-size:.91rem;line-height:1.55;color:var(--tx2)">Es una cuenta comitente aparte, con su propio fondeo, para comprar acciones, ETFs y bonos directamente en el mercado estadounidense.</p><div class="alert info" style="margin-top:12px"><span class="t">Esto queda fuera de la capacitación</span>Acá invertís en empresas del exterior vía CEDEARs, que se compran en pesos desde la cuenta argentina.</div>`);
+    e.target.value='ar';
+  }
+  if(e.target.name==='cqm'){
+    const porMonto = e.target.value==='monto';
+    $('#cCant').disabled = porMonto; $('#cMonto').disabled = !porMonto;
+    (porMonto?$('#cMonto'):$('#cCant')).focus();
+  }
+  if(e.target.name==='cmod'){ $('#cLim').disabled = e.target.value!=='limite';
+    if(e.target.value==='limite'){ const i=instDe($('#cSimbolo').value); if(i&&!$('#cLim').value) $('#cLim').value=nf(precioMercado(i,'compra')); $('#cLim').focus(); } }
+});
+$('#btnComprarSubmit').addEventListener('click', ()=>confirmarOrdenModal('compra'));
+
+/* ----- pantalla Vender ----- */
+$('#s-vender').addEventListener('change', e=>{
+  if(e.target.id==='vSimbolo'){ ST.vSel=e.target.value; $('#vCant').value=''; $('#vLim').value=''; renderVender(); }
+  if(e.target.id==='vPlazo') renderVender();
+  if(e.target.name==='vmod'){ $('#vLim').disabled = e.target.value!=='limite';
+    if(e.target.value==='limite'){ const i=INST[$('#vSimbolo').value]; if(i&&!$('#vLim').value) $('#vLim').value=nf(precioMercado(i,'venta')); $('#vLim').focus(); } }
+});
+$('#btnVenderSubmit').addEventListener('click', ()=>confirmarOrdenModal('venta'));
+
+/* ----- buscador ----- */
+function buscar(){
+  const i = instDe($('#buscador').value);
+  if(!i){ modal('No encontramos esa especie', `<p style="font-size:.91rem;color:var(--tx2)">Probá con KO, AAPL, TSLA, GGAL, YPFD, PAMP, YMCJO o PNDCO. En el simulador hay ocho especies.</p>`, 'Buscador'); return; }
+  $('#buscador').value=''; ST.activo=i.id; go('activo');
+}
+$('#btnBuscar').addEventListener('click', buscar);
+$('#buscador').addEventListener('keydown', e=>{ if(e.key==='Enter') buscar(); });
+
+addEventListener('resize', position);
+$('#main').addEventListener('scroll', position, {passive:true});
+
+llenarDatalist();
+reset(); renderAll(); go('inicio');
+$('#cbTx').textContent='0 / 0';
+</script>
+
+</body>
+</html>
