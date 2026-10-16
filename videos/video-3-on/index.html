@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Invertir en Obligaciones Negociables</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #F7F6FC; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Barlow", sans-serif; }
+      .guide { position: absolute; left: 0; right: 0; top: 960px; bottom: 0; display: flex;
+        align-items: center; justify-content: center; padding: 0 160px; z-index: 50; }
+      .guide-tx { display: block; font-size: 42px; line-height: 1.2; font-weight: 500; color: #F7F6FC;
+        text-align: center; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="178" data-width="1920" data-height="1080">
+      <div id="s01" data-composition-id="s01" data-composition-src="compositions/frames/s01.html" data-start="0" data-duration="6" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s02" data-composition-id="s02" data-composition-src="compositions/frames/s02.html" data-start="6" data-duration="16" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s03" data-composition-id="s03" data-composition-src="compositions/frames/s03.html" data-start="22" data-duration="10" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s04" data-composition-id="s04" data-composition-src="compositions/frames/s04.html" data-start="32" data-duration="22" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s05" data-composition-id="s05" data-composition-src="compositions/frames/s05.html" data-start="54" data-duration="26" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s06" data-composition-id="s06" data-composition-src="compositions/frames/s06.html" data-start="80" data-duration="24" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s07" data-composition-id="s07" data-composition-src="compositions/frames/s07.html" data-start="104" data-duration="26" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s08" data-composition-id="s08" data-composition-src="compositions/frames/s08.html" data-start="130" data-duration="20" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s09" data-composition-id="s09" data-composition-src="compositions/frames/s09.html" data-start="150" data-duration="20" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div id="s10" data-composition-id="s10" data-composition-src="compositions/frames/s10.html" data-start="170" data-duration="8" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div class="clip guide" id="s02-g0" data-start="6.5" data-duration="5" data-track-index="1"><span class="guide-tx">Tenés tres mil dólares para practicar.</span></div>
+      <div class="clip guide" id="s02-g1" data-start="11.5" data-duration="10.5" data-track-index="1"><span class="guide-tx">Con una obligación negociable le prestás dólares a una empresa, y la empresa te paga un interés.</span></div>
+      <div class="clip guide" id="s03-g0" data-start="22.5" data-duration="3.5" data-track-index="1"><span class="guide-tx">Esta vez vamos directo:</span></div>
+      <div class="clip guide" id="s03-g1" data-start="26" data-duration="6" data-track-index="1"><span class="guide-tx">menú «Operar», y después «Comprar».</span></div>
+      <div class="clip guide" id="s04-g0" data-start="32.5" data-duration="9" data-track-index="1"><span class="guide-tx">El símbolo ya está cargado: YMCJO, una obligación negociable de YPF en dólares.</span></div>
+      <div class="clip guide" id="s04-g1" data-start="41.5" data-duration="12.5" data-track-index="1"><span class="guide-tx">Mirá abajo: cotiza cada cien VN y tiene una lámina mínima de cien VN.</span></div>
+      <div class="clip guide" id="s05-g0" data-start="54.5" data-duration="5" data-track-index="1"><span class="guide-tx">La cantidad no va en dólares:</span></div>
+      <div class="clip guide" id="s05-g1" data-start="59.5" data-duration="5" data-track-index="1"><span class="guide-tx">va en valores nominales, en múltiplos de la lámina.</span></div>
+      <div class="clip guide" id="s05-g2" data-start="64.5" data-duration="3.5" data-track-index="1"><span class="guide-tx">Mil VN no son mil dólares:</span></div>
+      <div class="clip guide" id="s05-g3" data-start="68" data-duration="12" data-track-index="1"><span class="guide-tx">a noventa y nueve con cuarenta y cinco cada cien VN, cuestan unos novecientos noventa y cuatro dólares, más los costos.</span></div>
+      <div class="clip guide" id="s06-g0" data-start="80.5" data-duration="4" data-track-index="1"><span class="guide-tx">Ahora, el error a propósito.</span></div>
+      <div class="clip guide" id="s06-g1" data-start="84.5" data-duration="5" data-track-index="1"><span class="guide-tx">Quinientos cincuenta VN no es múltiplo de la lámina.</span></div>
+      <div class="clip guide" id="s06-g2" data-start="89.5" data-duration="14.5" data-track-index="1"><span class="guide-tx">Mandamos la orden… y el sistema la rechaza.</span></div>
+      <div class="clip guide" id="s07-g0" data-start="104.5" data-duration="6.5" data-track-index="1"><span class="guide-tx">Corregimos a mil VN, que sí es múltiplo, y la mandamos de nuevo.</span></div>
+      <div class="clip guide" id="s07-g1" data-start="113.5" data-duration="9" data-track-index="1"><span class="guide-tx">Revisás los costos en el detalle,</span></div>
+      <div class="clip guide" id="s07-g2" data-start="122.5" data-duration="7.5" data-track-index="1"><span class="guide-tx">y confirmás.</span></div>
+      <div class="clip guide" id="s08-g0" data-start="130.5" data-duration="5.5" data-track-index="1"><span class="guide-tx">Listo: ahora sos acreedor de YPF.</span></div>
+      <div class="clip guide" id="s08-g1" data-start="136" data-duration="6.5" data-track-index="1"><span class="guide-tx">Según los datos del simulador, te paga intereses en dólares</span></div>
+      <div class="clip guide" id="s08-g2" data-start="142.5" data-duration="7.5" data-track-index="1"><span class="guide-tx">dos veces por año, en marzo y en septiembre, hasta el vencimiento.</span></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll(".guide").forEach(function (el) {
+        const s = parseFloat(el.dataset.start);
+        tl.fromTo(el.querySelector(".guide-tx"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, s);
+      });
+      tl.set({}, {}, 178);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

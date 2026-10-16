@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #s09-bg { position: absolute; inset: 0; background: #EEEDF8; }
+        #s09-eyebrow { position: absolute; left: 200px; top: 190px; font-family: "IBM Plex Mono", monospace;
+          font-size: 40px; font-weight: 700; letter-spacing: 0.08em; color: #6439FF; }
+        .s09-idea { position: absolute; left: 200px; right: 200px; top: 360px; display: flex; gap: 44px;
+          align-items: flex-start; opacity: 0; }
+        .s09-num { flex: none; width: 104px; height: 104px; border-radius: 50%; background: #E8B23A;
+          color: #20160A; font-size: 60px; font-weight: 700; display: flex; align-items: center;
+          justify-content: center; }
+        .s09-tx { font-size: 72px; line-height: 1.18; font-weight: 600; color: #06083F; padding-top: 6px; }
+        #s09-dots { position: absolute; left: 200px; bottom: 150px; display: flex; gap: 16px; }
+        .s09-dot { width: 18px; height: 18px; border-radius: 50%; background: rgba(6, 8, 63, 0.18); }
+
+      </style>
+      <div id="root" data-composition-id="s09" data-width="1920" data-height="1080">
+        <div id="s09-bg"></div>
+        <div id="s09-eyebrow">PARA LLEVARTE</div>
+        <div class="s09-idea" id="s09-idea-0"><div class="s09-num">1</div><div class="s09-tx">En una ON, la cantidad va en VN, no en dólares.</div></div>
+        <div class="s09-idea" id="s09-idea-1"><div class="s09-num">2</div><div class="s09-tx">Tiene que respetar la lámina mínima.</div></div>
+        <div class="s09-idea" id="s09-idea-2"><div class="s09-num">3</div><div class="s09-tx">Sabés de antemano cuánto cobrás y cuándo.</div></div>
+        <div id="s09-dots"><div class="s09-dot" id="s09-dot-0"></div><div class="s09-dot" id="s09-dot-1"></div><div class="s09-dot" id="s09-dot-2"></div></div>
+      </div>
+      <script>
+        (function () {
+          const ID = "s09";
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#" + ID + "-eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.2);
+          tl.fromTo("#" + ID + "-idea-0", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.80);
+          tl.to("#" + ID + "-dot-0", { backgroundColor: "#6439FF", duration: 0.3 }, 0.80);
+          tl.to("#" + ID + "-idea-0", { opacity: 0, y: -16, duration: 0.45, ease: "power1.in" }, 6.53);
+          tl.fromTo("#" + ID + "-idea-1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 7.13);
+          tl.to("#" + ID + "-dot-1", { backgroundColor: "#6439FF", duration: 0.3 }, 7.13);
+          tl.to("#" + ID + "-idea-1", { opacity: 0, y: -16, duration: 0.45, ease: "power1.in" }, 12.87);
+          tl.fromTo("#" + ID + "-idea-2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 13.47);
+          tl.to("#" + ID + "-dot-2", { backgroundColor: "#6439FF", duration: 0.3 }, 13.47);
+          tl.set({}, {}, 20);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

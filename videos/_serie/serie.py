@@ -49,6 +49,8 @@ FONTS = """
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 """
 
 def wrap_sub(cid, style, body, script):
@@ -240,7 +242,7 @@ def open_scene(sc):
           <div id="{cid}-eyebrow">CAPACITACIÓN EN EL USO DE INVERTIR ONLINE (IOL)</div>
           <div id="{cid}-title">{html.escape(TITLE)}</div>
           <div id="{cid}-rule"></div>
-          <div id="{cid}-mods">MÓDULOS {html.escape(MODULES)}</div>
+          <div id="{cid}-mods">{"MÓDULOS" if any(s in MODULES for s in "·→,") else "MÓDULO"} {html.escape(MODULES)}</div>
         </div>"""
     script = f"""        (function () {{
           const ID = "{cid}";

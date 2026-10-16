@@ -1,0 +1,601 @@
+{
+ "viewport": [
+  1920,
+  1080
+ ],
+ "scale": 2,
+ "shots": [
+  {
+   "id": "01-inicio",
+   "file": "01-inicio.png",
+   "note": "Account overview with US$ 3.000 (step 0, info)",
+   "tour": {
+    "i": 0,
+    "n": 11,
+    "title": "Tenés dólares para invertir"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.8,
+     "y": 151.2,
+     "width": 94.3,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 781.7,
+     "y": 384.5,
+     "width": 130.3,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 814.7,
+     "y": 414.9,
+     "width": 97.3,
+     "height": 24.3
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 4.440.000,00\nUS$ 3.000,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "02-inicio-operar",
+   "file": "02-inicio-operar.png",
+   "note": "Step: open Operar",
+   "tour": {
+    "i": 1,
+    "n": 11,
+    "title": "Abrí el menú Operar"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.8,
+     "y": 151.2,
+     "width": 94.3,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 781.7,
+     "y": 384.5,
+     "width": 130.3,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 814.7,
+     "y": 414.9,
+     "width": 97.3,
+     "height": 24.3
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 4.440.000,00\nUS$ 3.000,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "03-menu-operar",
+   "file": "03-menu-operar.png",
+   "note": "Operar menu open (Comprar)",
+   "tour": {
+    "i": 2,
+    "n": 11,
+    "title": "Comprar"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.8,
+     "y": 151.2,
+     "width": 94.3,
+     "height": 49.2
+    },
+    "menu-comprar": {
+     "x": 533.8,
+     "y": 206.4,
+     "width": 359.5,
+     "height": 36.9
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 781.7,
+     "y": 384.5,
+     "width": 130.3,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 814.7,
+     "y": 414.9,
+     "width": 97.3,
+     "height": 24.3
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 4.440.000,00\nUS$ 3.000,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "04-orden",
+   "file": "04-orden.png",
+   "note": "Order form with YMCJO and 550 VN",
+   "tour": {
+    "i": 3,
+    "n": 11,
+    "title": "Escribí el símbolo"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.8,
+     "height": 49.2
+    },
+    "form-comprar": {
+     "x": 380,
+     "y": 284.5,
+     "width": 790,
+     "height": 473.8
+    },
+    "campo-simbolo": {
+     "x": 592,
+     "y": 412.5,
+     "width": 210,
+     "height": 39.3
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 458.9,
+     "width": 552,
+     "height": 37.6
+    },
+    "campo-cantidad": {
+     "x": 592,
+     "y": 511.5,
+     "width": 552,
+     "height": 87.7
+    },
+    "cant-input": {
+     "x": 954,
+     "y": 511.5,
+     "width": 190,
+     "height": 39.3
+    },
+    "campo-modalidad": {
+     "x": 592,
+     "y": 614.1,
+     "width": 552,
+     "height": 69.2
+    },
+    "btn-comprar-submit": {
+     "x": 696.6,
+     "y": 802.3,
+     "width": 156.8,
+     "height": 45.2
+    },
+    "montos": {
+     "x": 380,
+     "y": 922.8,
+     "width": 900,
+     "height": 183.5
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Comprar ?\nMercado\nArgentina\nEstados Unidos — fuera de alcance\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\nYMCJO — YPF ON Clase XXXIX · último US$ 99,40 · punta vendedora US$ 99,45 · cotiza cada 100 VN · lámina mínima 100 VN\nCantidad/Monto\nCantidad\nMonto\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nComprar\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en contado inmediato en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 3.000,00\n\nEl dinero que podés usar depende del plazo. Lo que cobraste por una venta a 24 hs ya sirve para comprar a 24 hs, pero todavía no para contado inmediato ni para retirar."
+  },
+  {
+   "id": "05-rechazo",
+   "file": "05-rechazo.png",
+   "note": "Order rejected: 550 is not a multiple of the lot",
+   "tour": {
+    "i": 6,
+    "n": 11,
+    "title": "Ahí está"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.8,
+     "height": 49.2
+    },
+    "form-comprar": {
+     "x": 380,
+     "y": 284.5,
+     "width": 790,
+     "height": 473.8
+    },
+    "campo-simbolo": {
+     "x": 592,
+     "y": 412.5,
+     "width": 210,
+     "height": 39.3
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 458.9,
+     "width": 552,
+     "height": 37.6
+    },
+    "campo-cantidad": {
+     "x": 592,
+     "y": 511.5,
+     "width": 552,
+     "height": 87.7
+    },
+    "cant-input": {
+     "x": 954,
+     "y": 511.5,
+     "width": 190,
+     "height": 39.3
+    },
+    "campo-modalidad": {
+     "x": 592,
+     "y": 614.1,
+     "width": 552,
+     "height": 69.2
+    },
+    "btn-comprar-submit": {
+     "x": 696.6,
+     "y": 897.5,
+     "width": 156.8,
+     "height": 45.2
+    },
+    "cmsg": {
+     "x": 380,
+     "y": 794.3,
+     "width": 790,
+     "height": 81.1
+    },
+    "montos": {
+     "x": 380,
+     "y": 1017.9,
+     "width": 900,
+     "height": 183.5
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Comprar ?\nMercado\nArgentina\nEstados Unidos — fuera de alcance\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\nYMCJO — YPF ON Clase XXXIX · último US$ 99,40 · punta vendedora US$ 99,45 · cotiza cada 100 VN · lámina mínima 100 VN\nCantidad/Monto\nCantidad\nMonto\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nNo se puede enviar la orden\nEsta obligación negociable se opera en múltiplos de 100 VN. Probá con 600 VN. Acordate: la cantidad va en valores nominales, no en dólares.\nComprar\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en contado inmediato en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 3.000,00\n\nEl dinero que podés usar depende del plazo. Lo que cobraste por una venta a 24 hs ya sirve para comprar a 24 hs, pero todavía no para contado inmediato ni para retirar."
+  },
+  {
+   "id": "06-orden-1000",
+   "file": "06-orden-1000.png",
+   "note": "Quantity corrected to 1.000 VN",
+   "tour": {
+    "i": 6,
+    "n": 11,
+    "title": "Ahí está"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.8,
+     "height": 49.2
+    },
+    "form-comprar": {
+     "x": 380,
+     "y": 284.5,
+     "width": 790,
+     "height": 473.8
+    },
+    "campo-simbolo": {
+     "x": 592,
+     "y": 412.5,
+     "width": 210,
+     "height": 39.3
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 458.9,
+     "width": 552,
+     "height": 37.6
+    },
+    "campo-cantidad": {
+     "x": 592,
+     "y": 511.5,
+     "width": 552,
+     "height": 87.7
+    },
+    "cant-input": {
+     "x": 954,
+     "y": 511.5,
+     "width": 190,
+     "height": 39.3
+    },
+    "campo-modalidad": {
+     "x": 592,
+     "y": 614.1,
+     "width": 552,
+     "height": 69.2
+    },
+    "btn-comprar-submit": {
+     "x": 696.6,
+     "y": 897.5,
+     "width": 156.8,
+     "height": 45.2
+    },
+    "cmsg": {
+     "x": 380,
+     "y": 794.3,
+     "width": 790,
+     "height": 81.1
+    },
+    "montos": {
+     "x": 380,
+     "y": 1017.9,
+     "width": 900,
+     "height": 183.5
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Comprar ?\nMercado\nArgentina\nEstados Unidos — fuera de alcance\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\nYMCJO — YPF ON Clase XXXIX · último US$ 99,40 · punta vendedora US$ 99,45 · cotiza cada 100 VN · lámina mínima 100 VN\nCantidad/Monto\nCantidad\nMonto\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nNo se puede enviar la orden\nEsta obligación negociable se opera en múltiplos de 100 VN. Probá con 600 VN. Acordate: la cantidad va en valores nominales, no en dólares.\nComprar\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en contado inmediato en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 3.000,00\n\nEl dinero que podés usar depende del plazo. Lo que cobraste por una venta a 24 hs ya sirve para comprar a 24 hs, pero todavía no para contado inmediato ni para retirar."
+  },
+  {
+   "id": "07-confirmacion",
+   "file": "07-confirmacion.png",
+   "note": "Confirmation modal with costs",
+   "tour": {
+    "i": 8,
+    "n": 11,
+    "title": "Confirmá"
+   },
+   "boxes": {
+    "modal": {
+     "x": 740,
+     "y": 237.1,
+     "width": 440,
+     "height": 605.9
+    },
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.8,
+     "height": 49.2
+    },
+    "form-comprar": {
+     "x": 380,
+     "y": 146.5,
+     "width": 790,
+     "height": 473.8
+    },
+    "campo-simbolo": {
+     "x": 592,
+     "y": 274.5,
+     "width": 210,
+     "height": 39.3
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 320.9,
+     "width": 552,
+     "height": 37.6
+    },
+    "campo-cantidad": {
+     "x": 592,
+     "y": 373.5,
+     "width": 552,
+     "height": 87.7
+    },
+    "cant-input": {
+     "x": 954,
+     "y": 373.5,
+     "width": 190,
+     "height": 39.3
+    },
+    "campo-modalidad": {
+     "x": 592,
+     "y": 476.1,
+     "width": 552,
+     "height": 69.2
+    },
+    "btn-comprar-submit": {
+     "x": 696.6,
+     "y": 664.3,
+     "width": 156.8,
+     "height": 45.2
+    },
+    "montos": {
+     "x": 380,
+     "y": 784.8,
+     "width": 900,
+     "height": 183.5
+    },
+    "costos": {
+     "x": 762,
+     "y": 519.0,
+     "width": 396,
+     "height": 185.8
+    },
+    "confirmar-orden": {
+     "x": 762,
+     "y": 718.7,
+     "width": 396,
+     "height": 44
+    },
+    "nav-cotizaciones": {
+     "x": 622.1,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "MODAL: PASO 2 DE 2 · REVISÁ ANTES DE ENVIAR\nConfirmá tu compra\nEspecie\nYMCJO · YPF ON Clase XXXIX\nCantidad\n1.000 VN\nPrecio estimado\nUS$ 99,45\nPlazo de liquidación\n24 hs (T+1)\nLiquida el\n15/09/2026\nMonto bruto\nUS$ 994,55\nComisión\nUS$ 2,49\nDerechos de mercado\nUS$ 0,80\nIVA 21%\nUS$ 0,69\nTotal a pagar\nUS$ 998,52\nConfirmar compra\nCancelar || Comprar ?\nMercado\nArgentina\nEstados Unidos — fuera de alcance\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\nYMCJO — YPF ON Clase XXXIX · último US$ 99,40 · punta vendedora US$ 99,45 · cotiza cada 100 VN · lámina mínima 100 VN\nCantidad/Monto\nCantidad\nMonto\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nComprar\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en contado inmediato en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 0,00\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 3.000,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 3.000,00\n\nEl dinero que podés usar depende del plazo. Lo que cobraste por una venta a 24 hs ya sirve para comprar a 24 hs, pero todavía no para contado inmediato ni para retirar."
+  },
+  {
+   "id": "08-boleto",
+   "file": "08-boleto.png",
+   "note": "Trade ticket (boleto)",
+   "tour": {
+    "i": 9,
+    "n": 11,
+    "title": "Ya sos acreedor de YPF"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.3,
+     "height": 49.2
+    },
+    "boleto": {
+     "x": 640,
+     "y": 226.4,
+     "width": 640,
+     "height": 678.1
+    },
+    "boleto-costo-total": {
+     "x": 678,
+     "y": 791.6,
+     "width": 564,
+     "height": 17.7
+    },
+    "nav-cotizaciones": {
+     "x": 621.7,
+     "y": 151.2,
+     "width": 126.1,
+     "height": 49.2
+    }
+   },
+   "text": "Orden ejecutada\nSe emitió el boleto Nº 100842. Es el comprobante de la operación.\nBOLETO DE COMPRA\nNº 100842\nInstrumento\nYMCJO · YPF ON Clase XXXIX\nCantidad\n1.000 VN\nPrecio\nUS$ 99,45\nFecha de concertación\n14/09/2026\nFecha de liquidación\n15/09/2026\nMonto bruto\nUS$ 994,55\nComisión\nUS$ 2,49\nDerechos de mercado\nUS$ 0,80\nIVA 21%\nUS$ 0,69\nDebitado\nUS$ 998,52\n\nLos costos totales fueron US$ 3,97, un 0,40% del monto operado.\n\nVer movimientos\nIr al estado de cuenta"
+  },
+  {
+   "id": "09-mercado-ons",
+   "file": "09-mercado-ons.png",
+   "note": "Market, ON tab",
+   "tour": {
+    "i": 9,
+    "n": 11,
+    "title": "Ya sos acreedor de YPF"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.3,
+     "height": 49.2
+    },
+    "nav-cotizaciones": {
+     "x": 621.7,
+     "y": 151.2,
+     "width": 126.7,
+     "height": 49.2
+    },
+    "tab-ons": {
+     "x": 728.3,
+     "y": 413.0,
+     "width": 188.5,
+     "height": 40.4
+    },
+    "inst-YMCJO": {
+     "x": 338,
+     "y": 572.9,
+     "width": 1463.5,
+     "height": 58.4
+    }
+   },
+   "text": "Merval: 2.946.448,56 ▼ -0,77%\nBolsa: 128.852.785,35 ▼ -1,25%\nCotización de Obligaciones Negociables Argentina - Panel Todos\n🇦🇷 Argentina\n🇺🇸 Estados Unidos\n☆ Favoritos\n🌐 Índices\nAcciones\nCedears\nOpciones\nBonos\nLetras\nObligaciones Negociables\nFondos\nCauciones\nCheques\nMonedas\nMostrar\n10\n25\n50\nCambiar Panel\nTodos\nLíderes\n☰\n▦\nPrecios simulados\nBuscar:\nSímbolo⇅\tÚltimo Operado⇅\tVariación Diaria⇅\tCantidad Compra⇅\tPrecio Compra⇅\tPrecio Venta⇅\tCantidad Venta⇅\tApertura⇅\tMínimo⇅\tMáximo⇅\tÚltimo Cierre⇅\tMonto Operado⇅\t\t\n\n🏛\nYMCJO\nON\nYPF ON Clase XXXIX\n\t99,40\t▲ 0,08%\t301\t99,35\t99,45\t491\t99,44\t99,35\t99,96\t99,32\t687.126\tComprar\t☆\n\n🏛\nPNDCO\nON\nPan American Energy ON\n\t101,20\t▼ -0,12%\t661\t101,14\t101,26\t851\t100,96\t100,67\t101,36\t101,32\t153.299\tComprar\t☆\n\nLas obligaciones negociables cotizan por cada 100 valores nominales (VN) y en dólares. El precio de la columna “Último Operado” no es el de un dólar invertido, y solo se puede comprar en múltiplos de la lámina mínima.\n\nPrecio Compra es lo máximo que alguien está dispuesto a pagar ahora; Precio Venta, lo mínimo que alguien pide. Una orden a mercado se ejecuta contra esas puntas, no contra el “Último Operado”."
+  },
+  {
+   "id": "10-ficha-ymcjo",
+   "file": "10-ficha-ymcjo.png",
+   "note": "YMCJO detail: coupon calendar and maturity",
+   "tour": {
+    "i": 9,
+    "n": 11,
+    "title": "Ya sos acreedor de YPF"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 527.4,
+     "y": 151.2,
+     "width": 94.3,
+     "height": 49.2
+    },
+    "nav-cotizaciones": {
+     "x": 621.7,
+     "y": 151.2,
+     "width": 126.7,
+     "height": 49.2
+    },
+    "ficha-head": {
+     "x": 335,
+     "y": 279.7,
+     "width": 1250,
+     "height": 55.6
+    },
+    "ficha-datos": {
+     "x": 335,
+     "y": 353.2,
+     "width": 615,
+     "height": 332.0
+    },
+    "ficha-renta": {
+     "x": 651.5,
+     "y": 482,
+     "width": 279.5,
+     "height": 76.1
+    },
+    "ficha-vto": {
+     "x": 651.5,
+     "y": 558.1,
+     "width": 279.5,
+     "height": 36.7
+    },
+    "ficha-tasa": {
+     "x": 651.5,
+     "y": 445.3,
+     "width": 279.5,
+     "height": 36.7
+    },
+    "ficha-lamina": {
+     "x": 651.5,
+     "y": 594.8,
+     "width": 279.5,
+     "height": 36.7
+    }
+   },
+   "text": "‹ Volver a Cotizaciones\nYMCJO\nYPF ON Clase XXXIX\nUS$ 99,40\n▲ 0,08%\nComprar\nVender\nDatos de cotizaciones\nPrecio Apertura\nUS$ 99,44\nÚltimo Cierre\nUS$ 99,32\nMáximo\nUS$ 99,96\nMínimo\nUS$ 99,35\nMonto operado\nUS$ 687.126\nFecha/Hora\n14/09/2026 11:42\nTasa anual\n8,50 %\nPago de renta\nSemestral · marzo y septiembre\nVencimiento\n2031\nLámina mínima\n100 VN\nCotiza por\ncada 100 VN\nGráfico intradiario\n\nSerie simulada de la rueda de hoy. En la plataforma real acá hay datos históricos y análisis técnico.\n\nCaja de Puntas\nCantidad Compra\tPrecio Compra\tPrecio Venta\tCantidad Venta\n817\tUS$ 99,35\tUS$ 99,45\t740\n239\tUS$ 99,34\tUS$ 99,46\t294\n861\tUS$ 99,33\tUS$ 99,47\t1.047\n283\tUS$ 99,32\tUS$ 99,48\t601\n905\tUS$ 99,31\tUS$ 99,49\t155\n\nSi comprás a mercado, pagás la mejor punta vendedora: US$ 99,45. Si vendés a mercado, cobrás la mejor punta compradora: US$ 99,35. Por eso el precio de tu orden no es el “último operado”.\n\nOperaciones Intradiarias\nHora\tPrecio\tMonto\tVolumen\n12:34\tUS$ 99,34\tUS$ 3.675\t37\n12:24\tUS$ 99,37\tUS$ 4.372\t44\n12:24\tUS$ 99,40\tUS$ 5.069\t51\n12:18\tUS$ 99,43\tUS$ 5.767\t58\n12:07\tUS$ 99,46\tUS$ 6.465\t65\n\nDeuda de YPF en dólares, con pago de interés dos veces por año.\n\nDatos históricos · Gráfico avanzado · Alarmas ›\nHerramientas de análisis"
+  }
+ ]
+}
