@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #s01-bg { position: absolute; inset: 0; background: #06083F; }
+        #s01-strip { position: absolute; left: 0; right: 0; top: 0; height: 84px; background: #E8B23A;
+          display: flex; align-items: center; justify-content: center; }
+        #s01-strip span { font-family: "IBM Plex Mono", monospace; font-size: 36px; font-weight: 700;
+          letter-spacing: 0.06em; color: #20160A; }
+        #s01-content { position: absolute; left: 200px; right: 200px; top: 250px; display: flex;
+          flex-direction: column; gap: 40px; }
+        #s01-eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 36px; letter-spacing: 0.05em;
+          color: #EEEDF8; }
+        #s01-title { font-size: 112px; line-height: 1.05; font-weight: 700; color: #F7F6FC; max-width: 1400px; }
+        #s01-mods { font-family: "IBM Plex Mono", monospace; font-size: 44px; font-weight: 700;
+          letter-spacing: 0.08em; color: #E8B23A; }
+        #s01-rule { width: 160px; height: 6px; background: #6439FF; border-radius: 3px; }
+
+      </style>
+      <div id="root" data-composition-id="s01" data-width="1920" data-height="1080">
+        <div id="s01-bg"></div>
+        <div id="s01-strip"><span>MODO CAPACITACIÓN · DINERO Y PRECIOS FICTICIOS</span></div>
+        <div id="s01-content">
+          <div id="s01-eyebrow">CAPACITACIÓN EN EL USO DE INVERTIR ONLINE (IOL)</div>
+          <div id="s01-title">Invertir en Obligaciones Negociables</div>
+          <div id="s01-rule"></div>
+          <div id="s01-mods">MÓDULO M4</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const ID = "s01";
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#" + ID + "-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.3);
+          tl.fromTo("#" + ID + "-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 0.6);
+          tl.fromTo("#" + ID + "-rule", { scaleX: 0 }, { scaleX: 1, transformOrigin: "0 50%", duration: 0.6, ease: "power2.inOut" }, 1.1);
+          tl.fromTo("#" + ID + "-mods", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.4);
+          tl.to("#" + ID + "-content", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.55);
+          tl.set({}, {}, 6);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

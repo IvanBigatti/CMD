@@ -26,7 +26,10 @@ class Captura:
 
     def __enter__(self):
         self._pw = sync_playwright().start()
-        self.browser = self._pw.chromium.launch(channel="msedge")
+        try:
+            self.browser = self._pw.chromium.launch(channel="msedge")
+        except Exception:  # Edge not installed: same Chromium engine
+            self.browser = self._pw.chromium.launch()
         self.page = self.browser.new_page(viewport={"width": 1920, "height": 1080}, device_scale_factor=2)
         self.page.goto(self.sim.as_uri())
         self.page.wait_for_timeout(800)
