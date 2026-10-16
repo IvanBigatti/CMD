@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>El ciclo completo de una inversión</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #F7F6FC; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Barlow", sans-serif; }
+      .guide { position: absolute; left: 0; right: 0; top: 960px; bottom: 0; display: flex;
+        align-items: center; justify-content: center; padding: 0 160px; z-index: 50; }
+      .guide-tx { display: block; font-size: 42px; line-height: 1.2; font-weight: 500; color: #F7F6FC;
+        text-align: center; }
+      #ring { position: absolute; left: 1640px; top: 2px; width: 80px; height: 80px; z-index: 60; }
+      #ring-disc { position: absolute; inset: 0; border-radius: 50%; background: #fff;
+        box-shadow: 0 4px 16px rgba(6, 8, 63, 0.18), 0 0 0 1px rgba(6, 8, 63, 0.08); }
+      .ring-dot { position: absolute; width: 15px; height: 15px; border-radius: 50%; background: #C9C7DD; }
+
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-dyhv" id="root" data-composition-id="main" data-start="0" data-duration="250" data-width="1920" data-height="1080">
+      <div data-hf-id="hf-yy4c" id="s01" data-composition-id="s01" data-composition-src="compositions/frames/s01.html" data-start="0" data-duration="6" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-ks1t" id="s02" data-composition-id="s02" data-composition-src="compositions/frames/s02.html" data-start="6" data-duration="22" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-fq4s" id="c1" data-composition-id="c1" data-composition-src="compositions/frames/c1.html" data-start="28" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-6rdx" id="k1" data-composition-id="k1" data-composition-src="compositions/frames/k1.html" data-start="30" data-duration="20" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-kvek" id="m1" data-composition-id="m1" data-composition-src="compositions/frames/m1.html" data-start="50" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-avuh" id="c2" data-composition-id="c2" data-composition-src="compositions/frames/c2.html" data-start="53" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-8nyv" id="k2" data-composition-id="k2" data-composition-src="compositions/frames/k2.html" data-start="55" data-duration="24" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-tmai" id="m2" data-composition-id="m2" data-composition-src="compositions/frames/m2.html" data-start="79" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-4gli" id="c3" data-composition-id="c3" data-composition-src="compositions/frames/c3.html" data-start="82" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-y9r8" id="k3" data-composition-id="k3" data-composition-src="compositions/frames/k3.html" data-start="84" data-duration="28" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-i6s5" id="m3" data-composition-id="m3" data-composition-src="compositions/frames/m3.html" data-start="112" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-y9ju" id="c4" data-composition-id="c4" data-composition-src="compositions/frames/c4.html" data-start="115" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-clxj" id="k4" data-composition-id="k4" data-composition-src="compositions/frames/k4.html" data-start="117" data-duration="18" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-yg8h" id="m4" data-composition-id="m4" data-composition-src="compositions/frames/m4.html" data-start="135" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-exa6" id="c5" data-composition-id="c5" data-composition-src="compositions/frames/c5.html" data-start="138" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-bthj" id="k5" data-composition-id="k5" data-composition-src="compositions/frames/k5.html" data-start="140" data-duration="22" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-giwo" id="m5" data-composition-id="m5" data-composition-src="compositions/frames/m5.html" data-start="162" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-twaz" id="c6" data-composition-id="c6" data-composition-src="compositions/frames/c6.html" data-start="165" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-0bqz" id="k6" data-composition-id="k6" data-composition-src="compositions/frames/k6.html" data-start="167" data-duration="22" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-r8ak" id="m6" data-composition-id="m6" data-composition-src="compositions/frames/m6.html" data-start="189" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-lc7g" id="c7" data-composition-id="c7" data-composition-src="compositions/frames/c7.html" data-start="192" data-duration="2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-52wy" id="k7" data-composition-id="k7" data-composition-src="compositions/frames/k7.html" data-start="194" data-duration="11" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-ji9s" id="m7" data-composition-id="m7" data-composition-src="compositions/frames/m7.html" data-start="205" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-z25m" id="s20" data-composition-id="s20" data-composition-src="compositions/frames/s20.html" data-start="208" data-duration="14" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-105s" id="s21" data-composition-id="s21" data-composition-src="compositions/frames/s21.html" data-start="222" data-duration="20" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-ry95" id="s22" data-composition-id="s22" data-composition-src="compositions/frames/s22.html" data-start="242" data-duration="8" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-3y6m" class="clip guide" id="s02-g0" data-start="6.5" data-duration="4.5" data-track-index="1"><span data-hf-id="hf-ibck" class="guide-tx">En este video vas a seguir la plata de punta a punta:</span></div>
+      <div data-hf-id="hf-mdan" class="clip guide" id="s02-g1" data-start="11" data-duration="5.5" data-track-index="1"><span data-hf-id="hf-8fg0" class="guide-tx">desde que entra a tu cuenta de inversión hasta que vuelve a tu banco.</span></div>
+      <div data-hf-id="hf-3of2" class="clip guide" id="s02-g2" data-start="16.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-o7ew" class="guide-tx">Vamos rápido, tramo por tramo.</span></div>
+      <div data-hf-id="hf-stvf" class="clip guide" id="s02-g3" data-start="20" data-duration="8" data-track-index="1"><span data-hf-id="hf-1i60" class="guide-tx">Si querés ver alguna parte con más detalle, tenés un video para cada una.</span></div>
+      <div data-hf-id="hf-unwl" class="clip guide" id="k1-g0" data-start="30.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-1csx" class="guide-tx">Todo empieza con una transferencia desde tu banco.</span></div>
+      <div data-hf-id="hf-2d2o" class="clip guide" id="k1-g1" data-start="34" data-duration="3" data-track-index="1"><span data-hf-id="hf-y69u" class="guide-tx">Solo se puede desde una cuenta a tu nombre:</span></div>
+      <div data-hf-id="hf-2nae" class="clip guide" id="k1-g2" data-start="37" data-duration="5" data-track-index="1"><span data-hf-id="hf-5crf" class="guide-tx">si probás con la de otra persona, el sistema la rechaza.</span></div>
+      <div data-hf-id="hf-sfeu" class="clip guide" id="k1-g3" data-start="42" data-duration="8" data-track-index="1"><span data-hf-id="hf-4crp" class="guide-tx">Confirmás, y la plata entra como disponible.</span></div>
+      <div data-hf-id="hf-atot" class="clip guide" id="k2-g0" data-start="55.5" data-duration="5.5" data-track-index="1"><span data-hf-id="hf-39dq" class="guide-tx">Una parte de esos pesos la pasás a dólares con el dólar MEP.</span></div>
+      <div data-hf-id="hf-sr30" class="clip guide" id="k2-g1" data-start="61" data-duration="4" data-track-index="1"><span data-hf-id="hf-3twu" class="guide-tx">Por dentro son dos operaciones con un bono:</span></div>
+      <div data-hf-id="hf-kxgh" class="clip guide" id="k2-g2" data-start="65" data-duration="5.5" data-track-index="1"><span data-hf-id="hf-3qsv" class="guide-tx">lo compra en pesos y lo vende en dólares.</span></div>
+      <div data-hf-id="hf-jmh7" class="clip guide" id="k2-g3" data-start="70.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-zkc1" class="guide-tx">Los dólares llegan en el día,</span></div>
+      <div data-hf-id="hf-9syi" class="clip guide" id="k2-g4" data-start="74" data-duration="5" data-track-index="1"><span data-hf-id="hf-66ys" class="guide-tx">y ahora tenés disponible en las dos monedas.</span></div>
+      <div data-hf-id="hf-ehqy" class="clip guide" id="k3-g0" data-start="84.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-9fsz" class="guide-tx">Con los pesos que quedan, comprás un CEDEAR.</span></div>
+      <div data-hf-id="hf-2opg" class="clip guide" id="k3-g1" data-start="88" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-051p" class="guide-tx">Usamos Coca-Cola solo como ejemplo.</span></div>
+      <div data-hf-id="hf-g0r2" class="clip guide" id="k3-g2" data-start="91.5" data-duration="4" data-track-index="1"><span data-hf-id="hf-q9sx" class="guide-tx">Antes de confirmar, el sistema te muestra el costo:</span></div>
+      <div data-hf-id="hf-xvpq" class="clip guide" id="k3-g3" data-start="95.5" data-duration="5" data-track-index="1"><span data-hf-id="hf-k77t" class="guide-tx">comisión, derechos de mercado e IVA.</span></div>
+      <div data-hf-id="hf-demv" class="clip guide" id="k3-g4" data-start="100.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-615k" class="guide-tx">Confirmás,</span></div>
+      <div data-hf-id="hf-qad9" class="clip guide" id="k3-g5" data-start="104" data-duration="8" data-track-index="1"><span data-hf-id="hf-3u0o" class="guide-tx">y esa plata deja de estar disponible: ahora es tu inversión.</span></div>
+      <div data-hf-id="hf-4ru1" class="clip guide" id="k4-g0" data-start="117.5" data-duration="5" data-track-index="1"><span data-hf-id="hf-x66q" class="guide-tx">En «Portafolio» seguís tu inversión:</span></div>
+      <div data-hf-id="hf-fwv3" class="clip guide" id="k4-g1" data-start="122.5" data-duration="4" data-track-index="1"><span data-hf-id="hf-u3k9" class="guide-tx">cuánto vale y cuánto ganás o perdés.</span></div>
+      <div data-hf-id="hf-wacc" class="clip guide" id="k4-g2" data-start="126.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-1tim" class="guide-tx">Lo podés mirar en pesos o en dólares,</span></div>
+      <div data-hf-id="hf-w2r8" class="clip guide" id="k4-g3" data-start="130" data-duration="5" data-track-index="1"><span data-hf-id="hf-rysc" class="guide-tx">y el resultado cambia según cómo lo midas.</span></div>
+      <div data-hf-id="hf-coux" class="clip guide" id="k5-g0" data-start="140.5" data-duration="4" data-track-index="1"><span data-hf-id="hf-b0af" class="guide-tx">Cuando vendés, la plata no vuelve enseguida.</span></div>
+      <div data-hf-id="hf-mjnq" class="clip guide" id="k5-g1" data-start="144.5" data-duration="5.5" data-track-index="1"><span data-hf-id="hf-1z5f" class="guide-tx">Con el plazo normal se cobra al día hábil siguiente,</span></div>
+      <div data-hf-id="hf-fnad" class="clip guide" id="k5-g2" data-start="150" data-duration="5.5" data-track-index="1"><span data-hf-id="hf-mpby" class="guide-tx">así que por ahora figura «a liquidar»:</span></div>
+      <div data-hf-id="hf-c67f" class="clip guide" id="k5-g3" data-start="155.5" data-duration="6.5" data-track-index="1"><span data-hf-id="hf-c5vy" class="guide-tx">la ves, pero todavía no la podés sacar.</span></div>
+      <div data-hf-id="hf-b01t" class="clip guide" id="k6-g0" data-start="167.5" data-duration="4" data-track-index="1"><span data-hf-id="hf-qi95" class="guide-tx">Si intentás retirarla ahora, no te deja.</span></div>
+      <div data-hf-id="hf-uvbl" class="clip guide" id="k6-g1" data-start="171.5" data-duration="3.5" data-track-index="1"><span data-hf-id="hf-hsgl" class="guide-tx">Tiene que pasar un día hábil;</span></div>
+      <div data-hf-id="hf-59pd" class="clip guide" id="k6-g2" data-start="175" data-duration="4.6" data-track-index="1"><span data-hf-id="hf-ds8o" class="guide-tx">en el simulador lo hacés con el botón «Avanzar 1 día hábil».</span></div>
+      <div data-hf-id="hf-g1pt" class="clip guide" id="k6-g3" data-start="179.6" data-duration="9.4" data-track-index="1"><span data-hf-id="hf-4klz" class="guide-tx">Y ahí está: la plata pasó de «a liquidar» a «disponible».</span></div>
+      <div data-hf-id="hf-m123" class="clip guide" id="k7-g0" data-start="194.5" data-duration="5" data-track-index="1"><span data-hf-id="hf-ytxs" class="guide-tx">Recién ahora la podés retirar, y solo a una cuenta a tu nombre.</span></div>
+      <div data-hf-id="hf-bl0m" class="clip guide" id="k7-g1" data-start="199.5" data-duration="5.5" data-track-index="1"><span data-hf-id="hf-i0el" class="guide-tx">La plata vuelve a tu banco.</span></div>
+      <div data-hf-id="hf-0vhc" class="clip guide" id="s20-g0" data-start="208.5" data-duration="6.5" data-track-index="1"><span data-hf-id="hf-rjex" class="guide-tx">Acá queda anotado todo lo que hiciste, paso por paso.</span></div>
+      <div data-hf-id="hf-yiv4" class="clip guide" id="s20-g1" data-start="215" data-duration="7" data-track-index="1"><span data-hf-id="hf-somv" class="guide-tx">El ciclo termina donde empezó: con la plata disponible.</span></div>
+      <div data-hf-id="hf-h5ux" class="clip" id="ring" data-start="6" data-duration="216" data-track-index="2"><div data-hf-id="hf-w8oj" id="ring-disc"><div data-hf-id="hf-p319" class="ring-dot" id="ring-d0" style="left:32.5px;top:6.5px"></div><div data-hf-id="hf-36t2" class="ring-dot" id="ring-d1" style="left:52.8px;top:16.3px"></div><div data-hf-id="hf-yeto" class="ring-dot" id="ring-d2" style="left:57.8px;top:38.3px"></div><div data-hf-id="hf-xxkn" class="ring-dot" id="ring-d3" style="left:43.8px;top:55.9px"></div><div data-hf-id="hf-kuy8" class="ring-dot" id="ring-d4" style="left:21.2px;top:55.9px"></div><div data-hf-id="hf-u1n0" class="ring-dot" id="ring-d5" style="left:7.2px;top:38.3px"></div><div data-hf-id="hf-n8dx" class="ring-dot" id="ring-d6" style="left:12.2px;top:16.3px"></div></div></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll(".guide").forEach(function (el) {
+        const s = parseFloat(el.dataset.start);
+        tl.fromTo(el.querySelector(".guide-tx"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, s);
+      });
+      tl.fromTo("#ring-d0", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.00);
+      tl.fromTo("#ring-d1", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.25);
+      tl.fromTo("#ring-d2", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.50);
+      tl.fromTo("#ring-d3", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.75);
+      tl.fromTo("#ring-d4", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.00);
+      tl.fromTo("#ring-d5", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.25);
+      tl.fromTo("#ring-d6", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.50);
+      tl.to("#ring-d0", { backgroundColor: "#E8B23A", duration: 0.3 }, 28.00);
+      tl.to("#ring-d1", { backgroundColor: "#E8B23A", duration: 0.3 }, 53.00);
+      tl.to("#ring-d0", { backgroundColor: "#6439FF", duration: 0.3 }, 53.00);
+      tl.to("#ring-d2", { backgroundColor: "#E8B23A", duration: 0.3 }, 82.00);
+      tl.to("#ring-d1", { backgroundColor: "#6439FF", duration: 0.3 }, 82.00);
+      tl.to("#ring-d3", { backgroundColor: "#E8B23A", duration: 0.3 }, 115.00);
+      tl.to("#ring-d2", { backgroundColor: "#6439FF", duration: 0.3 }, 115.00);
+      tl.to("#ring-d4", { backgroundColor: "#E8B23A", duration: 0.3 }, 138.00);
+      tl.to("#ring-d3", { backgroundColor: "#6439FF", duration: 0.3 }, 138.00);
+      tl.to("#ring-d5", { backgroundColor: "#E8B23A", duration: 0.3 }, 165.00);
+      tl.to("#ring-d4", { backgroundColor: "#6439FF", duration: 0.3 }, 165.00);
+      tl.to("#ring-d6", { backgroundColor: "#E8B23A", duration: 0.3 }, 192.00);
+      tl.to("#ring-d5", { backgroundColor: "#6439FF", duration: 0.3 }, 192.00);
+      tl.to("#ring-d0", { backgroundColor: "#E8B23A", duration: 0.3 }, 209.00);
+      tl.to("#ring-d1", { backgroundColor: "#E8B23A", duration: 0.3 }, 209.35);
+      tl.to("#ring-d2", { backgroundColor: "#E8B23A", duration: 0.3 }, 209.70);
+      tl.to("#ring-d3", { backgroundColor: "#E8B23A", duration: 0.3 }, 210.05);
+      tl.to("#ring-d4", { backgroundColor: "#E8B23A", duration: 0.3 }, 210.40);
+      tl.to("#ring-d5", { backgroundColor: "#E8B23A", duration: 0.3 }, 210.75);
+      tl.to("#ring-d6", { backgroundColor: "#E8B23A", duration: 0.3 }, 211.10);
+      tl.set({}, {}, 250);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

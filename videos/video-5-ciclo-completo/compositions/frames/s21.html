@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #s21-bg { position: absolute; inset: 0; background: #EEEDF8; }
+        #s21-eyebrow { position: absolute; left: 200px; top: 190px; font-family: "IBM Plex Mono", monospace;
+          font-size: 40px; font-weight: 700; letter-spacing: 0.08em; color: #6439FF; }
+        .s21-idea { position: absolute; left: 200px; right: 200px; top: 360px; display: flex; gap: 44px;
+          align-items: flex-start; opacity: 0; }
+        .s21-num { flex: none; width: 104px; height: 104px; border-radius: 50%; background: #E8B23A;
+          color: #20160A; font-size: 60px; font-weight: 700; display: flex; align-items: center;
+          justify-content: center; }
+        .s21-tx { font-size: 72px; line-height: 1.18; font-weight: 600; color: #06083F; padding-top: 6px; }
+        #s21-dots { position: absolute; left: 200px; bottom: 150px; display: flex; gap: 16px; }
+        .s21-dot { width: 18px; height: 18px; border-radius: 50%; background: rgba(6, 8, 63, 0.18); }
+
+      </style>
+      <div data-hf-id="hf-cg85" id="root" data-composition-id="s21" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-7w2t" id="s21-bg"></div>
+        <div data-hf-id="hf-9ks2" id="s21-eyebrow">PARA LLEVARTE</div>
+        <div data-hf-id="hf-uqu5" class="s21-idea" id="s21-idea-0"><div data-hf-id="hf-dre2" class="s21-num">1</div><div data-hf-id="hf-tf1z" class="s21-tx">La plata pasa por tres estados: disponible, comprometida y a liquidar.</div></div>
+        <div data-hf-id="hf-tz6c" class="s21-idea" id="s21-idea-1"><div data-hf-id="hf-e5p3" class="s21-num">2</div><div data-hf-id="hf-61r5" class="s21-tx">Vender y cobrar no son lo mismo: entre uno y otro pasa un día hábil.</div></div>
+        <div data-hf-id="hf-2n27" class="s21-idea" id="s21-idea-2"><div data-hf-id="hf-ek04" class="s21-num">3</div><div data-hf-id="hf-e53a" class="s21-tx">Este recorrido no incluye las obligaciones negociables: eso está en el Video 3.</div></div>
+        <div data-hf-id="hf-579k" id="s21-dots"><div data-hf-id="hf-z5i9" class="s21-dot" id="s21-dot-0"></div><div data-hf-id="hf-w68o" class="s21-dot" id="s21-dot-1"></div><div data-hf-id="hf-71qb" class="s21-dot" id="s21-dot-2"></div></div>
+      </div>
+      <script>
+        (function () {
+          const ID = "s21";
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#" + ID + "-eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.2);
+          tl.fromTo("#" + ID + "-idea-0", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.80);
+          tl.to("#" + ID + "-dot-0", { backgroundColor: "#6439FF", duration: 0.3 }, 0.80);
+          tl.to("#" + ID + "-idea-0", { opacity: 0, y: -16, duration: 0.45, ease: "power1.in" }, 6.53);
+          tl.fromTo("#" + ID + "-idea-1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 7.13);
+          tl.to("#" + ID + "-dot-1", { backgroundColor: "#6439FF", duration: 0.3 }, 7.13);
+          tl.to("#" + ID + "-idea-1", { opacity: 0, y: -16, duration: 0.45, ease: "power1.in" }, 12.87);
+          tl.fromTo("#" + ID + "-idea-2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 13.47);
+          tl.to("#" + ID + "-dot-2", { backgroundColor: "#6439FF", duration: 0.3 }, 13.47);
+          tl.set({}, {}, 20);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

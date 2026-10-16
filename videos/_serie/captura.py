@@ -16,12 +16,13 @@ BASE_WATCH = {
 }
 
 class Captura:
-    def __init__(self, sim, out, watch):
+    def __init__(self, sim, out, watch, all_tour=False):
         self.sim = pathlib.Path(sim).resolve()
         self.out = pathlib.Path(out).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
         self.watch = dict(BASE_WATCH, **watch)
         self.shots = []
+        self.all_tour = all_tour  # registrar también todos los elementos [data-tour] visibles
 
     def __enter__(self):
         self._pw = sync_playwright().start()
@@ -54,15 +55,25 @@ class Captura:
                 out[k] = {kk: round(v, 1) for kk, v in b.items()}
         return out
 
-    def shot(self, name, note=""):
+    def shot(self, name, note="", full_page=False):
         p = self.page
         p.wait_for_timeout(900)
         p.add_style_tag(content="#tip,#ring{visibility:hidden!important}")
-        p.screenshot(path=str(self.out / f"{name}.png"))
+        p.screenshot(path=str(self.out / f"{name}.png"), full_page=full_page)
         text = p.evaluate("() => { const m=document.querySelector('main'); const d=document.querySelector('#modal:not([hidden]) .sheet'); return (d? 'MODAL: '+d.innerText+' || ' : '') + (m? m.innerText.slice(0,1800):''); }")
         tour = p.evaluate("() => (typeof T!=='undefined' && T.tour) ? {i:T.i, n:T.tour.steps.length, title:(T.tour.steps[T.i]||{}).title} : null")
+        boxes = self.boxes()
+        if self.all_tour:
+            for k, v in p.evaluate("""() => { const o = {};
+                document.querySelectorAll('[data-tour]').forEach(el => { const r = el.getBoundingClientRect();
+                  if (r.width > 0 && r.height > 0 && el.offsetParent !== null) o['t:' + el.dataset.tour] =
+                    {x: Math.round(r.x*10)/10, y: Math.round(r.y*10)/10, width: Math.round(r.width*10)/10, height: Math.round(r.height*10)/10}; });
+                return o; }""").items():
+                boxes.setdefault(k, v)
+        saldo = p.evaluate("() => (typeof ST !== 'undefined') ? JSON.parse(JSON.stringify(ST.saldo)) : null")
+        saldo_tx = p.evaluate("() => (typeof saldosHTML === 'function') ? (d => { d.innerHTML = saldosHTML(); return d.innerText; })(document.createElement('div')) : ''")
         self.shots.append({"id": name, "file": f"{name}.png", "note": note, "tour": tour,
-                           "boxes": self.boxes(), "text": text})
+                           "boxes": boxes, "saldo": saldo, "saldo_tx": saldo_tx, "text": text})
         p.add_style_tag(content="#tip,#ring{visibility:visible!important}")
         print("shot", name, tour)
 

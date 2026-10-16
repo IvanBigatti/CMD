@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #s02-bg { position: absolute; inset: 0; background: #F7F6FC; }
+        #s02-frame { position: absolute; left: 200px; top: 84px; width: 1520px; height: 855px;
+          overflow: hidden; border-radius: 14px; background: #fff;
+          box-shadow: 0 10px 36px rgba(6, 8, 63, 0.16), 0 0 0 1px rgba(6, 8, 63, 0.08); }
+        #s02-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+        .s02-shot { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; opacity: 0; }
+        .s02-ring { position: absolute; border-radius: 50%; border: 5px solid #6439FF;
+          background: rgba(100, 57, 255, 0.14); opacity: 0; }
+        .s02-mark { position: absolute; border-radius: 10px; border: 4px solid #6439FF; opacity: 0; }
+        .s02-chip { position: absolute; left: 200px; top: 14px; height: 60px; padding: 0 22px;
+          display: flex; align-items: center; border-radius: 8px; background: #E8B23A;
+          color: #20160A; font-size: 36px; font-weight: 600; white-space: nowrap; opacity: 0; }
+        #s02-band { position: absolute; left: 0; right: 0; top: 960px; bottom: 0; background: #06083F; }
+        .s02-card { position: absolute; left: 960px; top: 204px; width: 720px; padding: 30px 32px 24px;
+          background: #fff; border-radius: 16px; opacity: 0; z-index: 5;
+          box-shadow: 0 18px 50px rgba(6, 8, 63, 0.22), 0 0 0 1px rgba(6, 8, 63, 0.08); }
+        .s02-card-t { font-family: "IBM Plex Mono", monospace; font-size: 36px; font-weight: 700;
+          letter-spacing: 0.06em; color: #06083F; margin-bottom: 8px; }
+        .s02-row { display: flex; align-items: center; gap: 18px; margin-top: 12px; padding: 14px 18px;
+          border-radius: 12px; border: 3px solid transparent; }
+        .s02-dot { flex: none; width: 20px; height: 20px; border-radius: 50%; }
+        .s02-lbl { flex: 1; font-size: 40px; font-weight: 600; }
+        .s02-val { font-size: 40px; font-weight: 600; color: #06083F; }
+
+      </style>
+      <div data-hf-id="hf-m6ce" id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-i8qa" id="s02-bg"></div>
+        <div data-hf-id="hf-l7yi" id="s02-frame">
+          <div data-hf-id="hf-cd6z" id="s02-cam" data-layout-allow-overflow>
+          <img data-hf-id="hf-rqst" class="s02-shot" id="s02-img-0" src="assets/captures/00-a-el-ciclo-completo.png" alt="" />
+            <div data-hf-id="hf-fyjl" id="s02-fx"></div>
+          </div>
+        </div>
+        <div data-hf-id="hf-gp30" id="s02-chips"></div>
+        <div data-hf-id="hf-jnpt" id="s02-overlay"></div>
+        <div data-hf-id="hf-18ey" id="s02-band"></div>
+      </div>
+      <script>
+        (function () {
+          const ID = "s02";
+          const CFG = {"shots": ["00-a-el-ciclo-completo"], "events": [["show", 0, "00-a-el-ciclo-completo"], ["cam", 0, "full", null, 0.01], ["cam", 1.0, [380, 284.5, 570, 259.9], 1.75], ["mark", 2.2, [783, 378, 141, 66]], ["cam", 12.0, "full"]], "FW": 1520, "FH": 855};
+          const tl = gsap.timeline({ paused: true });
+          const cam = document.getElementById(ID + "-cam");
+          const fx = document.getElementById(ID + "-fx");
+          const chips = document.getElementById(ID + "-chips");
+          const overlay = document.getElementById(ID + "-overlay");
+          const base = CFG.FW / 1920;
+          function frameFor(target, zoom) {
+            if (target === "full") { target = [288, 16, 1344, 756]; zoom = zoom || 1920 / 1344; }
+            const [bx, by, bw, bh] = target;
+            const z = zoom || Math.max(1, Math.min(2.5, Math.min(0.62 * 1920 / bw, 0.62 * 1080 / bh)));
+            const s = base * z;
+            let x = CFG.FW / 2 - (bx + bw / 2) * s;
+            let y = CFG.FH / 2 - (by + bh / 2) * s;
+            x = Math.min(0, Math.max(CFG.FW - 1920 * s, x));
+            y = Math.min(0, Math.max(CFG.FH - 1080 * s, y));
+            return { x, y, scale: s };
+          }
+          gsap.set(cam, { transformOrigin: "0 0", x: 0, y: 0, scale: base });
+          let current = null, z = 1, n = 0, chipOn = null;
+          CFG.events.forEach(function (ev) {
+            const type = ev[0], t = ev[1];
+            if (type === "show") {
+              const img = document.getElementById(ID + "-img-" + CFG.shots.indexOf(ev[2]));
+              img.style.zIndex = String(++z);
+              if (current === null) tl.set(img, { opacity: 1 }, 0);
+              else {
+                tl.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "none" }, t);
+                tl.set(current, { opacity: 0 }, t + 0.3);
+              }
+              current = img;
+            } else if (type === "cam") {
+              const f = frameFor(ev[2], ev[3]);
+              const d = ev[4] === undefined ? 1.1 : ev[4];
+              if (d <= 0.02) tl.set(cam, f, t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
+            } else if (type === "click") {
+              const [bx, by, bw, bh] = ev[2];
+              const r = Math.max(30, Math.min(56, bh * 0.9));
+              const el = document.createElement("div");
+              el.className = ID + "-ring"; el.id = ID + "-fx-" + (n++);
+              Object.assign(el.style, { left: (bx + bw / 2 - r) + "px", top: (by + bh / 2 - r) + "px",
+                width: 2 * r + "px", height: 2 * r + "px", zIndex: "500" });
+              fx.appendChild(el);
+              tl.fromTo(el, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }, t);
+              tl.to(el, { opacity: 0, scale: 1.15, duration: 0.45, ease: "power1.in" }, t + 0.55);
+            } else if (type === "mark") {
+              const [bx, by, bw, bh] = ev[2];
+              const el = document.createElement("div");
+              el.className = ID + "-mark"; el.id = ID + "-fx-" + (n++);
+              Object.assign(el.style, { left: (bx - 6) + "px", top: (by - 6) + "px",
+                width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
+              fx.appendChild(el);
+              tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+            } else if (type === "card") {
+              // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
+              const o = ev[2];
+              const card = document.createElement("div");
+              card.className = ID + "-card"; card.id = ID + "-card-" + (n++);
+              const ttl = document.createElement("div");
+              ttl.className = ID + "-card-t"; ttl.textContent = o.title; card.appendChild(ttl);
+              const rows = o.rows.map(function (r, i) {
+                const row = document.createElement("div");
+                row.className = ID + "-row"; row.id = card.id + "-r" + i;
+                const dot = document.createElement("span"); dot.className = ID + "-dot"; dot.style.background = r[2];
+                const lb = document.createElement("span"); lb.className = ID + "-lbl"; lb.style.color = r[2]; lb.textContent = r[0];
+                const vl = document.createElement("span"); vl.className = ID + "-val"; vl.textContent = r[1];
+                row.appendChild(dot); row.appendChild(lb); row.appendChild(vl); card.appendChild(row);
+                return row;
+              });
+              overlay.appendChild(card);
+              tl.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, t);
+              rows.forEach(function (row, i) {
+                tl.fromTo(row, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, t + 0.35 + i * 0.45);
+              });
+              if (o.hi !== undefined) {
+                const c = o.rows[o.hi][2];
+                tl.to(rows[o.hi], { borderColor: c, backgroundColor: c + "14", duration: 0.4, ease: "power1.out" }, o.tHi);
+                rows.forEach(function (row, i) { if (i !== o.hi) tl.to(row, { opacity: 0.45, duration: 0.4 }, o.tHi); });
+              }
+            } else if (type === "label" || type === "label2") {
+              const el = document.createElement("div");
+              el.className = ID + "-chip"; el.id = ID + "-chip-" + (n++);
+              el.textContent = ev[2];
+              chips.appendChild(el);
+              if (chipOn) tl.to(chipOn, { opacity: 0, duration: 0.2, ease: "none" }, t - 0.2);
+              if (type === "label2") tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, t - 0.2);
+              else tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, t);
+              chipOn = el;
+            }
+          });
+          tl.set({}, {}, 22);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

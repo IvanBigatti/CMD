@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #m1-bg { position: absolute; inset: 0; background: #F7F6FC; }
+        #m1-eyebrow { position: absolute; left: 200px; top: 120px; font-family: "IBM Plex Mono", monospace;
+          font-size: 36px; font-weight: 700; letter-spacing: 0.06em; color: #6439FF; }
+        #m1-title { position: absolute; left: 200px; top: 178px; font-size: 80px; font-weight: 700; color: #06083F; }
+        #m1-table { position: absolute; left: 200px; right: 200px; top: 340px; }
+        .m1-tr { display: grid; grid-template-columns: 1fr 470px 470px; align-items: center; height: 124px;
+          border-bottom: 2px solid rgba(6, 8, 63, 0.10); }
+        .m1-th { font-family: "IBM Plex Mono", monospace; font-size: 36px; font-weight: 700; letter-spacing: 0.06em;
+          color: #3A3D6E; text-align: right; padding-right: 28px; }
+        .m1-lbl { display: flex; align-items: center; gap: 22px; font-size: 52px; font-weight: 600; }
+        .m1-dot { width: 24px; height: 24px; border-radius: 50%; }
+        .m1-cell { justify-self: end; font-size: 52px; font-weight: 600; color: #06083F; padding: 10px 26px;
+          border-radius: 14px; border: 4px solid transparent; }
+        .m1-cell.cero { color: #5A5C80; font-weight: 500; }
+
+      </style>
+      <div data-hf-id="hf-hqel" id="root" data-composition-id="m1" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-4and" id="m1-bg"></div>
+        <div data-hf-id="hf-rgyp" id="m1-eyebrow">CAPÍTULO 1 · INGRESO</div>
+        <div data-hf-id="hf-0126" id="m1-title">¿Dónde está tu plata?</div>
+        <div data-hf-id="hf-2yy4" id="m1-table">
+          <div data-hf-id="hf-f1h4" class="m1-tr" id="m1-head"><div data-hf-id="hf-yeow"></div><div data-hf-id="hf-rd8y" class="m1-th">EN PESOS</div><div data-hf-id="hf-zjlo" class="m1-th">EN DÓLARES</div></div>
+          <div data-hf-id="hf-e158" class="m1-tr" id="m1-r0"><div data-hf-id="hf-u05v" class="m1-lbl" style="color:#0A7A57"><span data-hf-id="hf-x4k7" class="m1-dot" style="background:#0A7A57"></span>Disponible</div><div data-hf-id="hf-64k7" class="m1-cell" id="m1-c00">$ 600.000,00</div><div data-hf-id="hf-cbln" class="m1-cell cero" id="m1-c01">—</div></div>
+          <div data-hf-id="hf-h0et" class="m1-tr" id="m1-r1"><div data-hf-id="hf-eqh4" class="m1-lbl" style="color:#8A5B07"><span data-hf-id="hf-1n2d" class="m1-dot" style="background:#8A5B07"></span>Comprometido</div><div data-hf-id="hf-wqxd" class="m1-cell cero" id="m1-c10">—</div><div data-hf-id="hf-avv2" class="m1-cell cero" id="m1-c11">—</div></div>
+          <div data-hf-id="hf-kyiu" class="m1-tr" id="m1-r2"><div data-hf-id="hf-kyar" class="m1-lbl" style="color:#6439FF"><span data-hf-id="hf-z718" class="m1-dot" style="background:#6439FF"></span>A liquidar</div><div data-hf-id="hf-hwga" class="m1-cell cero" id="m1-c20">—</div><div data-hf-id="hf-ebwt" class="m1-cell cero" id="m1-c21">—</div></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const ID = "m1";
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo(["#" + ID + "-eyebrow", "#" + ID + "-title"], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", stagger: 0.08 }, 0.05);
+          tl.fromTo(["#" + ID + "-head", "#" + ID + "-r0", "#" + ID + "-r1", "#" + ID + "-r2"], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 0.25);
+          tl.to("#" + ID + "-c00", { borderColor: "#0A7A57", backgroundColor: "#0A7A571A", duration: 0.35 }, 0.9);
+          tl.set({}, {}, 3);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

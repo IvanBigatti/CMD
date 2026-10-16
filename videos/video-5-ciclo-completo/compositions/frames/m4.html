@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #m4-bg { position: absolute; inset: 0; background: #F7F6FC; }
+        #m4-eyebrow { position: absolute; left: 200px; top: 120px; font-family: "IBM Plex Mono", monospace;
+          font-size: 36px; font-weight: 700; letter-spacing: 0.06em; color: #6439FF; }
+        #m4-title { position: absolute; left: 200px; top: 178px; font-size: 80px; font-weight: 700; color: #06083F; }
+        #m4-table { position: absolute; left: 200px; right: 200px; top: 340px; }
+        .m4-tr { display: grid; grid-template-columns: 1fr 470px 470px; align-items: center; height: 124px;
+          border-bottom: 2px solid rgba(6, 8, 63, 0.10); }
+        .m4-th { font-family: "IBM Plex Mono", monospace; font-size: 36px; font-weight: 700; letter-spacing: 0.06em;
+          color: #3A3D6E; text-align: right; padding-right: 28px; }
+        .m4-lbl { display: flex; align-items: center; gap: 22px; font-size: 52px; font-weight: 600; }
+        .m4-dot { width: 24px; height: 24px; border-radius: 50%; }
+        .m4-cell { justify-self: end; font-size: 52px; font-weight: 600; color: #06083F; padding: 10px 26px;
+          border-radius: 14px; border: 4px solid transparent; }
+        .m4-cell.cero { color: #5A5C80; font-weight: 500; }
+
+      </style>
+      <div data-hf-id="hf-jkw6" id="root" data-composition-id="m4" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-4kny" id="m4-bg"></div>
+        <div data-hf-id="hf-u5d3" id="m4-eyebrow">CAPÍTULO 4 · TENENCIA</div>
+        <div data-hf-id="hf-jtet" id="m4-title">¿Dónde está tu plata?</div>
+        <div data-hf-id="hf-zg95" id="m4-table">
+          <div data-hf-id="hf-uolm" class="m4-tr" id="m4-head"><div data-hf-id="hf-yeow"></div><div data-hf-id="hf-12p1" class="m4-th">EN PESOS</div><div data-hf-id="hf-xxy3" class="m4-th">EN DÓLARES</div></div>
+          <div data-hf-id="hf-hnmi" class="m4-tr" id="m4-r0"><div data-hf-id="hf-38o2" class="m4-lbl" style="color:#0A7A57"><span data-hf-id="hf-lwbg" class="m4-dot" style="background:#0A7A57"></span>Disponible</div><div data-hf-id="hf-q58b" class="m4-cell" id="m4-c00">$ 87.813,10</div><div data-hf-id="hf-75ye" class="m4-cell" id="m4-c01">US$ 202,59</div></div>
+          <div data-hf-id="hf-llqj" class="m4-tr" id="m4-r1"><div data-hf-id="hf-wax5" class="m4-lbl" style="color:#8A5B07"><span data-hf-id="hf-jpci" class="m4-dot" style="background:#8A5B07"></span>Comprometido</div><div data-hf-id="hf-f364" class="m4-cell" id="m4-c10">$ 212.347,78</div><div data-hf-id="hf-6mey" class="m4-cell cero" id="m4-c11">—</div></div>
+          <div data-hf-id="hf-aq8w" class="m4-tr" id="m4-r2"><div data-hf-id="hf-zuma" class="m4-lbl" style="color:#6439FF"><span data-hf-id="hf-xsjj" class="m4-dot" style="background:#6439FF"></span>A liquidar</div><div data-hf-id="hf-jzwm" class="m4-cell cero" id="m4-c20">—</div><div data-hf-id="hf-dy2x" class="m4-cell cero" id="m4-c21">—</div></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const ID = "m4";
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo(["#" + ID + "-eyebrow", "#" + ID + "-title"], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", stagger: 0.08 }, 0.05);
+          tl.fromTo(["#" + ID + "-head", "#" + ID + "-r0", "#" + ID + "-r1", "#" + ID + "-r2"], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 0.25);
+          tl.to("#" + ID + "-c10", { borderColor: "#8A5B07", backgroundColor: "#8A5B071A", duration: 0.35 }, 0.9);
+          tl.set({}, {}, 3);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
