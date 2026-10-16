@@ -54,7 +54,7 @@
       <script>
         (function () {
           const ID = "s05";
-          const CFG = {"shots": ["04-orden"], "events": [["show", 0, "04-orden"], ["cam", 0, [592, 412.5, 552, 84.0], 2.2, 0.01], ["cam", 0.6, [592, 412.5, 552, 186.70000000000005], 1.9], ["label", 1.0, "La cantidad va en VN, no en dólares"], ["mark", 1.6, [954, 511.5, 190, 39.3]], ["mark", 6.0, [592, 458.9, 552, 37.6]], ["label2", 10.5, "1.000 VN a US$ 99,45 cada 100 VN ≈ US$ 994,55 + costos"], ["mark", 11.0, [592, 458.9, 552, 37.6]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["04-orden"], "events": [["show", 0, "04-orden"], ["cam", 0, [592, 412.5, 552, 84.0], 2.2, 0.01], ["cam", 0.3, [592, 412.5, 552, 186.70000000000005], 1.9], ["label", 0.8, "La cantidad va en VN, no en dólares"], ["mark", 1.0, [954, 511.5, 190, 39.3]], ["mark", 5.2, [592, 458.9, 552, 37.6]], ["label2", 11.7, "1.000 VN a US$ 99,45 cada 100 VN ≈ US$ 994,55 + costos"], ["mark", 11.9, [592, 458.9, 552, 37.6]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -89,7 +89,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -108,7 +108,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -146,7 +146,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 26);
+          tl.set({}, {}, 20.5);
           window.__timelines[ID] = tl;
         })();
       </script>

@@ -5,7 +5,12 @@ este archivo: para reajustar el video a la grabación de voz, se editan acá y s
 vuelve a correr `python tools/build.py`.
 Cajas de los elementos: assets/captures/manifest.json (px CSS de la captura 1920x1080).
 """
-import json, pathlib, html
+import json, pathlib, html, sys
+
+ROOT_ = pathlib.Path(__file__).resolve().parent.parent
+SERIE = ROOT_.parent / "_serie"
+sys.path.insert(0, str(SERIE))
+import voz  # series voice/music helpers (normalize, cut, music bed, carve)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MAN = json.loads((ROOT / "assets/captures/manifest.json").read_text(encoding="utf-8"))
@@ -34,132 +39,166 @@ COSTS_VIEW = [762, 410, 396, 96]     # frames the cost rows and keeps the profil
 # Eventos de pantalla: show (cambia captura), cam (encuadre: "full" o caja [+ zoom]),
 # click (círculo sobre la caja), mark (recuadro sobre la caja), label / label2 (chip de texto).
 # guide: (t, dur, texto) — texto a grabar, en la banda inferior.
+VOICE_SRC = ROOT_ / "audio/voz.mp3"
+# Same music bed as the rest of the series (HeyGen library, ca26cc0c), chosen for video 1.
+MUSICA_ORIGEN = ROOT_.parent / "video-1-ingreso-mep/musica/candidatas/ca26cc0c.mp3"
+
+
+def at(v, s):
+    """Scene time of second `s` of the recording, for a scene whose voice is v=(from, to, lead)."""
+    return round(s - v[0] + v[2], 2)
+
+
+def say(v, *phrases):
+    """Subtitles from (from, to, text) in recording seconds; each holds until the next phrase (max +1.2 s)."""
+    out = []
+    for i, (f, t, tx) in enumerate(phrases):
+        nxt = phrases[i + 1][0] if i + 1 < len(phrases) else None
+        end = t + 1.2 if nxt is None else min(nxt, t + 1.2)
+        out.append((at(v, f), round(end - f, 2), tx))
+    return out
+
+
+# Voice cuts: (from, to, lead) in seconds of audio/voz.mp3, measured with audio/transcript.json (Parakeet)
+# and the silences of the recording.
+V1 = (1.6, 3.6, 1.2)        # «Comprar mi primer CEDEAR»
+V2 = (4.8, 13.1, 0.6)
+VC1 = (15.6, 18.2, 0.3)     # «Leer la ficha y armar la orden»
+V3 = (18.4, 25.3, 0.5)
+V4 = (29.0, 42.3, 0.6)
+V5 = (45.8, 54.4, 0.5)
+V6 = (58.3, 77.5, 0.8)
+VC2 = (79.6, 81.6, 0.3)     # «Confirmar y seguir tu inversión»
+V7 = (82.2, 95.0, 1.4)
+V8 = (98.9, 114.3, 0.5)
+V9 = (115.9, 128.2, 0.4)    # «Para llevarte» + the three ideas
+V10 = (131.3, 132.9, 0.3)   # «Ahora hacelo vos»
+
 SCENES = [
- dict(id="s01", kind="open", dur=6),
- dict(id="s02", kind="screen", name="Introducción", dur=14, events=[
+ dict(id="s01", kind="open", dur=6, voice=V1),
+ dict(id="s02", kind="screen", name="Introducción", dur=11, voice=V2, events=[
     ("show", 0, "00-inicio-900k"), ("cam", 0, "full"),
-    ("label", 0.8, "CEDEAR: Certificado de Depósito Argentino"),
-    ("cam", 1.5, box("00-inicio-900k", "cuenta-arg"), 1.75),
-    ("mark", 2.5, box("00-inicio-900k", "bal-ars")),
-    ("label", 7.0, "Representa acciones de una empresa del exterior"),
-  ], guide=[
-    (0.5, 5.5, "Tenés novecientos mil pesos para practicar."),
-    (6.0, 8.0, "Con un CEDEAR comprás, en pesos, una parte de una empresa del exterior."),
-  ]),
- dict(id="c1", kind="chapter", dur=3, num=1, title="Leer la ficha y armar la orden"),
- dict(id="s03", kind="screen", name="Buscar el CEDEAR", dur=14, events=[
+    ("cam", 0.5, box("00-inicio-900k", "cuenta-arg"), 1.75),
+    ("mark", at(V2, 5.4), box("00-inicio-900k", "bal-ars")),
+    ("label", at(V2, 9.3), "CEDEAR: Certificado de Depósito Argentino"),
+  ], guide=say(V2,
+    (4.9, 7.3, "Tenés novecientos mil pesos para practicar."),
+    (9.3, 13.0, "Con un CEDEAR comprás, en pesos, una parte de una empresa del exterior."),
+  )),
+ dict(id="c1", kind="chapter", dur=3.4, num=1, title="Leer la ficha y armar la orden", voice=VC1),
+ dict(id="s03", kind="screen", name="Buscar el CEDEAR", dur=9.5, voice=V3, events=[
     ("show", 0, "01-inicio-cotizaciones"), ("cam", 0, "full"),
-    ("cam", 0.5, union(box("01-inicio-cotizaciones", "nav-portafolio"), box("01-inicio-cotizaciones", "nav-cotizaciones")), 2.2, 0.9),
-    ("click", 1.8, box("01-inicio-cotizaciones", "nav-cotizaciones")),
-    ("show", 2.5, "02-mercado"), ("cam", 2.5, "full", None, 0.01),
-    ("cam", 3.0, box("02-mercado", "tab-cedears"), 2.2, 0.8),
-    ("click", 4.2, box("02-mercado", "tab-cedears")),
-    ("show", 4.9, "03-mercado-cedears"),
-    ("cam", 5.3, box("03-mercado-cedears", "inst-KO"), 1.25),
-    ("mark", 6.0, box("03-mercado-cedears", "inst-KO")),
-    ("click", 12.6, box("03-mercado-cedears", "inst-KO")),
-  ], guide=[
-    (0.5, 5.5, "Entrá a «Cotizaciones», pestaña CEDEARs, y elegí Coca-Cola."),
-    (6.0, 8.0, "Es solo un ejemplo: el proceso es igual con cualquiera."),
-  ]),
- dict(id="s04", kind="screen", name="El ratio", dur=22, events=[
+    ("cam", 0.2, union(box("01-inicio-cotizaciones", "nav-portafolio"), box("01-inicio-cotizaciones", "nav-cotizaciones")), 2.2, 0.7),
+    ("click", at(V3, 19.2), box("01-inicio-cotizaciones", "nav-cotizaciones")),
+    ("show", at(V3, 19.8), "02-mercado"), ("cam", at(V3, 19.8), "full", None, 0.01),
+    ("cam", at(V3, 19.9), box("02-mercado", "tab-cedears"), 2.2, 0.6),
+    ("click", at(V3, 20.5), box("02-mercado", "tab-cedears")),
+    ("show", at(V3, 21.1), "03-mercado-cedears"),
+    ("cam", at(V3, 21.1), box("03-mercado-cedears", "inst-KO"), 1.25, 0.7),
+    ("mark", at(V3, 21.5), box("03-mercado-cedears", "inst-KO")),
+    ("click", at(V3, 25.0), box("03-mercado-cedears", "inst-KO")),
+  ], guide=say(V3,
+    (18.6, 21.9, "Entrá a «Cotizaciones», pestaña CEDEARs, y elegí Coca-Cola."),
+    (22.7, 25.2, "Es solo un ejemplo: el proceso es igual con cualquiera."),
+  )),
+ dict(id="s04", kind="screen", name="El ratio", dur=17, voice=V4, events=[
     ("show", 0, "06-ficha-comprar"), ("cam", 0, "full", None, 0.01),
-    ("cam", 0.6, box("06-ficha-comprar", "ficha-datos"), 2.0),
-    ("mark", 2.0, box("06-ficha-comprar", "ficha-ratio")),
-    ("label", 9.0, "Precio en pesos = precio en dólares ÷ ratio × tipo de cambio"),
-    ("mark", 11.0, box("06-ficha-comprar", "ficha-pu")),
-    ("mark", 15.0, box("06-ficha-comprar", "ficha-tc")),
-    ("cam", 17.5, union(box("06-ficha-comprar", "ficha-head"), box("06-ficha-comprar", "ficha-datos")), 1.4),
-    ("label2", 18.0, "US$ 71,20 ÷ 5 × $ 1.480 = $ 21.075,20"),
-    ("mark", 18.5, box("06-ficha-comprar", "ficha-precio")),
-  ], guide=[
-    (0.5, 8.5, "Un CEDEAR no es una acción entera: en Coca-Cola, cinco CEDEARs equivalen a una acción."),
-    (9.0, 6.0, "Por eso el precio en pesos es el precio en dólares, dividido por el ratio"),
-    (15.0, 7.0, "y multiplicado por el tipo de cambio."),
-  ]),
- dict(id="s05", kind="screen", name="Dos precios", dur=16, events=[
+    ("cam", 0.3, box("06-ficha-comprar", "ficha-datos"), 2.0),
+    ("mark", at(V4, 32.2), box("06-ficha-comprar", "ficha-ratio")),
+    ("label", at(V4, 35.8), "Precio en pesos = precio en dólares ÷ ratio × tipo de cambio"),
+    ("mark", at(V4, 38.2), box("06-ficha-comprar", "ficha-pu")),
+    ("mark", at(V4, 41.5), box("06-ficha-comprar", "ficha-tc")),
+    ("cam", at(V4, 42.6), union(box("06-ficha-comprar", "ficha-head"), box("06-ficha-comprar", "ficha-datos")), 1.4),
+    ("label2", at(V4, 42.8), "US$ 71,20 ÷ 5 × $ 1.480 = $ 21.075,20"),
+    ("mark", at(V4, 43.2), box("06-ficha-comprar", "ficha-precio")),
+  ], guide=say(V4,
+    (29.3, 34.1, "Un CEDEAR no es una acción entera: en Coca-Cola, cinco CEDEARs equivalen a una acción."),
+    (35.8, 39.7, "Por eso el precio en pesos es el precio en dólares, dividido por el ratio"),
+    (40.3, 42.3, "y multiplicado por el tipo de cambio."),
+  )),
+ dict(id="s05", kind="screen", name="Dos precios", dur=11, voice=V5, events=[
     ("show", 0, "05-ficha-puntas"), ("cam", 0, PUNTAS_VIEW, 2.4, 0.01),
-    ("mark", 0.8, box("05-ficha-puntas", "puntas-tabla")),
-    ("label", 3.0, "A mercado pagás la punta vendedora"),
-    ("mark", 3.0, union(box("05-ficha-puntas", "puntas-venta-col"), [649.6, 532.6, 151.8, 214.5])),
-    ("show", 8.5, "06-ficha-comprar"), ("cam", 8.5, PRICE_VS_ASK_VIEW, 1.4),
-    ("mark", 9.5, box("06-ficha-comprar", "ficha-precio")),
-    ("mark", 9.5, box("06-ficha-comprar", "puntas-venta-1")),
-  ], guide=[
-    (0.5, 2.5, "Hay dos precios."),
-    (3.0, 5.5, "Si comprás a mercado, pagás el de venta,"),
-    (8.5, 7.5, "un poco más alto que el último operado."),
-  ]),
- dict(id="s06", kind="screen", name="La orden", dur=28, events=[
+    ("mark", at(V5, 46.0), box("05-ficha-puntas", "puntas-tabla")),
+    ("label", at(V5, 47.9), "A mercado pagás la punta vendedora"),
+    ("mark", at(V5, 48.6), union(box("05-ficha-puntas", "puntas-venta-col"), [649.6, 532.6, 151.8, 214.5])),
+    ("show", at(V5, 52.2), "06-ficha-comprar"), ("cam", at(V5, 52.2), PRICE_VS_ASK_VIEW, 1.4),
+    ("mark", at(V5, 53.0), box("06-ficha-comprar", "ficha-precio")),
+    ("mark", at(V5, 53.0), box("06-ficha-comprar", "puntas-venta-1")),
+  ], guide=say(V5,
+    (46.0, 47.4, "Hay dos precios."),
+    (47.9, 50.2, "Si comprás a mercado, pagás el de venta,"),
+    (52.6, 54.4, "un poco más alto que el último operado."),
+  )),
+ dict(id="s06", kind="screen", name="La orden", dur=21.5, voice=V6, events=[
     ("show", 0, "06-ficha-comprar"),
     ("cam", 0, union(box("06-ficha-comprar", "ficha-precio"), box("06-ficha-comprar", "btn-comprar")), 2.2, 0.01),
-    ("click", 1.2, box("06-ficha-comprar", "btn-comprar")),
-    ("show", 1.9, "07-orden"), ("cam", 1.9, "full", None, 0.01),
-    ("cam", 2.4, box("07-orden", "form-comprar"), None, 0.9),
-    ("mark", 3.2, union(box("07-orden", "campo-simbolo"), box("07-orden", "campo-simbolo-info"))),
-    ("cam", 6.0, box("07-orden", "campo-cantidad"), 2.2),
-    ("label", 6.5, "Cantidad o monto"),
-    ("mark", 6.5, box("07-orden", "campo-cantidad")),
-    ("cam", 12.0, box("07-orden", "campo-modalidad"), 2.2),
-    ("label", 12.5, "A mercado o con límite"),
-    ("mark", 12.5, box("07-orden", "campo-modalidad")),
-    ("mark", 16.5, box("07-orden", "campo-modalidad")),
-    ("show", 21.0, "08-orden-montos"), ("cam", 21.0, "full", None, 0.01),
-    ("cam", 21.4, box("08-orden-montos", "montos-disponibles"), None, 0.9),
-    ("label", 21.8, "Un monto disponible para cada plazo"),
-    ("mark", 22.4, box("08-orden-montos", "montos-disponibles")),
-  ], guide=[
-    (0.5, 5.5, "Hacé clic en «Comprar»: la orden ya trae el símbolo."),
-    (6.0, 6.0, "En «cuánto» ponés una cantidad o un monto en pesos."),
-    (12.0, 4.0, "A mercado se ejecuta enseguida;"),
-    (16.0, 5.0, "con límite elegís vos el precio, pero puede no ejecutarse."),
-    (21.0, 7.0, "Y fijate el dinero disponible para cada plazo."),
-  ]),
- dict(id="c2", kind="chapter", dur=3, num=2, title="Confirmar y seguir tu inversión"),
- dict(id="s07", kind="screen", name="Los costos", dur=22, events=[
+    ("click", at(V6, 59.3), box("06-ficha-comprar", "btn-comprar")),
+    ("show", at(V6, 60.0), "07-orden"), ("cam", at(V6, 60.0), "full", None, 0.01),
+    ("cam", at(V6, 60.3), box("07-orden", "form-comprar"), None, 0.8),
+    ("mark", at(V6, 61.3), union(box("07-orden", "campo-simbolo"), box("07-orden", "campo-simbolo-info"))),
+    ("cam", at(V6, 62.7), box("07-orden", "campo-cantidad"), 2.2),
+    ("label", at(V6, 62.9), "Cantidad o monto"),
+    ("mark", at(V6, 63.6), box("07-orden", "campo-cantidad")),
+    ("cam", at(V6, 67.1), box("07-orden", "campo-modalidad"), 2.2),
+    ("label", at(V6, 67.3), "A mercado o con límite"),
+    ("mark", at(V6, 67.6), box("07-orden", "campo-modalidad")),
+    ("mark", at(V6, 70.6), box("07-orden", "campo-modalidad")),
+    ("show", at(V6, 74.1), "08-orden-montos"), ("cam", at(V6, 74.1), "full", None, 0.01),
+    ("cam", at(V6, 74.3), box("08-orden-montos", "montos-disponibles"), None, 0.8),
+    ("label", at(V6, 74.6), "Un monto disponible para cada plazo"),
+    ("mark", at(V6, 75.4), box("08-orden-montos", "montos-disponibles")),
+  ], guide=say(V6,
+    (58.5, 61.9, "Hacé clic en «Comprar»: la orden ya trae el símbolo."),
+    (62.9, 65.6, "En «cuánto» ponés una cantidad o un monto en pesos."),
+    (67.3, 69.3, "A mercado se ejecuta enseguida;"),
+    (70.3, 73.5, "con límite elegís vos el precio, pero puede no ejecutarse."),
+    (74.4, 77.5, "Y fijate el dinero disponible para cada plazo."),
+  )),
+ dict(id="c2", kind="chapter", dur=3, num=2, title="Confirmar y seguir tu inversión", voice=VC2),
+ dict(id="s07", kind="screen", name="Los costos", dur=16, voice=V7, events=[
     ("show", 0, "10-orden-enviar"),
     ("cam", 0, box("10-orden-enviar", "btn-comprar-submit"), 2.0, 0.01),
-    ("click", 1.0, box("10-orden-enviar", "btn-comprar-submit")),
-    ("show", 1.7, "11-confirmacion"), ("cam", 1.7, "full", None, 0.01),
-    ("cam", 2.2, COSTS_VIEW, 2.6, 0.8),
-    ("mark", 3.2, box("11-confirmacion", "costos-confirmacion")),
-    ("label", 4.5, "Comisión · Derechos de mercado · IVA"),
-    ("mark", 7.0, box("11-confirmacion", "costos-confirmacion")),
-    ("cam", 12.5, box("11-confirmacion", "modal"), 1.3),
-    ("label", 12.5, "Confirmar es mandar una orden al mercado"),
-    ("click", 18.0, box("11-confirmacion", "confirmar-orden")),
-  ], guide=[
-    (0.5, 4.0, "Antes de salir, la orden te muestra el detalle:"),
-    (4.5, 4.5, "comisión, derechos de mercado e IVA."),
-    (9.0, 3.5, "Miralo antes de confirmar."),
-    (12.5, 9.5, "Confirmar no es pagar: es mandar la orden al mercado."),
-  ]),
- dict(id="s08", kind="screen", name="Boleto y portafolio", dur=22, events=[
+    ("click", 0.6, box("10-orden-enviar", "btn-comprar-submit")),
+    ("show", 1.3, "11-confirmacion"), ("cam", 1.3, "full", None, 0.01),
+    ("cam", 1.8, COSTS_VIEW, 2.6, 0.8),
+    ("mark", at(V7, 84.4), box("11-confirmacion", "costos-confirmacion")),
+    ("label", at(V7, 85.4), "Comisión · Derechos de mercado · IVA"),
+    ("mark", at(V7, 88.8), box("11-confirmacion", "costos-confirmacion")),
+    ("cam", at(V7, 91.4), box("11-confirmacion", "modal"), 1.3),
+    ("label", at(V7, 91.7), "Confirmar es mandar una orden al mercado"),
+    ("click", at(V7, 95.2), box("11-confirmacion", "confirmar-orden")),
+  ], guide=say(V7,
+    (82.4, 84.8, "Antes de salir, la orden te muestra el detalle:"),
+    (85.4, 87.5, "comisión, derechos de mercado e IVA."),
+    (89.0, 90.7, "Miralo antes de confirmar."),
+    (91.7, 95.0, "Confirmar no es pagar: es mandar la orden al mercado."),
+  )),
+ dict(id="s08", kind="screen", name="Boleto y portafolio", dur=17.5, voice=V8, events=[
     ("show", 0, "12-boleto"), ("cam", 0, "full", None, 0.01),
-    ("cam", 0.5, box("12-boleto", "boleto-detalle"), 1.2, 0.9),
-    ("cam", 3.0, COST_LINE, 2.4),
-    ("label", 3.5, "Costo: $ 1.479,87 · 0,70 %"),
-    ("mark", 3.5, COST_LINE),
-    ("cam", 8.0, box("12-boleto", "nav-portafolio"), 2.0),
-    ("click", 9.2, box("12-boleto", "nav-portafolio")),
-    ("show", 9.9, "14-portafolio-ars"), ("cam", 9.9, "full", None, 0.01),
-    ("cam", 10.4, union(box("14-portafolio-ars", "stats"), box("14-portafolio-ars", "pos-lista")), 1.25, 0.9),
-    ("label", 10.4, "Tu inversión en el portafolio"),
-    ("mark", 11.0, box("14-portafolio-ars", "pos-lista")),
-    ("cam", 14.0, union(box("14-portafolio-ars", "toggle-moneda"), RESULT_CARD), None, 0.9),
-    ("click", 15.2, box("14-portafolio-ars", "toggle-usd")),
-    ("show", 15.9, "15-portafolio-usd"),
-    ("label", 16.5, "$ -115,91  →  US$ -0,08"),
-    ("mark", 16.5, RESULT_CARD),
-    ("label", 19.5, "Depende de la acción y del dólar"),
-  ], guide=[
-    (0.5, 7.5, "El boleto es el comprobante, con lo que te costó operar en plata y en porcentaje."),
-    (8.0, 6.0, "En «Portafolio» ves tu inversión."),
-    (14.0, 3.5, "Pasá de pesos a dólares:"),
-    (17.5, 4.5, "el resultado depende de la acción y del dólar."),
-  ]),
- dict(id="s09", kind="takeaways", dur=20),
- dict(id="s10", kind="final", dur=8),
+    ("cam", 0.3, box("12-boleto", "boleto-detalle"), 1.2, 0.8),
+    ("cam", at(V8, 101.2), COST_LINE, 2.4),
+    ("label", at(V8, 101.5), "Costo: $ 1.479,87 · 0,70 %"),
+    ("mark", at(V8, 101.8), COST_LINE),
+    ("cam", at(V8, 104.0), box("12-boleto", "nav-portafolio"), 2.0),
+    ("click", at(V8, 105.5), box("12-boleto", "nav-portafolio")),
+    ("show", at(V8, 106.2), "14-portafolio-ars"), ("cam", at(V8, 106.2), "full", None, 0.01),
+    ("cam", at(V8, 106.4), union(box("14-portafolio-ars", "stats"), box("14-portafolio-ars", "pos-lista")), 1.25, 0.8),
+    ("label", at(V8, 106.4), "Tu inversión en el portafolio"),
+    ("mark", at(V8, 106.8), box("14-portafolio-ars", "pos-lista")),
+    ("cam", at(V8, 108.8), union(box("14-portafolio-ars", "toggle-moneda"), RESULT_CARD), None, 0.8),
+    ("click", at(V8, 110.6), box("14-portafolio-ars", "toggle-usd")),
+    ("show", at(V8, 111.3), "15-portafolio-usd"),
+    ("label", at(V8, 111.5), "$ -115,91  →  US$ -0,08"),
+    ("mark", at(V8, 111.8), RESULT_CARD),
+    ("label", at(V8, 114.6), "Depende de la acción y del dólar"),
+  ], guide=say(V8,
+    (99.1, 103.7, "El boleto es el comprobante, con lo que te costó operar en plata y en porcentaje."),
+    (105.1, 107.0, "En «Portafolio» ves tu inversión."),
+    (109.6, 111.3, "Pasá de pesos a dólares:"),
+    (112.1, 114.3, "el resultado depende de la acción y del dólar."),
+  )),
+ dict(id="s09", kind="takeaways", dur=16, voice=V9, at=[at(V9, 117.4), at(V9, 121.2), at(V9, 125.7)]),
+ dict(id="s10", kind="final", dur=8, voice=V10),
 ]
 
 TITLE = "Comprar mi primer CEDEAR"
@@ -375,7 +414,9 @@ def takeaways_scene(sc):
     step = (sc["dur"] - 0.8) / len(IDEAS)
     lines = []
     for i in range(len(IDEAS)):
-        t0 = 0.8 + i * step
+        t0 = sc["at"][i] if sc.get("at") else 0.8 + i * step
+        if sc.get("at"):
+            step = (sc["at"][i + 1] if i + 1 < len(IDEAS) else sc["dur"]) - t0
         lines.append(f'          tl.fromTo("#" + ID + "-idea-{i}", {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }}, {t0:.2f});')
         lines.append(f'          tl.to("#" + ID + "-dot-{i}", {{ backgroundColor: "{C['violet']}", duration: 0.3 }}, {t0:.2f});')
         if i < len(IDEAS) - 1:
@@ -470,6 +511,23 @@ def main():
             caps.append((round(t + gt, 2), round(gd, 2), tx, f'{sc["id"]}-g{i}'))
         t += sc["dur"]
     total = t
+    # Voice: one normalized WAV per scene, cut at the recording's pauses (same pipeline as _serie/voz.py)
+    wav = voz.preparar(VOICE_SRC, ROOT / "voz/voz.wav")
+    clips, voice, t = [], [], 0.0
+    for sc in SCENES:
+        if sc.get("voice"):
+            a0, a1, lead = sc["voice"]
+            voz.cortar(wav, a0, a1, ROOT / f"voz/{sc['id']}.wav")
+            clips.append((f"voz-{sc['id']}", f"voz/{sc['id']}.wav", t + lead, a1 - a0))
+            voice.append(f'      <audio id="voz-{sc["id"]}" src="voz/{sc["id"]}.wav" data-start="{t + lead:.3f}" '
+                         f'data-duration="{a1 - a0:.3f}" data-track-index="3" data-volume="1"></audio>')
+        t += sc["dur"]
+    # Music bed: under the voice the whole video (the title and final plate are read aloud too)
+    (ROOT / "musica").mkdir(exist_ok=True)
+    voz.preparar_musica(MUSICA_ORIGEN, ROOT / "musica/fondo.wav", total)
+    lane = {"version": 1, "lanes": [{"target": "volume", "points": [{"t": 0, "v": 0.3}, {"t": round(total, 2), "v": 0.3}]}]}
+    music = (f'      <audio id="musica" src="musica/fondo.wav" data-start="0" data-duration="{total:.3f}" '
+             f'data-track-index="4" data-volume="1" data-automation="{html.escape(json.dumps(lane), quote=True)}"></audio>')
     cap_html = "\n".join(
         f'      <div class="clip guide" id="{cid}" data-start="{s:g}" data-duration="{d:g}" data-track-index="1">'
         f'<span class="guide-tx">{html.escape(tx)}</span></div>' for s, d, tx, cid in caps)
@@ -495,6 +553,8 @@ def main():
     <div id="root" data-composition-id="main" data-start="0" data-duration="{total:g}" data-width="1920" data-height="1080">
 {chr(10).join(hosts)}
 {cap_html}
+{chr(10).join(voice)}
+{music}
     </div>
     <script>
       const tl = gsap.timeline({{ paused: true }});
@@ -509,7 +569,9 @@ def main():
 </html>
 """
     (ROOT / "index.html").write_text(index, encoding="utf-8")
-    write_script(total)
+    voz.carve(ROOT / "index.html", clips, SERIE)
+    if not any(sc.get("voice") for sc in SCENES):
+        write_script(total)
     print(f"ok · {len(SCENES)} escenas · {len(caps)} textos guía · {total:g} s")
 
 def mmss(x):

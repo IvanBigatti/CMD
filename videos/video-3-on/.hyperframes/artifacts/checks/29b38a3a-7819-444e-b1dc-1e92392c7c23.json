@@ -1,0 +1,139 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "audio_carve_ungrouped_sources",
+        "severity": "warning",
+        "message": "#musica's carve names 9 voice clips directly (voz-s01, voz-s02, voz-s03, voz-s04, voz-s05, voz-s06, voz-s07, voz-s08, voz-s09) instead of a group.",
+        "selector": "#musica",
+        "dataAttributes": {},
+        "sourceFile": "/Users/ivanbigatti/Facultad/CMD/videos/video-3-on/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Group the voice clips and carve against the group. A hand-rolled clip list silently rots when a clip is added."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 1 has 20 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/ivanbigatti/Facultad/CMD/videos/video-3-on/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      }
+    ],
+    "filesScanned": 11
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 126,
+    "samples": [
+      7,
+      21,
+      35,
+      49,
+      63,
+      77,
+      91,
+      105,
+      119
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.11:1; WCAG AA requires 3:1.",
+        "text": "ITINERARIO DEL SIMULADOR",
+        "fg": "rgb(100,57,255)",
+        "bg": "rgb(104,104,141)",
+        "ratio": 1.11,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(201,186,255)",
+        "large": true,
+        "selector": "#s10-cardlbl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/s10.html",
+        "bbox": {
+          "x": 240,
+          "y": 373.5740966796875,
+          "width": 958.875,
+          "height": 47
+        },
+        "time": 119,
+        "times": [
+          119
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      7,
+      35,
+      63,
+      91,
+      119
+    ],
+    "checked": 9,
+    "passed": 8
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

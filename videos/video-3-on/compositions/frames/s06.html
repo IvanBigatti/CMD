@@ -55,7 +55,7 @@
       <script>
         (function () {
           const ID = "s06";
-          const CFG = {"shots": ["04-orden", "05-rechazo"], "events": [["show", 0, "04-orden"], ["cam", 0, [592, 412.5, 552, 186.70000000000005], 1.9, 0.01], ["mark", 4.5, [954, 511.5, 190, 39.3]], ["cam", 8.0, [592, 511.5, 552, 336.0], 1.6], ["click", 9.4, [696.6, 802.3, 156.8, 45.2]], ["show", 10.1, "05-rechazo"], ["cam", 10.2, [380, 794.3, 790, 81.1], 2.0, 0.8], ["label", 11.0, "550 no es múltiplo de la lámina"], ["mark", 11.2, [380, 794.3, 790, 81.1]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["04-orden", "05-rechazo"], "events": [["show", 0, "04-orden"], ["cam", 0, [592, 412.5, 552, 186.70000000000005], 1.9, 0.01], ["mark", 3.6, [954, 511.5, 190, 39.3]], ["cam", 6.8, [592, 511.5, 552, 336.0], 1.6], ["click", 8.2, [696.6, 802.3, 156.8, 45.2]], ["show", 8.9, "05-rechazo"], ["cam", 9.0, [380, 794.3, 790, 81.1], 2.0, 0.8], ["label", 9.5, "550 no es múltiplo de la lámina"], ["mark", 9.6, [380, 794.3, 790, 81.1]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -90,7 +90,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -109,7 +109,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -147,7 +147,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 24);
+          tl.set({}, {}, 13.5);
           window.__timelines[ID] = tl;
         })();
       </script>

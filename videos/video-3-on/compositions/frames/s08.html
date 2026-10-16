@@ -55,7 +55,7 @@
       <script>
         (function () {
           const ID = "s08";
-          const CFG = {"shots": ["08-boleto", "10-ficha-ymcjo"], "events": [["show", 0, "08-boleto"], ["cam", 0, "full", null, 0.01], ["cam", 0.5, [640, 226.4, 640, 678.1], 1.25], ["label", 1.0, "Boleto: 1.000 VN de YMCJO"], ["show", 6.0, "10-ficha-ymcjo"], ["cam", 6.0, "full", null, 0.01], ["cam", 6.5, [651.5, 482, 279.5, 112.80000000000007], 2.4], ["label", 7.0, "Renta semestral: marzo y septiembre · Vence en 2031 (datos del simulador)"], ["mark", 8.0, [651.5, 482, 279.5, 112.80000000000007]], ["mark", 12.5, [651.5, 482, 279.5, 112.80000000000007]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["08-boleto", "10-ficha-ymcjo"], "events": [["show", 0, "08-boleto"], ["cam", 0, "full", null, 0.01], ["cam", 0.3, [640, 226.4, 640, 678.1], 1.25], ["label", 0.8, "Boleto: 1.000 VN de YMCJO"], ["show", 4.5, "10-ficha-ymcjo"], ["cam", 4.5, "full", null, 0.01], ["cam", 4.8, [651.5, 482, 279.5, 112.80000000000007], 2.4], ["label", 5.0, "Renta semestral: marzo y septiembre · Vence en 2031 (datos del simulador)"], ["mark", 5.6, [651.5, 482, 279.5, 112.80000000000007]], ["mark", 9.5, [651.5, 482, 279.5, 112.80000000000007]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -90,7 +90,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -109,7 +109,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -147,7 +147,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 20);
+          tl.set({}, {}, 14.5);
           window.__timelines[ID] = tl;
         })();
       </script>

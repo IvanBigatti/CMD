@@ -43,7 +43,7 @@
       <script>
         (function () {
           const ID = "s02";
-          const CFG = {"shots": ["00-inicio-900k"], "events": [["show", 0, "00-inicio-900k"], ["cam", 0, "full"], ["label", 0.8, "CEDEAR: Certificado de Depósito Argentino"], ["cam", 1.5, [380, 284.5, 570, 259.9], 1.75], ["mark", 2.5, [795.4, 384.5, 116.6, 24.3]], ["label", 7.0, "Representa acciones de una empresa del exterior"]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["00-inicio-900k"], "events": [["show", 0, "00-inicio-900k"], ["cam", 0, "full"], ["cam", 0.5, [380, 284.5, 570, 259.9], 1.75], ["mark", 1.2, [795.4, 384.5, 116.6, 24.3]], ["label", 5.1, "CEDEAR: Certificado de Depósito Argentino"]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -108,7 +108,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 14);
+          tl.set({}, {}, 11);
           window.__timelines[ID] = tl;
         })();
       </script>
