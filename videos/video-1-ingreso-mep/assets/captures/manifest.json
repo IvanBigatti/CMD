@@ -1,0 +1,959 @@
+{
+ "viewport": [
+  1920,
+  1080
+ ],
+ "scale": 2,
+ "shots": [
+  {
+   "id": "00-bienvenida",
+   "file": "00-bienvenida.png",
+   "note": "Cartel inicial",
+   "tour": null,
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "splash": {
+     "x": 650,
+     "y": 359.8,
+     "width": 620,
+     "height": 360.3
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 845.6,
+     "y": 384.5,
+     "width": 66.4,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 846.6,
+     "y": 414.9,
+     "width": 65.4,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 0,00\nUS$ 0,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "01-itinerarios",
+   "file": "01-itinerarios.png",
+   "note": "Selector de itinerarios",
+   "tour": null,
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "splash": {
+     "x": 650,
+     "y": 124.2,
+     "width": 620,
+     "height": 831.5
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 845.6,
+     "y": 384.5,
+     "width": 66.4,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 846.6,
+     "y": 414.9,
+     "width": 65.4,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 0,00\nUS$ 0,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "02-inicio-cero",
+   "file": "02-inicio-cero.png",
+   "note": "Estado de cuenta en cero (paso 1, info)",
+   "tour": {
+    "i": 0,
+    "n": 12,
+    "title": "Vas a hacer entrar plata y comprar dólares"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 845.6,
+     "y": 384.5,
+     "width": 66.4,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 846.6,
+     "y": 414.9,
+     "width": 65.4,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 0,00\nUS$ 0,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "03-inicio-ingresar",
+   "file": "03-inicio-ingresar.png",
+   "note": "Paso: clic en Ingresar dinero",
+   "tour": {
+    "i": 1,
+    "n": 12,
+    "title": "Empezá por acá"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 845.6,
+     "y": 384.5,
+     "width": 66.4,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 846.6,
+     "y": 414.9,
+     "width": 65.4,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 0,00\nUS$ 0,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "04-ingresar",
+   "file": "04-ingresar.png",
+   "note": "Pantalla Ingresar dinero: alias y cuentas de origen",
+   "tour": {
+    "i": 2,
+    "n": 12,
+    "title": "Esto no es una cuenta bancaria"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "origen-list": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 137
+    },
+    "origen-tercero": {
+     "x": 397,
+     "y": 529.0,
+     "width": 650,
+     "height": 64.5
+    },
+    "origen-propia": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 64.5
+    },
+    "alias": {
+     "x": 397,
+     "y": 348.1,
+     "width": 650,
+     "height": 66.9
+    },
+    "monto-ingreso": {
+     "x": 397,
+     "y": 651.0,
+     "width": 650,
+     "height": 45.2
+    },
+    "confirmar-ingreso": {
+     "x": 397,
+     "y": 712.1,
+     "width": 650,
+     "height": 44
+    }
+   },
+   "text": "Ingresar dinero\n\nTransferí desde tu banco o billetera a tu cuenta de inversión\n\nALIAS DE TU CUENTA COMITENTE\nrueda.imwinkelried.ars\n\nComitente Nº 418.203 · a nombre de Iván N. Imwinkelried\n\nCuenta de origen\nBanco Nación · Caja de ahorro $\nTitular: Iván N. Imwinkelried — mismo CUIT que tu cuenta\nBanco Galicia · Caja de ahorro $\nTitular: María G. Suárez — otro CUIT\nMonto a transferir\nConfirmar transferencia\nQUÉ TENÉS QUE SABER\nLa cuenta comitente no es una caja de ahorro: existe para comprar y vender títulos.\nSolo podés fondearla desde cuentas de tu misma titularidad. Es normativa de prevención de lavado.\nLa primera transferencia puede demorar unas horas mientras se valida el origen. Las siguientes son inmediatas.\nEl saldo sin invertir rinde automáticamente desde el día que entra."
+  },
+  {
+   "id": "05-tercero-elegida",
+   "file": "05-tercero-elegida.png",
+   "note": "Elegida la cuenta de María G. Suárez (aviso)",
+   "tour": {
+    "i": 4,
+    "n": 12,
+    "title": "Ahora sí, la tuya"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "origen-list": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 137
+    },
+    "origen-tercero": {
+     "x": 397,
+     "y": 529.0,
+     "width": 650,
+     "height": 64.5
+    },
+    "origen-propia": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 64.5
+    },
+    "origen-msg": {
+     "x": 397,
+     "y": 609.5,
+     "width": 650,
+     "height": 61.4
+    },
+    "alias": {
+     "x": 397,
+     "y": 348.1,
+     "width": 650,
+     "height": 66.9
+    },
+    "monto-ingreso": {
+     "x": 397,
+     "y": 712.4,
+     "width": 650,
+     "height": 45.2
+    },
+    "confirmar-ingreso": {
+     "x": 397,
+     "y": 773.5,
+     "width": 650,
+     "height": 44
+    }
+   },
+   "text": "Ingresar dinero\n\nTransferí desde tu banco o billetera a tu cuenta de inversión\n\nALIAS DE TU CUENTA COMITENTE\nrueda.imwinkelried.ars\n\nComitente Nº 418.203 · a nombre de Iván N. Imwinkelried\n\nCuenta de origen\nBanco Nación · Caja de ahorro $\nTitular: Iván N. Imwinkelried — mismo CUIT que tu cuenta\nBanco Galicia · Caja de ahorro $\nTitular: María G. Suárez — otro CUIT\nAtención\nEsta cuenta está a nombre de otra persona. Probá confirmar y mirá qué pasa.\nMonto a transferir\nConfirmar transferencia\nQUÉ TENÉS QUE SABER\nLa cuenta comitente no es una caja de ahorro: existe para comprar y vender títulos.\nSolo podés fondearla desde cuentas de tu misma titularidad. Es normativa de prevención de lavado.\nLa primera transferencia puede demorar unas horas mientras se valida el origen. Las siguientes son inmediatas.\nEl saldo sin invertir rinde automáticamente desde el día que entra."
+  },
+  {
+   "id": "06-rechazo",
+   "file": "06-rechazo.png",
+   "note": "Confirmar con cuenta de tercero: Transferencia rechazada",
+   "tour": {
+    "i": 4,
+    "n": 12,
+    "title": "Ahora sí, la tuya"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "origen-list": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 137
+    },
+    "origen-tercero": {
+     "x": 397,
+     "y": 529.0,
+     "width": 650,
+     "height": 64.5
+    },
+    "origen-propia": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 64.5
+    },
+    "origen-msg": {
+     "x": 397,
+     "y": 609.5,
+     "width": 650,
+     "height": 81.1
+    },
+    "alias": {
+     "x": 397,
+     "y": 348.1,
+     "width": 650,
+     "height": 66.9
+    },
+    "monto-ingreso": {
+     "x": 397,
+     "y": 732.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "confirmar-ingreso": {
+     "x": 397,
+     "y": 793.2,
+     "width": 650,
+     "height": 44
+    }
+   },
+   "text": "Ingresar dinero\n\nTransferí desde tu banco o billetera a tu cuenta de inversión\n\nALIAS DE TU CUENTA COMITENTE\nrueda.imwinkelried.ars\n\nComitente Nº 418.203 · a nombre de Iván N. Imwinkelried\n\nCuenta de origen\nBanco Nación · Caja de ahorro $\nTitular: Iván N. Imwinkelried — mismo CUIT que tu cuenta\nBanco Galicia · Caja de ahorro $\nTitular: María G. Suárez — otro CUIT\nTransferencia rechazada\nLa cuenta de origen está a nombre de otra persona. Solo podés fondear tu cuenta de inversión desde cuentas de tu misma titularidad (mismo CUIT). Es una exigencia de la normativa de prevención de lavado.\nMonto a transferir\nConfirmar transferencia\nQUÉ TENÉS QUE SABER\nLa cuenta comitente no es una caja de ahorro: existe para comprar y vender títulos.\nSolo podés fondearla desde cuentas de tu misma titularidad. Es normativa de prevención de lavado.\nLa primera transferencia puede demorar unas horas mientras se valida el origen. Las siguientes son inmediatas.\nEl saldo sin invertir rinde automáticamente desde el día que entra."
+  },
+  {
+   "id": "07-propia-elegida",
+   "file": "07-propia-elegida.png",
+   "note": "Elegida la cuenta del Banco Nación",
+   "tour": {
+    "i": 5,
+    "n": 12,
+    "title": "Confirmá la transferencia"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "origen-list": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 137
+    },
+    "origen-tercero": {
+     "x": 397,
+     "y": 529.0,
+     "width": 650,
+     "height": 64.5
+    },
+    "origen-propia": {
+     "x": 397,
+     "y": 456.5,
+     "width": 650,
+     "height": 64.5
+    },
+    "alias": {
+     "x": 397,
+     "y": 348.1,
+     "width": 650,
+     "height": 66.9
+    },
+    "monto-ingreso": {
+     "x": 397,
+     "y": 651.0,
+     "width": 650,
+     "height": 45.2
+    },
+    "confirmar-ingreso": {
+     "x": 397,
+     "y": 712.1,
+     "width": 650,
+     "height": 44
+    }
+   },
+   "text": "Ingresar dinero\n\nTransferí desde tu banco o billetera a tu cuenta de inversión\n\nALIAS DE TU CUENTA COMITENTE\nrueda.imwinkelried.ars\n\nComitente Nº 418.203 · a nombre de Iván N. Imwinkelried\n\nCuenta de origen\nBanco Nación · Caja de ahorro $\nTitular: Iván N. Imwinkelried — mismo CUIT que tu cuenta\nBanco Galicia · Caja de ahorro $\nTitular: María G. Suárez — otro CUIT\nMonto a transferir\nConfirmar transferencia\nQUÉ TENÉS QUE SABER\nLa cuenta comitente no es una caja de ahorro: existe para comprar y vender títulos.\nSolo podés fondearla desde cuentas de tu misma titularidad. Es normativa de prevención de lavado.\nLa primera transferencia puede demorar unas horas mientras se valida el origen. Las siguientes son inmediatas.\nEl saldo sin invertir rinde automáticamente desde el día que entra."
+  },
+  {
+   "id": "08-acreditado",
+   "file": "08-acreditado.png",
+   "note": "Modal Dinero acreditado",
+   "tour": {
+    "i": 6,
+    "n": 12,
+    "title": "Comprar dólares"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 261.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 770.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "modal": {
+     "x": 740,
+     "y": 353.9,
+     "width": 440,
+     "height": 372.1
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 80.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 180.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 828.4,
+     "y": 210.9,
+     "width": 83.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 864.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "modal-p": {
+     "x": 762,
+     "y": 439.1,
+     "width": 396,
+     "height": 22.6
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 600.000,00\nUS$ 405,41\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "09-inicio-con-pesos",
+   "file": "09-inicio-con-pesos.png",
+   "note": "Estado de cuenta con pesos (paso: clic en Comprar del MEP)",
+   "tour": {
+    "i": 6,
+    "n": 12,
+    "title": "Comprar dólares"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 384.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 828.4,
+     "y": 414.9,
+     "width": 83.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 600.000,00\nUS$ 405,41\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "10-menu-operar",
+   "file": "10-menu-operar.png",
+   "note": "Menú Operar abierto",
+   "tour": {
+    "i": 6,
+    "n": 12,
+    "title": "Comprar dólares"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 384.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 828.4,
+     "y": 414.9,
+     "width": 83.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "menu-mep": {
+     "x": 537.4,
+     "y": 475.5,
+     "width": 359.5,
+     "height": 36.9
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 600.000,00\nUS$ 405,41\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "11-mep",
+   "file": "11-mep.png",
+   "note": "Compra Dólar MEP Simple: tipo de cambio",
+   "tour": {
+    "i": 7,
+    "n": 12,
+    "title": "El tipo de cambio"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 98.4,
+     "height": 49.2
+    },
+    "mep-tc": {
+     "x": 397,
+     "y": 509.9,
+     "width": 650,
+     "height": 74.9
+    },
+    "mep-monto": {
+     "x": 397,
+     "y": 425.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "mep-min": {
+     "x": 397,
+     "y": 476.2,
+     "width": 79.6,
+     "height": 16
+    },
+    "mep-verpordentro": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 70.5
+    },
+    "mep-confirmar": {
+     "x": 397,
+     "y": 600.8,
+     "width": 650,
+     "height": 44
+    }
+   },
+   "text": "Compra Dólar MEP Simple\n\nDólares legales, sin parking, acreditados hoy mismo en tu cuenta\n\nComprar dólares\nVender dólares\nCuánto querés convertir\n\nMínimo $5.000 · Disponible: $ 600.000,00\n\nTipo de cambio implícito\n$ 1.480,00\nVas a recibir\nUS$ 202,59\nComprar dólar MEP\n\nSe opera de lunes a viernes de 10:30 a 17:00. Fuera de ese horario la orden queda para el próximo día hábil.\n\nVer por dentro\nQué hace el sistema en realidad\n›"
+  },
+  {
+   "id": "12-mep-por-dentro",
+   "file": "12-mep-por-dentro.png",
+   "note": "Ver por dentro: las dos operaciones",
+   "tour": {
+    "i": 9,
+    "n": 12,
+    "title": "Son dos operaciones de bonos"
+   },
+   "boxes": {
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 98.4,
+     "height": 49.2
+    },
+    "mep-tc": {
+     "x": 397,
+     "y": 509.9,
+     "width": 650,
+     "height": 74.9
+    },
+    "mep-monto": {
+     "x": 397,
+     "y": 425.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "mep-min": {
+     "x": 397,
+     "y": 476.2,
+     "width": 79.6,
+     "height": 16
+    },
+    "mep-verpordentro": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 70.5
+    },
+    "mep-patas": {
+     "x": 1084,
+     "y": 415.6,
+     "width": 456,
+     "height": 231.1
+    },
+    "mep-patas-ops": {
+     "x": 1084,
+     "y": 415.6,
+     "width": 456,
+     "height": 185.8
+    },
+    "mep-confirmar": {
+     "x": 397,
+     "y": 600.8,
+     "width": 650,
+     "height": 44
+    },
+    "patas-op1": {
+     "x": 1085,
+     "y": 453.5,
+     "width": 454,
+     "height": 36.0
+    },
+    "patas-op2": {
+     "x": 1085,
+     "y": 490.5,
+     "width": 454,
+     "height": 36.0
+    },
+    "patas-ci": {
+     "x": 1085,
+     "y": 527.4,
+     "width": 454,
+     "height": 36.0
+    }
+   },
+   "text": "Compra Dólar MEP Simple\n\nDólares legales, sin parking, acreditados hoy mismo en tu cuenta\n\nComprar dólares\nVender dólares\nCuánto querés convertir\n\nMínimo $5.000 · Disponible: $ 600.000,00\n\nTipo de cambio implícito\n$ 1.480,00\nVas a recibir\nUS$ 202,59\nComprar dólar MEP\n\nSe opera de lunes a viernes de 10:30 a 17:00. Fuera de ese horario la orden queda para el próximo día hábil.\n\nVer por dentro\nQué hace el sistema en realidad\n⌄\nLo que hace el sistema por vos\n1 · Compra 406 VN de AL30, en pesos\n$ 299.839,12\n2 · Vende esos 406 VN como AL30D, en dólares\nUS$ 202,59\nLas dos patas en Contado Inmediato\nhoy\nTipo de cambio resultante\n$ 1.480,00\n\nAL30 es un bono del Estado argentino que cotiza en las dos monedas. Comprarlo en una y venderlo en la otra es, legalmente, operar dólar MEP."
+  },
+  {
+   "id": "13-mep-ok",
+   "file": "13-mep-ok.png",
+   "note": "Modal Compraste dólar MEP",
+   "tour": {
+    "i": 11,
+    "n": 12,
+    "title": "Listo"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "modal": {
+     "x": 740,
+     "y": 378.9,
+     "width": 440,
+     "height": 322.3
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 384.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 828.4,
+     "y": 414.9,
+     "width": 83.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "modal-p": {
+     "x": 762,
+     "y": 464,
+     "width": 396,
+     "height": 45.1
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 600.000,00\nUS$ 405,41\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "14-inicio-final",
+   "file": "14-inicio-final.png",
+   "note": "Estado de cuenta con pesos y dólares",
+   "tour": {
+    "i": 11,
+    "n": 12,
+    "title": "Listo"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 465.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 974.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 384.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 828.4,
+     "y": 414.9,
+     "width": 83.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 600.000,00\nUS$ 405,41\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "15-detalle-saldos",
+   "file": "15-detalle-saldos.png",
+   "note": "Detalle de saldos: pesos y dólares disponibles",
+   "tour": {
+    "i": 11,
+    "n": 12,
+    "title": "Listo"
+   },
+   "boxes": {
+    "qa-ingresar": {
+     "x": 687,
+     "y": 92.2,
+     "width": 225,
+     "height": 45.2
+    },
+    "qa-mep": {
+     "x": 620.5,
+     "y": 601.4,
+     "width": 104.8,
+     "height": 44
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": -88.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 11.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "bal-usd": {
+     "x": 828.4,
+     "y": 41.9,
+     "width": 83.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 695.4,
+     "width": 1160,
+     "height": 234.0
+    },
+    "saldos": {
+     "x": 380,
+     "y": 759.9,
+     "width": 684,
+     "height": 78.9
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 600.000,00\nUS$ 405,41\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nDisponible en pesos\n$ 300.160,88\nDisponible en dólares\nUS$ 202,59\n\nTu dinero puede estar en tres estados a la vez. Disponible es lo único que podés usar o retirar hoy. Comprometido es lo que ya gastaste en una compra que todavía no liquidó. A liquidar es lo que cobraste por una venta y se acredita el día hábil siguiente.\n\nEstadísticas"
+  }
+ ]
+}

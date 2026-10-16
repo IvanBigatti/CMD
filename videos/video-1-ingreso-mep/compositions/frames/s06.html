@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #s06-bg { position: absolute; inset: 0; background: #F7F6FC; }
+        #s06-frame { position: absolute; left: 200px; top: 84px; width: 1520px; height: 855px;
+          overflow: hidden; border-radius: 14px; background: #fff;
+          box-shadow: 0 10px 36px rgba(6, 8, 63, 0.16), 0 0 0 1px rgba(6, 8, 63, 0.08); }
+        #s06-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+        .s06-shot { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; opacity: 0; }
+        .s06-ring { position: absolute; border-radius: 50%; border: 5px solid #6439FF;
+          background: rgba(100, 57, 255, 0.14); opacity: 0; }
+        .s06-mark { position: absolute; border-radius: 10px; border: 4px solid #6439FF; opacity: 0; }
+        .s06-chip { position: absolute; left: 200px; top: 14px; height: 60px; padding: 0 22px;
+          display: flex; align-items: center; border-radius: 8px; background: #E8B23A;
+          color: #20160A; font-size: 36px; font-weight: 600; white-space: nowrap; opacity: 0; }
+        #s06-band { position: absolute; left: 0; right: 0; top: 960px; bottom: 0; background: #06083F; }
+
+      </style>
+      <div id="root" data-composition-id="s06" data-width="1920" data-height="1080">
+        <div id="s06-bg"></div>
+        <div id="s06-frame">
+          <div id="s06-cam" data-layout-allow-overflow>
+          <img class="s06-shot" id="s06-img-0" src="assets/captures/09-inicio-con-pesos.png" alt="" />
+          <img class="s06-shot" id="s06-img-1" src="assets/captures/10-menu-operar.png" alt="" />
+          <img class="s06-shot" id="s06-img-2" src="assets/captures/11-mep.png" alt="" />
+            <div id="s06-fx"></div>
+          </div>
+        </div>
+        <div id="s06-chips"></div>
+        <div id="s06-band"></div>
+      </div>
+      <script>
+        (function () {
+          const ID = "s06";
+          const CFG = {"shots": ["09-inicio-con-pesos", "10-menu-operar", "11-mep"], "events": [["show", 0, "09-inicio-con-pesos"], ["cam", 0, "full", null, 0.01], ["label", 0.8, "MEP: Mercado Electrónico de Pagos"], ["cam", 2.4, [380, 740, 372, 300], 1.75], ["mark", 3.6, [380, 740, 372, 300]], ["show", 7.2, "10-menu-operar"], ["cam", 7.2, [531.4, 151.2, 365.5, 361.2], 1.6], ["mark", 8.2, [537.4, 475.5, 359.5, 36.9]], ["show", 11.2, "09-inicio-con-pesos"], ["cam", 11.2, [380, 740, 372, 300], 1.75], ["click", 12.0, [620.5, 974.4, 104.8, 44]], ["show", 12.8, "11-mep"], ["cam", 12.8, "full", null, 0.01], ["cam", 13.4, [397, 509.9, 650, 74.9], 2.4], ["mark", 14.6, [397, 509.9, 650, 74.9]], ["cam", 19.4, [397, 425.1, 650, 67.09999999999997], 2.1], ["mark", 20.4, [393, 472, 88, 24]]], "FW": 1520, "FH": 855};
+          const tl = gsap.timeline({ paused: true });
+          const cam = document.getElementById(ID + "-cam");
+          const fx = document.getElementById(ID + "-fx");
+          const chips = document.getElementById(ID + "-chips");
+          const base = CFG.FW / 1920;
+          function frameFor(target, zoom) {
+            if (target === "full") { target = [288, 16, 1344, 756]; zoom = zoom || 1920 / 1344; }
+            const [bx, by, bw, bh] = target;
+            const z = zoom || Math.max(1, Math.min(2.5, Math.min(0.62 * 1920 / bw, 0.62 * 1080 / bh)));
+            const s = base * z;
+            let x = CFG.FW / 2 - (bx + bw / 2) * s;
+            let y = CFG.FH / 2 - (by + bh / 2) * s;
+            x = Math.min(0, Math.max(CFG.FW - 1920 * s, x));
+            y = Math.min(0, Math.max(CFG.FH - 1080 * s, y));
+            return { x, y, scale: s };
+          }
+          gsap.set(cam, { transformOrigin: "0 0", x: 0, y: 0, scale: base });
+          let current = null, z = 1, n = 0, chipOn = null;
+          CFG.events.forEach(function (ev) {
+            const type = ev[0], t = ev[1];
+            if (type === "show") {
+              const img = document.getElementById(ID + "-img-" + CFG.shots.indexOf(ev[2]));
+              img.style.zIndex = String(++z);
+              if (current === null) tl.set(img, { opacity: 1 }, 0);
+              else {
+                tl.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "none" }, t);
+                tl.set(current, { opacity: 0 }, t + 0.3);
+              }
+              current = img;
+            } else if (type === "cam") {
+              const f = frameFor(ev[2], ev[3]);
+              const d = ev[4] === undefined ? 1.1 : ev[4];
+              if (d <= 0.02) tl.set(cam, f, t);
+              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+            } else if (type === "click") {
+              const [bx, by, bw, bh] = ev[2];
+              const r = Math.max(30, Math.min(56, bh * 0.9));
+              const el = document.createElement("div");
+              el.className = ID + "-ring"; el.id = ID + "-fx-" + (n++);
+              Object.assign(el.style, { left: (bx + bw / 2 - r) + "px", top: (by + bh / 2 - r) + "px",
+                width: 2 * r + "px", height: 2 * r + "px", zIndex: "500" });
+              fx.appendChild(el);
+              tl.fromTo(el, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }, t);
+              tl.to(el, { opacity: 0, scale: 1.15, duration: 0.45, ease: "power1.in" }, t + 0.55);
+            } else if (type === "mark") {
+              const [bx, by, bw, bh] = ev[2];
+              const el = document.createElement("div");
+              el.className = ID + "-mark"; el.id = ID + "-fx-" + (n++);
+              Object.assign(el.style, { left: (bx - 6) + "px", top: (by - 6) + "px",
+                width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
+              fx.appendChild(el);
+              tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+            } else if (type === "label" || type === "label2") {
+              const el = document.createElement("div");
+              el.className = ID + "-chip"; el.id = ID + "-chip-" + (n++);
+              el.textContent = ev[2];
+              chips.appendChild(el);
+              if (chipOn) tl.to(chipOn, { opacity: 0, duration: 0.2, ease: "none" }, t - 0.2);
+              if (type === "label2") tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, t - 0.2);
+              else tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, t);
+              chipOn = el;
+            }
+          });
+          tl.set({}, {}, 24);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
