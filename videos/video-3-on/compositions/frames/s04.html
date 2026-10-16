@@ -54,7 +54,7 @@
       <script>
         (function () {
           const ID = "s04";
-          const CFG = {"shots": ["04-orden"], "events": [["show", 0, "04-orden"], ["cam", 0, "full", null, 0.01], ["cam", 0.6, [592, 412.5, 552, 84.0], 2.2], ["mark", 1.6, [592, 412.5, 210, 39.3]], ["label", 9.5, "VN: valor nominal"], ["mark", 10.0, [592, 458.9, 552, 37.6]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["04-orden"], "events": [["show", 0, "04-orden"], ["cam", 0, "full", null, 0.01], ["cam", 0.5, [592, 412.5, 552, 84.0], 2.2], ["mark", 1.4, [592, 412.5, 210, 39.3]], ["label", 10.4, "VN: valor nominal"], ["mark", 10.0, [592, 458.9, 552, 37.6]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -89,7 +89,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -108,7 +108,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -146,7 +146,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 22);
+          tl.set({}, {}, 15.5);
           window.__timelines[ID] = tl;
         })();
       </script>

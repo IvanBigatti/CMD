@@ -44,7 +44,7 @@
       <script>
         (function () {
           const ID = "s05";
-          const CFG = {"shots": ["05-ficha-puntas", "06-ficha-comprar"], "events": [["show", 0, "05-ficha-puntas"], ["cam", 0, [335, 515, 615, 160], 2.4, 0.01], ["mark", 0.8, [354, 532.6, 577, 214.5]], ["label", 3.0, "A mercado pagás la punta vendedora"], ["mark", 3.0, [649.6, 532.6, 151.80000000000007, 214.5]], ["show", 8.5, "06-ficha-comprar"], ["cam", 8.5, [335, 270, 1250, 530], 1.4], ["mark", 9.5, [1176.2, 279.7, 184.7, 32.8]], ["mark", 9.5, [649.6, 751.5, 151.8, 36.0]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["05-ficha-puntas", "06-ficha-comprar"], "events": [["show", 0, "05-ficha-puntas"], ["cam", 0, [335, 515, 615, 160], 2.4, 0.01], ["mark", 0.7, [354, 532.6, 577, 214.5]], ["label", 2.6, "A mercado pagás la punta vendedora"], ["mark", 3.3, [649.6, 532.6, 151.80000000000007, 214.5]], ["show", 6.9, "06-ficha-comprar"], ["cam", 6.9, [335, 270, 1250, 530], 1.4], ["mark", 7.7, [1176.2, 279.7, 184.7, 32.8]], ["mark", 7.7, [649.6, 751.5, 151.8, 36.0]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -109,7 +109,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 16);
+          tl.set({}, {}, 11);
           window.__timelines[ID] = tl;
         })();
       </script>

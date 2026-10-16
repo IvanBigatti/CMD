@@ -43,7 +43,7 @@
       <script>
         (function () {
           const ID = "s04";
-          const CFG = {"shots": ["06-ficha-comprar"], "events": [["show", 0, "06-ficha-comprar"], ["cam", 0, "full", null, 0.01], ["cam", 0.6, [335, 353.2, 615, 255.9], 2.0], ["mark", 2.0, [651.5, 445.3, 279.5, 36.7]], ["label", 9.0, "Precio en pesos = precio en dólares ÷ ratio × tipo de cambio"], ["mark", 11.0, [651.5, 482, 279.5, 36.7]], ["mark", 15.0, [651.5, 518.7, 279.5, 36.7]], ["cam", 17.5, [335, 279.7, 1250, 329.40000000000003], 1.4], ["label2", 18.0, "US$ 71,20 ÷ 5 × $ 1.480 = $ 21.075,20"], ["mark", 18.5, [1176.2, 279.7, 184.7, 32.8]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["06-ficha-comprar"], "events": [["show", 0, "06-ficha-comprar"], ["cam", 0, "full", null, 0.01], ["cam", 0.3, [335, 353.2, 615, 255.9], 2.0], ["mark", 3.8, [651.5, 445.3, 279.5, 36.7]], ["label", 7.4, "Precio en pesos = precio en dólares ÷ ratio × tipo de cambio"], ["mark", 9.8, [651.5, 482, 279.5, 36.7]], ["mark", 13.1, [651.5, 518.7, 279.5, 36.7]], ["cam", 14.2, [335, 279.7, 1250, 329.40000000000003], 1.4], ["label2", 14.4, "US$ 71,20 ÷ 5 × $ 1.480 = $ 21.075,20"], ["mark", 14.8, [1176.2, 279.7, 184.7, 32.8]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -108,7 +108,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 22);
+          tl.set({}, {}, 17);
           window.__timelines[ID] = tl;
         })();
       </script>

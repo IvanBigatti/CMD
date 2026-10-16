@@ -45,7 +45,7 @@
       <script>
         (function () {
           const ID = "s06";
-          const CFG = {"shots": ["06-ficha-comprar", "07-orden", "08-orden-montos"], "events": [["show", 0, "06-ficha-comprar"], ["cam", 0, [1176.2, 279.7, 303.5, 50.30000000000001], 2.2, 0.01], ["click", 1.2, [1374.9, 284.8, 104.8, 45.2]], ["show", 1.9, "07-orden"], ["cam", 1.9, "full", null, 0.01], ["cam", 2.4, [380, 284.5, 790, 455], null, 0.9], ["mark", 3.2, [592, 412.5, 552, 65.19999999999999]], ["cam", 6.0, [592, 492.7, 552, 87.7], 2.2], ["label", 6.5, "Cantidad o monto"], ["mark", 6.5, [592, 492.7, 552, 87.7]], ["cam", 12.0, [592, 595.3, 552, 69.2], 2.2], ["label", 12.5, "A mercado o con límite"], ["mark", 12.5, [592, 595.3, 552, 69.2]], ["mark", 16.5, [592, 595.3, 552, 69.2]], ["show", 21.0, "08-orden-montos"], ["cam", 21.0, "full", null, 0.01], ["cam", 21.4, [380, 785.0, 900, 183.5], null, 0.9], ["label", 21.8, "Un monto disponible para cada plazo"], ["mark", 22.4, [380, 785.0, 900, 183.5]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["06-ficha-comprar", "07-orden", "08-orden-montos"], "events": [["show", 0, "06-ficha-comprar"], ["cam", 0, [1176.2, 279.7, 303.5, 50.30000000000001], 2.2, 0.01], ["click", 1.8, [1374.9, 284.8, 104.8, 45.2]], ["show", 2.5, "07-orden"], ["cam", 2.5, "full", null, 0.01], ["cam", 2.8, [380, 284.5, 790, 455], null, 0.8], ["mark", 3.8, [592, 412.5, 552, 65.19999999999999]], ["cam", 5.2, [592, 492.7, 552, 87.7], 2.2], ["label", 5.4, "Cantidad o monto"], ["mark", 6.1, [592, 492.7, 552, 87.7]], ["cam", 9.6, [592, 595.3, 552, 69.2], 2.2], ["label", 9.8, "A mercado o con límite"], ["mark", 10.1, [592, 595.3, 552, 69.2]], ["mark", 13.1, [592, 595.3, 552, 69.2]], ["show", 16.6, "08-orden-montos"], ["cam", 16.6, "full", null, 0.01], ["cam", 16.8, [380, 785.0, 900, 183.5], null, 0.8], ["label", 17.1, "Un monto disponible para cada plazo"], ["mark", 17.9, [380, 785.0, 900, 183.5]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -110,7 +110,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 28);
+          tl.set({}, {}, 21.5);
           window.__timelines[ID] = tl;
         })();
       </script>

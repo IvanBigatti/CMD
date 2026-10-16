@@ -174,6 +174,8 @@ def preparar_musica(origen, salida, dur, ini=0.35):
 def carve(index_html, clips, core_dir):
     """«Carve» de la música: le abre lugar a la voz (hyperframes-audio)."""
     script = pathlib.Path.home() / ".claude/skills/hyperframes-audio/scripts/carve.mjs"
+    if not script.exists():  # skills installed in the repo (npx skills add) instead of the user folder
+        script = pathlib.Path(__file__).resolve().parents[2] / ".agents/skills/hyperframes-audio/scripts/carve.mjs"
     voces = sum((["--voice", c[0]] for c in clips), [])
     subprocess.run(["node", str(script), "--comp", str(index_html), "--core", str(core_dir), "--bed", "musica", *voces],
                    check=True)

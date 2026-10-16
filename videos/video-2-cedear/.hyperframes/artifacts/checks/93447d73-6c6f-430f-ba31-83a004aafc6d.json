@@ -1,0 +1,135 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "audio_carve_ungrouped_sources",
+        "severity": "warning",
+        "message": "#musica's carve names 12 voice clips directly (voz-s01, voz-s02, voz-c1, voz-s03, voz-s04, voz-s05, voz-s06, voz-c2, voz-s07, voz-s08, voz-s09, voz-s10) instead of a group.",
+        "selector": "#musica",
+        "dataAttributes": {},
+        "sourceFile": "/Users/ivanbigatti/Facultad/CMD/videos/video-2-cedear/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Group the voice clips and carve against the group. A hand-rolled clip list silently rots when a clip is added."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 1 has 23 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/ivanbigatti/Facultad/CMD/videos/video-2-cedear/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      }
+    ],
+    "filesScanned": 13
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "gsap_tween_tail",
+        "severity": "warning",
+        "message": "In timeline \"main\", a tween on x, y, scale of #s03-cam ends at 21.500 s, 0.200 s after a later tween on x, y, scale ends at 21.300 s. For that tail the earlier tween takes x, y, scale back and leaves its own end value on screen, so the later tween's end never shows. End the earlier tween by 20.600 s, or add overwrite: \"auto\" to the later tween.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "139.9",
+          "data-width": "1920",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "time": 21.299999999999997
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 139.9,
+    "samples": [
+      7.772,
+      23.317,
+      38.861,
+      54.406,
+      69.95,
+      85.494,
+      101.039,
+      116.583,
+      132.128
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      7.772,
+      38.861,
+      69.95,
+      101.039,
+      132.128
+    ],
+    "checked": 6,
+    "passed": 6
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}
