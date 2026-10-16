@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -20,11 +22,11 @@
         #c1-name { font-size: 128px; line-height: 1; font-weight: 700; color: #F7F6FC; }
 
       </style>
-      <div data-hf-id="hf-nugr" id="root" data-composition-id="c1" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-4cub" id="c1-bg"></div>
-        <div data-hf-id="hf-k9cd" id="c1-content">
-          <div data-hf-id="hf-52nq" id="c1-num">CAPÍTULO 1 DE 7</div>
-          <div data-hf-id="hf-y0ha" id="c1-name">Ingreso</div>
+      <div id="root" data-composition-id="c1" data-width="1920" data-height="1080">
+        <div id="c1-bg"></div>
+        <div id="c1-content">
+          <div id="c1-num">CAPÍTULO 1 DE 7</div>
+          <div id="c1-name">Ingreso</div>
         </div>
       </div>
       <script>
@@ -33,7 +35,7 @@
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#" + ID + "-num", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.1);
           tl.fromTo("#" + ID + "-name", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.2);
-          tl.set({}, {}, 2);
+          tl.set({}, {}, 2.6);
           window.__timelines[ID] = tl;
         })();
       </script>

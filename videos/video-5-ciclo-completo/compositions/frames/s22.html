@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -23,28 +25,28 @@
         #s22-cardtx { font-size: 60px; font-weight: 600; color: #06083F; }
         #s22-cardnote { font-size: 40px; font-weight: 500; color: #3A3D6E; }
         #s22-rate { font-size: 48px; font-weight: 500; color: #E8B23A; }
-        #s22-fine { position: absolute; left: 200px; right: 200px; bottom: 70px; font-size: 36px;
+        #s22-fine { position: absolute; left: 200px; right: 200px; bottom: 150px; font-size: 36px;
           color: #C9C6EE; }
 
       </style>
-      <div data-hf-id="hf-6gw8" id="root" data-composition-id="s22" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-wggw" id="s22-bg"></div>
-        <div data-hf-id="hf-csq0" id="s22-content">
-          <div data-hf-id="hf-knlm" id="s22-title">Ahora hacelo vos</div>
-          <div data-hf-id="hf-76h7" id="s22-card"><div data-hf-id="hf-gqwa" id="s22-cardlbl">ITINERARIO DEL SIMULADOR</div>
-            <div data-hf-id="hf-gr1a" id="s22-cardtx">Ciclo completo de una inversión</div><div data-hf-id="hf-188c" id="s22-cardnote">Unos 18 minutos</div></div>
-          <div data-hf-id="hf-5c0e" id="s22-rate">Al terminar, puntuá la sección del 1 al 10</div>
+      <div id="root" data-composition-id="s22" data-width="1920" data-height="1080">
+        <div id="s22-bg"></div>
+        <div id="s22-content">
+          <div id="s22-title">Ahora hacelo vos</div>
+          <div id="s22-card"><div id="s22-cardlbl">ITINERARIO DEL SIMULADOR</div>
+            <div id="s22-cardtx">Ciclo completo de una inversión</div><div id="s22-cardnote">Unos 18 minutos</div></div>
+          <div id="s22-rate">Al terminar, puntuá la sección del 1 al 10</div>
         </div>
-        <div data-hf-id="hf-7g5e" id="s22-fine">Simulador de práctica · No es una recomendación de inversión</div>
+        <div id="s22-fine">Simulador de práctica · No es una recomendación de inversión</div>
       </div>
       <script>
         (function () {
           const ID = "s22";
           const tl = gsap.timeline({ paused: true });
-          tl.fromTo("#" + ID + "-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.3);
-          tl.fromTo("#" + ID + "-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.9);
-          tl.fromTo("#" + ID + "-rate", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.6);
-          tl.fromTo("#" + ID + "-fine", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 2.0);
+          tl.fromTo("#" + ID + "-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.54);
+          tl.fromTo("#" + ID + "-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.22);
+          tl.fromTo("#" + ID + "-rate", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.06);
+          tl.fromTo("#" + ID + "-fine", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.86);
           tl.set({}, {}, 8);
           window.__timelines[ID] = tl;
         })();

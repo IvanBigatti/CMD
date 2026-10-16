@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -37,22 +39,22 @@
         .s02-val { font-size: 40px; font-weight: 600; color: #06083F; }
 
       </style>
-      <div data-hf-id="hf-m6ce" id="root" data-composition-id="s02" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-i8qa" id="s02-bg"></div>
-        <div data-hf-id="hf-l7yi" id="s02-frame">
-          <div data-hf-id="hf-cd6z" id="s02-cam" data-layout-allow-overflow>
-          <img data-hf-id="hf-rqst" class="s02-shot" id="s02-img-0" src="assets/captures/00-a-el-ciclo-completo.png" alt="" />
-            <div data-hf-id="hf-fyjl" id="s02-fx"></div>
+      <div id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+        <div id="s02-bg"></div>
+        <div id="s02-frame">
+          <div id="s02-cam" data-layout-allow-overflow>
+          <img class="s02-shot" id="s02-img-0" src="assets/captures/00-a-el-ciclo-completo.png" alt="" />
+            <div id="s02-fx"></div>
           </div>
         </div>
-        <div data-hf-id="hf-gp30" id="s02-chips"></div>
-        <div data-hf-id="hf-jnpt" id="s02-overlay"></div>
-        <div data-hf-id="hf-18ey" id="s02-band"></div>
+        <div id="s02-chips"></div>
+        <div id="s02-overlay"></div>
+        <div id="s02-band"></div>
       </div>
       <script>
         (function () {
           const ID = "s02";
-          const CFG = {"shots": ["00-a-el-ciclo-completo"], "events": [["show", 0, "00-a-el-ciclo-completo"], ["cam", 0, "full", null, 0.01], ["cam", 1.0, [380, 284.5, 570, 259.9], 1.75], ["mark", 2.2, [783, 378, 141, 66]], ["cam", 12.0, "full"]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["00-a-el-ciclo-completo"], "events": [["show", 0, "00-a-el-ciclo-completo"], ["cam", 0, "full", null, 0.01], ["cam", 1.2, [380, 284.5, 570, 259.9], 1.75], ["mark", 2.3, [783, 378, 141, 66], 8.7], ["cam", 11.0, "full"]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -106,7 +108,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -144,7 +146,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 22);
+          tl.set({}, {}, 19.4);
           window.__timelines[ID] = tl;
         })();
       </script>

@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -20,11 +22,11 @@
         #c4-name { font-size: 128px; line-height: 1; font-weight: 700; color: #F7F6FC; }
 
       </style>
-      <div data-hf-id="hf-xgdo" id="root" data-composition-id="c4" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-4t6o" id="c4-bg"></div>
-        <div data-hf-id="hf-ugco" id="c4-content">
-          <div data-hf-id="hf-0ahg" id="c4-num">CAPÍTULO 4 DE 7</div>
-          <div data-hf-id="hf-dz6v" id="c4-name">Tenencia</div>
+      <div id="root" data-composition-id="c4" data-width="1920" data-height="1080">
+        <div id="c4-bg"></div>
+        <div id="c4-content">
+          <div id="c4-num">CAPÍTULO 4 DE 7</div>
+          <div id="c4-name">Tenencia</div>
         </div>
       </div>
       <script>
@@ -33,7 +35,7 @@
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#" + ID + "-num", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.1);
           tl.fromTo("#" + ID + "-name", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.2);
-          tl.set({}, {}, 2);
+          tl.set({}, {}, 2.0);
           window.__timelines[ID] = tl;
         })();
       </script>

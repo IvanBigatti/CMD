@@ -1,0 +1,129 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "audio_carve_ungrouped_sources",
+        "severity": "warning",
+        "message": "#musica's carve names 19 voice clips directly (voz-s01, voz-s02, voz-c1, voz-k1, voz-c2, voz-k2, voz-c3, voz-k3, voz-c4, voz-k4, voz-c5, voz-k5, voz-c6, voz-k6, voz-c7, voz-k7, voz-s20, voz-s21, voz-s22) instead of a group.",
+        "selector": "#musica",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Group the voice clips and carve against the group. A hand-rolled clip list silently rots when a clip is added."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 1 has 52 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"ring\"> is a timeline element that contains nested <div id=\"ring-disc\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#ring",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"ring\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 27
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 198.11,
+    "samples": [
+      11.006,
+      33.018,
+      55.031,
+      77.043,
+      99.055,
+      121.067,
+      143.079,
+      165.092,
+      187.104
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      11.006,
+      55.031,
+      99.055,
+      143.079,
+      187.104
+    ],
+    "checked": 11,
+    "passed": 11
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

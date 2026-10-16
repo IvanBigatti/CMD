@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -20,11 +22,11 @@
         #c7-name { font-size: 128px; line-height: 1; font-weight: 700; color: #F7F6FC; }
 
       </style>
-      <div data-hf-id="hf-a3bd" id="root" data-composition-id="c7" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-e16t" id="c7-bg"></div>
-        <div data-hf-id="hf-dkqr" id="c7-content">
-          <div data-hf-id="hf-uqlq" id="c7-num">CAPÍTULO 7 DE 7</div>
-          <div data-hf-id="hf-cyxk" id="c7-name">Retiro</div>
+      <div id="root" data-composition-id="c7" data-width="1920" data-height="1080">
+        <div id="c7-bg"></div>
+        <div id="c7-content">
+          <div id="c7-num">CAPÍTULO 7 DE 7</div>
+          <div id="c7-name">Retiro</div>
         </div>
       </div>
       <script>
@@ -33,7 +35,7 @@
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#" + ID + "-num", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.1);
           tl.fromTo("#" + ID + "-name", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.2);
-          tl.set({}, {}, 2);
+          tl.set({}, {}, 2.0);
           window.__timelines[ID] = tl;
         })();
       </script>

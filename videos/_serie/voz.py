@@ -105,7 +105,7 @@ class Narracion:
       - antes/despues: margen de la escena antes de que arranque la voz y después de que termine
       - frases: subtítulos (el guion corregido); se alinean con la transcripción
       - quitar: tropiezos a recortar dentro del tramo
-      - dur: duración fija de la escena (si no, antes + voz + después)
+      - dur: duración fija de la escena (si no, antes + voz + después, con un mínimo de `min`)
     """
 
     def __init__(self, root, cfg, transcript="voz/tmp{n}/transcript.json", wav="voz/parte{n}.wav"):
@@ -126,7 +126,7 @@ class Narracion:
         palabras = [w for w in self.palabras[c["parte"]] if a - 0.5 <= w["start"] <= b + 0.5]
         al = alinear(palabras, [f.replace("AL30", "AL 30") for f in c["frases"]])
         voz_len = (b - a) - self._menos_quitado(sid, b + 1)
-        dur = round(c.get("dur") or (c["antes"] + voz_len + c["despues"]), 2)
+        dur = round(c.get("dur") or max(c.get("min", 0), c["antes"] + voz_len + c["despues"]), 2)
         P = [round(max(c["antes"], c["antes"] + (s - a) - self._menos_quitado(sid, s)), 2) for s, _ in al]
         guide = [(P[i], round((P[i + 1] if i + 1 < len(P) else dur - 0.15) - P[i], 2), f)
                  for i, f in enumerate(c["frases"])]
@@ -164,11 +164,28 @@ def musica(SCENES, src="musica/fondo.wav", apertura=0.5, bajo_voz=0.3, voz_desde
     return dict(src=src, dur=total, points=[(0, apertura), (t1 - 1.6, apertura), (t1, bajo_voz), (total, bajo_voz)])
 
 
-def preparar_musica(origen, salida, dur, ini=0.35):
-    """Recorta la pista a la duración del video, la normaliza (−16 LUFS) y le pone fundidos."""
-    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", str(ini), "-t", f"{dur:.3f}", "-i", str(origen),
-                    "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,afade=t=in:d=1.5,afade=t=out:st={dur - 3.5:.3f}:d=3.5",
-                    "-ar", "48000", "-ac", "2", str(salida)], check=True)
+def preparar_musica(origen, salida, dur, ini=0.35, fin_util=150.0, cruce=5.0):
+    """Recorta la pista a la duración del video, la normaliza (−16 LUFS) y le pone fundidos.
+    Si el video es más largo que la parte útil de la pista (`ini`–`fin_util`, antes de su propio
+    final), la repite empalmando las copias con un fundido cruzado de `cruce` segundos."""
+    util = fin_util - ini
+    copias = 1
+    while copias * util - (copias - 1) * cruce < dur:
+        copias += 1
+    entradas = sum((["-ss", str(ini), "-t", f"{util:.3f}", "-i", str(origen)] for _ in range(copias)), [])
+    if copias == 1:
+        cadena = "[0]anull[m]"
+    else:
+        cadena, prev = "", "[0]"
+        for k in range(1, copias):
+            out = "[m]" if k == copias - 1 else f"[x{k}]"
+            cadena += f"{prev}[{k}]acrossfade=d={cruce}:c1=tri:c2=tri{out};"
+            prev = out
+        cadena = cadena.rstrip(";")
+    filtro = (cadena + f";[m]atrim=0:{dur:.3f},loudnorm=I=-16:TP=-1.5:LRA=11,"
+              f"afade=t=in:d=1.5,afade=t=out:st={dur - 3.5:.3f}:d=3.5[out]")
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *entradas, "-filter_complex", filtro,
+                    "-map", "[out]", "-ar", "48000", "-ac", "2", str(salida)], check=True)
 
 
 def carve(index_html, clips, core_dir):
@@ -177,3 +194,20 @@ def carve(index_html, clips, core_dir):
     voces = sum((["--voice", c[0]] for c in clips), [])
     subprocess.run(["node", str(script), "--comp", str(index_html), "--core", str(core_dir), "--bed", "musica", *voces],
                    check=True)
+
+
+def pista_unica(root, clips, total, salida="voz/pista.wav"):
+    """Une los clips de voz en una sola pista continua (cada uno en su lugar exacto).
+    Con muchos clips sueltos, la mezcla del render baja el volumen general (lo reparte entre
+    todas las pistas); con una sola pista de voz + la música, el nivel queda igual en toda la serie."""
+    root = pathlib.Path(root)
+    entradas, filtros = [], []
+    for k, (_, src, start, _) in enumerate(clips):
+        entradas += ["-i", str(root / src)]
+        ms = int(round(start * 1000))
+        filtros.append(f"[{k}]adelay={ms}|{ms}[d{k}]")
+    filtros.append("".join(f"[d{k}]" for k in range(len(clips))) +
+                   f"amix=inputs={len(clips)}:normalize=0:dropout_transition=0,apad,atrim=0:{total:.3f}[out]")
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *entradas, "-filter_complex", ";".join(filtros),
+                    "-map", "[out]", "-ar", "48000", "-ac", "1", str(root / salida)], check=True)
+    return [("voz", salida, 0.0, round(total, 3))]

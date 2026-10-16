@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -37,25 +39,25 @@
         .k2-val { font-size: 40px; font-weight: 600; color: #06083F; }
 
       </style>
-      <div data-hf-id="hf-u6bm" id="root" data-composition-id="k2" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-80ka" id="k2-bg"></div>
-        <div data-hf-id="hf-5g8i" id="k2-frame">
-          <div data-hf-id="hf-7d0h" id="k2-cam" data-layout-allow-overflow>
-          <img data-hf-id="hf-glik" class="k2-shot" id="k2-img-0" src="assets/captures/06-b-sin-modal.png" alt="" />
-          <img data-hf-id="hf-c5qp" class="k2-shot" id="k2-img-1" src="assets/captures/06-c-despues.png" alt="" />
-          <img data-hf-id="hf-bae6" class="k2-shot" id="k2-img-2" src="assets/captures/08-c-despues.png" alt="" />
-          <img data-hf-id="hf-gcs2" class="k2-shot" id="k2-img-3" src="assets/captures/10-c-despues.png" alt="" />
-            <div data-hf-id="hf-mdyx" id="k2-fx"></div>
+      <div id="root" data-composition-id="k2" data-width="1920" data-height="1080">
+        <div id="k2-bg"></div>
+        <div id="k2-frame">
+          <div id="k2-cam" data-layout-allow-overflow>
+          <img class="k2-shot" id="k2-img-0" src="assets/captures/06-b-sin-modal.png" alt="" />
+          <img class="k2-shot" id="k2-img-1" src="assets/captures/06-c-despues.png" alt="" />
+          <img class="k2-shot" id="k2-img-2" src="assets/captures/08-c-despues.png" alt="" />
+          <img class="k2-shot" id="k2-img-3" src="assets/captures/10-c-despues.png" alt="" />
+            <div id="k2-fx"></div>
           </div>
         </div>
-        <div data-hf-id="hf-xi9g" id="k2-chips"></div>
-        <div data-hf-id="hf-pwex" id="k2-overlay"></div>
-        <div data-hf-id="hf-w9aq" id="k2-band"></div>
+        <div id="k2-chips"></div>
+        <div id="k2-overlay"></div>
+        <div id="k2-band"></div>
       </div>
       <script>
         (function () {
           const ID = "k2";
-          const CFG = {"shots": ["06-b-sin-modal", "06-c-despues", "08-c-despues", "10-c-despues"], "events": [["show", 0, "06-b-sin-modal"], ["cam", 0, "full", null, 0.01], ["label", 0.3, "En detalle: Video 1 · Ingresar dinero y comprar dólar MEP"], ["cam", 0.6, [380, 738.9, 373.3, 307.5], 1.75], ["click", 2.0, [620, 974, 105, 44]], ["show", 2.7, "06-c-despues"], ["cam", 2.7, "full", null, 0.01], ["cam", 3.0, [397, 509.9, 650, 74.9], 2.4], ["mark", 4.2, [397, 509.9, 650, 74.9]], ["cam", 6.8, [1084, 331.1, 456, 70.5], 1.9], ["click", 7.6, [1084, 331.1, 456, 70.5]], ["show", 8.3, "08-c-despues"], ["cam", 8.5, [1084, 415.6, 456, 185.8], 2.5], ["mark", 10.0, [1084, 415.6, 456, 185.8]], ["cam", 15.6, [397, 509.9, 650, 134.89999999999998], 1.9], ["click", 16.8, [397, 600.8, 650, 44]], ["show", 17.5, "10-c-despues"], ["cam", 17.6, [762, 464, 396, 45.1], 2.4], ["mark", 18.8, [762, 464, 396, 45.1]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["06-b-sin-modal", "06-c-despues", "08-c-despues", "10-c-despues"], "events": [["show", 0, "06-b-sin-modal"], ["cam", 0, "full", null, 0.01], ["label", 0.3, "En detalle: Video 1 · Ingresar dinero y comprar dólar MEP"], ["cam", 0.74, [380, 738.9, 373.3, 307.5], 1.75], ["click", 1.94, [620, 974, 105, 44]], ["show", 2.64, "06-c-despues"], ["cam", 2.64, "full", null, 0.01], ["cam", 2.94, [397, 509.9, 650, 74.9], 2.4], ["cam", 3.7, [1084, 331.1, 456, 70.5], 1.9, 0.6], ["click", 4.4, [1084, 331.1, 456, 70.5]], ["show", 5.0, "08-c-despues"], ["cam", 5.1, [1084, 415.6, 456, 185.8], 2.5], ["mark", 7.06, [1084, 415.6, 456, 185.8], 3.5200000000000005], ["cam", 10.58, [397, 509.9, 650, 134.89999999999998], 1.9, 0.7], ["click", 11.48, [397, 600.8, 650, 44]], ["show", 12.08, "10-c-despues"], ["cam", 12.18, [762, 464, 396, 45.1], 2.4], ["mark", 13.12, [762, 464, 396, 45.1]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -109,7 +111,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -147,7 +149,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 24);
+          tl.set({}, {}, 16.6);
           window.__timelines[ID] = tl;
         })();
       </script>

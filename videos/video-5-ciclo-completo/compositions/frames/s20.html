@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -37,22 +39,22 @@
         .s20-val { font-size: 40px; font-weight: 600; color: #06083F; }
 
       </style>
-      <div data-hf-id="hf-tzxm" id="root" data-composition-id="s20" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-1zt2" id="s20-bg"></div>
-        <div data-hf-id="hf-wfpi" id="s20-frame">
-          <div data-hf-id="hf-kyg3" id="s20-cam" data-layout-allow-overflow>
-          <img data-hf-id="hf-9dvr" class="s20-shot" id="s20-img-0" src="assets/captures/45-b-sin-modal.png" alt="" />
-            <div data-hf-id="hf-dikl" id="s20-fx"></div>
+      <div id="root" data-composition-id="s20" data-width="1920" data-height="1080">
+        <div id="s20-bg"></div>
+        <div id="s20-frame">
+          <div id="s20-cam" data-layout-allow-overflow>
+          <img class="s20-shot" id="s20-img-0" src="assets/captures/45-b-sin-modal.png" alt="" />
+            <div id="s20-fx"></div>
           </div>
         </div>
-        <div data-hf-id="hf-7jwg" id="s20-chips"></div>
-        <div data-hf-id="hf-qbet" id="s20-overlay"></div>
-        <div data-hf-id="hf-q0fq" id="s20-band"></div>
+        <div id="s20-chips"></div>
+        <div id="s20-overlay"></div>
+        <div id="s20-band"></div>
       </div>
       <script>
         (function () {
           const ID = "s20";
-          const CFG = {"shots": ["45-b-sin-modal"], "events": [["show", 0, "45-b-sin-modal"], ["cam", 0, "full", null, 0.01], ["cam", 0.4, [380, 640, 1160, 110], 2.2], ["cam", 2.2, [380, 377, 1160, 110], 2.2, 9.0, "none"]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["45-b-sin-modal"], "events": [["show", 0, "45-b-sin-modal"], ["cam", 0, "full", null, 0.01], ["cam", 0.3, [380, 640, 1160, 110], 2.2], ["cam", 2.34, [380, 377, 1160, 110], 2.2, 7.16, "none"]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -106,7 +108,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -144,7 +146,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 14);
+          tl.set({}, {}, 10.1);
           window.__timelines[ID] = tl;
         })();
       </script>

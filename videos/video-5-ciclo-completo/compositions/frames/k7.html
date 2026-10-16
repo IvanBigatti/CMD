@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -37,23 +39,23 @@
         .k7-val { font-size: 40px; font-weight: 600; color: #06083F; }
 
       </style>
-      <div data-hf-id="hf-xje9" id="root" data-composition-id="k7" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-pkq5" id="k7-bg"></div>
-        <div data-hf-id="hf-ig9f" id="k7-frame">
-          <div data-hf-id="hf-zw4s" id="k7-cam" data-layout-allow-overflow>
-          <img data-hf-id="hf-0i8a" class="k7-shot" id="k7-img-0" src="assets/captures/43-c-retiro-limpio.png" alt="" />
-          <img data-hf-id="hf-jej1" class="k7-shot" id="k7-img-1" src="assets/captures/44-c-despues.png" alt="" />
-            <div data-hf-id="hf-mmd2" id="k7-fx"></div>
+      <div id="root" data-composition-id="k7" data-width="1920" data-height="1080">
+        <div id="k7-bg"></div>
+        <div id="k7-frame">
+          <div id="k7-cam" data-layout-allow-overflow>
+          <img class="k7-shot" id="k7-img-0" src="assets/captures/43-c-retiro-limpio.png" alt="" />
+          <img class="k7-shot" id="k7-img-1" src="assets/captures/44-c-despues.png" alt="" />
+            <div id="k7-fx"></div>
           </div>
         </div>
-        <div data-hf-id="hf-4lbp" id="k7-chips"></div>
-        <div data-hf-id="hf-0ues" id="k7-overlay"></div>
-        <div data-hf-id="hf-492x" id="k7-band"></div>
+        <div id="k7-chips"></div>
+        <div id="k7-overlay"></div>
+        <div id="k7-band"></div>
       </div>
       <script>
         (function () {
           const ID = "k7";
-          const CFG = {"shots": ["43-c-retiro-limpio", "44-c-despues"], "events": [["show", 0, "43-c-retiro-limpio"], ["cam", 0, [397, 497.1, 650, 144.89999999999998], 2.0, 0.01], ["click", 1.6, [397, 598, 650, 44]], ["show", 2.3, "44-c-despues"], ["cam", 2.4, [762, 473.9, 396, 45.1], 2.4], ["mark", 3.6, [762, 473.9, 396, 45.1]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["43-c-retiro-limpio", "44-c-despues"], "events": [["show", 0, "43-c-retiro-limpio"], ["cam", 0, [397, 497.1, 650, 144.89999999999998], 2.0, 0.01], ["click", 1.84, [397, 598, 650, 44]], ["show", 2.54, "44-c-despues"], ["cam", 2.64, [762, 473.9, 396, 45.1], 2.4], ["mark", 4.5, [762, 473.9, 396, 45.1]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -107,7 +109,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -145,7 +147,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 11);
+          tl.set({}, {}, 7.18);
           window.__timelines[ID] = tl;
         })();
       </script>

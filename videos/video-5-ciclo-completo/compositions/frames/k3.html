@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -37,28 +39,28 @@
         .k3-val { font-size: 40px; font-weight: 600; color: #06083F; }
 
       </style>
-      <div data-hf-id="hf-nkgt" id="root" data-composition-id="k3" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-223d" id="k3-bg"></div>
-        <div data-hf-id="hf-gbfb" id="k3-frame">
-          <div data-hf-id="hf-gm5k" id="k3-cam" data-layout-allow-overflow>
-          <img data-hf-id="hf-ka7q" class="k3-shot" id="k3-img-0" src="assets/captures/11-b-sin-modal.png" alt="" />
-          <img data-hf-id="hf-20av" class="k3-shot" id="k3-img-1" src="assets/captures/11-c-despues.png" alt="" />
-          <img data-hf-id="hf-i8dh" class="k3-shot" id="k3-img-2" src="assets/captures/12-c-despues.png" alt="" />
-          <img data-hf-id="hf-lqj3" class="k3-shot" id="k3-img-3" src="assets/captures/13-c-despues.png" alt="" />
-          <img data-hf-id="hf-hwp7" class="k3-shot" id="k3-img-4" src="assets/captures/16-c-despues.png" alt="" />
-          <img data-hf-id="hf-wyse" class="k3-shot" id="k3-img-5" src="assets/captures/21-c-despues.png" alt="" />
-          <img data-hf-id="hf-2l0d" class="k3-shot" id="k3-img-6" src="assets/captures/23-c-despues.png" alt="" />
-            <div data-hf-id="hf-p49u" id="k3-fx"></div>
+      <div id="root" data-composition-id="k3" data-width="1920" data-height="1080">
+        <div id="k3-bg"></div>
+        <div id="k3-frame">
+          <div id="k3-cam" data-layout-allow-overflow>
+          <img class="k3-shot" id="k3-img-0" src="assets/captures/11-b-sin-modal.png" alt="" />
+          <img class="k3-shot" id="k3-img-1" src="assets/captures/11-c-despues.png" alt="" />
+          <img class="k3-shot" id="k3-img-2" src="assets/captures/12-c-despues.png" alt="" />
+          <img class="k3-shot" id="k3-img-3" src="assets/captures/13-c-despues.png" alt="" />
+          <img class="k3-shot" id="k3-img-4" src="assets/captures/16-c-despues.png" alt="" />
+          <img class="k3-shot" id="k3-img-5" src="assets/captures/21-c-despues.png" alt="" />
+          <img class="k3-shot" id="k3-img-6" src="assets/captures/23-c-despues.png" alt="" />
+            <div id="k3-fx"></div>
           </div>
         </div>
-        <div data-hf-id="hf-op0h" id="k3-chips"></div>
-        <div data-hf-id="hf-7lxc" id="k3-overlay"></div>
-        <div data-hf-id="hf-p6i5" id="k3-band"></div>
+        <div id="k3-chips"></div>
+        <div id="k3-overlay"></div>
+        <div id="k3-band"></div>
       </div>
       <script>
         (function () {
           const ID = "k3";
-          const CFG = {"shots": ["11-b-sin-modal", "11-c-despues", "12-c-despues", "13-c-despues", "16-c-despues", "21-c-despues", "23-c-despues"], "events": [["show", 0, "11-b-sin-modal"], ["cam", 0, "full", null, 0.01], ["label", 0.3, "En detalle: Video 2 · Comprar mi primer CEDEAR"], ["click", 1.0, [629, 151, 126, 49]], ["show", 1.7, "11-c-despues"], ["cam", 1.7, "full", null, 0.01], ["click", 2.8, [421.7, 413, 79.6, 40.4]], ["show", 3.5, "12-c-despues"], ["cam", 3.6, [336, 413, 1447.9, 334.69999999999993], 1.35], ["click", 5.0, [336, 631, 220, 58]], ["show", 5.8, "13-c-despues"], ["cam", 5.8, "full", null, 0.01], ["click", 7.6, [1374.9, 100.8, 104.8, 45.2]], ["show", 8.3, "16-c-despues"], ["cam", 8.3, "full", null, 0.01], ["click", 10.4, [696.6, 783.5, 156.8, 45.2]], ["show", 11.1, "21-c-despues"], ["cam", 11.3, [762, 230, 396, 432], 2.5], ["mark", 12.5, [762, 472.9, 396, 185.8]], ["show", 19.0, "23-c-despues"], ["cam", 19.0, "full", null, 0.01], ["cam", 20.2, [640, 600, 640, 304], 1.8]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["11-b-sin-modal", "11-c-despues", "12-c-despues", "13-c-despues", "16-c-despues", "21-c-despues", "23-c-despues"], "events": [["show", 0, "11-b-sin-modal"], ["cam", 0, "full", null, 0.01], ["label", 0.3, "En detalle: Video 2 · Comprar mi primer CEDEAR"], ["click", 1.27, [629, 151, 126, 49]], ["show", 1.97, "11-c-despues"], ["cam", 1.97, "full", null, 0.01], ["click", 2.77, [421.7, 413, 79.6, 40.4]], ["show", 3.37, "12-c-despues"], ["cam", 3.47, [336, 413, 1447.9, 334.69999999999993], 1.35, 0.6], ["click", 4.63, [336, 631, 220, 58]], ["show", 5.23, "13-c-despues"], ["cam", 5.23, "full", null, 0.01], ["click", 5.71, [1374.9, 100.8, 104.8, 45.2]], ["show", 6.31, "16-c-despues"], ["cam", 6.31, "full", null, 0.01], ["click", 7.11, [696.6, 783.5, 156.8, 45.2]], ["show", 7.71, "21-c-despues"], ["cam", 7.81, [762, 230, 396, 432], 2.5], ["mark", 8.65, [762, 472.9, 396, 185.8], 3.4000000000000004], ["show", 12.05, "23-c-despues"], ["cam", 12.05, "full", null, 0.01], ["cam", 12.45, [640, 600, 640, 304], 1.8]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -112,7 +114,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -150,7 +152,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 28);
+          tl.set({}, {}, 18.45);
           window.__timelines[ID] = tl;
         })();
       </script>

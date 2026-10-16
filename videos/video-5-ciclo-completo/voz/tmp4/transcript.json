@@ -1,0 +1,386 @@
+[
+  {
+    "id": "w0",
+    "text": "¿Qué",
+    "start": 4.72,
+    "end": 5.2
+  },
+  {
+    "id": "w1",
+    "text": "tenés",
+    "start": 5.2,
+    "end": 5.52
+  },
+  {
+    "id": "w2",
+    "text": "que",
+    "start": 5.52,
+    "end": 5.6
+  },
+  {
+    "id": "w3",
+    "text": "llevar",
+    "start": 5.6,
+    "end": 5.92
+  },
+  {
+    "id": "w4",
+    "text": "de",
+    "start": 6,
+    "end": 6.16
+  },
+  {
+    "id": "w5",
+    "text": "todo",
+    "start": 6.16,
+    "end": 6.32
+  },
+  {
+    "id": "w6",
+    "text": "esto?",
+    "start": 6.32,
+    "end": 6.64
+  },
+  {
+    "id": "w7",
+    "text": "La",
+    "start": 6.64,
+    "end": 6.8
+  },
+  {
+    "id": "w8",
+    "text": "plata",
+    "start": 6.8,
+    "end": 7.12
+  },
+  {
+    "id": "w9",
+    "text": "pasa",
+    "start": 7.12,
+    "end": 7.44
+  },
+  {
+    "id": "w10",
+    "text": "por",
+    "start": 7.44,
+    "end": 7.6
+  },
+  {
+    "id": "w11",
+    "text": "tres",
+    "start": 7.6,
+    "end": 7.76
+  },
+  {
+    "id": "w12",
+    "text": "estados.",
+    "start": 7.76,
+    "end": 8.24
+  },
+  {
+    "id": "w13",
+    "text": "Disponible,",
+    "start": 8.24,
+    "end": 8.88
+  },
+  {
+    "id": "w14",
+    "text": "comprometida",
+    "start": 8.88,
+    "end": 9.52
+  },
+  {
+    "id": "w15",
+    "text": "y",
+    "start": 9.6,
+    "end": 9.76
+  },
+  {
+    "id": "w16",
+    "text": "alquilar.",
+    "start": 9.76,
+    "end": 11.36
+  },
+  {
+    "id": "w17",
+    "text": "Vender",
+    "start": 12.24,
+    "end": 12.8
+  },
+  {
+    "id": "w18",
+    "text": "y",
+    "start": 12.8,
+    "end": 12.96
+  },
+  {
+    "id": "w19",
+    "text": "cobrar",
+    "start": 12.96,
+    "end": 13.44
+  },
+  {
+    "id": "w20",
+    "text": "no",
+    "start": 13.52,
+    "end": 13.76
+  },
+  {
+    "id": "w21",
+    "text": "son",
+    "start": 13.76,
+    "end": 13.92
+  },
+  {
+    "id": "w22",
+    "text": "lo",
+    "start": 13.92,
+    "end": 14.08
+  },
+  {
+    "id": "w23",
+    "text": "mismo.",
+    "start": 14.08,
+    "end": 14.48
+  },
+  {
+    "id": "w24",
+    "text": "Entre",
+    "start": 14.48,
+    "end": 14.8
+  },
+  {
+    "id": "w25",
+    "text": "uno",
+    "start": 14.8,
+    "end": 15.04
+  },
+  {
+    "id": "w26",
+    "text": "y",
+    "start": 15.04,
+    "end": 15.12
+  },
+  {
+    "id": "w27",
+    "text": "otro",
+    "start": 15.12,
+    "end": 15.28
+  },
+  {
+    "id": "w28",
+    "text": "pasa",
+    "start": 15.44,
+    "end": 15.68
+  },
+  {
+    "id": "w29",
+    "text": "un",
+    "start": 15.76,
+    "end": 15.92
+  },
+  {
+    "id": "w30",
+    "text": "día",
+    "start": 15.92,
+    "end": 16.16
+  },
+  {
+    "id": "w31",
+    "text": "hábil.",
+    "start": 16.16,
+    "end": 18.32
+  },
+  {
+    "id": "w32",
+    "text": "Este",
+    "start": 18.64,
+    "end": 18.96
+  },
+  {
+    "id": "w33",
+    "text": "recorrido",
+    "start": 19.12,
+    "end": 19.76
+  },
+  {
+    "id": "w34",
+    "text": "no",
+    "start": 19.76,
+    "end": 19.92
+  },
+  {
+    "id": "w35",
+    "text": "incluye",
+    "start": 19.92,
+    "end": 20.4
+  },
+  {
+    "id": "w36",
+    "text": "las",
+    "start": 20.4,
+    "end": 20.56
+  },
+  {
+    "id": "w37",
+    "text": "obligaciones",
+    "start": 20.56,
+    "end": 21.12
+  },
+  {
+    "id": "w38",
+    "text": "negociables.",
+    "start": 21.12,
+    "end": 21.84
+  },
+  {
+    "id": "w39",
+    "text": "Esto",
+    "start": 22,
+    "end": 22.32
+  },
+  {
+    "id": "w40",
+    "text": "está",
+    "start": 22.32,
+    "end": 22.56
+  },
+  {
+    "id": "w41",
+    "text": "en",
+    "start": 22.56,
+    "end": 22.72
+  },
+  {
+    "id": "w42",
+    "text": "el",
+    "start": 22.72,
+    "end": 22.88
+  },
+  {
+    "id": "w43",
+    "text": "video",
+    "start": 22.88,
+    "end": 23.04
+  },
+  {
+    "id": "w44",
+    "text": "3.",
+    "start": 23.36,
+    "end": 24.88
+  },
+  {
+    "id": "w45",
+    "text": "Ahora",
+    "start": 25.44,
+    "end": 25.84
+  },
+  {
+    "id": "w46",
+    "text": "a",
+    "start": 26,
+    "end": 26.16
+  },
+  {
+    "id": "w47",
+    "text": "02.",
+    "start": 26.16,
+    "end": 26.88
+  },
+  {
+    "id": "w48",
+    "text": "Un",
+    "start": 26.96,
+    "end": 27.12
+  },
+  {
+    "id": "w49",
+    "text": "ciclo",
+    "start": 27.12,
+    "end": 27.6
+  },
+  {
+    "id": "w50",
+    "text": "completo",
+    "start": 27.6,
+    "end": 27.92
+  },
+  {
+    "id": "w51",
+    "text": "de",
+    "start": 27.92,
+    "end": 28.08
+  },
+  {
+    "id": "w52",
+    "text": "una",
+    "start": 28.08,
+    "end": 28.24
+  },
+  {
+    "id": "w53",
+    "text": "inversión.",
+    "start": 28.24,
+    "end": 28.96
+  },
+  {
+    "id": "w54",
+    "text": "Al",
+    "start": 28.96,
+    "end": 29.2
+  },
+  {
+    "id": "w55",
+    "text": "terminar,",
+    "start": 29.2,
+    "end": 29.68
+  },
+  {
+    "id": "w56",
+    "text": "punto",
+    "start": 29.68,
+    "end": 30
+  },
+  {
+    "id": "w57",
+    "text": "a",
+    "start": 30.08,
+    "end": 30.16
+  },
+  {
+    "id": "w58",
+    "text": "la",
+    "start": 30.16,
+    "end": 30.24
+  },
+  {
+    "id": "w59",
+    "text": "sección",
+    "start": 30.24,
+    "end": 30.48
+  },
+  {
+    "id": "w60",
+    "text": "del",
+    "start": 30.48,
+    "end": 30.56
+  },
+  {
+    "id": "w61",
+    "text": "1",
+    "start": 30.72,
+    "end": 30.96
+  },
+  {
+    "id": "w62",
+    "text": "al",
+    "start": 30.96,
+    "end": 31.12
+  },
+  {
+    "id": "w63",
+    "text": "10.",
+    "start": 31.12,
+    "end": 31.68
+  }
+]
