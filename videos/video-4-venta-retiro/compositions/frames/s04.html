@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -54,7 +56,7 @@
       <script>
         (function () {
           const ID = "s04";
-          const CFG = {"shots": ["04-vender-plazo", "05-confirmar-venta", "06-boleto"], "events": [["show", 0, "04-vender-plazo"], ["cam", 0, "full", null, 0.01], ["click", 0.9, [702.4, 680.9, 145.3, 45.2]], ["show", 1.6, "05-confirmar-venta"], ["cam", 1.7, [762, 669.7, 396, 81.1], 2.3], ["mark", 2.9, [762, 669.7, 396, 81.1]], ["cam", 6.6, [762, 669.7, 396, 139.0999999999999], 2.0], ["click", 7.9, [762, 764.8, 396, 44]], ["show", 8.6, "06-boleto"], ["cam", 8.6, "full", null, 0.01]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["04-vender-plazo", "05-confirmar-venta", "06-boleto"], "events": [["show", 0, "04-vender-plazo"], ["cam", 0, "full", null, 0.01], ["click", 1.33, [702.4, 680.9, 145.3, 45.2]], ["show", 2.03, "05-confirmar-venta"], ["cam", 1.97, [762, 669.7, 396, 81.1], 2.3], ["mark", 2.87, [762, 669.7, 396, 81.1], 2.4399999999999995], ["cam", 4.81, [762, 669.7, 396, 139.0999999999999], 2.0, 0.6], ["click", 5.71, [762, 764.8, 396, 44]], ["show", 6.41, "06-boleto"], ["cam", 6.41, "full", null, 0.01]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -89,7 +91,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -108,7 +110,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -146,7 +148,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 12);
+          tl.set({}, {}, 7.75);
           window.__timelines[ID] = tl;
         })();
       </script>

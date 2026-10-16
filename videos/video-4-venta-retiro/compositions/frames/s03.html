@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -54,7 +56,7 @@
       <script>
         (function () {
           const ID = "s03";
-          const CFG = {"shots": ["01-inicio", "02-menu-operar", "04-vender-plazo"], "events": [["show", 0, "01-inicio"], ["cam", 0, "full", null, 0.01], ["click", 0.8, [531.4, 151.2, 97.8, 49.2]], ["show", 1.5, "02-menu-operar"], ["cam", 1.6, [531.4, 151.2, 365.5, 129.0], 1.8], ["click", 3.0, [537.4, 243.3, 359.5, 36.9]], ["show", 3.7, "04-vender-plazo"], ["cam", 3.7, "full", null, 0.01], ["cam", 4.6, [592, 359.5, 552, 63.80000000000001], 2.2], ["mark", 5.8, [592, 359.5, 552, 63.80000000000001]], ["cam", 12.6, [396, 306, 368, 38], 2.5], ["mark", 13.8, [592, 306.5, 172, 38]], ["label", 17.6, "T+1: cobrás al día hábil siguiente"]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["01-inicio", "02-menu-operar", "04-vender-plazo"], "events": [["show", 0, "01-inicio"], ["cam", 0, "full", null, 0.01], ["click", 1.36, [531.4, 151.2, 97.8, 49.2]], ["show", 2.06, "02-menu-operar"], ["cam", 2.16, [531.4, 151.2, 365.5, 129.0], 1.8], ["click", 3.26, [537.4, 243.3, 359.5, 36.9]], ["show", 3.96, "04-vender-plazo"], ["cam", 3.96, "full", null, 0.01], ["cam", 4.36, [592, 359.5, 552, 63.80000000000001], 2.2], ["mark", 5.36, [592, 359.5, 552, 63.80000000000001], 3.8600000000000003], ["cam", 9.02, [396, 306, 368, 38], 2.5], ["mark", 10.12, [592, 306.5, 172, 38], 4.540000000000001], ["label", 12.42, "T+1: cobrás al día hábil siguiente"]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -89,7 +91,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -108,7 +110,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -146,7 +148,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 28);
+          tl.set({}, {}, 19.75);
           window.__timelines[ID] = tl;
         })();
       </script>

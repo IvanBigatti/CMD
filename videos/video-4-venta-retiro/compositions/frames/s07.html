@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -54,7 +56,7 @@
       <script>
         (function () {
           const ID = "s07";
-          const CFG = {"shots": ["12-retiro-rechazado", "13-paso-un-dia", "14-retirar-disponible"], "events": [["show", 0, "12-retiro-rechazado"], ["cam", 0, [397, 582.0, 650, 140.2], 2.3, 0.01], ["cam", 2.2, [1455.3, 60, 147.7, 21.2], 2.5], ["mark", 3.4, [1455.3, 60, 147.7, 21.2]], ["click", 7.0, [1455.3, 60, 147.7, 21.2]], ["show", 7.7, "13-paso-un-dia"], ["cam", 7.8, [740, 400, 440, 280], 2.0], ["show", 10.8, "14-retirar-disponible"], ["cam", 10.8, [1084, 331.1, 456, 201.3], 1.8, 0.01], ["cam", 11.2, [1122, 458.5, 380, 40.0], 2.5], ["mark", 12.4, [1122, 458.5, 380, 40.0]], ["label", 12.4, "A liquidar → Disponible"]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["12-retiro-rechazado", "13-paso-un-dia", "14-retirar-disponible"], "events": [["show", 0, "12-retiro-rechazado"], ["cam", 0, [397, 582.0, 650, 140.2], 2.3, 0.01], ["cam", 3.19, [1455.3, 60, 147.7, 21.2], 2.5], ["mark", 4.29, [1455.3, 60, 147.7, 21.2], 2.5599999999999996], ["click", 6.65, [1455.3, 60, 147.7, 21.2]], ["show", 7.25, "13-paso-un-dia"], ["cam", 7.35, [740, 400, 440, 280], 2.0, 0.6], ["show", 8.65, "14-retirar-disponible"], ["cam", 8.65, [1084, 331.1, 456, 201.3], 1.8, 0.01], ["cam", 8.95, [1122, 458.5, 380, 40.0], 2.5], ["mark", 9.85, [1122, 458.5, 380, 40.0]], ["label", 9.85, "A liquidar → Disponible"]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -89,7 +91,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -108,7 +110,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -146,7 +148,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 24);
+          tl.set({}, {}, 16.33);
           window.__timelines[ID] = tl;
         })();
       </script>

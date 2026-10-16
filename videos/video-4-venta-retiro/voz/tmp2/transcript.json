@@ -1,0 +1,560 @@
+[
+  {
+    "id": "w0",
+    "text": "Probemos",
+    "start": 5.12,
+    "end": 5.76
+  },
+  {
+    "id": "w1",
+    "text": "igual,",
+    "start": 5.84,
+    "end": 6.24
+  },
+  {
+    "id": "w2",
+    "text": "menú,",
+    "start": 6.24,
+    "end": 6.8
+  },
+  {
+    "id": "w3",
+    "text": "mi",
+    "start": 6.8,
+    "end": 6.96
+  },
+  {
+    "id": "w4",
+    "text": "cuenta,",
+    "start": 6.96,
+    "end": 7.28
+  },
+  {
+    "id": "w5",
+    "text": "retirar",
+    "start": 7.28,
+    "end": 7.84
+  },
+  {
+    "id": "w6",
+    "text": "dinero.",
+    "start": 7.84,
+    "end": 8.32
+  },
+  {
+    "id": "w7",
+    "text": "El",
+    "start": 8.32,
+    "end": 8.48
+  },
+  {
+    "id": "w8",
+    "text": "monto",
+    "start": 8.48,
+    "end": 8.8
+  },
+  {
+    "id": "w9",
+    "text": "ya",
+    "start": 8.8,
+    "end": 8.96
+  },
+  {
+    "id": "w10",
+    "text": "está",
+    "start": 8.96,
+    "end": 9.12
+  },
+  {
+    "id": "w11",
+    "text": "cargado.",
+    "start": 9.12,
+    "end": 9.6
+  },
+  {
+    "id": "w12",
+    "text": "Esa",
+    "start": 9.6,
+    "end": 9.92
+  },
+  {
+    "id": "w13",
+    "text": "es",
+    "start": 9.92,
+    "end": 10
+  },
+  {
+    "id": "w14",
+    "text": "toda",
+    "start": 10,
+    "end": 10.24
+  },
+  {
+    "id": "w15",
+    "text": "la",
+    "start": 10.24,
+    "end": 10.32
+  },
+  {
+    "id": "w16",
+    "text": "plata",
+    "start": 10.32,
+    "end": 10.56
+  },
+  {
+    "id": "w17",
+    "text": "de",
+    "start": 10.56,
+    "end": 10.64
+  },
+  {
+    "id": "w18",
+    "text": "tu",
+    "start": 10.64,
+    "end": 10.8
+  },
+  {
+    "id": "w19",
+    "text": "cuenta,",
+    "start": 10.8,
+    "end": 11.2
+  },
+  {
+    "id": "w20",
+    "text": "incluida",
+    "start": 11.2,
+    "end": 11.68
+  },
+  {
+    "id": "w21",
+    "text": "la",
+    "start": 11.68,
+    "end": 11.84
+  },
+  {
+    "id": "w22",
+    "text": "de",
+    "start": 11.84,
+    "end": 12
+  },
+  {
+    "id": "w23",
+    "text": "la",
+    "start": 12,
+    "end": 12.16
+  },
+  {
+    "id": "w24",
+    "text": "venta.",
+    "start": 12.16,
+    "end": 12.64
+  },
+  {
+    "id": "w25",
+    "text": "Confirmamos",
+    "start": 12.64,
+    "end": 13.36
+  },
+  {
+    "id": "w26",
+    "text": "y",
+    "start": 13.52,
+    "end": 13.68
+  },
+  {
+    "id": "w27",
+    "text": "no",
+    "start": 13.68,
+    "end": 13.84
+  },
+  {
+    "id": "w28",
+    "text": "nos",
+    "start": 13.84,
+    "end": 14
+  },
+  {
+    "id": "w29",
+    "text": "deja.",
+    "start": 14,
+    "end": 14.64
+  },
+  {
+    "id": "w30",
+    "text": "Está",
+    "start": 14.96,
+    "end": 15.36
+  },
+  {
+    "id": "w31",
+    "text": "bien",
+    "start": 15.36,
+    "end": 15.6
+  },
+  {
+    "id": "w32",
+    "text": "que",
+    "start": 15.6,
+    "end": 15.76
+  },
+  {
+    "id": "w33",
+    "text": "falle.",
+    "start": 15.76,
+    "end": 16.32
+  },
+  {
+    "id": "w34",
+    "text": "Esta",
+    "start": 16.32,
+    "end": 16.56
+  },
+  {
+    "id": "w35",
+    "text": "plata",
+    "start": 16.56,
+    "end": 16.8
+  },
+  {
+    "id": "w36",
+    "text": "todavía",
+    "start": 16.8,
+    "end": 17.12
+  },
+  {
+    "id": "w37",
+    "text": "no",
+    "start": 17.12,
+    "end": 17.28
+  },
+  {
+    "id": "w38",
+    "text": "se",
+    "start": 17.28,
+    "end": 17.52
+  },
+  {
+    "id": "w39",
+    "text": "liquidó.",
+    "start": 17.52,
+    "end": 18.64
+  },
+  {
+    "id": "w40",
+    "text": "En",
+    "start": 19.92,
+    "end": 20.16
+  },
+  {
+    "id": "w41",
+    "text": "la",
+    "start": 20.16,
+    "end": 20.32
+  },
+  {
+    "id": "w42",
+    "text": "vida",
+    "start": 20.32,
+    "end": 20.56
+  },
+  {
+    "id": "w43",
+    "text": "real",
+    "start": 20.56,
+    "end": 20.8
+  },
+  {
+    "id": "w44",
+    "text": "esperás",
+    "start": 20.96,
+    "end": 21.44
+  },
+  {
+    "id": "w45",
+    "text": "hasta",
+    "start": 21.44,
+    "end": 21.68
+  },
+  {
+    "id": "w46",
+    "text": "la",
+    "start": 21.68,
+    "end": 21.76
+  },
+  {
+    "id": "w47",
+    "text": "ma",
+    "start": 21.76,
+    "end": 21.84
+  },
+  {
+    "id": "w48",
+    "text": "hasta",
+    "start": 21.92,
+    "end": 22.16
+  },
+  {
+    "id": "w49",
+    "text": "mañana.",
+    "start": 22.16,
+    "end": 22.56
+  },
+  {
+    "id": "w50",
+    "text": "En",
+    "start": 22.56,
+    "end": 22.72
+  },
+  {
+    "id": "w51",
+    "text": "el",
+    "start": 22.72,
+    "end": 22.8
+  },
+  {
+    "id": "w52",
+    "text": "simulador",
+    "start": 22.8,
+    "end": 23.2
+  },
+  {
+    "id": "w53",
+    "text": "tocas",
+    "start": 23.28,
+    "end": 23.6
+  },
+  {
+    "id": "w54",
+    "text": "avanzar",
+    "start": 23.76,
+    "end": 24.16
+  },
+  {
+    "id": "w55",
+    "text": "un",
+    "start": 24.16,
+    "end": 24.32
+  },
+  {
+    "id": "w56",
+    "text": "día",
+    "start": 24.32,
+    "end": 24.48
+  },
+  {
+    "id": "w57",
+    "text": "hábil",
+    "start": 24.64,
+    "end": 24.96
+  },
+  {
+    "id": "w58",
+    "text": "en",
+    "start": 25.12,
+    "end": 25.28
+  },
+  {
+    "id": "w59",
+    "text": "la",
+    "start": 25.28,
+    "end": 25.36
+  },
+  {
+    "id": "w60",
+    "text": "franja",
+    "start": 25.36,
+    "end": 25.84
+  },
+  {
+    "id": "w61",
+    "text": "amarilla",
+    "start": 25.84,
+    "end": 26.32
+  },
+  {
+    "id": "w62",
+    "text": "de",
+    "start": 26.32,
+    "end": 26.4
+  },
+  {
+    "id": "w63",
+    "text": "arriba.",
+    "start": 26.4,
+    "end": 27.12
+  },
+  {
+    "id": "w64",
+    "text": "Mirar",
+    "start": 27.12,
+    "end": 27.68
+  },
+  {
+    "id": "w65",
+    "text": "el",
+    "start": 27.68,
+    "end": 27.76
+  },
+  {
+    "id": "w66",
+    "text": "panel.",
+    "start": 27.76,
+    "end": 28.32
+  },
+  {
+    "id": "w67",
+    "text": "La",
+    "start": 28.32,
+    "end": 28.48
+  },
+  {
+    "id": "w68",
+    "text": "plata",
+    "start": 28.48,
+    "end": 28.8
+  },
+  {
+    "id": "w69",
+    "text": "pasó",
+    "start": 28.8,
+    "end": 29.12
+  },
+  {
+    "id": "w70",
+    "text": "de",
+    "start": 29.12,
+    "end": 29.28
+  },
+  {
+    "id": "w71",
+    "text": "a",
+    "start": 29.28,
+    "end": 29.52
+  },
+  {
+    "id": "w72",
+    "text": "liquidar",
+    "start": 29.52,
+    "end": 30
+  },
+  {
+    "id": "w73",
+    "text": "a",
+    "start": 30,
+    "end": 30.16
+  },
+  {
+    "id": "w74",
+    "text": "disponible.",
+    "start": 30.16,
+    "end": 31.36
+  },
+  {
+    "id": "w75",
+    "text": "Eso",
+    "start": 31.68,
+    "end": 32.24
+  },
+  {
+    "id": "w76",
+    "text": "es",
+    "start": 32.24,
+    "end": 32.4
+  },
+  {
+    "id": "w77",
+    "text": "la",
+    "start": 32.4,
+    "end": 32.56
+  },
+  {
+    "id": "w78",
+    "text": "liquidación.",
+    "start": 32.56,
+    "end": 34.16
+  },
+  {
+    "id": "w79",
+    "text": "Ahora",
+    "start": 35.92,
+    "end": 36.4
+  },
+  {
+    "id": "w80",
+    "text": "sí,",
+    "start": 36.4,
+    "end": 36.8
+  },
+  {
+    "id": "w81",
+    "text": "confirmamos",
+    "start": 36.8,
+    "end": 37.44
+  },
+  {
+    "id": "w82",
+    "text": "el",
+    "start": 37.44,
+    "end": 37.52
+  },
+  {
+    "id": "w83",
+    "text": "retiro",
+    "start": 37.52,
+    "end": 38.08
+  },
+  {
+    "id": "w84",
+    "text": "y",
+    "start": 38.08,
+    "end": 38.24
+  },
+  {
+    "id": "w85",
+    "text": "la",
+    "start": 38.24,
+    "end": 38.32
+  },
+  {
+    "id": "w86",
+    "text": "plata",
+    "start": 38.32,
+    "end": 38.72
+  },
+  {
+    "id": "w87",
+    "text": "vuelve",
+    "start": 38.72,
+    "end": 39.12
+  },
+  {
+    "id": "w88",
+    "text": "a",
+    "start": 39.12,
+    "end": 39.2
+  },
+  {
+    "id": "w89",
+    "text": "tu",
+    "start": 39.2,
+    "end": 39.28
+  },
+  {
+    "id": "w90",
+    "text": "cuenta",
+    "start": 39.28,
+    "end": 39.6
+  },
+  {
+    "id": "w91",
+    "text": "de",
+    "start": 39.6,
+    "end": 39.76
+  },
+  {
+    "id": "w92",
+    "text": "banco.",
+    "start": 39.76,
+    "end": 40.72
+  }
+]

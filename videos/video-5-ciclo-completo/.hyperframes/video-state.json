@@ -646,16 +646,12 @@
     }
   },
   "checks": {
-    "latest": {
-      "revision": "5f918625-0e41-4a37-9649-f1b42f613aa0",
-      "id": "699d08be-72b8-48ff-8105-59caad674237"
-    },
+    "latest": null,
     "revisions": {
       "5f918625-0e41-4a37-9649-f1b42f613aa0": [
         {
           "id": "699d08be-72b8-48ff-8105-59caad674237",
           "scope": "project",
-          "report": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\.hyperframes\\artifacts\\checks\\699d08be-72b8-48ff-8105-59caad674237.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -677,7 +673,9 @@
           "revision": "5f918625-0e41-4a37-9649-f1b42f613aa0",
           "inputFingerprint": "11949116c0145d849c502eff6936f319592b867da6bfd8ee0b47dd84945d62cc",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "76c9393d-5838-41ed-9699-7b4e5565a1be"
         }
       ]
     },
@@ -685,15 +683,14 @@
   },
   "snapshots": {
     "latest": {
-      "revision": "5f918625-0e41-4a37-9649-f1b42f613aa0",
-      "id": "3e452b50-bb16-43e1-bd88-118e861498d1-1"
+      "revision": null,
+      "id": "c7c9d051-1d18-41c9-aa4e-1c9cd3792806-17"
     },
     "revisions": {
       "5f918625-0e41-4a37-9649-f1b42f613aa0": [
         {
           "scope": "full",
           "id": "3e452b50-bb16-43e1-bd88-118e861498d1-0",
-          "image": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\.hyperframes\\artifacts\\snapshots\\7d9fd861-8cd9-4520-942c-cecb8d625d12\\frame-00-at-97s.png",
           "time": 97,
           "metadata": {
             "width": 1920,
@@ -708,12 +705,13 @@
           "revision": "5f918625-0e41-4a37-9649-f1b42f613aa0",
           "inputFingerprint": "11949116c0145d849c502eff6936f319592b867da6bfd8ee0b47dd84945d62cc",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "76c9393d-5838-41ed-9699-7b4e5565a1be"
         },
         {
           "scope": "full",
           "id": "3e452b50-bb16-43e1-bd88-118e861498d1-1",
-          "image": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\.hyperframes\\artifacts\\snapshots\\7d9fd861-8cd9-4520-942c-cecb8d625d12\\frame-01-at-101s.png",
           "time": 101,
           "metadata": {
             "width": 1920,
@@ -728,7 +726,9 @@
           "revision": "5f918625-0e41-4a37-9649-f1b42f613aa0",
           "inputFingerprint": "11949116c0145d849c502eff6936f319592b867da6bfd8ee0b47dd84945d62cc",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "76c9393d-5838-41ed-9699-7b4e5565a1be"
         }
       ]
     },
@@ -1094,5 +1094,18 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "76c9393d-5838-41ed-9699-7b4e5565a1be",
+      "completedAt": 1792164843192,
+      "output": "C:\\Users\\gabri\\OneDrive\\Escritorio\\ProyectoCMD\\CMD\\videos\\video-5-ciclo-completo\\renders\\video-5-ciclo-completo.mp4",
+      "status": "completed",
+      "revision": "45ec8110-7118-4948-ba03-47d4eb7176de"
+    },
+    "retainedRevisions": [
+      "45ec8110-7118-4948-ba03-47d4eb7176de"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }

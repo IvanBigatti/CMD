@@ -1,0 +1,296 @@
+[
+  {
+    "id": "w0",
+    "text": "¿Qué",
+    "start": 3.84,
+    "end": 4.32
+  },
+  {
+    "id": "w1",
+    "text": "te",
+    "start": 4.32,
+    "end": 4.56
+  },
+  {
+    "id": "w2",
+    "text": "tenés",
+    "start": 4.56,
+    "end": 4.8
+  },
+  {
+    "id": "w3",
+    "text": "que",
+    "start": 4.8,
+    "end": 4.96
+  },
+  {
+    "id": "w4",
+    "text": "llevar",
+    "start": 4.96,
+    "end": 5.28
+  },
+  {
+    "id": "w5",
+    "text": "de",
+    "start": 5.28,
+    "end": 5.44
+  },
+  {
+    "id": "w6",
+    "text": "todo",
+    "start": 5.44,
+    "end": 5.6
+  },
+  {
+    "id": "w7",
+    "text": "esto?",
+    "start": 5.6,
+    "end": 5.84
+  },
+  {
+    "id": "w8",
+    "text": "Vender",
+    "start": 6,
+    "end": 6.32
+  },
+  {
+    "id": "w9",
+    "text": "y",
+    "start": 6.48,
+    "end": 6.56
+  },
+  {
+    "id": "w10",
+    "text": "cobrar",
+    "start": 6.56,
+    "end": 7.04
+  },
+  {
+    "id": "w11",
+    "text": "no",
+    "start": 7.12,
+    "end": 7.28
+  },
+  {
+    "id": "w12",
+    "text": "son",
+    "start": 7.28,
+    "end": 7.52
+  },
+  {
+    "id": "w13",
+    "text": "lo",
+    "start": 7.52,
+    "end": 7.76
+  },
+  {
+    "id": "w14",
+    "text": "mismo.",
+    "start": 7.76,
+    "end": 8.56
+  },
+  {
+    "id": "w15",
+    "text": "La",
+    "start": 8.88,
+    "end": 9.2
+  },
+  {
+    "id": "w16",
+    "text": "plata",
+    "start": 9.2,
+    "end": 9.6
+  },
+  {
+    "id": "w17",
+    "text": "de",
+    "start": 9.6,
+    "end": 9.76
+  },
+  {
+    "id": "w18",
+    "text": "una",
+    "start": 9.76,
+    "end": 10
+  },
+  {
+    "id": "w19",
+    "text": "venta",
+    "start": 10,
+    "end": 10.4
+  },
+  {
+    "id": "w20",
+    "text": "queda",
+    "start": 10.4,
+    "end": 10.72
+  },
+  {
+    "id": "w21",
+    "text": "a",
+    "start": 10.72,
+    "end": 10.8
+  },
+  {
+    "id": "w22",
+    "text": "liquidar",
+    "start": 10.8,
+    "end": 11.28
+  },
+  {
+    "id": "w23",
+    "text": "un",
+    "start": 11.36,
+    "end": 11.52
+  },
+  {
+    "id": "w24",
+    "text": "día",
+    "start": 11.52,
+    "end": 11.84
+  },
+  {
+    "id": "w25",
+    "text": "hábil.",
+    "start": 11.84,
+    "end": 13.28
+  },
+  {
+    "id": "w26",
+    "text": "Solo",
+    "start": 13.28,
+    "end": 13.68
+  },
+  {
+    "id": "w27",
+    "text": "podés",
+    "start": 13.68,
+    "end": 14
+  },
+  {
+    "id": "w28",
+    "text": "retirar",
+    "start": 14.08,
+    "end": 14.56
+  },
+  {
+    "id": "w29",
+    "text": "lo",
+    "start": 14.56,
+    "end": 14.72
+  },
+  {
+    "id": "w30",
+    "text": "disponible.",
+    "start": 14.72,
+    "end": 16
+  },
+  {
+    "id": "w31",
+    "text": "Ahora",
+    "start": 18.08,
+    "end": 18.48
+  },
+  {
+    "id": "w32",
+    "text": "hacelo",
+    "start": 18.64,
+    "end": 19.04
+  },
+  {
+    "id": "w33",
+    "text": "dos.",
+    "start": 19.2,
+    "end": 19.44
+  },
+  {
+    "id": "w34",
+    "text": "Vende,",
+    "start": 19.6,
+    "end": 20.24
+  },
+  {
+    "id": "w35",
+    "text": "esperar",
+    "start": 20.24,
+    "end": 20.72
+  },
+  {
+    "id": "w36",
+    "text": "la",
+    "start": 20.72,
+    "end": 20.8
+  },
+  {
+    "id": "w37",
+    "text": "liquidación",
+    "start": 20.8,
+    "end": 21.36
+  },
+  {
+    "id": "w38",
+    "text": "y",
+    "start": 21.36,
+    "end": 21.52
+  },
+  {
+    "id": "w39",
+    "text": "retirar.",
+    "start": 21.52,
+    "end": 21.92
+  },
+  {
+    "id": "w40",
+    "text": "Al",
+    "start": 22.08,
+    "end": 22.24
+  },
+  {
+    "id": "w41",
+    "text": "terminar,",
+    "start": 22.24,
+    "end": 22.56
+  },
+  {
+    "id": "w42",
+    "text": "puntual",
+    "start": 22.72,
+    "end": 23.04
+  },
+  {
+    "id": "w43",
+    "text": "la",
+    "start": 23.12,
+    "end": 23.28
+  },
+  {
+    "id": "w44",
+    "text": "sección",
+    "start": 23.28,
+    "end": 23.44
+  },
+  {
+    "id": "w45",
+    "text": "del",
+    "start": 23.44,
+    "end": 23.52
+  },
+  {
+    "id": "w46",
+    "text": "1",
+    "start": 23.68,
+    "end": 23.92
+  },
+  {
+    "id": "w47",
+    "text": "al",
+    "start": 23.92,
+    "end": 24
+  },
+  {
+    "id": "w48",
+    "text": "10.",
+    "start": 24,
+    "end": 24.64
+  }
+]

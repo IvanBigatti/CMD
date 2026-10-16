@@ -9,6 +9,8 @@
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/plexmono-700.woff2") format("woff2"); font-weight: 700; }
 
         #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
 
@@ -53,7 +55,7 @@
       <script>
         (function () {
           const ID = "s08";
-          const CFG = {"shots": ["14b-retirar-limpio", "15-retiro-ok"], "events": [["show", 0, "14b-retirar-limpio"], ["cam", 0, [397, 497.1, 650, 144.89999999999998], 2.0, 0.01], ["click", 1.2, [397, 598.0, 650, 44]], ["show", 1.9, "15-retiro-ok"], ["cam", 2.0, [740, 388.7, 440, 302.6], 2.2], ["mark", 3.2, [762, 473.9, 396, 45.1]]], "FW": 1520, "FH": 855};
+          const CFG = {"shots": ["14b-retirar-limpio", "15-retiro-ok"], "events": [["show", 0, "14b-retirar-limpio"], ["cam", 0, [397, 497.1, 650, 144.89999999999998], 2.0, 0.01], ["click", 2.22, [397, 598.0, 650, 44]], ["show", 2.92, "15-retiro-ok"], ["cam", 3.02, [740, 388.7, 440, 302.6], 2.2], ["mark", 3.98, [762, 473.9, 396, 45.1]]], "FW": 1520, "FH": 855};
           const tl = gsap.timeline({ paused: true });
           const cam = document.getElementById(ID + "-cam");
           const fx = document.getElementById(ID + "-fx");
@@ -88,7 +90,7 @@
               const f = frameFor(ev[2], ev[3]);
               const d = ev[4] === undefined ? 1.1 : ev[4];
               if (d <= 0.02) tl.set(cam, f, t);
-              else tl.to(cam, Object.assign({ duration: d, ease: "power2.inOut" }, f), t);
+              else tl.to(cam, Object.assign({ duration: d, ease: ev[5] || "power2.inOut" }, f), t);
             } else if (type === "click") {
               const [bx, by, bw, bh] = ev[2];
               const r = Math.max(30, Math.min(56, bh * 0.9));
@@ -107,7 +109,7 @@
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" });
               fx.appendChild(el);
               tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, t);
-              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + 3.2);
+              tl.to(el, { opacity: 0, duration: 0.4, ease: "power1.in" }, t + (ev[3] || 3.2));
             } else if (type === "card") {
               // recuadro fijo (no sigue a la cámara): {title, rows: [[etiqueta, valor, color]], hi, tHi}
               const o = ev[2];
@@ -145,7 +147,7 @@
               chipOn = el;
             }
           });
-          tl.set({}, {}, 10);
+          tl.set({}, {}, 7.3);
           window.__timelines[ID] = tl;
         })();
       </script>

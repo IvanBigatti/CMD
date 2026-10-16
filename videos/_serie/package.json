@@ -1,0 +1,7 @@
+{
+  "name": "serie-iol",
+  "private": true,
+  "devDependencies": {
+    "@hyperframes/core": "0.8.164"
+  }
+}

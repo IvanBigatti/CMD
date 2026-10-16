@@ -6,6 +6,7 @@ tipografías, placas, cámara (zoom), círculo de clic, recuadros, etiquetas y
 la banda inferior de texto guía. Ver _serie/ESTILO.md.
 """
 import json, pathlib, html, shutil
+NL = chr(10)
 
 ROOT = None
 BOX = {}
@@ -180,7 +181,7 @@ def screen_scene(sc):
                 width: (bw + 12) + "px", height: (bh + 12) + "px", zIndex: "400" }});
               fx.appendChild(el);
               tl.fromTo(el, {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4, ease: "power1.out" }}, t);
-              tl.to(el, {{ opacity: 0, duration: 0.4, ease: "power1.in" }}, t + 3.2);
+              tl.to(el, {{ opacity: 0, duration: 0.4, ease: "power1.in" }}, t + (ev[3] || 3.2));
             }} else if (type === "card") {{
               // recuadro fijo (no sigue a la cámara): {{title, rows: [[etiqueta, valor, color]], hi, tHi}}
               const o = ev[2];
@@ -290,9 +291,10 @@ def takeaways_scene(sc):
 {ideas}
         <div id="{cid}-dots">{dots}</div>"""
     slot = (sc["dur"] - 1.0) / len(IDEAS)
+    tiempos = sc.get("idea_t") or [0.8 + i * slot for i in range(len(IDEAS))]
     parts = []
     for i in range(len(IDEAS)):
-        t0 = 0.8 + i * slot
+        t0 = tiempos[i]
         if i > 0:
             parts.append(f'          tl.to("#" + ID + "-idea-{i-1}", {{ opacity: 0, y: -16, duration: 0.45, ease: "power1.in" }}, {t0 - 0.6:.2f});')
         parts.append(f'          tl.fromTo("#" + ID + "-idea-{i}", {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }}, {t0:.2f});')
@@ -310,6 +312,7 @@ def takeaways_scene(sc):
 
 def final_scene(sc):
     cid = sc["id"]
+    ft = sc.get("t") or [0.3, 0.9, 1.6, 2.0]
     style = f"""
         #{cid}-bg {{ position: absolute; inset: 0; background: {C['indigo']}; }}
         #{cid}-content {{ position: absolute; left: 200px; right: 200px; top: 170px; display: flex;
@@ -322,7 +325,7 @@ def final_scene(sc):
         #{cid}-cardtx {{ font-size: 60px; font-weight: 600; color: {C['indigo']}; }}
         #{cid}-cardnote {{ font-size: 40px; font-weight: 500; color: #3A3D6E; }}
         #{cid}-rate {{ font-size: 48px; font-weight: 500; color: {C['yellow']}; }}
-        #{cid}-fine {{ position: absolute; left: 200px; right: 200px; bottom: 70px; font-size: 36px;
+        #{cid}-fine {{ position: absolute; left: 200px; right: 200px; bottom: {150 if sc.get("guide_band") else 70}px; font-size: 36px;
           color: #C9C6EE; }}
 """
     note_html = f'<div id="{cid}-cardnote">{html.escape(ITINERARY_NOTE)}</div>' if ITINERARY_NOTE else ""
@@ -337,10 +340,10 @@ def final_scene(sc):
     script = f"""        (function () {{
           const ID = "{cid}";
           const tl = gsap.timeline({{ paused: true }});
-          tl.fromTo("#" + ID + "-title", {{ opacity: 0, y: 20 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }}, 0.3);
-          tl.fromTo("#" + ID + "-card", {{ opacity: 0, y: 20 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }}, 0.9);
-          tl.fromTo("#" + ID + "-rate", {{ opacity: 0, y: 12 }}, {{ opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }}, 1.6);
-          tl.fromTo("#" + ID + "-fine", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5 }}, 2.0);
+          tl.fromTo("#" + ID + "-title", {{ opacity: 0, y: 20 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }}, {ft[0]});
+          tl.fromTo("#" + ID + "-card", {{ opacity: 0, y: 20 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }}, {ft[1]});
+          tl.fromTo("#" + ID + "-rate", {{ opacity: 0, y: 12 }}, {{ opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }}, {ft[2]});
+          tl.fromTo("#" + ID + "-fine", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5 }}, {ft[3]});
           tl.set({{}}, {{}}, {sc['dur']});
           window.__timelines[ID] = tl;
         }})();"""
@@ -470,7 +473,10 @@ def ring_overlay(SCENES):
 BUILDERS = dict(open=open_scene, screen=screen_scene, takeaways=takeaways_scene, final=final_scene,
                 chapter=chapter_scene, money=money_scene)
 
-def main(SCENES, names=None):
+def main(SCENES, names=None, audio=None, music=None):
+    """audio: [(id, ruta relativa al proyecto, inicio en el video, duración)] — clips de voz (pista 3).
+    music: dict(src=ruta, points=[(t, volumen 0..1)], carve=[ids de voz]) — música de fondo (pista 4),
+    con su envolvente de volumen; `carve` deja anotadas las voces para `hyperframes-audio/scripts/carve.mjs`."""
     out = ROOT / "compositions/frames"
     out.mkdir(parents=True, exist_ok=True)
     hosts, caps, t = [], [], 0.0
@@ -481,12 +487,20 @@ def main(SCENES, names=None):
                      f'data-composition-src="compositions/frames/{name}" data-start="{t:g}" '
                      f'data-duration="{sc["dur"]:g}" data-track-index="0" data-width="1920" data-height="1080"></div>')
         for i, (gt, gd, tx) in enumerate(sc.get("guide", [])):
-            caps.append((round(t + gt, 2), round(gd, 2), tx, f'{sc["id"]}-g{i}'))
+            caps.append((round(t + gt, 2), round(gd, 2), tx, f'{sc["id"]}-g{i}', sc.get("guide_band", False)))
         t += sc["dur"]
     total = t
     cap_html = "\n".join(
-        f'      <div class="clip guide" id="{cid}" data-start="{s:g}" data-duration="{d:g}" data-track-index="1">'
-        f'<span class="guide-tx">{html.escape(tx)}</span></div>' for s, d, tx, cid in caps)
+        f'      <div class="clip guide{" band" if band else ""}" id="{cid}" data-start="{s:g}" data-duration="{d:g}" data-track-index="1">'
+        f'<span class="guide-tx">{html.escape(tx)}</span></div>' for s, d, tx, cid, band in caps)
+    audio_html = NL.join(
+        f'      <audio id="{aid}" src="{src}" data-start="{st:.3f}" data-duration="{du:.3f}" data-track-index="3" data-volume="1"></audio>'
+        for aid, src, st, du in (audio or []))
+    if music:
+        lane = {"version": 1, "lanes": [{"target": "volume", "points": [{"t": round(t, 2), "v": v} for t, v in music["points"]]}]}
+        lane_attr = html.escape(json.dumps(lane), quote=True)
+        audio_html += NL + (f'      <audio id="musica" src="{music["src"]}" data-start="0" data-duration="{music["dur"]:.3f}" '
+                            f'data-track-index="4" data-volume="1" data-automation="{lane_attr}"></audio>')
     ring_html, ring_js, ring_css = ring_overlay(SCENES)
     index = f"""<!doctype html>
 <html lang="es">
@@ -500,6 +514,7 @@ def main(SCENES, names=None):
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
       html, body {{ margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: {C['light']}; }}
       #root {{ position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Barlow", sans-serif; }}
+      .guide.band {{ background: {C['indigo']}; }}
       .guide {{ position: absolute; left: 0; right: 0; top: {BAND_Y}px; bottom: 0; display: flex;
         align-items: center; justify-content: center; padding: 0 160px; z-index: 50; }}
       .guide-tx {{ display: block; font-size: 42px; line-height: 1.2; font-weight: 500; color: {C['light']};
@@ -511,6 +526,7 @@ def main(SCENES, names=None):
 {chr(10).join(hosts)}
 {cap_html}
 {ring_html}
+{audio_html}
     </div>
     <script>
       const tl = gsap.timeline({{ paused: true }});
