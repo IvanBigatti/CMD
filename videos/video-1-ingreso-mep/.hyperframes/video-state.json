@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "c93bf847-98ad-4c73-833e-8679e77f5c13",
-  "currentRevision": "b8f0840e-bfe0-40b5-9372-1580b1b27762",
+  "currentRevision": "ff69745c-06f7-403b-83b0-51111c2a2736",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -175,6 +175,14 @@
     "GUION-GRABACION.md": {
       "hash": "3fe2f3badd91622b0a8edfa82aa00a3c89ee4bcd61188ee73abfb8be6e919080",
       "content": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\3f\\3fe2f3badd91622b0a8edfa82aa00a3c89ee4bcd61188ee73abfb8be6e919080"
+    },
+    "frame.md": {
+      "hash": "eea63853fd22e2de6a0063c99dc6e0e03e9448bc8701ccc426b5fff64ccc0e26",
+      "content": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\ee\\eea63853fd22e2de6a0063c99dc6e0e03e9448bc8701ccc426b5fff64ccc0e26"
+    },
+    ".media/manifest.jsonl": {
+      "hash": "dee1e9f23b701f3cf66b8f91bd9ec582bd4398ba85fdc36457891932de2409f4",
+      "content": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\de\\dee1e9f23b701f3cf66b8f91bd9ec582bd4398ba85fdc36457891932de2409f4"
     }
   },
   "revisions": {
@@ -394,6 +402,25 @@
         "tools/build.py": {
           "before": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\3a\\3a7863b40700bbfd41890bf9fcb1640e5b584d0891550deaee21686aaf250e80",
           "after": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\ad\\adb348ae19fa8928471a7c11029d768fb12a4923a699900150d2edfad8959634"
+        }
+      }
+    },
+    "ff69745c-06f7-403b-83b0-51111c2a2736": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792161792078,
+      "endedAt": 1792161794468,
+      "files": {
+        ".media/manifest.jsonl": {
+          "before": null,
+          "after": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\de\\dee1e9f23b701f3cf66b8f91bd9ec582bd4398ba85fdc36457891932de2409f4"
+        },
+        "frame.md": {
+          "before": null,
+          "after": "C:\\Users\\gabri\\.cache\\hyperframes\\history\\c93bf847-98ad-4c73-833e-8679e77f5c13\\blobs\\ee\\eea63853fd22e2de6a0063c99dc6e0e03e9448bc8701ccc426b5fff64ccc0e26"
         }
       }
     }

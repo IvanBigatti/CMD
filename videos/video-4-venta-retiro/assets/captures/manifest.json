@@ -1,0 +1,1330 @@
+{
+ "viewport": [
+  1920,
+  1080
+ ],
+ "scale": 2,
+ "shots": [
+  {
+   "id": "01-inicio",
+   "file": "01-inicio.png",
+   "note": "Estado de cuenta con la tenencia (paso 1, info)",
+   "tour": {
+    "i": 0,
+    "n": 19,
+    "title": "Ya tenés una inversión hecha"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 384.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 672.256,00\nUS$ 454,23\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "01b-portafolio",
+   "file": "01b-portafolio.png",
+   "note": "Portafolio: 30 CEDEARs de KO",
+   "tour": {
+    "i": 0,
+    "n": 19,
+    "title": "Ya tenés una inversión hecha"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "pos-lista": {
+     "x": 380,
+     "y": 501.2,
+     "width": 1160,
+     "height": 146.0
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.5,
+     "height": 49.2
+    }
+   },
+   "text": "Mi Portafolio\nCuenta de inversión de Argentina\n\nTenencia valorizada a precios de mercado\n\nVer en pesos\nVer en dólares\nVALOR DE TU CUENTA\n$ 672.256,00\nsaldos + tenencia, valuado en pesos\nDISPONIBLE PARA OPERAR\n$ 40.000,00\nsin contar comprometido ni a liquidar\nRESULTADO DE LA TENENCIA\n+$ 37.935,36\nno realizado — todavía no vendiste\nTenencia\n1 especie\nESPECIE\tCANTIDAD\tPRECIO\tVALORIZADO\tRESULTADO\nKO\nCoca-Cola Company\n\t30\t$ 21.075,20\ncompra $ 19.810,69\n\t$ 632.256,00\t+6,38%\n+$ 37.935,36"
+  },
+  {
+   "id": "02-menu-operar",
+   "file": "02-menu-operar.png",
+   "note": "Menú Operar abierto, Vender",
+   "tour": {
+    "i": 2,
+    "n": 19,
+    "title": "Vender"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "menu-vender": {
+     "x": 537.4,
+     "y": 243.3,
+     "width": 359.5,
+     "height": 36.9
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 384.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 672.256,00\nUS$ 454,23\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "03-vender",
+   "file": "03-vender.png",
+   "note": "Pantalla Vender: símbolo (lista)",
+   "tour": {
+    "i": 3,
+    "n": 19,
+    "title": "Acá el símbolo es una lista"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 98.4,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "form-vender": {
+     "x": 380,
+     "y": 284.5,
+     "width": 790,
+     "height": 352.3
+    },
+    "simbolo-venta": {
+     "x": 592,
+     "y": 359.5,
+     "width": 207,
+     "height": 38
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 404.5,
+     "width": 552,
+     "height": 18.8
+    },
+    "plazo-venta": {
+     "x": 592,
+     "y": 306.5,
+     "width": 172,
+     "height": 38
+    },
+    "cant-venta": {
+     "x": 592,
+     "y": 438.3,
+     "width": 209,
+     "height": 39.3
+    },
+    "vender-submit": {
+     "x": 702.4,
+     "y": 680.9,
+     "width": 145.3,
+     "height": 45.2
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Vender\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\n(Seleccionar)\nKO — Coca-Cola Company\nKO — tenés 30 unidades · punta compradora $ 21.063,61\nCantidad\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nVender\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00\n🇺🇸\nMonto disponible para Estados Unidos\nFUERA DE ALCANCE\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00"
+  },
+  {
+   "id": "04-vender-plazo",
+   "file": "04-vender-plazo.png",
+   "note": "Pantalla Vender: plazo Normal 24 hs",
+   "tour": {
+    "i": 4,
+    "n": 19,
+    "title": "Mirá el plazo"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 98.4,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "form-vender": {
+     "x": 380,
+     "y": 284.5,
+     "width": 790,
+     "height": 352.3
+    },
+    "simbolo-venta": {
+     "x": 592,
+     "y": 359.5,
+     "width": 207,
+     "height": 38
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 404.5,
+     "width": 552,
+     "height": 18.8
+    },
+    "plazo-venta": {
+     "x": 592,
+     "y": 306.5,
+     "width": 172,
+     "height": 38
+    },
+    "cant-venta": {
+     "x": 592,
+     "y": 438.3,
+     "width": 209,
+     "height": 39.3
+    },
+    "vender-submit": {
+     "x": 702.4,
+     "y": 680.9,
+     "width": 145.3,
+     "height": 45.2
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Vender\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\n(Seleccionar)\nKO — Coca-Cola Company\nKO — tenés 30 unidades · punta compradora $ 21.063,61\nCantidad\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nVender\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00\n🇺🇸\nMonto disponible para Estados Unidos\nFUERA DE ALCANCE\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00"
+  },
+  {
+   "id": "05-confirmar-venta",
+   "file": "05-confirmar-venta.png",
+   "note": "Modal de confirmación de la venta",
+   "tour": {
+    "i": 6,
+    "n": 19,
+    "title": "Confirmá"
+   },
+   "boxes": {
+    "modal": {
+     "x": 740,
+     "y": 191.0,
+     "width": 440,
+     "height": 698.0
+    },
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 98.4,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "form-vender": {
+     "x": 380,
+     "y": 223.5,
+     "width": 790,
+     "height": 352.3
+    },
+    "simbolo-venta": {
+     "x": 592,
+     "y": 298.5,
+     "width": 207,
+     "height": 38
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 343.5,
+     "width": 552,
+     "height": 18.8
+    },
+    "plazo-venta": {
+     "x": 592,
+     "y": 245.5,
+     "width": 172,
+     "height": 38
+    },
+    "cant-venta": {
+     "x": 592,
+     "y": 377.3,
+     "width": 209,
+     "height": 39.3
+    },
+    "vender-submit": {
+     "x": 702.4,
+     "y": 619.9,
+     "width": 145.3,
+     "height": 45.2
+    },
+    "aviso-plazo": {
+     "x": 762,
+     "y": 669.7,
+     "width": 396,
+     "height": 81.1
+    },
+    "costos": {
+     "x": 762,
+     "y": 472.9,
+     "width": 396,
+     "height": 185.8
+    },
+    "confirmar-orden": {
+     "x": 762,
+     "y": 764.8,
+     "width": 396,
+     "height": 44
+    },
+    "md-close": {
+     "x": 762,
+     "y": 821.8,
+     "width": 396,
+     "height": 45.2
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "MODAL: PASO 2 DE 2 · REVISÁ ANTES DE ENVIAR\nConfirmá tu venta\nEspecie\nKO · Coca-Cola Company\nCantidad\n30 un.\nPrecio estimado\n$ 21.063,61\nPlazo de liquidación\n24 hs (T+1)\nLiquida el\n15/09/2026\nMonto bruto\n$ 631.908,26\nComisión\n$ 3.159,54\nDerechos de mercado\n$ 505,53\nIVA 21%\n$ 769,66\nTotal a recibir\n$ 627.473,53\nOjo con el plazo\nCon 24 hs el dinero queda “a liquidar”: lo vas a ver en tu cuenta, pero no lo vas a poder retirar hasta el 15/09/2026.\nConfirmar venta\nCancelar || Vender\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\n(Seleccionar)\nKO — Coca-Cola Company\nKO — tenés 30 unidades · punta compradora $ 21.063,61\nCantidad\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nVender\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00\n🇺🇸\nMonto disponible para Estados Unidos\nFUERA DE ALCANCE\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00"
+  },
+  {
+   "id": "05b-aviso-plazo",
+   "file": "05b-aviso-plazo.png",
+   "note": "Modal: aviso «Ojo con el plazo»",
+   "tour": {
+    "i": 6,
+    "n": 19,
+    "title": "Confirmá"
+   },
+   "boxes": {
+    "modal": {
+     "x": 740,
+     "y": 191.0,
+     "width": 440,
+     "height": 698.0
+    },
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 98.4,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "form-vender": {
+     "x": 380,
+     "y": 223.5,
+     "width": 790,
+     "height": 352.3
+    },
+    "simbolo-venta": {
+     "x": 592,
+     "y": 298.5,
+     "width": 207,
+     "height": 38
+    },
+    "simbolo-info": {
+     "x": 592,
+     "y": 343.5,
+     "width": 552,
+     "height": 18.8
+    },
+    "plazo-venta": {
+     "x": 592,
+     "y": 245.5,
+     "width": 172,
+     "height": 38
+    },
+    "cant-venta": {
+     "x": 592,
+     "y": 377.3,
+     "width": 209,
+     "height": 39.3
+    },
+    "vender-submit": {
+     "x": 702.4,
+     "y": 619.9,
+     "width": 145.3,
+     "height": 45.2
+    },
+    "aviso-plazo": {
+     "x": 762,
+     "y": 669.7,
+     "width": 396,
+     "height": 81.1
+    },
+    "costos": {
+     "x": 762,
+     "y": 472.9,
+     "width": 396,
+     "height": 185.8
+    },
+    "confirmar-orden": {
+     "x": 762,
+     "y": 764.8,
+     "width": 396,
+     "height": 44
+    },
+    "md-close": {
+     "x": 762,
+     "y": 821.8,
+     "width": 396,
+     "height": 45.2
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "MODAL: PASO 2 DE 2 · REVISÁ ANTES DE ENVIAR\nConfirmá tu venta\nEspecie\nKO · Coca-Cola Company\nCantidad\n30 un.\nPrecio estimado\n$ 21.063,61\nPlazo de liquidación\n24 hs (T+1)\nLiquida el\n15/09/2026\nMonto bruto\n$ 631.908,26\nComisión\n$ 3.159,54\nDerechos de mercado\n$ 505,53\nIVA 21%\n$ 769,66\nTotal a recibir\n$ 627.473,53\nOjo con el plazo\nCon 24 hs el dinero queda “a liquidar”: lo vas a ver en tu cuenta, pero no lo vas a poder retirar hasta el 15/09/2026.\nConfirmar venta\nCancelar || Vender\nPlazo de liquidación\nNormal — 24 hs (T+1)\nContado inmediato\nSímbolo\n(Seleccionar)\nKO — Coca-Cola Company\nKO — tenés 30 unidades · punta compradora $ 21.063,61\nCantidad\nModalidad\nPrecio mercado\nPrecio límite\nValidez\nDía\nHasta fin de mes\nVender\n🇦🇷\nMonto disponible para Argentina\nMonto disponible para operaciones en 24hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 48hs en Peso Argentino\nAR$ 40.000,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00\n🇺🇸\nMonto disponible para Estados Unidos\nFUERA DE ALCANCE\nMonto disponible para operaciones en contado inmediato en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 24hs en Dólar Estadounidense\nUS$ 0,00\nMonto disponible para operaciones en 48hs en Dólar Estadounidense\nUS$ 0,00"
+  },
+  {
+   "id": "06-boleto",
+   "file": "06-boleto.png",
+   "note": "Boleto de la venta",
+   "tour": {
+    "i": 7,
+    "n": 19,
+    "title": "Volvé al estado de cuenta"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "boleto": {
+     "x": 640,
+     "y": 226.4,
+     "width": 640,
+     "height": 678.1
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Orden ejecutada\nSe emitió el boleto Nº 100842. Es el comprobante de la operación.\nBOLETO DE VENTA\nNº 100842\nInstrumento\nKO · Coca-Cola Company\nCantidad\n30 un.\nPrecio\n$ 21.063,61\nFecha de concertación\n14/09/2026\nFecha de liquidación\n15/09/2026\nMonto bruto\n$ 631.908,26\nComisión\n$ 3.159,54\nDerechos de mercado\n$ 505,53\nIVA 21%\n$ 769,66\nAcreditado\n$ 627.473,53\n\nLos costos totales fueron $ 4.434,73, un 0,70% del monto operado.\n\nVer movimientos\nIr al estado de cuenta"
+  },
+  {
+   "id": "07-menu-micuenta",
+   "file": "07-menu-micuenta.png",
+   "note": "Menú Mi Cuenta abierto (Estado de cuenta)",
+   "tour": {
+    "i": 8,
+    "n": 19,
+    "title": "Estado de cuenta"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "menu-estado": {
+     "x": 313,
+     "y": 206.4,
+     "width": 274,
+     "height": 36.9
+    },
+    "menu-retirar": {
+     "x": 313,
+     "y": 328.0,
+     "width": 274,
+     "height": 36.9
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "boleto": {
+     "x": 640,
+     "y": 226.4,
+     "width": 640,
+     "height": 678.1
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Orden ejecutada\nSe emitió el boleto Nº 100842. Es el comprobante de la operación.\nBOLETO DE VENTA\nNº 100842\nInstrumento\nKO · Coca-Cola Company\nCantidad\n30 un.\nPrecio\n$ 21.063,61\nFecha de concertación\n14/09/2026\nFecha de liquidación\n15/09/2026\nMonto bruto\n$ 631.908,26\nComisión\n$ 3.159,54\nDerechos de mercado\n$ 505,53\nIVA 21%\n$ 769,66\nAcreditado\n$ 627.473,53\n\nLos costos totales fueron $ 4.434,73, un 0,70% del monto operado.\n\nVer movimientos\nIr al estado de cuenta"
+  },
+  {
+   "id": "08-estado",
+   "file": "08-estado.png",
+   "note": "Estado de cuenta después de la venta",
+   "tour": {
+    "i": 9,
+    "n": 19,
+    "title": "Abrí “Detalle de saldos”"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 278.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 378.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1062.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 667.473,53\nUS$ 451,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "08b-acordeon",
+   "file": "08b-acordeon.png",
+   "note": "Acordeón «Detalle de saldos» cerrado",
+   "tour": {
+    "i": 9,
+    "n": 19,
+    "title": "Abrí “Detalle de saldos”"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 80.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 180.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 864.4,
+     "width": 1160,
+     "height": 64.5
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 667.473,53\nUS$ 451,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nEstadísticas"
+  },
+  {
+   "id": "09-detalle-saldos",
+   "file": "09-detalle-saldos.png",
+   "note": "Detalle de saldos: a liquidar",
+   "tour": {
+    "i": 10,
+    "n": 19,
+    "title": "Acá está la trampa"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": -88.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 11.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 695.4,
+     "width": 1160,
+     "height": 234.0
+    },
+    "saldos": {
+     "x": 380,
+     "y": 759.9,
+     "width": 684,
+     "height": 78.9
+    },
+    "saldos-panel": {
+     "x": 380,
+     "y": 759.9,
+     "width": 1160,
+     "height": 169.5
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 667.473,53\nUS$ 451,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nDisponible en pesos\n$ 40.000,00\nA liquidar en pesos\n$ 627.473,53\n\nTu dinero puede estar en tres estados a la vez. Disponible es lo único que podés usar o retirar hoy. Comprometido es lo que ya gastaste en una compra que todavía no liquidó. A liquidar es lo que cobraste por una venta y se acredita el día hábil siguiente.\n\nEstadísticas"
+  },
+  {
+   "id": "10-menu-retirar",
+   "file": "10-menu-retirar.png",
+   "note": "Menú Mi Cuenta abierto (Retirar dinero)",
+   "tour": {
+    "i": 12,
+    "n": 19,
+    "title": "Retirar dinero"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "menu-estado": {
+     "x": 313,
+     "y": 206.4,
+     "width": 274,
+     "height": 36.9
+    },
+    "menu-retirar": {
+     "x": 313,
+     "y": 328.0,
+     "width": 274,
+     "height": 36.9
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": -88.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 795.4,
+     "y": 11.5,
+     "width": 116.6,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 695.4,
+     "width": 1160,
+     "height": 234.0
+    },
+    "saldos": {
+     "x": 380,
+     "y": 759.9,
+     "width": 684,
+     "height": 78.9
+    },
+    "saldos-panel": {
+     "x": 380,
+     "y": 759.9,
+     "width": 1160,
+     "height": 169.5
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Estado de cuenta\nSaldo al 14/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 667.473,53\nUS$ 451,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nDisponible en pesos\n$ 40.000,00\nA liquidar en pesos\n$ 627.473,53\n\nTu dinero puede estar en tres estados a la vez. Disponible es lo único que podés usar o retirar hoy. Comprometido es lo que ya gastaste en una compra que todavía no liquidó. A liquidar es lo que cobraste por una venta y se acredita el día hábil siguiente.\n\nEstadísticas"
+  },
+  {
+   "id": "11-retirar",
+   "file": "11-retirar.png",
+   "note": "Retirar dinero: monto precargado",
+   "tour": {
+    "i": 13,
+    "n": 19,
+    "title": "El monto ya está cargado"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "monto-retiro": {
+     "x": 397,
+     "y": 497.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "ret-disp": {
+     "x": 525.5,
+     "y": 548.3,
+     "width": 83.4,
+     "height": 16
+    },
+    "confirmar-retiro": {
+     "x": 397,
+     "y": 598.0,
+     "width": 650,
+     "height": 44
+    },
+    "ret-panel": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 240.3
+    },
+    "ret-saldos": {
+     "x": 1122,
+     "y": 458.5,
+     "width": 380,
+     "height": 78.9
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Retirar dinero\n\nA una cuenta bancaria de tu misma titularidad\n\nPesos\nDólares\nCUENTA DESTINO\nBanco Nación · Caja de ahorro $\n\nTitular: Iván N. Imwinkelried\n\nMonto a retirar\n\nDisponible para retirar: $ 40.000,00\n\nConfirmar retiro\nPOR QUÉ A VECES NO TE DEJA\n\nSolo se puede retirar el saldo disponible. El dinero de una venta a 24 h queda “a liquidar” hasta el día hábil siguiente: lo ves en tu cuenta, pero todavía no se puede sacar.\n\nDisponible en pesos\n$ 40.000,00\nA liquidar en pesos\n$ 627.473,53"
+  },
+  {
+   "id": "12-retiro-rechazado",
+   "file": "12-retiro-rechazado.png",
+   "note": "Retiro rechazado: no disponible",
+   "tour": {
+    "i": 15,
+    "n": 19,
+    "title": "Ahora hacé pasar un día"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "monto-retiro": {
+     "x": 397,
+     "y": 497.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "ret-disp": {
+     "x": 525.5,
+     "y": 548.3,
+     "width": 83.4,
+     "height": 16
+    },
+    "ret-msg": {
+     "x": 397,
+     "y": 582.0,
+     "width": 650,
+     "height": 140.2
+    },
+    "confirmar-retiro": {
+     "x": 397,
+     "y": 738.2,
+     "width": 650,
+     "height": 44
+    },
+    "ret-panel": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 240.3
+    },
+    "ret-saldos": {
+     "x": 1122,
+     "y": 458.5,
+     "width": 380,
+     "height": 78.9
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Retirar dinero\n\nA una cuenta bancaria de tu misma titularidad\n\nPesos\nDólares\nCUENTA DESTINO\nBanco Nación · Caja de ahorro $\n\nTitular: Iván N. Imwinkelried\n\nMonto a retirar\n\nDisponible para retirar: $ 40.000,00\n\nNo tenés ese dinero disponible\nDisponible: $ 40.000,00\nA liquidar: $ 627.473,53 — se acredita el 15/09/2026.\n\nEl dinero de una venta a 24 h no se puede retirar el mismo día. Avanzá un día hábil con el botón de arriba y volvé a intentar.\nConfirmar retiro\nPOR QUÉ A VECES NO TE DEJA\n\nSolo se puede retirar el saldo disponible. El dinero de una venta a 24 h queda “a liquidar” hasta el día hábil siguiente: lo ves en tu cuenta, pero todavía no se puede sacar.\n\nDisponible en pesos\n$ 40.000,00\nA liquidar en pesos\n$ 627.473,53"
+  },
+  {
+   "id": "13-paso-un-dia",
+   "file": "13-paso-un-dia.png",
+   "note": "Modal: pasó un día hábil",
+   "tour": {
+    "i": 16,
+    "n": 19,
+    "title": "Ahora sí está disponible"
+   },
+   "boxes": {
+    "modal": {
+     "x": 740,
+     "y": 400,
+     "width": 440,
+     "height": 280
+    },
+    "modal-p": {
+     "x": 762,
+     "y": 485.1,
+     "width": 396,
+     "height": 22.6
+    },
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "monto-retiro": {
+     "x": 397,
+     "y": 497.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "ret-disp": {
+     "x": 525.5,
+     "y": 548.3,
+     "width": 91.0,
+     "height": 16
+    },
+    "ret-msg": {
+     "x": 397,
+     "y": 582.0,
+     "width": 650,
+     "height": 140.2
+    },
+    "confirmar-retiro": {
+     "x": 397,
+     "y": 738.2,
+     "width": 650,
+     "height": 44
+    },
+    "ret-panel": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 201.3
+    },
+    "ret-saldos": {
+     "x": 1122,
+     "y": 458.5,
+     "width": 380,
+     "height": 40.0
+    },
+    "md-close": {
+     "x": 762,
+     "y": 612.8,
+     "width": 396,
+     "height": 45.2
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "MODAL: RELOJ DEL SIMULADOR\nPasó un día hábil\n\nEs MAR 15 SEP. Se liquidaron 1 operación pendiente.\n\nEsto es T+1\nEn el mercado real esto pasa solo, un día hábil después de operar. Acá lo hacemos con un botón para no esperar.\nEntendido || Retirar dinero\n\nA una cuenta bancaria de tu misma titularidad\n\nPesos\nDólares\nCUENTA DESTINO\nBanco Nación · Caja de ahorro $\n\nTitular: Iván N. Imwinkelried\n\nMonto a retirar\n\nDisponible para retirar: $ 667.473,53\n\nNo tenés ese dinero disponible\nDisponible: $ 40.000,00\nA liquidar: $ 627.473,53 — se acredita el 15/09/2026.\n\nEl dinero de una venta a 24 h no se puede retirar el mismo día. Avanzá un día hábil con el botón de arriba y volvé a intentar.\nConfirmar retiro\nPOR QUÉ A VECES NO TE DEJA\n\nSolo se puede retirar el saldo disponible. El dinero de una venta a 24 h queda “a liquidar” hasta el día hábil siguiente: lo ves en tu cuenta, pero todavía no se puede sacar.\n\nDisponible en pesos\n$ 667.473,53"
+  },
+  {
+   "id": "14-retirar-disponible",
+   "file": "14-retirar-disponible.png",
+   "note": "Retirar: el saldo pasó a disponible",
+   "tour": {
+    "i": 16,
+    "n": 19,
+    "title": "Ahora sí está disponible"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "monto-retiro": {
+     "x": 397,
+     "y": 497.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "ret-disp": {
+     "x": 525.5,
+     "y": 548.3,
+     "width": 91.0,
+     "height": 16
+    },
+    "ret-msg": {
+     "x": 397,
+     "y": 582.0,
+     "width": 650,
+     "height": 140.2
+    },
+    "confirmar-retiro": {
+     "x": 397,
+     "y": 738.2,
+     "width": 650,
+     "height": 44
+    },
+    "ret-panel": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 201.3
+    },
+    "ret-saldos": {
+     "x": 1122,
+     "y": 458.5,
+     "width": 380,
+     "height": 40.0
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Retirar dinero\n\nA una cuenta bancaria de tu misma titularidad\n\nPesos\nDólares\nCUENTA DESTINO\nBanco Nación · Caja de ahorro $\n\nTitular: Iván N. Imwinkelried\n\nMonto a retirar\n\nDisponible para retirar: $ 667.473,53\n\nNo tenés ese dinero disponible\nDisponible: $ 40.000,00\nA liquidar: $ 627.473,53 — se acredita el 15/09/2026.\n\nEl dinero de una venta a 24 h no se puede retirar el mismo día. Avanzá un día hábil con el botón de arriba y volvé a intentar.\nConfirmar retiro\nPOR QUÉ A VECES NO TE DEJA\n\nSolo se puede retirar el saldo disponible. El dinero de una venta a 24 h queda “a liquidar” hasta el día hábil siguiente: lo ves en tu cuenta, pero todavía no se puede sacar.\n\nDisponible en pesos\n$ 667.473,53"
+  },
+  {
+   "id": "14b-retirar-limpio",
+   "file": "14b-retirar-limpio.png",
+   "note": "Retirar: pestaña Pesos, sin el mensaje anterior",
+   "tour": {
+    "i": 16,
+    "n": 19,
+    "title": "Ahora sí está disponible"
+   },
+   "boxes": {
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 118.8,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 530.8,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "monto-retiro": {
+     "x": 397,
+     "y": 497.1,
+     "width": 650,
+     "height": 45.2
+    },
+    "ret-disp": {
+     "x": 525.5,
+     "y": 548.3,
+     "width": 91.0,
+     "height": 16
+    },
+    "confirmar-retiro": {
+     "x": 397,
+     "y": 598.0,
+     "width": 650,
+     "height": 44
+    },
+    "ret-panel": {
+     "x": 1084,
+     "y": 331.1,
+     "width": 456,
+     "height": 201.3
+    },
+    "ret-saldos": {
+     "x": 1122,
+     "y": 458.5,
+     "width": 380,
+     "height": 40.0
+    },
+    "nav-portafolio": {
+     "x": 425.8,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "Retirar dinero\n\nA una cuenta bancaria de tu misma titularidad\n\nPesos\nDólares\nCUENTA DESTINO\nBanco Nación · Caja de ahorro $\n\nTitular: Iván N. Imwinkelried\n\nMonto a retirar\n\nDisponible para retirar: $ 667.473,53\n\nConfirmar retiro\nPOR QUÉ A VECES NO TE DEJA\n\nSolo se puede retirar el saldo disponible. El dinero de una venta a 24 h queda “a liquidar” hasta el día hábil siguiente: lo ves en tu cuenta, pero todavía no se puede sacar.\n\nDisponible en pesos\n$ 667.473,53"
+  },
+  {
+   "id": "15-retiro-ok",
+   "file": "15-retiro-ok.png",
+   "note": "Retiro enviado",
+   "tour": {
+    "i": 18,
+    "n": 19,
+    "title": "Eso es la liquidación"
+   },
+   "boxes": {
+    "modal": {
+     "x": 740,
+     "y": 388.7,
+     "width": 440,
+     "height": 302.6
+    },
+    "modal-p": {
+     "x": 762,
+     "y": 473.9,
+     "width": 396,
+     "height": 45.1
+    },
+    "nav-micuenta": {
+     "x": 307,
+     "y": 151.2,
+     "width": 119.4,
+     "height": 49.2
+    },
+    "nav-operar": {
+     "x": 531.4,
+     "y": 151.2,
+     "width": 97.8,
+     "height": 49.2
+    },
+    "reloj-avanzar": {
+     "x": 1455.3,
+     "y": 60,
+     "width": 147.7,
+     "height": 21.2
+    },
+    "cuenta-arg": {
+     "x": 380,
+     "y": 284.5,
+     "width": 570,
+     "height": 259.9
+    },
+    "bal-ars": {
+     "x": 845.6,
+     "y": 384.5,
+     "width": 66.4,
+     "height": 24.3
+    },
+    "acc-saldos": {
+     "x": 380,
+     "y": 1068.4,
+     "width": 1160,
+     "height": 234.0
+    },
+    "saldos": {
+     "x": 380,
+     "y": 1132.9,
+     "width": 684,
+     "height": 40.0
+    },
+    "saldos-panel": {
+     "x": 380,
+     "y": 1132.9,
+     "width": 1160,
+     "height": 169.5
+    },
+    "md-close": {
+     "x": 762,
+     "y": 624.1,
+     "width": 396,
+     "height": 45.2
+    },
+    "nav-portafolio": {
+     "x": 426.4,
+     "y": 151.2,
+     "width": 105.0,
+     "height": 49.2
+    }
+   },
+   "text": "MODAL: LISTO\nRetiro enviado\n\nTransferimos $ 667.473,00 a tu cuenta del Banco Nación. Sin costo.\n\nCerraste el ciclo\nIngresó plata, la invertiste, vendiste, esperaste la liquidación y la sacaste. Eso es una inversión completa.\nVer movimientos || Estado de cuenta\nSaldo al 15/09/2026 11:42hs | Cuenta comitente nro: 418.203\n🇦🇷\nCuenta de inversión de Argentina\nTradicional\nSimple\nSaldo total valorizado\nAR$ 0,53\nUS$ 0,00\nMi Portafolio\nIngresar dinero\n🇺🇸\nCuenta de inversión de Estados Unidos\nFUERA DE ALCANCE\nSaldo total valorizado\nUS$ 0,00\nMi Portafolio\nIngresar dinero\nEnviar dinero a Estados Unidos\n\nEsta capacitación cubre solo la cuenta argentina. Para invertir en empresas del exterior vas a usar CEDEARs, que se compran en pesos desde acá.\n\nTe recomendamos\n💵\nDólar MEP Simple\n\nDólar MEP al instante, sin parking. Comprás y vendés dólares legales con un solo clic.\n\nUlt. precio: AR$ 1.480,00\nVender\nComprar\n🥧\nPortafolio Simple\n\nSon paquetes de inversión, armados por nuestro equipo experto, en los que podés invertir en pesos con un solo clic.\n\nDesde: AR$ 74.287,50\nComprar\n¿En qué invierto?\n¿Cómo le gano a la inflación? >\n¿Cómo invertir tus dólares? >\nEstrategias de corto plazo (AT) >\nPortafolios sugeridos >\nDetalle de saldos\nDisponible en pesos\n$ 0,53\n\nTu dinero puede estar en tres estados a la vez. Disponible es lo único que podés usar o retirar hoy. Comprometido es lo que ya gastaste en una compra que todavía no liquidó. A liquidar es lo que cobraste por una venta y se acredita el día hábil siguiente.\n\nEstadísticas"
+  }
+ ]
+}

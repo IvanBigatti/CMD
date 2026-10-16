@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+        #root { position: absolute; inset: 0; overflow: hidden; font-family: "Barlow", sans-serif; }
+
+        #s10-bg { position: absolute; inset: 0; background: #06083F; }
+        #s10-content { position: absolute; left: 200px; right: 200px; top: 170px; display: flex;
+          flex-direction: column; gap: 44px; }
+        #s10-title { font-size: 120px; font-weight: 700; line-height: 1; color: #F7F6FC; }
+        #s10-card { align-self: flex-start; background: #EEEDF8; border-radius: 16px; padding: 28px 40px;
+          display: flex; flex-direction: column; gap: 10px; }
+        #s10-cardlbl { font-family: "IBM Plex Mono", monospace; font-size: 36px; letter-spacing: 0.06em;
+          color: #6439FF; font-weight: 700; }
+        #s10-cardtx { font-size: 60px; font-weight: 600; color: #06083F; }
+        #s10-rate { font-size: 48px; font-weight: 500; color: #E8B23A; }
+        #s10-fine { position: absolute; left: 200px; right: 200px; bottom: 70px; font-size: 36px;
+          color: #C9C6EE; }
+
+      </style>
+      <div data-hf-id="hf-8k65" id="root" data-composition-id="s10" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-dh1d" id="s10-bg"></div>
+        <div data-hf-id="hf-ewbz" id="s10-content">
+          <div data-hf-id="hf-sb1h" id="s10-title">Ahora hacelo vos</div>
+          <div data-hf-id="hf-ksve" id="s10-card"><div data-hf-id="hf-9rnt" id="s10-cardlbl">ITINERARIO DEL SIMULADOR</div>
+            <div data-hf-id="hf-uujj" id="s10-cardtx">Vender, esperar la liquidación y retirar</div></div>
+          <div data-hf-id="hf-cebj" id="s10-rate">Al terminar, puntuá la sección del 1 al 10</div>
+        </div>
+        <div data-hf-id="hf-cezf" id="s10-fine">Simulador de práctica · No es una recomendación de inversión</div>
+      </div>
+      <script>
+        (function () {
+          const ID = "s10";
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#" + ID + "-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.3);
+          tl.fromTo("#" + ID + "-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.9);
+          tl.fromTo("#" + ID + "-rate", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.6);
+          tl.fromTo("#" + ID + "-fine", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 2.0);
+          tl.set({}, {}, 8);
+          window.__timelines[ID] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

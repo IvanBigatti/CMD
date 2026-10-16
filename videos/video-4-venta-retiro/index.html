@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Vender, esperar la liquidación y retirar</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-700.woff2") format("woff2"); font-weight: 700; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #F7F6FC; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Barlow", sans-serif; }
+      .guide { position: absolute; left: 0; right: 0; top: 960px; bottom: 0; display: flex;
+        align-items: center; justify-content: center; padding: 0 160px; z-index: 50; }
+      .guide-tx { display: block; font-size: 42px; line-height: 1.2; font-weight: 500; color: #F7F6FC;
+        text-align: center; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-upee" id="root" data-composition-id="main" data-start="0" data-duration="174" data-width="1920" data-height="1080">
+      <div data-hf-id="hf-yy4c" id="s01" data-composition-id="s01" data-composition-src="compositions/frames/s01.html" data-start="0" data-duration="6" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-gguv" id="s02" data-composition-id="s02" data-composition-src="compositions/frames/s02.html" data-start="6" data-duration="20" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-fy02" id="s03" data-composition-id="s03" data-composition-src="compositions/frames/s03.html" data-start="26" data-duration="28" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-qnn5" id="s04" data-composition-id="s04" data-composition-src="compositions/frames/s04.html" data-start="54" data-duration="12" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-21fw" id="s05" data-composition-id="s05" data-composition-src="compositions/frames/s05.html" data-start="66" data-duration="24" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-l26c" id="s06" data-composition-id="s06" data-composition-src="compositions/frames/s06.html" data-start="90" data-duration="22" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-7spy" id="s07" data-composition-id="s07" data-composition-src="compositions/frames/s07.html" data-start="112" data-duration="24" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-o4mc" id="s08" data-composition-id="s08" data-composition-src="compositions/frames/s08.html" data-start="136" data-duration="10" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-h13n" id="s09" data-composition-id="s09" data-composition-src="compositions/frames/s09.html" data-start="146" data-duration="20" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-rjol" id="s10" data-composition-id="s10" data-composition-src="compositions/frames/s10.html" data-start="166" data-duration="8" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-n6g9" class="clip guide" id="s02-g0" data-start="6.5" data-duration="3.1" data-track-index="1"><span data-hf-id="hf-ui2n" class="guide-tx">Para esta práctica ya tenés una inversión hecha:</span></div>
+      <div data-hf-id="hf-6lw2" class="clip guide" id="s02-g1" data-start="9.6" data-duration="4.4" data-track-index="1"><span data-hf-id="hf-nc2m" class="guide-tx">treinta CEDEARs de Coca-Cola, comprados hace unos días.</span></div>
+      <div data-hf-id="hf-en8w" class="clip guide" id="s02-g2" data-start="14" data-duration="3" data-track-index="1"><span data-hf-id="hf-320u" class="guide-tx">Vas a venderlos y a sacar la plata.</span></div>
+      <div data-hf-id="hf-g9ro" class="clip guide" id="s02-g3" data-start="17" data-duration="3.2" data-track-index="1"><span data-hf-id="hf-ecqk" class="guide-tx">Y vas a ver la parte que más confunde:</span></div>
+      <div data-hf-id="hf-2yv1" class="clip guide" id="s02-g4" data-start="20.2" data-duration="5.8" data-track-index="1"><span data-hf-id="hf-c5mj" class="guide-tx">vendés, ves la plata… y todavía no la podés retirar.</span></div>
+      <div data-hf-id="hf-6ru8" class="clip guide" id="s03-g0" data-start="26.5" data-duration="4" data-track-index="1"><span data-hf-id="hf-fynz" class="guide-tx">Menú «Operar», y después «Vender».</span></div>
+      <div data-hf-id="hf-e50n" class="clip guide" id="s03-g1" data-start="30.5" data-duration="4.1" data-track-index="1"><span data-hf-id="hf-f2z0" class="guide-tx">A diferencia de la compra, el símbolo es una lista:</span></div>
+      <div data-hf-id="hf-082k" class="clip guide" id="s03-g2" data-start="34.6" data-duration="4" data-track-index="1"><span data-hf-id="hf-hfnp" class="guide-tx">solo podés vender lo que ya tenés.</span></div>
+      <div data-hf-id="hf-3the" class="clip guide" id="s03-g3" data-start="38.6" data-duration="5" data-track-index="1"><span data-hf-id="hf-dvt2" class="guide-tx">Ahora mirá el plazo: «Normal» quiere decir veinticuatro horas,</span></div>
+      <div data-hf-id="hf-wby5" class="clip guide" id="s03-g4" data-start="43.6" data-duration="3" data-track-index="1"><span data-hf-id="hf-7ru4" class="guide-tx">lo que se llama T más uno.</span></div>
+      <div data-hf-id="hf-206h" class="clip guide" id="s03-g5" data-start="46.6" data-duration="7.4" data-track-index="1"><span data-hf-id="hf-umq6" class="guide-tx">La plata de la venta no queda disponible hoy, sino al día hábil siguiente.</span></div>
+      <div data-hf-id="hf-j46e" class="clip guide" id="s04-g0" data-start="54.5" data-duration="2" data-track-index="1"><span data-hf-id="hf-ihsj" class="guide-tx">Mandamos la venta,</span></div>
+      <div data-hf-id="hf-qjxw" class="clip guide" id="s04-g1" data-start="56.5" data-duration="5" data-track-index="1"><span data-hf-id="hf-plbq" class="guide-tx">leemos el aviso sobre el plazo,</span></div>
+      <div data-hf-id="hf-7p0j" class="clip guide" id="s04-g2" data-start="61.5" data-duration="4.5" data-track-index="1"><span data-hf-id="hf-tunn" class="guide-tx">y confirmamos.</span></div>
+      <div data-hf-id="hf-8du6" class="clip guide" id="s05-g0" data-start="66.5" data-duration="5.3" data-track-index="1"><span data-hf-id="hf-1ml7" class="guide-tx">Volvé al estado de cuenta y abrí «Detalle de saldos».</span></div>
+      <div data-hf-id="hf-3xdy" class="clip guide" id="s05-g1" data-start="71.8" data-duration="2.2" data-track-index="1"><span data-hf-id="hf-px70" class="guide-tx">Acá está la clave:</span></div>
+      <div data-hf-id="hf-esax" class="clip guide" id="s05-g2" data-start="74" data-duration="6.5" data-track-index="1"><span data-hf-id="hf-tbr7" class="guide-tx">la plata de la venta figura como «a liquidar», no como disponible.</span></div>
+      <div data-hf-id="hf-9jp3" class="clip guide" id="s05-g3" data-start="80.5" data-duration="9.5" data-track-index="1"><span data-hf-id="hf-per2" class="guide-tx">La ves, pero todavía no la podés sacar.</span></div>
+      <div data-hf-id="hf-xoss" class="clip guide" id="s06-g0" data-start="90.5" data-duration="3.7" data-track-index="1"><span data-hf-id="hf-i9nt" class="guide-tx">Probemos igual. Menú «Mi Cuenta», «Retirar dinero».</span></div>
+      <div data-hf-id="hf-g340" class="clip guide" id="s06-g1" data-start="94.2" data-duration="2.2" data-track-index="1"><span data-hf-id="hf-vjba" class="guide-tx">El monto ya está cargado:</span></div>
+      <div data-hf-id="hf-nwld" class="clip guide" id="s06-g2" data-start="96.4" data-duration="4.6" data-track-index="1"><span data-hf-id="hf-sq0n" class="guide-tx">es toda la plata de tu cuenta, incluida la de la venta.</span></div>
+      <div data-hf-id="hf-umkp" class="clip guide" id="s06-g3" data-start="101" data-duration="4" data-track-index="1"><span data-hf-id="hf-zyps" class="guide-tx">Confirmamos… y no nos deja.</span></div>
+      <div data-hf-id="hf-pl1h" class="clip guide" id="s06-g4" data-start="105" data-duration="7" data-track-index="1"><span data-hf-id="hf-1x1h" class="guide-tx">Está bien que falle: esa plata todavía no se liquidó.</span></div>
+      <div data-hf-id="hf-98g9" class="clip guide" id="s07-g0" data-start="112.5" data-duration="2.9" data-track-index="1"><span data-hf-id="hf-sal5" class="guide-tx">En la vida real, esperarías hasta mañana.</span></div>
+      <div data-hf-id="hf-osq2" class="clip guide" id="s07-g1" data-start="115.4" data-duration="7.4" data-track-index="1"><span data-hf-id="hf-bhnv" class="guide-tx">En el simulador, tocás «Avanzar 1 día hábil», en la franja amarilla de arriba.</span></div>
+      <div data-hf-id="hf-5nol" class="clip guide" id="s07-g2" data-start="122.8" data-duration="7.2" data-track-index="1"><span data-hf-id="hf-z5yr" class="guide-tx">Mirá el panel: la plata pasó de «a liquidar» a «disponible».</span></div>
+      <div data-hf-id="hf-lch8" class="clip guide" id="s07-g3" data-start="130" data-duration="6" data-track-index="1"><span data-hf-id="hf-ftda" class="guide-tx">Eso es la liquidación.</span></div>
+      <div data-hf-id="hf-h9oo" class="clip guide" id="s08-g0" data-start="136.5" data-duration="3" data-track-index="1"><span data-hf-id="hf-e7jd" class="guide-tx">Ahora sí: confirmamos el retiro,</span></div>
+      <div data-hf-id="hf-gmwq" class="clip guide" id="s08-g1" data-start="139.5" data-duration="6.5" data-track-index="1"><span data-hf-id="hf-kk8f" class="guide-tx">y la plata vuelve a tu cuenta del banco.</span></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll(".guide").forEach(function (el) {
+        const s = parseFloat(el.dataset.start);
+        tl.fromTo(el.querySelector(".guide-tx"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, s);
+      });
+      tl.set({}, {}, 174);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
