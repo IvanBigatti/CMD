@@ -123,6 +123,29 @@
 .cabecera-pagina .act-meta { color: #CFC5F0; display: flex; align-items: center; flex-wrap: wrap }
 .act-meta.grande { font-size: .9rem }
 
+/* ---------- Secciones de capacitaciones ---------- */
+.cap-secciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px }
+.cap-secciones button {
+  min-height: 44px; padding: 0 20px; border-radius: 99px; border: 1px solid rgba(255,255,255,.45); background: transparent;
+  color: #fff; font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s;
+}
+.cap-secciones button:hover { background: rgba(255,255,255,.14); border-color: #fff }
+#cap-videos, #cap-podcast { scroll-margin-top: 80px }
+.cap-intro { color: var(--tx2); font-size: 1.05rem; margin: -8px 0 20px }
+
+/* ---------- Podcast ---------- */
+.pod-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr)); gap: 16px }
+.pod-card { display: flex; gap: 16px; background: #fff; border: 1px solid var(--line2); border-radius: 12px; padding: 20px }
+.pod-icono {
+  flex: none; width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; font-size: 1.6rem;
+  background: linear-gradient(135deg, var(--violet-deep), var(--violet));
+}
+.pod-cuerpo { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1 }
+.pod-cuerpo audio { width: 100%; margin-top: 4px }
+.pod-vacio { background: var(--lav); border: 2px dashed var(--line2); border-radius: 8px; padding: 10px 14px; color: var(--tx2) }
+.pod-vacio b { color: var(--indigo) }
+.pod-cuerpo .act-meta a { color: var(--violet); font-weight: 600 }
+
 /* ---------- Detalle de actividad ---------- */
 .actividad { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 26px; align-items: start }
 .act-video video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; display: block }
