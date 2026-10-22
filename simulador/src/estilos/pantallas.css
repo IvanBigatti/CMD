@@ -1,0 +1,54 @@
+/* Área principal, encabezados de página, paneles del estado de cuenta y botones */
+.main { flex: 1; background: var(--bg); padding: 26px 34px 48px; min-width: 0 }
+.page { max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px }
+.page.ancha { max-width: none }
+.pagetop { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap }
+.ptitle { color: var(--violet); font-size: 2.15rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.05 }
+.pmeta { margin-left: auto; font-size: 1rem; color: var(--tx3); white-space: nowrap }
+.sech { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em }
+.subt { color: var(--tx2); font-size: .93rem; margin-top: 3px }
+
+/* Paneles lavanda del estado de cuenta */
+.panel { background: var(--lav); border-radius: 9px; padding: 30px 38px 34px }
+.panel.proximamente { background: var(--card2); border: 1px solid var(--line) }
+.panel.proximamente .balrow { opacity: .75 }
+.acctgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start }
+.accthd { display: flex; align-items: center; gap: 11px; flex-wrap: wrap }
+.accthd .flag { font-size: 1.5rem; line-height: 1 }
+.accthd h2 { font-size: 1.45rem; font-weight: 700; letter-spacing: -.02em; color: var(--indigo) }
+.selmini { margin-left: auto; background: #fff; border: 1px solid var(--line2); border-radius: 5px; padding: 8px 10px; min-height: 44px; font-size: 1rem; font-weight: 500 }
+.balrow { display: flex; align-items: baseline; gap: 12px; margin-top: 26px }
+.balrow .k { font-size: 1rem; font-weight: 700 }
+.balrow .v { margin-left: auto; font-family: var(--fui); font-weight: 700; font-size: 1.05rem; font-variant-numeric: tabular-nums }
+.balrow.sec { margin-top: 6px }
+.acctbtns { display: flex; gap: 42px; margin-top: 26px }
+.acctbtns > button { flex: 1 1 0; min-width: 0 }
+.acctbtns2 { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 18px }
+
+.btn-s { background: var(--violet); color: #fff; border-radius: 5px; padding: 10px 22px; min-height: 44px; font-size: 1rem; font-weight: 500; text-align: center; white-space: nowrap }
+.btn-s:hover { background: var(--violet-dk) }
+.btn-o { background: #fff; color: var(--violet); border: 1px solid var(--violet); border-radius: 5px; padding: 10px 22px; min-height: 44px; font-size: 1rem; font-weight: 500; text-align: center; white-space: nowrap }
+.btn-o:hover { background: var(--lav) }
+.btn-s:disabled, .btn-o:disabled { opacity: .42; cursor: not-allowed }
+.btn-s.w, .btn-o.w { display: block; width: 100% }
+.btn-s.sm, .btn-o.sm { padding: 8px 22px; font-size: 1rem }
+
+.recgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch }
+.rec { background: var(--lav); border-radius: 9px; padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 8px rgba(6,8,63,.08) }
+.rec .rhd { display: flex; align-items: center; gap: 12px }
+.rec .ric { font-size: 1.8rem; line-height: 1 }
+.rec h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -.02em; color: var(--indigo) }
+.rec p { font-size: 1rem; color: var(--tx2); line-height: 1.45 }
+.rec .rsp { flex: 1 }
+.rec .rpx { font-size: 1rem; color: var(--tx2) }
+.rec .rbtns { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap }
+.reclinks { display: flex; flex-direction: column; gap: 11px }
+.reclinks button { color: var(--violet); font-size: 1.05rem; font-weight: 500; text-align: left; min-height: 44px }
+.reclinks button:hover { text-decoration: underline }
+
+details.acc { border-top: 0 }
+details.acc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 16px 0; min-height: 44px; font-size: 1.4rem; font-weight: 700 }
+details.acc summary::-webkit-details-marker { display: none }
+details.acc summary::after { content: "⌄"; color: #3B82F6; font-size: 1.3rem; line-height: .6; transition: transform .18s }
+details.acc[open] summary::after { transform: rotate(180deg) }
+details.acc .accbody { padding: 0 0 22px }

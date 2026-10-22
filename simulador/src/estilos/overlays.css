@@ -1,0 +1,44 @@
+/* Modales, selector de itinerarios y guía paso a paso (spotlight + globo) */
+.veil { position: fixed; inset: 0; background: rgba(6,8,63,.72); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 90 }
+.sheet {
+  background: #fff; border-radius: 11px; max-width: 440px; width: 100%; padding: 22px; box-shadow: var(--shadow);
+  max-height: 88dvh; overflow-y: auto; display: flex; flex-direction: column; gap: 13px;
+}
+.sheet.ancha { max-width: 620px }
+.sheet h3 { font-size: 1.18rem; font-weight: 700; line-height: 1.2 }
+.sheet p { font-size: .91rem; line-height: 1.5; color: var(--tx2) }
+.sheet .eyebrow { font-family: var(--fmo); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--warn) }
+.cuerpo-modal { display: flex; flex-direction: column; gap: 11px }
+.cuerpo-modal > p { font-size: .91rem; line-height: 1.55; color: var(--tx2) }
+
+.tracks { display: flex; flex-direction: column; gap: 9px }
+.track { display: flex; gap: 13px; align-items: flex-start; background: #fff; border: 1px solid var(--line2); border-radius: 8px; padding: 13px 15px; width: 100% }
+.track:hover { border-color: var(--violet); background: var(--lav) }
+.track .n { font-family: var(--fmo); font-size: .78rem; font-weight: 600; color: #fff; background: var(--violet); width: 26px; height: 26px; border-radius: 5px; display: grid; place-items: center; flex: none }
+.track .tt { display: block; font-size: .96rem; font-weight: 700; line-height: 1.25 }
+.track .ss { display: block; font-size: .83rem; color: var(--tx2); line-height: 1.4; margin-top: 3px }
+.track .mods { display: block; font-family: var(--fmo); font-size: 10px; letter-spacing: .07em; color: var(--tx3); margin-top: 6px; text-transform: uppercase }
+.track.rec2 { border-color: var(--violet); border-width: 2px }
+
+.tour-ring {
+  position: fixed; z-index: 70; border-radius: 7px; pointer-events: none;
+  box-shadow: 0 0 0 9999px rgba(6,8,63,.58), 0 0 0 3px #8B6BFF;
+  transition: top .18s ease, left .18s ease, width .18s ease, height .18s ease;
+}
+.tour-tip {
+  position: fixed; z-index: 72; max-width: 340px; width: calc(100vw - 28px); background: #fff; border-radius: 10px;
+  padding: 15px; box-shadow: var(--shadow); border: 1px solid var(--line2); display: flex; flex-direction: column; gap: 9px;
+}
+.tour-tip .step { font-family: var(--fmo); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; color: var(--violet) }
+.tour-tip h4 { font-size: 1.03rem; font-weight: 700; line-height: 1.25 }
+.tour-tip p { font-size: .88rem; line-height: 1.5; color: var(--tx2) }
+.tour-tip .acts { display: flex; gap: 8px; align-items: center; margin-top: 2px } .tour-tip .acts .sp { flex: 1 }
+.tour-tip .tapme {
+  font-family: var(--fmo); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--violet);
+  display: flex; align-items: center; gap: 7px; font-weight: 600;
+}
+.tour-tip .tapme::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #8B6BFF; animation: pulse 1.4s infinite }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1) } 50% { opacity: .3; transform: scale(.7) } }
+.mini { border: 1px solid var(--line2); border-radius: 5px; padding: 5px 11px; font-size: .83rem; font-weight: 500; color: var(--tx2) }
+.mini:hover { border-color: var(--violet); color: var(--violet) }
+.mini.pri { background: var(--violet); border-color: var(--violet); color: #fff } .mini.pri:hover { background: var(--violet-dk) }

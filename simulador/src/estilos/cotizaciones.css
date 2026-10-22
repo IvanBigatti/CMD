@@ -1,0 +1,65 @@
+/* Panel de cotizaciones y ficha del activo */
+.indices { display: flex; gap: 0; border-bottom: 1px solid var(--line); margin: -6px 0 4px }
+.indices .ix { padding: 9px 26px 9px 0; margin-right: 26px; border-right: 1px solid var(--line); font-size: .88rem; white-space: nowrap }
+.indices .ix:last-child { border-right: none }
+.indices .ix b { font-weight: 700 }
+.tabs1 { display: flex; gap: 4px; border-bottom: 1px solid var(--line); flex-wrap: wrap }
+.tabs1 button { display: flex; align-items: center; gap: 7px; padding: 11px 16px; font-size: .95rem; font-weight: 600; color: var(--tx3); border-bottom: 3px solid transparent; margin-bottom: -1px }
+.tabs1 button[aria-pressed="true"] { color: var(--violet); border-bottom-color: var(--violet) }
+.tabs1 button:hover { color: var(--violet) }
+.tabs1 button[data-pronto] { color: var(--tx2) }
+.tabs1 button[data-pronto]::after {
+  content: "próximamente"; font-family: var(--fmo); font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--violet-deep); background: var(--lav2); padding: 2px 8px; border-radius: 99px; margin-left: 2px;
+}
+.tabs2 { display: flex; gap: 2px; border-bottom: 1px solid var(--line); flex-wrap: wrap }
+.tabs2 button { padding: 9px 14px; font-size: .88rem; font-weight: 500; color: var(--tx3); border-bottom: 2px solid transparent; margin-bottom: -1px }
+.tabs2 button[aria-pressed="true"] { color: var(--violet); font-weight: 700; border-bottom-color: var(--violet) }
+.tabs2 button:hover { color: var(--violet) }
+.mktbar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap }
+.mktbar label { font-size: .86rem; color: var(--tx2); display: flex; align-items: center; gap: 7px }
+.mktbar .sp { flex: 1 }
+.mktbar .fsel, .mktbar .finp { padding: 5px 9px; font-size: .85rem; min-width: 0 }
+.rtpill { background: #C9F5DF; color: #0A6B4A; border-radius: 99px; padding: 6px 20px; font-size: .85rem; font-weight: 700; white-space: nowrap }
+.viewbtn { width: 30px; height: 28px; border: 1px solid var(--line2); border-radius: 4px; display: grid; place-items: center; color: var(--tx3); font-size: .9rem }
+.viewbtn[aria-pressed="true"] { border-color: var(--violet); color: var(--violet) }
+
+table.cot { min-width: 1180px }
+table.cot thead th {
+  background: #EEF0FA; color: var(--tx2); font-family: var(--fui); font-size: .79rem; font-weight: 700;
+  letter-spacing: 0; text-transform: none; text-align: center; padding: 12px 9px; border-bottom: 1px solid var(--line2); vertical-align: middle;
+}
+table.cot thead th .srt { color: var(--tx3); font-size: .65rem; margin-left: 3px }
+table.cot td { padding: 9px; font-size: .84rem; text-align: center; vertical-align: middle }
+table.cot td.sim { text-align: left; padding-left: 14px; border-left: 4px solid transparent; white-space: nowrap }
+table.cot tr.up td.sim { border-left-color: #2DBE86 } table.cot tr.dn td.sim { border-left-color: #E0566B }
+table.cot .simwrap { display: flex; align-items: center; gap: 9px }
+table.cot .simico { width: 26px; height: 26px; border-radius: 4px; background: var(--lav2); display: grid; place-items: center; font-size: .8rem; flex: none }
+table.cot .simtk { font-family: var(--fmo); font-weight: 700; font-size: .86rem; display: flex; align-items: center; gap: 6px }
+table.cot .simnm { font-size: .72rem; color: var(--tx3); margin-top: 1px; max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.tipo-badge { font-size: 8.5px; font-weight: 700; letter-spacing: .05em; border: 1px solid var(--line2); color: var(--tx3); border-radius: 3px; padding: 0 4px }
+table.cot td.num2 { font-family: var(--fmo); font-variant-numeric: tabular-nums; white-space: nowrap }
+table.cot td.bid { background: #E9F7F0; font-weight: 700 } table.cot th.bid { background: #DFF2E8 }
+table.cot td.ask { background: #FCECEE; font-weight: 700 } table.cot th.ask { background: #F8E0E4 }
+table.cot td.qbid { background: #F2FBF7 } table.cot th.qbid { background: #DFF2E8 }
+table.cot td.qask { background: #FEF5F6 } table.cot th.qask { background: #F8E0E4 }
+.varcell { display: inline-flex; align-items: center; gap: 5px; font-family: var(--fmo); font-variant-numeric: tabular-nums }
+.varcell.up { color: #12885E } .varcell.dn { color: #C43A4E }
+.lnkcomprar { color: var(--violet); font-weight: 600; font-size: .85rem; text-decoration: underline; text-underline-offset: 2px; cursor: pointer }
+.lnkcomprar:hover { color: var(--violet-dk) }
+.starbtn { color: var(--tx3); font-size: 1rem } .starbtn:hover { color: var(--violet) }
+
+/* Ficha estilo IOL */
+.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start }
+.fcard { border: 1px solid var(--line2); border-radius: 5px; background: #fff; overflow: hidden }
+.fcard > h3 { font-size: 1.18rem; font-weight: 700; color: var(--tx); padding: 15px 18px 12px }
+.fcard .fbody { padding: 0 18px 16px }
+.dcgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px }
+.dcrow { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .85rem }
+.dcrow .k { color: var(--tx2); min-width: 0 }
+.dcrow .v { margin-left: auto; font-weight: 700; font-family: var(--fmo); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; flex: none }
+table.mini2 { width: 100% }
+table.mini2 th { background: #fff; color: var(--tx2); font-family: var(--fui); font-size: .79rem; font-weight: 600; text-transform: none; letter-spacing: 0; padding: 8px 10px; border-bottom: 1px solid var(--line2); text-align: left }
+table.mini2 td { padding: 8px 10px; font-size: .82rem; font-family: var(--fmo); font-variant-numeric: tabular-nums; border-bottom: 1px solid var(--line) }
+table.mini2 td.b { font-weight: 700; color: #12885E } table.mini2 td.a { font-weight: 700; color: #C43A4E }
+.areachart { display: block; width: 100%; height: 190px }

@@ -1,0 +1,66 @@
+/* Componentes internos reutilizables: tarjetas, tablas, saldos, avisos, segmentos */
+.card { background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 16px }
+.card.p0 { padding: 0; overflow: hidden }
+.cardhd { padding: 13px 16px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px }
+.cardhd h3 { font-size: .95rem; font-weight: 600 } .cardhd .sp { flex: 1 }
+.lbl { font-family: var(--fmo); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--tx3) }
+.big { font-size: 1.95rem; font-weight: 700; letter-spacing: -.025em; font-variant-numeric: tabular-nums; line-height: 1.08 }
+.row { display: flex; align-items: center; gap: 12px } .row .sp { flex: 1; min-width: 0 }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px }
+.grid12 { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; align-items: start }
+.sub { font-size: .82rem; color: var(--tx3); line-height: 1.35 }
+.delta { font-family: var(--fmo); font-size: .82rem; font-weight: 500; padding: 1px 6px; border-radius: 4px; white-space: nowrap }
+.delta.up { color: var(--up); background: var(--upsoft) } .delta.dn { color: var(--down); background: var(--downsoft) }
+.segment { display: inline-flex; background: var(--card2); border-radius: 6px; padding: 3px; gap: 3px }
+.segment button { padding: 5px 13px; border-radius: 4px; font-size: .84rem; font-weight: 600; color: var(--tx2); text-align: center }
+.segment button[aria-pressed="true"] { background: #fff; color: var(--violet); box-shadow: 0 1px 2px rgba(6,8,63,.14) }
+.segment.full { display: flex } .segment.full button { flex: 1 }
+
+.scroll-x { overflow-x: auto }
+th, td { text-align: left; padding: 10px 13px; border-bottom: 1px solid var(--line); font-size: .88rem }
+thead th { font-family: var(--fmo); font-weight: 500; font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: var(--tx3); background: var(--card2); white-space: nowrap }
+tbody tr:last-child td { border-bottom: none }
+tbody tr.clk { cursor: pointer } tbody tr.clk:hover { background: var(--lav) }
+td.n, th.n { text-align: right; font-family: var(--fmo); font-variant-numeric: tabular-nums; white-space: nowrap }
+.tickcell { font-family: var(--fmo); font-weight: 600; white-space: nowrap }
+.namecell { font-size: .78rem; color: var(--tx3); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px }
+
+.saldos { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 7px; overflow: hidden }
+.saldos .sl { background: #fff; display: flex; align-items: center; gap: 9px; padding: 9px 13px; font-size: .86rem }
+.saldos .sl .n { margin-left: auto; font-family: var(--fmo); font-weight: 600; font-variant-numeric: tabular-nums }
+.saldos .tag { width: 7px; height: 7px; border-radius: 2px; flex: none }
+.tag.disp { background: var(--up) } .tag.comp { background: var(--warn) } .tag.liq { background: var(--violet) }
+
+.field { display: flex; flex-direction: column; gap: 6px }
+.field label { font-size: .84rem; font-weight: 600; color: var(--tx2) }
+.inp {
+  width: 100%; background: #fff; border: 1px solid var(--line2); border-radius: 6px; padding: 10px 12px;
+  font-family: var(--fmo); font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.inp:focus { border-color: var(--violet); outline: none; box-shadow: 0 0 0 3px var(--lav) }
+.hint { font-size: .79rem; color: var(--tx3); line-height: 1.4 }
+.kv { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 7px; overflow: hidden }
+.kv .r { background: #fff; display: flex; gap: 10px; padding: 8px 13px; font-size: .86rem }
+.kv .r .k { color: var(--tx2) } .kv .r .v { margin-left: auto; font-family: var(--fmo); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right }
+.kv .r .v.texto { font-family: var(--fui) }
+.kv .r.tot { background: var(--card2); font-weight: 700 } .kv .r.tot .k { color: var(--tx) }
+.alert { border-radius: 7px; padding: 10px 13px; font-size: .85rem; line-height: 1.45; border-left: 3px solid }
+.alert .t { font-weight: 700; display: block; margin-bottom: 2px }
+.alert.warn { background: var(--warnsoft); border-color: var(--warn); color: var(--warn) }
+.alert.info { background: var(--lav); border-color: var(--violet); color: var(--violet-deep) }
+.alert.bad { background: var(--downsoft); border-color: var(--down); color: var(--down) }
+.alert.good { background: var(--upsoft); border-color: var(--up); color: var(--up) }
+.radio { display: flex; flex-direction: column; gap: 8px }
+.radio button { display: flex; gap: 10px; align-items: flex-start; background: #fff; border: 1px solid var(--line2); border-radius: 7px; padding: 11px 13px; width: 100% }
+.radio button[aria-pressed="true"] { border-color: var(--violet); background: var(--lav) }
+.radio .bul { width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--line2); flex: none; margin-top: 3px }
+.radio button[aria-pressed="true"] .bul { border-color: var(--violet); border-width: 5px }
+.radio .tt { display: block; font-size: .88rem; font-weight: 600 } .radio .ss { display: block; font-size: .78rem; color: var(--tx3); margin-top: 2px }
+.empty { text-align: center; padding: 28px; color: var(--tx3); font-size: .88rem; line-height: 1.5 }
+.pill { display: inline-block; font-family: var(--fmo); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; background: var(--card2); color: var(--tx3) }
+.pill.w { background: var(--warnsoft); color: var(--warn) } .pill.g { background: var(--upsoft); color: var(--up) } .pill.b { background: var(--downsoft); color: var(--down) }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px }
+.tile { background: var(--lav); border-radius: 8px; padding: 15px; display: flex; flex-direction: column; gap: 4px }
+.tile:hover { background: var(--lav2) }
+.tile .tt { font-size: .92rem; font-weight: 600 } .tile .ss { font-size: .79rem; color: var(--tx2); line-height: 1.35 }
+.sticky { position: sticky; top: 0 }

@@ -32,7 +32,7 @@ se vende el activo y el dinero vuelve a estar disponible.
 - Movimientos (bitácora del ciclo: ingresos, órdenes, liquidaciones, retiros)
 - Perfil de inversor (test + advertencia cuando el activo supera el perfil)
 
-### Módulos FUERA del alcance (marcados visiblemente en la app, con popup explicativo)
+### Módulos FUERA del alcance (en la app se muestran como "Próximamente", con un popup que explica la función)
 - Alta de cuenta / KYC (es anterior al ingreso de dinero)
 - Reportes: estado de cuenta descargable e informes impositivos (son posteriores)
 - Mercado y cuenta de inversión de Estados Unidos (se cubre vía CEDEARs)

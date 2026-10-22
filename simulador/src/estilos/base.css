@@ -1,0 +1,28 @@
+/* Tokens de color y reset base */
+:root {
+  color-scheme: light;
+  --violet: #6439FF; --violet-dk: #5128E0; --violet-deep: #3D1B88; --indigo: #06083F;
+  --lav: #EEEDF8; --lav2: #E3E1F2; --lav3: #D7D4EC;
+  --bg: #FFFFFF; --card: #FFFFFF; --card2: #F5F4FB;
+  --line: #E2E0EE; --line2: #C7C2DD;
+  --tx: #1A1A2E; --tx2: #5B5C8C; --tx3: #8C8DA8;
+  --up: #0E9E72; --upsoft: #DEF4EC; --down: #D33B52; --downsoft: #FBE4E8;
+  --warn: #8A5B07; --warnsoft: #FBF0D8; --train: #E8B23A;
+  --shadow: 0 1px 2px rgba(6,8,63,.07), 0 26px 64px -30px rgba(6,8,63,.55);
+  --fui: 'Barlow', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fmo: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+* { box-sizing: border-box }
+html { scroll-padding-top: 120px }
+body { margin: 0; background: var(--bg); color: var(--tx); font-family: var(--fui); font-size: 15px; line-height: 1.45 }
+img { max-width: 100% }
+[hidden] { display: none !important }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; text-align: left }
+input, select { font: inherit; color: inherit }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -.01em; text-wrap: balance }
+p { margin: 0 }
+table { border-collapse: collapse; width: 100% }
+.mono { font-family: var(--fmo); font-variant-numeric: tabular-nums }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 3px }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important } }

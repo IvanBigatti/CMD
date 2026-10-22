@@ -1,0 +1,27 @@
+/* Formulario de orden (Comprar / Vender) y montos disponibles por plazo */
+.formpanel { background: var(--lav); border-radius: 7px; padding: 22px 26px; display: flex; flex-direction: column; gap: 15px; max-width: 790px }
+.frow { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 14px; align-items: start }
+.frow > label { font-size: .9rem; font-weight: 700; padding-top: 9px; line-height: 1.25 }
+.fsel, .finp { background: #fff; border: 1px solid var(--line2); border-radius: 4px; padding: 8px 11px; font-size: .92rem; min-width: 140px }
+.fsel:focus, .finp:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px rgba(100,57,255,.14) }
+.finp { font-family: var(--fmo); font-weight: 600; font-variant-numeric: tabular-nums }
+.finp:disabled { background: #F1F0F7; color: var(--tx3) }
+.radiogrid { display: grid; grid-template-columns: auto minmax(0, 190px); gap: 9px 14px; align-items: center }
+.rl { display: flex; align-items: center; gap: 7px; font-size: .9rem; font-weight: 500; cursor: pointer; white-space: nowrap }
+.rl input { accent-color: var(--violet); width: 15px; height: 15px; cursor: pointer }
+.siminfo { margin-top: 7px; font-size: .84rem; color: var(--tx2); line-height: 1.4 }
+.siminfo .ok { color: var(--violet); font-weight: 600 }
+.siminfo .err { color: var(--down); font-weight: 600 }
+.submitrow { display: flex; justify-content: center; max-width: 790px }
+.qmark {
+  display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--violet);
+  color: var(--violet); font-size: .8rem; font-weight: 700; vertical-align: middle; margin-left: 8px; cursor: pointer; text-align: center;
+}
+.montitulo { display: flex; align-items: center; gap: 9px; font-size: 1.22rem; font-weight: 700; margin-bottom: 11px }
+.montos { max-width: 900px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0; align-items: baseline }
+.montos > div { padding: 6px 0; font-size: .86rem; line-height: 1.35; color: var(--tx) }
+.montos > div:nth-child(even) {
+  font-family: var(--fmo); font-variant-numeric: tabular-nums; text-align: right;
+  white-space: nowrap; padding-left: 24px; margin-left: 24px; border-left: 1px solid var(--line2);
+}
+.montos > div.hi { color: var(--violet); font-weight: 700 }
