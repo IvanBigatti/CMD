@@ -130,7 +130,7 @@
   color: #fff; font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s;
 }
 .cap-secciones button:hover { background: rgba(255,255,255,.14); border-color: #fff }
-#cap-videos, #cap-podcast { scroll-margin-top: 80px }
+#cap-videos, #cap-podcast, #cap-resenas { scroll-margin-top: 80px }
 .cap-intro { color: var(--tx2); font-size: 1.05rem; margin: -8px 0 20px }
 
 /* ---------- Podcast ---------- */
@@ -190,12 +190,11 @@
 /* ---------- Testimonios y estrellas ---------- */
 .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px }
 .testi { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px }
-.testi.propia { border-color: var(--violet); background: var(--lav) }
 .testi blockquote { margin: 0; font-size: 1.0625rem; line-height: 1.55; color: var(--tx); flex: 1 }
 .testi blockquote.sin-texto { color: var(--tx3); font-style: italic }
 .testi figcaption { font-size: .98rem; color: var(--tx2) }
-.testi .tu { color: var(--violet); font-weight: 600 }
-.estrellas { position: relative; display: inline-block; font-size: 1.35rem; line-height: 1; letter-spacing: 2px; white-space: nowrap }
+/* width: max-content evita que un contenedor flex la estire: el % de las llenas se calcula sobre este ancho */
+.estrellas { position: relative; display: inline-block; width: max-content; font-size: 1.35rem; line-height: 1; letter-spacing: 2px; white-space: nowrap }
 .estrellas.chico { font-size: 1.1rem }
 .est-base { color: var(--lav3) }
 .est-llenas { position: absolute; left: 0; top: 0; overflow: hidden; color: #E39B0B }
@@ -213,17 +212,6 @@
 .lista-check { list-style: none; padding: 0; margin: 0 0 22px; display: flex; flex-direction: column; gap: 10px; font-size: 1.1rem }
 .lista-check li { padding-left: 32px; position: relative }
 .lista-check li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--violet); color: #fff; font-size: .8rem; display: grid; place-items: center; font-weight: 700; margin-top: 3px }
-.valorar-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start }
-.valorar-wrap .instructivo { grid-template-columns: minmax(0, 1fr) }
-.valorar { background: var(--lav); border-radius: 12px; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px }
-.valorar .bloque-tit { margin-bottom: 0 }
-.valorar label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 1.0625rem; color: var(--tx) }
-.valorar .opc { font-weight: 400; color: var(--tx3) }
-.valorar input, .valorar select, .valorar textarea {
-  font: inherit; font-weight: 400; font-size: 1.0625rem; border: 1px solid var(--line2); border-radius: 6px; padding: 10px 12px; min-height: 46px; background: #fff; color: var(--tx); resize: vertical;
-}
-.valorar input:focus, .valorar select:focus, .valorar textarea:focus { outline: 2px solid var(--violet); outline-offset: 0; border-color: var(--violet) }
-.valorar .btn-s { align-self: flex-start }
 .sel-estrellas { display: flex; align-items: center; gap: 12px; flex-wrap: wrap }
 .sel-estrellas [role="radiogroup"] { display: flex; gap: 2px }
 .sel-estrellas button { width: 48px; height: 48px; font-size: 2.1rem; line-height: 1; color: var(--lav3); display: grid; place-items: center; border-radius: 8px; text-align: center }
@@ -231,6 +219,26 @@
 .sel-estrellas button:hover { background: rgba(255,255,255,.7) }
 .sel-etiqueta { font-weight: 600; color: var(--indigo) }
 .form-error { color: var(--down) !important; font-weight: 600 }
+
+/* ---------- Reseñas ---------- */
+/* Botones de opción en fila (filtro de reseñas, voz de los podcasts) */
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 22px }
+.chips-tit { font-weight: 600; color: var(--indigo); margin-right: 4px }
+.chips button {
+  min-height: 44px; padding: 0 16px; border-radius: 99px; border: 1px solid var(--line2); background: #fff; color: var(--tx);
+  font: inherit; font-size: 1rem; cursor: pointer;
+}
+.chips button:hover { border-color: var(--violet) }
+.chips button[aria-pressed="true"], .chips button[aria-checked="true"] { background: var(--violet); border-color: var(--violet); color: #fff; font-weight: 600 }
+.resenas-aviso { color: var(--tx2); font-size: 1.05rem; background: var(--lav); border-radius: 10px; padding: 18px 20px }
+.form-resena { display: flex; flex-direction: column; gap: 13px }
+.form-resena > p { font-size: .95rem; line-height: 1.5; color: var(--tx2) }
+.form-resena label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 1rem; color: var(--tx) }
+.form-resena input, .form-resena textarea {
+  font: inherit; font-weight: 400; font-size: 1rem; border: 1px solid var(--line2); border-radius: 6px; padding: 10px 12px; min-height: 46px; background: #fff; color: var(--tx); resize: vertical;
+}
+.form-resena input:focus, .form-resena textarea:focus { outline: 2px solid var(--violet); outline-offset: 0; border-color: var(--violet) }
+.form-resena .sel-estrellas button:hover { background: var(--lav) }
 .form-ok { color: #0B6B4D !important; font-weight: 600; background: var(--upsoft); padding: 10px 14px; border-radius: 6px }
 
 /* ---------- Selector de itinerarios: botón cerrar ---------- */
@@ -249,7 +257,7 @@
 
 /* ---------- Adaptable ---------- */
 @media (max-width: 900px) {
-  .actividad, .nos-quienes, .valorar-wrap, .instructivo { grid-template-columns: minmax(0, 1fr) }
+  .actividad, .nos-quienes, .instructivo { grid-template-columns: minmax(0, 1fr) }
   .pasos3 { grid-template-columns: minmax(0, 1fr) }
 }
 @media (max-width: 760px) {
@@ -268,5 +276,4 @@
   .act-nav { flex-direction: column }
   .act-nav a { max-width: none }
   .act-nav a.sig { margin-left: 0 }
-  .valorar { padding: 20px 18px }
 }

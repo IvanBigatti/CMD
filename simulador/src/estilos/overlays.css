@@ -42,3 +42,22 @@
 .mini { border: 1px solid var(--line2); border-radius: 5px; padding: 5px 11px; font-size: .83rem; font-weight: 500; color: var(--tx2) }
 .mini:hover { border-color: var(--violet); color: var(--violet) }
 .mini.pri { background: var(--violet); border-color: var(--violet); color: #fff } .mini.pri:hover { background: var(--violet-dk) }
+
+/* Video flotante: queda sobre el oscurecido de la guía (70) pero debajo del globo (72) y de los modales (90) */
+.vf {
+  position: fixed; left: 16px; bottom: 16px; z-index: 71; width: min(340px, calc(100vw - 32px)); background: var(--indigo);
+  border-radius: 10px; overflow: hidden; box-shadow: var(--shadow);
+}
+.vf-barra { display: flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; color: #fff }
+.vf-titulo { flex: 1; min-width: 0; font-size: .88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.vf-barra button {
+  width: 44px; height: 36px; border-radius: 6px; border: 0; background: transparent; color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer;
+}
+.vf-barra button:hover { background: rgba(255,255,255,.16) }
+.vf video { width: 100%; aspect-ratio: 16 / 9; background: #000; display: block }
+.vf-pastilla {
+  position: fixed; left: 16px; bottom: 16px; z-index: 71; min-height: 44px; padding: 0 18px; border-radius: 99px; border: 0;
+  background: var(--violet); color: #fff; font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 8px;
+}
+.vf-pastilla:hover { background: var(--violet-deep) }

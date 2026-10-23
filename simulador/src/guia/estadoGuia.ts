@@ -51,13 +51,8 @@ export const useGuia = create<EstadoGuia>()((set, get) => ({
     const n = paso + 1
     if (n >= it.pasos.length) {
       set({ activa: false, progreso: 100, estado: 'completado' })
-      useUi.getState().mensaje({
-        titulo: 'Capacitación completada',
-        parrafo: `Terminaste “${it.nombre}”. Podés seguir usando la cuenta libremente o elegir otro itinerario.`,
-        eyebrow: 'Bien hecho',
-        boton: 'Elegir otro itinerario',
-        alCerrar: { elegirItinerario: true },
-      })
+      // Felicita y ofrece dejar una reseña de la capacitación
+      if (clave) useUi.getState().abrirModal({ tipo: 'resena', clave })
       return
     }
     set({ paso: n, progreso: (n / it.pasos.length) * 100, estado: `${n + 1} / ${it.pasos.length}` })

@@ -1,9 +1,31 @@
+import { useRef } from 'react'
 import { Instructivo } from '../../componentes/ui/Instructivo'
 import { INSTRUCTIVOS_ACTIVIDAD } from '../../contenido/instructivos'
 import { urlVideo } from '../../contenido/videos'
+import { useResenas } from '../../datos/resenas'
+import { useVideoFlotante } from '../../estado/videoFlotante'
 import { ITINERARIOS, type ClaveItinerario, type Itinerario } from '../../guia/itinerarios'
 import { ACTIVIDADES, practicar } from '../acciones'
+import { ListaResenas, ResumenResenas } from '../ListaResenas'
 import { href } from '../ruta'
+
+/** Reseñas que dejaron quienes terminaron esta capacitación */
+function ResenasActividad({ clave }: { clave: ClaveItinerario }) {
+  const { resenas, estado } = useResenas(clave)
+  return (
+    <section className="bloque" aria-labelledby="act-resenas-tit">
+      <div className="bloque-cab">
+        <h2 className="bloque-tit" id="act-resenas-tit">Reseñas</h2>
+        <ResumenResenas resenas={resenas} />
+      </div>
+      <ListaResenas
+        resenas={resenas}
+        estado={estado}
+        vacio="Todavía no hay reseñas. Terminá la práctica guiada y dejá la primera."
+      />
+    </section>
+  )
+}
 
 export function Actividad({ clave }: { clave: ClaveItinerario }) {
   const it: Itinerario = ITINERARIOS[clave]
@@ -12,6 +34,9 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
   const anterior = ACTIVIDADES[i - 1]
   const siguiente = ACTIVIDADES[i + 1]
   const conGuia = it.pasos.length > 0
+  const videoRef = useRef<HTMLVideoElement>(null)
+  // Si ya se vio parte del video en el simulador, al volver acá retoma desde ese segundo
+  const flotante = useVideoFlotante.getState()
 
   return (
     <div className="sitio-pagina">
@@ -28,7 +53,15 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
       <section className="bloque actividad">
         <div className="act-video">
           {video ? (
-            <video key={video} src={video} controls preload="metadata" playsInline>
+            <video
+              key={video}
+              ref={videoRef}
+              src={video}
+              controls
+              preload="metadata"
+              playsInline
+              onLoadedMetadata={(e) => { if (flotante.clave === clave) e.currentTarget.currentTime = flotante.tiempo }}
+            >
               Tu navegador no puede reproducir este video.
             </video>
           ) : (
@@ -46,7 +79,7 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
               ? 'Abrimos el simulador con una cuenta preparada y una guía que te marca dónde hacer clic. Podés salir cuando quieras.'
               : 'Abrimos el simulador con pesos y dólares acreditados para que pruebes lo que quieras, sin guía.'}
           </p>
-          <button type="button" className="btn-s grande w" onClick={() => practicar(clave)}>
+          <button type="button" className="btn-s grande w" onClick={() => practicar(clave, videoRef.current?.currentTime ?? 0)}>
             Practicar en el simulador
           </button>
           <p className="nota">Al empezar, la cuenta simulada vuelve a cero y se prepara para esta actividad.</p>
@@ -56,6 +89,8 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
       <section className="bloque">
         <Instructivo contenido={INSTRUCTIVOS_ACTIVIDAD[clave]} />
       </section>
+
+      {conGuia && <ResenasActividad clave={clave} />}
 
       <nav className="act-nav bloque" aria-label="Otras actividades">
         {anterior

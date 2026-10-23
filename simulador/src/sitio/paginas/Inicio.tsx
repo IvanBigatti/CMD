@@ -65,7 +65,7 @@ export function Inicio() {
       <section className="bloque">
         <div className="bloque-cab">
           <h2 className="bloque-tit">Lo que dicen quienes ya practicaron</h2>
-          <a className="enlace-flecha" href={href('/nosotros')}>Más opiniones →</a>
+          <a className="enlace-flecha" href={href('/capacitaciones')}>Ver reseñas →</a>
         </div>
         <div className="testi-grid">
           {TESTIMONIOS.slice(0, 3).map((t) => (

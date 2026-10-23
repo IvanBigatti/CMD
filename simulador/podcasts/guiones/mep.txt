@@ -1,0 +1,21 @@
+Hola, te damos la bienvenida a los podcasts de capacitación del simulador de Invertir Online. En este episodio vamos a ver dos cosas: cómo ingresar dinero a tu cuenta de inversión y cómo comprar dólar MEP. Tomate tu tiempo, y si algo no queda claro, podés volver a escucharlo todas las veces que quieras.
+
+Empecemos por algo importante. La cuenta de inversión no es una cuenta bancaria. Se llama cuenta comitente, y existe para una sola cosa: comprar y vender títulos, como bonos, acciones o CEDEARs. Por eso, antes de invertir, primero tiene que haber plata en esa cuenta.
+
+¿Cómo llega la plata? Con una transferencia desde tu banco. En la pantalla de ingresar dinero vas a ver un alias. Ese alias es el destino: lo usás en el home banking de tu banco, igual que cuando le transferís a cualquier persona.
+
+Ahora, hay una regla que conviene conocer desde el principio. Solo podés transferir desde cuentas que estén a tu nombre. Si intentás ingresar dinero desde la cuenta de otra persona, aunque sea un familiar, la operación se rechaza. En el simulador lo vas a probar a propósito: primero elegís una cuenta de un tercero, ves el rechazo, y después elegís la tuya. Es mejor equivocarse acá que en la cuenta real.
+
+Una vez que confirmás la transferencia, los pesos quedan disponibles en tu cuenta de inversión. Primera parte terminada.
+
+Vamos con la segunda: el dólar MEP. MEP quiere decir mercado electrónico de pagos. Es una forma legal de comprar dólares a través de la bolsa, sin límite de monto y sin trámites. En el simulador, el mínimo para operar es de cinco mil pesos.
+
+En la pantalla de dólar MEP ves dos datos: cuántos dólares vas a recibir y a qué tipo de cambio. Hasta acá parece una casa de cambio, pero por dentro pasa algo distinto. Y entender eso es lo más valioso de esta capacitación.
+
+Cuando comprás dólar MEP, en realidad el sistema hace dos operaciones con un bono. Primero compra un bono en pesos, que se llama A L treinta. Después vende ese mismo bono, pero en su versión en dólares, que se llama A L treinta D. La diferencia entre lo que pagaste en pesos y lo que recibiste en dólares es, justamente, el precio del dólar MEP.
+
+Las dos operaciones se hacen en contado inmediato. Eso significa que se liquidan en el día, y por eso los dólares te llegan hoy y no mañana. En el simulador, con el botón ver por dentro, podés ver estas dos patas de la operación antes de confirmar.
+
+Repasemos. Para invertir, primero ingresás pesos con una transferencia desde una cuenta a tu nombre. Después, si querés dólares, comprás dólar MEP, que no es una compra de moneda, sino dos operaciones con bonos hechas por vos, en el día y de forma legal.
+
+Ahora te toca practicar. Entrá a la capacitación en el simulador y hacé el recorrido con la guía. El dinero es ficticio, así que podés repetirlo todas las veces que necesites. Gracias por escuchar, y nos encontramos en el próximo episodio.

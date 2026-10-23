@@ -19,7 +19,7 @@ export interface ContenidoInstructivo {
 }
 
 /** Páginas del sitio */
-export const INSTRUCTIVOS_SITIO: Record<'inicio' | 'capacitaciones' | 'nosotros', ContenidoInstructivo> = {
+export const INSTRUCTIVOS_SITIO: Record<'inicio' | 'capacitaciones', ContenidoInstructivo> = {
   inicio: {
     titulo: 'Cómo usar este sitio',
     intro: 'El sitio tiene tres partes. Podés recorrerlas en el orden que quieras.',
@@ -27,7 +27,7 @@ export const INSTRUCTIVOS_SITIO: Record<'inicio' | 'capacitaciones' | 'nosotros'
       'En **Capacitaciones** elegís una actividad: cada una tiene un video corto y un instructivo.',
       'Tocá **Practicar en el simulador** para hacer la actividad con una guía que te indica dónde hacer clic.',
       'En el **Simulador** podés explorar libremente la plataforma. El dinero y los precios son ficticios.',
-      'En **Sobre nosotros** conocés al equipo, leés opiniones de otros alumnos y nos podés dejar tu valoración.',
+      'En **Sobre nosotros** conocés al equipo y las capacitaciones que ofrecemos.',
     ],
   },
   capacitaciones: {
@@ -38,14 +38,6 @@ export const INSTRUCTIVOS_SITIO: Record<'inicio' | 'capacitaciones' | 'nosotros'
       'Leé el instructivo de la actividad para tener a mano los pasos.',
       'Tocá **Practicar en el simulador**. Una guía resalta cada botón y espera a que hagas clic.',
       'Podés salir de la guía cuando quieras y retomarla desde **Cambiar capacitación**, en la franja amarilla.',
-    ],
-  },
-  nosotros: {
-    titulo: 'Cómo dejar tu valoración',
-    pasos: [
-      'Elegí de 1 a 5 estrellas según cuánto te sirvió la capacitación.',
-      'Si querés, escribí tu nombre y un comentario.',
-      'Tocá **Enviar valoración**: tu opinión aparece arriba de la lista.',
     ],
   },
 }

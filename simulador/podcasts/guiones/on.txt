@@ -1,0 +1,21 @@
+Hola, te damos la bienvenida a las capacitaciones del simulador de Invertir Online. En este episodio vamos a hablar de las obligaciones negociables, que para muchas personas son la mejor puerta de entrada a la inversión. Vas a entender qué son, cómo se compran y qué significan dos palabras que asustan un poco: valor nominal y lámina mínima.
+
+Empecemos por la idea central. Cuando comprás una obligación negociable, le estás prestando plata a una empresa. A cambio, la empresa se compromete a pagarte un interés en fechas fijas y a devolverte el capital al vencimiento. Por eso se dice que es una inversión de renta fija: sabés de antemano cuánto vas a cobrar y cuándo.
+
+Esa es la gran diferencia con una acción. Con una acción sos dueño de una parte de la empresa, y tu resultado depende de cómo le vaya. Con una obligación negociable sos acreedor: la empresa te debe, y te paga según lo acordado.
+
+En el simulador ya tenés tres mil dólares en la cuenta. Vamos a ir directo a la pantalla de compra, desde el menú Operar. El símbolo ya está cargado: es una obligación negociable de YPF, en dólares.
+
+Debajo del símbolo vas a ver dos datos importantes. El primero: cotiza cada cien valores nominales. El segundo: tiene una lámina mínima. Vamos con cada uno.
+
+El valor nominal es la unidad en la que se mide la deuda. Y acá está la trampa más común: en la cantidad no ponés dólares, ponés valores nominales. Comprar mil valores nominales no es lo mismo que invertir mil dólares. Lo que pagás depende del precio, que se expresa cada cien valores nominales.
+
+La lámina mínima es la cantidad más chica que podés comprar, y además tenés que comprar en múltiplos de esa lámina. Si la lámina es de cien, podés comprar cien, doscientos o mil, pero no quinientos cincuenta.
+
+En el simulador lo vas a comprobar a propósito. La cantidad viene cargada con quinientos cincuenta valores nominales, que no es múltiplo de cien. Cuando mandás la orden, el sistema la rechaza. Después la corregís a mil, que sí es válido, la volvés a mandar, revisás el detalle y confirmás.
+
+Y listo: ya sos acreedor de YPF. Desde ese momento, la empresa te va a pagar intereses dos veces por año, en dólares, hasta el vencimiento.
+
+Repasemos. Una obligación negociable es un préstamo que le hacés a una empresa a cambio de un interés fijo. La cantidad se expresa en valores nominales, no en dólares, y siempre en múltiplos de la lámina mínima. Y como sabés de antemano cuánto vas a cobrar y cuándo, es un instrumento ideal para empezar.
+
+Ahora te toca practicar en el simulador. Probá equivocarte con la cantidad, que para eso está. Gracias por escuchar, y nos encontramos en el próximo episodio.

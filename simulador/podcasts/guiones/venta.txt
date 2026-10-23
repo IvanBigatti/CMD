@@ -1,0 +1,23 @@
+Hola, te damos la bienvenida a las capacitaciones del simulador de Invertir Online. Hoy vamos a ver la parte que más confunde a quienes recién empiezan: vender una inversión y sacar la plata. Vas a entender por qué, después de vender, el dinero aparece en tu cuenta pero todavía no lo podés retirar.
+
+Partimos de una situación concreta. Hace unos días compraste treinta CEDEARs de Coca-Cola, y hoy están en ganancia. Querés venderlos y llevar esa plata a tu banco.
+
+La venta tiene su propia pantalla, en el menú Operar. Vas a notar una diferencia con la compra: el símbolo no se escribe, se elige de una lista. Y tiene sentido, porque solo podés vender lo que ya tenés en tu cartera.
+
+Ahora prestá atención al plazo. El plazo normal es de veinticuatro horas, que en el mercado se llama te más uno. Quiere decir que la venta se hace hoy, pero el dinero se acredita como disponible al día hábil siguiente. En esta práctica lo dejamos así a propósito, porque es justamente lo que hay que entender.
+
+Mandás la venta, leés el aviso sobre el plazo y confirmás. Hasta acá, todo normal.
+
+Ahora viene lo interesante. Si vas al estado de cuenta y abrís el detalle de saldos, vas a ver que el dinero de la venta figura como a liquidar, y no como disponible. Lo ves, sabés que es tuyo, pero todavía no lo podés usar para sacarlo de la cuenta.
+
+En el simulador lo vas a comprobar. Vas a ir a retirar dinero e intentar retirar todo lo que vendiste. Y va a fallar. Está bien que falle: es la mejor forma de entender la diferencia entre vender y cobrar.
+
+En el mercado real tendrías que esperar hasta el día hábil siguiente. En el simulador no hace falta: hay un botón en la franja amarilla de arriba que hace pasar un día hábil. Cuando lo usás, el dinero pasa de a liquidar a disponible. Eso es la liquidación en te más uno.
+
+Ahora sí, volvés a confirmar el retiro y la plata sale hacia tu banco.
+
+Un dato más: si necesitás el dinero en el día, podés vender en plazo contado inmediato. En ese caso, el dinero queda disponible hoy mismo. A veces el precio es un poco distinto, así que conviene comparar antes de elegir.
+
+Repasemos. Vender y cobrar no son el mismo acto. Cuando vendés en plazo normal, el dinero queda a liquidar durante un día hábil. Durante ese día existe, lo ves en tu cuenta, pero no se puede retirar. Al día siguiente pasa a disponible y ahí sí lo podés transferir a tu banco.
+
+Ahora te toca practicar en el simulador, con la guía paso a paso. Gracias por escuchar, y hasta el próximo episodio.

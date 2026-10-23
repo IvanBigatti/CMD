@@ -4,6 +4,7 @@ import { Plataforma } from './componentes/layout/Plataforma'
 import { GuiaOverlay } from './componentes/overlays/GuiaOverlay'
 import { ModalHost } from './componentes/overlays/ModalHost'
 import { SelectorItinerarios } from './componentes/overlays/SelectorItinerarios'
+import { VideoFlotante } from './componentes/overlays/VideoFlotante'
 import { useGuia } from './guia/estadoGuia'
 import { ITINERARIOS } from './guia/itinerarios'
 import { EncabezadoSitio } from './sitio/EncabezadoSitio'
@@ -54,6 +55,7 @@ export default function App() {
       {!enSimulador && <PieSitio />}
       {/* La guía solo se muestra dentro del simulador; si salís, queda en pausa en el mismo paso */}
       {enSimulador && <GuiaOverlay />}
+      {enSimulador && <VideoFlotante />}
       <ModalHost />
       <SelectorItinerarios />
     </>

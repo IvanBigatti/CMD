@@ -8,6 +8,7 @@ import { abrirSelectorItinerarios } from '../../guia/estadoGuia'
 import { PERFILES, TEST_PERFIL } from '../../mocks/perfiles'
 import { AvisoCaja } from '../ui/AvisoCaja'
 import { TextoRico } from '../ui/TextoRico'
+import { ModalResena } from './ModalResena'
 
 function Hoja({ eyebrow, titulo, boton, alTocarBoton, children }: {
   eyebrow: string; titulo: string; boton: string; alTocarBoton: () => void; children: ReactNode
@@ -108,5 +109,6 @@ export function ModalHost() {
     case 'mensaje': return <Mensaje m={modal} />
     case 'confirmarOrden': return <ConfirmarOrden />
     case 'testPerfil': return <TestPerfil key={modal.pregunta} pregunta={modal.pregunta} suma={modal.suma} />
+    case 'resena': return <ModalResena clave={modal.clave} />
   }
 }

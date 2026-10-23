@@ -1,0 +1,25 @@
+Hola, te damos la bienvenida a las capacitaciones del simulador de Invertir Online. Este es el episodio más completo de la serie: vamos a recorrer una inversión de punta a punta, desde que entra la plata hasta que vuelve a tu banco. Si es tu primera vez, es el mejor lugar para empezar. Son ocho tramos, así que buscá un momento tranquilo y tomate el tiempo que necesites.
+
+Primer tramo: ingresar dinero. Tu cuenta de inversión se llama cuenta comitente, y no es una cuenta bancaria: existe para comprar y vender títulos. Para que llegue la plata, hacés una transferencia desde tu banco usando el alias que aparece en la pantalla de ingresar dinero. Hay una regla clave: solo podés transferir desde cuentas a tu nombre. Si probás con la cuenta de otra persona, se rechaza. En el simulador lo vas a ver a propósito, y después vas a elegir tu propia cuenta.
+
+Segundo tramo: comprar dólar MEP. Es una forma legal de comprar dólares a través de la bolsa, sin límite de monto y sin trámites. Por dentro, el sistema hace dos operaciones con un bono: compra el bono A L treinta en pesos y lo vende en su versión en dólares, el A L treinta D. Esa diferencia es el precio del dólar MEP. Las dos operaciones se hacen en contado inmediato, por eso los dólares llegan en el día.
+
+Tercer tramo: elegir qué comprar. En Cotizaciones está todo lo que se puede comprar. Vamos a elegir un CEDEAR, que es un certificado para invertir en una empresa del exterior pagando en pesos. Elegimos Coca-Cola. En su ficha aparece el ratio: hacen falta cinco CEDEARs para equivaler a una acción. Por eso el precio en pesos depende de dos cosas: el precio de la acción y el dólar.
+
+En la ficha también está la caja de puntas, con dos precios: a cuánto compran y a cuánto venden los demás. Si comprás a mercado, pagás el precio de venta, que suele ser un poco más alto que el último operado.
+
+Cuarto tramo: la orden de compra. Tiene seis datos: mercado, plazo, símbolo, cantidad, precio y vigencia. La cantidad puede ser un número de CEDEARs o un monto en pesos. El precio puede ser a mercado, que se ejecuta en el momento, o con límite, donde ponés tu precio y esperás, aunque puede no ejecutarse nunca. Antes de enviar, mirá tu dinero disponible, que cambia según el plazo.
+
+Al enviar la orden aparece el detalle de costos: comisión, derechos de mercado e IVA. Es lo que vas a pagar de verdad, así que miralo con atención. Recién cuando confirmás, la orden sale al mercado.
+
+Quinto tramo: seguir tu inversión. Después de comprar, vas a ver el boleto, que es el comprobante con el costo total. En Portafolio está tu inversión, con el precio de compra, el actual y el resultado. Probá cambiar la moneda entre pesos y dólares: la misma inversión rinde distinto según cómo la midas, porque un CEDEAR depende de la acción y del dólar al mismo tiempo.
+
+Sexto tramo: vender. La venta tiene su propia pantalla, y el símbolo se elige de una lista, porque solo podés vender lo que tenés. Prestá atención al plazo: el normal es de veinticuatro horas, que se llama te más uno. La venta se hace hoy, pero el dinero se acredita al día hábil siguiente.
+
+Séptimo tramo: la liquidación. Después de vender, en el detalle de saldos vas a ver el dinero como a liquidar, no como disponible. Si intentás retirarlo, el sistema no te deja. Es la parte que más confunde, y por eso la vas a probar: vender y cobrar no son el mismo acto. En el simulador, con el botón de la franja amarilla, hacés pasar un día hábil, y el dinero pasa a disponible.
+
+Octavo tramo: retirar. Con el dinero disponible, confirmás el retiro y la plata vuelve a tu banco. El ciclo termina donde empezó: con la plata disponible, pero ahora sabiendo qué pasa en cada paso.
+
+Repasemos el recorrido completo. Ingresaste dinero desde una cuenta a tu nombre. Compraste dólar MEP, que son dos operaciones con bonos. Invertiste en un CEDEAR mirando el ratio, las puntas y los costos. Seguiste tu inversión en el portafolio. Vendiste, esperaste la liquidación de un día hábil y retiraste.
+
+Ahora te toca practicar el ciclo completo en el simulador. Podés hacerlo en varias sesiones: la guía te espera en el paso donde la dejaste. Gracias por escuchar, y mucha suerte con tus primeras inversiones.

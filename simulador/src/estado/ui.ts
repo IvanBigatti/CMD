@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import type { Aviso, Pantalla } from '../dominio/tipos'
+import type { ClaveItinerario } from '../guia/itinerarios'
 import { PROXIMAMENTE, type TemaProximamente } from '../mocks/proximamente'
 
 export type MenuId = 'cuenta' | 'operar' | 'herramientas'
@@ -22,6 +23,7 @@ export type Modal =
   | ModalMensaje
   | { tipo: 'confirmarOrden' }
   | { tipo: 'testPerfil'; pregunta: number; suma: number }
+  | { tipo: 'resena'; clave: ClaveItinerario }
 
 interface DatosMensaje {
   titulo: string

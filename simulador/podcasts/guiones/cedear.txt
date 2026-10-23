@@ -1,0 +1,25 @@
+Hola, te damos la bienvenida a un nuevo episodio de las capacitaciones del simulador de Invertir Online. Hoy vamos a comprar nuestro primer CEDEAR. Vas a entender qué es, cómo se calcula su precio, y qué mirar antes de confirmar una compra.
+
+Arranquemos por la pregunta del millón: ¿qué es un CEDEAR? Es un certificado que te permite invertir en una empresa del exterior, como Coca-Cola, Apple o Mercado Libre, desde Argentina y pagando en pesos. No necesitás una cuenta afuera ni comprar dólares antes.
+
+En el simulador ya tenés novecientos mil pesos acreditados para practicar. El primer paso es ir a Cotizaciones, que es la lista de todo lo que se puede comprar. Ahí elegís la pestaña de CEDEARs y vas a ver muchas empresas. Para esta práctica elegimos Coca-Cola, porque suele ser de las más tranquilas.
+
+Al entrar a la ficha de Coca-Cola aparece el concepto más importante de este episodio: el ratio. Un CEDEAR no es una acción entera. En el caso de Coca-Cola, hacen falta cinco CEDEARs para equivaler a una acción. Por eso el precio en pesos se calcula así: tomás el precio de la acción en dólares, lo dividís por el ratio, y lo multiplicás por el tipo de cambio. No hace falta que hagas la cuenta, pero sí entender que el precio depende de dos cosas: la acción y el dólar.
+
+En la misma ficha vas a ver algo que se llama caja de puntas. Muestra dos precios: a cuánto están dispuestos a comprar los demás, y a cuánto están dispuestos a vender. Si comprás a precio de mercado, vas a pagar el precio de venta, que suele ser un poco más alto que el último precio operado. No es un error: así funciona el mercado.
+
+Ahora sí, a la orden de compra. El formulario tiene seis datos: el mercado, el plazo, el símbolo de la empresa, cuánto querés comprar, a qué precio, y hasta cuándo vale la orden.
+
+Para la cantidad tenés dos opciones. Podés pedir una cantidad de CEDEARs, por ejemplo diez, o podés poner un monto en pesos, por ejemplo doscientos mil. Si usás un monto, el sistema calcula cuántos CEDEARs entran y redondea para abajo.
+
+Para el precio también hay dos caminos. A mercado, la orden se ejecuta en el momento, al mejor precio disponible. Con límite, ponés vos el precio máximo que estás dispuesto a pagar, y esperás. Ojo: con límite, la orden puede no ejecutarse nunca si el precio no llega.
+
+Antes de enviar, mirá tu dinero disponible. Cambia según el plazo: en contado inmediato puede ser menor que a veinticuatro horas, porque la plata de una venta reciente todavía no se liquidó.
+
+Cuando enviás la orden, todavía no se ejecuta. Primero aparece un resumen con los costos: la comisión, los derechos de mercado y el IVA. Este es el momento de mirarlos con atención, porque es lo que realmente vas a pagar. Recién cuando confirmás, la orden sale al mercado.
+
+Después de la compra vas a ver el boleto, que es el comprobante de la operación, con el costo total en plata y en porcentaje. Y en Portafolio vas a encontrar tu inversión con el precio de compra, el precio actual y el resultado. Probá cambiar la moneda del portafolio entre pesos y dólares: vas a ver que la misma inversión rinde distinto según cómo la midas.
+
+Repasemos. Un CEDEAR es una fracción de una acción del exterior que comprás en pesos. Su precio depende de la acción, del ratio y del dólar. Y antes de confirmar, siempre mirá los costos.
+
+Ahora te toca practicar en el simulador, con la guía paso a paso. Gracias por escuchar, y hasta el próximo episodio.
