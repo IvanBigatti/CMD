@@ -3,7 +3,7 @@ import { Instructivo } from '../../componentes/ui/Instructivo'
 import { INSTRUCTIVOS_ACTIVIDAD } from '../../contenido/instructivos'
 import { urlVideo } from '../../contenido/videos'
 import { useResenas } from '../../datos/resenas'
-import { useVideoFlotante } from '../../estado/videoFlotante'
+import { useReproductorFlotante } from '../../estado/reproductorFlotante'
 import { ITINERARIOS, type ClaveItinerario, type Itinerario } from '../../guia/itinerarios'
 import { ACTIVIDADES, practicar } from '../acciones'
 import { ListaResenas, ResumenResenas } from '../ListaResenas'
@@ -36,7 +36,7 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
   const conGuia = it.pasos.length > 0
   const videoRef = useRef<HTMLVideoElement>(null)
   // Si ya se vio parte del video en el simulador, al volver acá retoma desde ese segundo
-  const flotante = useVideoFlotante.getState()
+  const flotante = useReproductorFlotante.getState()
 
   return (
     <div className="sitio-pagina">
@@ -60,7 +60,7 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
               controls
               preload="metadata"
               playsInline
-              onLoadedMetadata={(e) => { if (flotante.clave === clave) e.currentTarget.currentTime = flotante.tiempo }}
+              onLoadedMetadata={(e) => { if (flotante.clave === clave) e.currentTarget.currentTime = flotante.tiempos.video }}
             >
               Tu navegador no puede reproducir este video.
             </video>
@@ -79,9 +79,10 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
               ? 'Abrimos el simulador con una cuenta preparada y una guía que te marca dónde hacer clic. Podés salir cuando quieras.'
               : 'Abrimos el simulador con pesos y dólares acreditados para que pruebes lo que quieras, sin guía.'}
           </p>
-          <button type="button" className="btn-s grande w" onClick={() => practicar(clave, videoRef.current?.currentTime ?? 0)}>
+          <button type="button" className="btn-s grande w" onClick={() => practicar(clave, { modo: 'video', tiempo: videoRef.current?.currentTime ?? 0 })}>
             Practicar en el simulador
           </button>
+          <p className="nota">Mientras practicás, el video y el podcast quedan en un recuadro al costado para retomarlos.</p>
           <p className="nota">Al empezar, la cuenta simulada vuelve a cero y se prepara para esta actividad.</p>
         </aside>
       </section>
