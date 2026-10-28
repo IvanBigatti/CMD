@@ -93,11 +93,15 @@ export interface Indice {
   variacion: number
 }
 
-export function indices(dia: number): Indice[] {
-  const merval = INDICES_BASE.merval * (1 + (((semilla('MERVAL') + dia * 17) % 400) - 200) / 40000)
-  const bolsa = INDICES_BASE.bolsa * (1 + (((semilla('BOLSA') + dia * 23) % 400) - 200) / 40000)
-  const vMerval = (((semilla('MV') + dia * 11) % 300) - 150) / 100
-  const vBolsa = (((semilla('BO') + dia * 7) % 300) - 150) / 100
+/** `pulso` (latidos del mercado en vivo) agrega una oscilación chica para que los índices se muevan */
+export function indices(dia: number, pulso = 0): Indice[] {
+  const onda = (fase: number) => (Math.sin(pulso * 0.7 + fase) + Math.sin(pulso * 0.23 + fase * 2)) * 0.0009
+  const oM = onda(1)
+  const oB = onda(4)
+  const merval = INDICES_BASE.merval * (1 + (((semilla('MERVAL') + dia * 17) % 400) - 200) / 40000) * (1 + oM)
+  const bolsa = INDICES_BASE.bolsa * (1 + (((semilla('BOLSA') + dia * 23) % 400) - 200) / 40000) * (1 + oB)
+  const vMerval = (((semilla('MV') + dia * 11) % 300) - 150) / 100 + oM * 100
+  const vBolsa = (((semilla('BO') + dia * 7) % 300) - 150) / 100 + oB * 100
   return [
     { nombre: 'Merval', valor: merval, variacion: vMerval },
     { nombre: 'Bolsa', valor: bolsa, variacion: vBolsa },
@@ -143,4 +147,31 @@ export function moverPrecio(i: Instrumento): void {
   i.variacion = +(i.variacion * 0.4 + d).toFixed(2)
   if (i.tipo === 'cedear') i.precioUsd = +(i.precioUsd * (1 + d / 100)).toFixed(2)
   else i.precio = +(i.precio * (1 + d / 100)).toFixed(i.tipo === 'on' ? 2 : 0)
+}
+
+/** Variación de cada especie al abrir la rueda: el latido no se aleja más de 1,5 puntos de ahí */
+const variacionApertura = new Map<string, number>()
+const DESVIO_MAXIMO = 1.5
+
+/** Olvida las variaciones de apertura (al pasar de día o reiniciar) */
+export function reiniciarLatidos() {
+  variacionApertura.clear()
+}
+
+/**
+ * Movimiento chico durante la rueda (muta el objeto recibido).
+ * El cierre anterior queda fijo: la variación se recalcula contra él.
+ */
+export function latirPrecio(i: Instrumento, rand = Math.random): void {
+  const cierre = precio(i) / (1 + i.variacion / 100)
+  const apertura = variacionApertura.get(i.id) ?? i.variacion
+  variacionApertura.set(i.id, apertura)
+
+  const desvio = i.variacion - apertura
+  const paso = (rand() - 0.5) * 0.5 - desvio * 0.12
+  const pasoAcotado = Math.max(-DESVIO_MAXIMO - desvio, Math.min(DESVIO_MAXIMO - desvio, paso))
+
+  if (i.tipo === 'cedear') i.precioUsd = +(i.precioUsd * (1 + pasoAcotado / 100)).toFixed(2)
+  else i.precio = +(i.precio * (1 + pasoAcotado / 100)).toFixed(i.tipo === 'on' ? 2 : 0)
+  i.variacion = +((precio(i) / cierre - 1) * 100).toFixed(2)
 }

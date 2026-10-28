@@ -17,3 +17,9 @@
 .mkt { display: inline-flex; align-items: center; gap: 5px }
 .mkt .dot { width: 6px; height: 6px; border-radius: 50%; background: #0E7A56 }
 .mkt.cerrado .dot { background: #B4342A }
+
+/* Desafío práctico: consigna en la franja y botón para verificar */
+.strip .desafio-franja { text-transform: none; letter-spacing: 0; font-family: var(--fui); font-size: 14px; font-weight: 500 }
+.strip .desafio-franja b { font-family: var(--fmo); font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; margin-right: 4px }
+.strip button.verificar { background: var(--violet); color: #fff }
+.strip button.verificar:hover { background: var(--violet-dk) }

@@ -1,17 +1,22 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { FranjaCapacitacion } from './componentes/layout/FranjaCapacitacion'
 import { Plataforma } from './componentes/layout/Plataforma'
 import { GuiaOverlay } from './componentes/overlays/GuiaOverlay'
+import { CortinaSimulador } from './componentes/overlays/CortinaSimulador'
 import { ModalHost } from './componentes/overlays/ModalHost'
 import { SelectorItinerarios } from './componentes/overlays/SelectorItinerarios'
 import { ReproductorFlotante } from './componentes/overlays/ReproductorFlotante'
+import { modoDeEntrada, type ModoCortina } from './estado/cortina'
 import { useGuia } from './guia/estadoGuia'
 import { ITINERARIOS } from './guia/itinerarios'
 import { EncabezadoSitio } from './sitio/EncabezadoSitio'
 import { Actividad } from './sitio/paginas/Actividad'
 import { Capacitaciones } from './sitio/paginas/Capacitaciones'
+import { Evaluacion } from './sitio/paginas/Evaluacion'
 import { Inicio } from './sitio/paginas/Inicio'
 import { Nosotros } from './sitio/paginas/Nosotros'
+import { PlanCapacitacion } from './sitio/paginas/PlanCapacitacion'
+import { Resultados } from './sitio/paginas/Resultados'
 import { PieSitio } from './sitio/PieSitio'
 import { useRuta, type Ruta } from './sitio/ruta'
 
@@ -22,7 +27,10 @@ function tituloDe(ruta: Ruta, tituloGuia: string): string {
     case 'inicio': return SITIO
     case 'capacitaciones': return `Capacitaciones · ${SITIO}`
     case 'actividad': return `${ITINERARIOS[ruta.clave].nombre} · ${SITIO}`
+    case 'evaluacion': return `Evaluación: ${ITINERARIOS[ruta.clave].nombre} · ${SITIO}`
     case 'nosotros': return `Sobre nosotros · ${SITIO}`
+    case 'plan': return `Plan de capacitación · ${SITIO}`
+    case 'resultados': return `Resultados de las evaluaciones · ${SITIO}`
     case 'simulador': return tituloGuia
   }
 }
@@ -32,15 +40,42 @@ function Pagina({ ruta }: { ruta: Ruta }) {
     case 'inicio': return <Inicio />
     case 'capacitaciones': return <Capacitaciones />
     case 'actividad': return <Actividad clave={ruta.clave} />
+    case 'evaluacion': return <Evaluacion key={ruta.clave} clave={ruta.clave} />
     case 'nosotros': return <Nosotros />
+    case 'plan': return <PlanCapacitacion />
+    case 'resultados': return <Resultados />
     case 'simulador': return <Plataforma />
   }
+}
+
+type Pagina = Ruta['pagina']
+
+/** Qué cortina corresponde al pasar de una página a otra (null: ninguna) */
+function cortinaEntre(previa: Pagina | null, actual: Pagina): ModoCortina | null {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return null
+  if (previa !== 'simulador' && actual === 'simulador') return modoDeEntrada()
+  if (previa === 'simulador' && actual !== 'simulador') return 'salir'
+  return null
 }
 
 export default function App() {
   const ruta = useRuta()
   const tituloGuia = useGuia((s) => s.titulo)
   const enSimulador = ruta.pagina === 'simulador'
+
+  // La cortina se decide durante el render para que aparezca junto con la página nueva, sin parpadeo
+  const [paginaPrevia, setPaginaPrevia] = useState<Pagina | null>(null)
+  const [cortina, setCortina] = useState<{ modo: ModoCortina; id: number } | null>(null)
+  if (paginaPrevia !== ruta.pagina) {
+    setPaginaPrevia(ruta.pagina)
+    const modo = cortinaEntre(paginaPrevia, ruta.pagina)
+    if (modo) setCortina({ modo, id: (cortina?.id ?? 0) + 1 })
+  }
+
+  // Marco amarillo y encabezado oscuro mientras estás en el simulador
+  useLayoutEffect(() => {
+    document.documentElement.classList.toggle('modo-simulador', enSimulador)
+  }, [enSimulador])
 
   useEffect(() => { window.scrollTo(0, 0) }, [ruta])
   useEffect(() => { document.title = tituloDe(ruta, tituloGuia) }, [ruta, tituloGuia])
@@ -58,6 +93,7 @@ export default function App() {
       {enSimulador && <ReproductorFlotante />}
       <ModalHost />
       <SelectorItinerarios />
+      {cortina && <CortinaSimulador key={cortina.id} modo={cortina.modo} alTerminar={() => setCortina(null)} />}
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react'
+import { esEvaluable, type ClaveEvaluable } from '../contenido/evaluaciones'
 import { ITINERARIOS, type ClaveItinerario } from '../guia/itinerarios'
 
 /** Páginas del sitio. La URL vive en el hash (#/...) para funcionar en cualquier hosting estático. */
@@ -6,18 +7,25 @@ export type Ruta =
   | { pagina: 'inicio' }
   | { pagina: 'capacitaciones' }
   | { pagina: 'actividad'; clave: ClaveItinerario }
+  | { pagina: 'evaluacion'; clave: ClaveEvaluable }
   | { pagina: 'simulador' }
   | { pagina: 'nosotros' }
+  | { pagina: 'plan' }
+  /** Resultados de las evaluaciones, para el equipo (no está en el menú) */
+  | { pagina: 'resultados' }
 
 export const esClaveItinerario = (x: string): x is ClaveItinerario => x in ITINERARIOS
 
 function leerRuta(): Ruta {
   const partes = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean)
-  const [p0, p1] = partes
+  const [p0, p1, p2] = partes
+  if (p0 === 'capacitaciones' && p1 && p2 === 'evaluacion' && esEvaluable(p1)) return { pagina: 'evaluacion', clave: p1 }
   if (p0 === 'capacitaciones' && p1 && esClaveItinerario(p1)) return { pagina: 'actividad', clave: p1 }
   if (p0 === 'capacitaciones') return { pagina: 'capacitaciones' }
   if (p0 === 'simulador') return { pagina: 'simulador' }
+  if (p0 === 'nosotros' && p1 === 'plan') return { pagina: 'plan' }
   if (p0 === 'nosotros') return { pagina: 'nosotros' }
+  if (p0 === 'resultados') return { pagina: 'resultados' }
   return { pagina: 'inicio' }
 }
 

@@ -1,10 +1,13 @@
+import { esEvaluable } from '../contenido/evaluaciones'
 import { urlVideo } from '../contenido/videos'
+import { evaluacionCompleta, useProgresoEvaluacion } from '../estado/progresoEvaluacion'
 import type { ClaveItinerario, Itinerario } from '../guia/itinerarios'
 import { href } from './ruta'
 
 /** Tarjeta de una actividad con miniatura del video (el cuadro del segundo 1) */
 export function TarjetaActividad({ clave, it }: { clave: ClaveItinerario; it: Itinerario }) {
   const video = urlVideo(clave)
+  const completada = useProgresoEvaluacion((s) => esEvaluable(clave) && evaluacionCompleta(s.progreso[clave]))
   return (
     <a className={`act-card${it.recomendado ? ' rec' : ''}`} href={href(`/capacitaciones/${clave}`)}>
       <span className="act-mini">
@@ -18,6 +21,7 @@ export function TarjetaActividad({ clave, it }: { clave: ClaveItinerario; it: It
         <span className="act-nombre">{it.nombre}</span>
         <span className="act-desc">{it.descripcion}</span>
         <span className="act-meta">{it.modulos} · {it.duracion} · {video ? 'con video' : 'sin video'}</span>
+        {completada && <span className="act-completada">✓ Evaluación completada</span>}
       </span>
     </a>
   )

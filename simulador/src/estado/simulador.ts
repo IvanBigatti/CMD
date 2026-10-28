@@ -3,7 +3,7 @@ import { immer } from 'zustand/middleware/immer'
 import { fechaSimulada, formatoDia, formatoFecha } from '../dominio/fechas'
 import { dinero, nf, parseNumero } from '../dominio/formato'
 import { calcularMep, type ModoMep } from '../dominio/mep'
-import { moverPrecio, precioMercado } from '../dominio/mercado'
+import { latirPrecio, moverPrecio, precioMercado, reiniciarLatidos } from '../dominio/mercado'
 import { armarOrden } from '../dominio/ordenes'
 import type {
   Aviso, Boleto, Instrumento, Liquidacion, Modalidad, Moneda, Movimiento, NivelRiesgo,
@@ -12,6 +12,7 @@ import type {
 import { INSTRUMENTOS } from '../mocks/instrumentos'
 import type { OrigenFondos } from '../mocks/persona'
 import { PERSONA } from '../mocks/persona'
+import { reiniciarReloj } from './reloj'
 import { useUi } from './ui'
 
 export interface FormCompra {
@@ -64,6 +65,10 @@ export interface DatosSimulador extends DatosSesion {
   pantalla: Pantalla
   activo: string | null
   cotizaciones: { tab: TipoInstrumento; buscar: string; mostrar: number; panel: string }
+  /** Latidos del mercado en vivo (sube cada vez que se mueven los precios) */
+  pulso: number
+  /** El capacitador puede congelar los precios para explicar */
+  mercadoPausado: boolean
 }
 
 interface Acciones {
@@ -86,6 +91,8 @@ interface Acciones {
   setMontoRetiro: (v: string) => void
   retirar: () => void
   avanzarDia: () => void
+  latido: () => void
+  alternarPausaMercado: () => void
   setMonedaVista: (m: Moneda) => void
   setCotizaciones: (c: Partial<DatosSimulador['cotizaciones']>) => void
   setAcordeon: (k: keyof DatosSesion['acordeones'], abierto: boolean) => void
@@ -171,6 +178,8 @@ export const useSimulador = create<EstadoSimulador>()(
     pantalla: 'inicio',
     activo: null,
     cotizaciones: { tab: 'cedear', buscar: '', mostrar: 25, panel: 'Todos' },
+    pulso: 0,
+    mercadoPausado: false,
 
     /* ---------- navegación ---------- */
     irA: (p) => {
@@ -460,6 +469,8 @@ export const useSimulador = create<EstadoSimulador>()(
           return false
         })
         for (const i of Object.values(s.inst)) moverPrecio(i)
+        reiniciarLatidos()
+        reiniciarReloj()
         completarFormularios(s)
       })
       if (liquidadas) {
@@ -473,6 +484,19 @@ export const useSimulador = create<EstadoSimulador>()(
       }
     },
 
+    /* ---------- mercado en vivo ---------- */
+    latido: () => {
+      if (!get().mercadoAbierto || get().mercadoPausado) return
+      set((s) => {
+        // Se mueven entre 2 y 4 especies por latido, como en una rueda real
+        const todas = Object.values(s.inst)
+        const cuantas = 2 + Math.floor(Math.random() * 3)
+        for (let k = 0; k < cuantas; k++) latirPrecio(todas[Math.floor(Math.random() * todas.length)])
+        s.pulso++
+      })
+    },
+    alternarPausaMercado: () => set((s) => { s.mercadoPausado = !s.mercadoPausado }),
+
     /* ---------- varios ---------- */
     setMonedaVista: (m) => set((s) => { s.monedaVista = m }),
     setCotizaciones: (c) => set((s) => { Object.assign(s.cotizaciones, c) }),
@@ -482,6 +506,7 @@ export const useSimulador = create<EstadoSimulador>()(
     reiniciar: (preparar) => {
       set((s) => {
         Object.assign(s, sesionNueva())
+        reiniciarLatidos()
         preparar?.(s)
         completarFormularios(s)
       })

@@ -1,5 +1,7 @@
+import { ImagenAmpliable } from '../../componentes/ui/ImagenAmpliable'
 import { TextoRico } from '../../componentes/ui/TextoRico'
 import { NOSOTROS } from '../../contenido/nosotros'
+import { INFOGRAFIA, PLAN, urlInfografia } from '../../contenido/planCapacitacion'
 import { href } from '../ruta'
 
 export function Nosotros() {
@@ -23,6 +25,21 @@ export function Nosotros() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="bloque nos-plan" aria-labelledby="nos-plan-tit">
+        <div>
+          <h2 className="bloque-tit" id="nos-plan-tit">{PLAN.titulo}</h2>
+          <p className="nos-plan-objetivo">{PLAN.objetivoGeneral}</p>
+          <ul className="plan-ficha dos">
+            {PLAN.ficha.map((f) => (
+              <li key={f.titulo}><span aria-hidden="true">{f.icono}</span><div><h3>{f.titulo}</h3><p>{f.texto}</p></div></li>
+            ))}
+          </ul>
+          <p className="plan-aviso" role="note"><b>Importante:</b> {PLAN.aviso}</p>
+          <a className="btn-s grande" href={href('/nosotros/plan')}>Ver el plan completo</a>
+        </div>
+        <ImagenAmpliable src={urlInfografia()} alt={INFOGRAFIA.alt} titulo={INFOGRAFIA.titulo} nombreDescarga={INFOGRAFIA.nombreDescarga} />
       </section>
 
       <section className="bloque fondo-lav">

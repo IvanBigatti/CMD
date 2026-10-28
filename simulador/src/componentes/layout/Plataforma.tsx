@@ -2,6 +2,7 @@ import { useEffect, type ComponentType } from 'react'
 import { INSTRUCTIVOS_PANTALLA } from '../../contenido/instructivos'
 import type { Pantalla } from '../../dominio/tipos'
 import { useSimulador } from '../../estado/simulador'
+import { useMercadoVivo } from '../../estado/useMercadoVivo'
 import { Boleto } from '../../pantallas/Boleto'
 import { Comprar } from '../../pantallas/Comprar'
 import { Cotizaciones } from '../../pantallas/Cotizaciones'
@@ -16,6 +17,7 @@ import { RetirarDinero } from '../../pantallas/RetirarDinero'
 import { Vender } from '../../pantallas/Vender'
 import { Instructivo } from '../ui/Instructivo'
 import { BarraApp } from './BarraApp'
+import { CintaCotizaciones } from './CintaCotizaciones'
 import { NavSuperior } from './NavSuperior'
 
 const PANTALLAS: Record<Pantalla, ComponentType> = {
@@ -37,6 +39,7 @@ const PANTALLAS: Record<Pantalla, ComponentType> = {
 export function Plataforma() {
   const pantalla = useSimulador((s) => s.pantalla)
   const PantallaActual = PANTALLAS[pantalla]
+  useMercadoVivo()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -46,6 +49,7 @@ export function Plataforma() {
     <div className="plataforma">
       <BarraApp />
       <NavSuperior />
+      <CintaCotizaciones />
       <main className="main">
         <div className="pliegue-wrap">
           {/* key: se vuelve a plegar al cambiar de pantalla */}

@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { Instructivo } from '../../componentes/ui/Instructivo'
+import { esEvaluable } from '../../contenido/evaluaciones'
 import { INSTRUCTIVOS_ACTIVIDAD } from '../../contenido/instructivos'
+import { INFOGRAFIA, urlInfografia } from '../../contenido/planCapacitacion'
 import { urlVideo } from '../../contenido/videos'
 import { useResenas } from '../../datos/resenas'
 import { useReproductorFlotante } from '../../estado/reproductorFlotante'
@@ -8,6 +10,7 @@ import { ITINERARIOS, type ClaveItinerario, type Itinerario } from '../../guia/i
 import { ACTIVIDADES, practicar } from '../acciones'
 import { ListaResenas, ResumenResenas } from '../ListaResenas'
 import { href } from '../ruta'
+import { ConfianzaAntes, SeccionEvaluacion } from '../TarjetaEvaluacion'
 
 /** Reseñas que dejaron quienes terminaron esta capacitación */
 function ResenasActividad({ clave }: { clave: ClaveItinerario }) {
@@ -50,6 +53,8 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
         </p>
       </section>
 
+      {esEvaluable(clave) && <ConfianzaAntes clave={clave} />}
+
       <section className="bloque actividad">
         <div className="act-video">
           {video ? (
@@ -89,7 +94,16 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
 
       <section className="bloque">
         <Instructivo contenido={INSTRUCTIVOS_ACTIVIDAD[clave]} />
+        {clave === 'completo' && (
+          <p className="descarga">
+            <a className="enlace-flecha" href={urlInfografia()} download={INFOGRAFIA.nombreDescarga}>
+              ⬇ Descargar la infografía para imprimir (A4)
+            </a>
+          </p>
+        )}
       </section>
+
+      {esEvaluable(clave) && <SeccionEvaluacion clave={clave} />}
 
       {conGuia && <ResenasActividad clave={clave} />}
 

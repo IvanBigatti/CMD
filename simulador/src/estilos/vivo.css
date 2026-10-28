@@ -1,0 +1,41 @@
+/* Mercado en vivo: destellos de precio, cinta de cotizaciones e indicador "En vivo" */
+
+/* ---------- Destello al cambiar un precio ---------- */
+.vivo { display: inline-block; border-radius: 3px; padding: 0 3px; margin: 0 -3px }
+.vivo.flash-up { animation: flash-up .9s ease-out }
+.vivo.flash-dn { animation: flash-dn .9s ease-out }
+@keyframes flash-up { 0%, 25% { background: #B6EBD6; box-shadow: 0 0 0 1px #8ED9BC } 100% { background: transparent; box-shadow: none } }
+@keyframes flash-dn { 0%, 25% { background: #F6C6CF; box-shadow: 0 0 0 1px #EDA0AE } 100% { background: transparent; box-shadow: none } }
+
+/* ---------- Cinta de cotizaciones ---------- */
+.cinta {
+  background: var(--indigo); color: #E4E0F7; height: 34px; overflow: hidden; position: relative;
+  font-family: var(--fmo); font-size: 12.5px; font-variant-numeric: tabular-nums;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.cinta-pista { display: flex; width: max-content; height: 100%; animation: cinta-corre 55s linear infinite }
+.cinta:hover .cinta-pista, .cinta:focus-within .cinta-pista { animation-play-state: paused }
+.cinta-tramo { display: flex; align-items: center; height: 100% }
+.cinta-item {
+  display: inline-flex; align-items: center; gap: 7px; height: 100%; padding: 0 18px; white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,.1); color: inherit; font-family: inherit; font-size: inherit;
+}
+button.cinta-item:hover { background: rgba(255,255,255,.08) }
+.cinta-item b { color: #fff; font-weight: 600; letter-spacing: .03em }
+.cinta-item.indice b { color: var(--train) }
+.cinta-item .up { color: #4ADE9B }
+.cinta-item .dn { color: #FF8597 }
+@keyframes cinta-corre { to { transform: translateX(-50%) } }
+@media (prefers-reduced-motion: reduce) {
+  .cinta { overflow-x: auto; mask-image: none }
+}
+
+/* ---------- Indicador "En vivo" (Cotizaciones) ---------- */
+.envivo {
+  display: inline-flex; align-items: center; gap: 8px; background: #C9F5DF; color: #0A6B4A; border-radius: 99px;
+  padding: 6px 16px; font-size: .85rem; font-weight: 700; white-space: nowrap; min-height: 32px;
+}
+.envivo:hover { background: #B3EFD1 }
+.envivo .dot { width: 8px; height: 8px; border-radius: 50%; background: #0E9E72; animation: pulse 1.6s ease-in-out infinite }
+.envivo.pausado { background: var(--warnsoft); color: var(--warn) }
+.envivo.pausado:hover { background: #F6E5BD }

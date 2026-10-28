@@ -72,3 +72,12 @@
 .vf-voces { display: flex; align-items: center; gap: 6px; color: #DAD3F2; font-size: .9rem }
 .vf-voces button { flex: none; padding: 0 14px }
 .vf-podcast audio { width: 100%; display: block }
+
+/* Resultado del desafío práctico */
+.criterios { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px }
+.criterios li { display: flex; gap: 10px; align-items: flex-start; font-size: .98rem; line-height: 1.4; border-radius: 7px; padding: 9px 12px }
+.criterios li.ok { background: var(--upsoft); color: #0B6B4D }
+.criterios li.falta { background: var(--warnsoft); color: var(--warn) }
+.crit-marca { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .85rem; color: #fff }
+.criterios li.ok .crit-marca { background: var(--up) }
+.criterios li.falta .crit-marca { background: var(--train); color: #20160A }

@@ -1,5 +1,14 @@
 import { dinero, nf } from '../dominio/formato'
 import { useSimulador } from '../estado/simulador'
+import { ComprobanteImprimible } from '../componentes/ui/ComprobanteImprimible'
+
+/** Abre la ventana de impresión con el comprobante; el título sugiere el nombre del PDF */
+function descargarComprobante(numero: number) {
+  const tituloPrevio = document.title
+  document.title = `Boleto-${numero}`
+  addEventListener('afterprint', () => { document.title = tituloPrevio }, { once: true })
+  print()
+}
 
 /** Comprobante de la última orden ejecutada */
 export function Boleto() {
@@ -33,10 +42,13 @@ export function Boleto() {
               Los costos totales fueron {dinero(b.costos.total, m)}, un {nf((b.costos.total / b.bruto) * 100, 2)}% del monto operado.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: 10, marginTop: 16 }}>
+          <div style={{ display: 'flex', gap: 10, marginTop: 16, flexWrap: 'wrap' }}>
+            <button type="button" className="btn-s" onClick={() => descargarComprobante(b.numero)}>⤓ Descargar comprobante (PDF)</button>
             <button type="button" className="btn-o" onClick={() => irA('movimientos')}>Ver movimientos</button>
-            <button type="button" className="btn-s" onClick={() => irA('inicio')}>Ir al estado de cuenta</button>
+            <button type="button" className="btn-o" onClick={() => irA('inicio')}>Ir al estado de cuenta</button>
           </div>
+          <p className="hint" style={{ marginTop: 8 }}>En la ventana de impresión elegí <strong>«Guardar como PDF»</strong> como destino.</p>
+          <ComprobanteImprimible boleto={b} />
         </>}
       </div>
     </section>

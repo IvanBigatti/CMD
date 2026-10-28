@@ -1,0 +1,177 @@
+/* Evaluaciones (autoevaluación, cuestionario, resultados) y plan de capacitación con su infografía */
+
+/* ---------- Autoevaluación ---------- */
+.conf-antes { padding-top: 28px; padding-bottom: 0 }
+.conf-antes-caja { background: var(--card2); border: 1px solid var(--line2); border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px }
+.conf-antes-caja h2 { font-size: 1.2rem; color: var(--indigo) }
+.conf-frase { font-size: 1.1rem; font-weight: 600; color: var(--tx) !important }
+.sel-confianza { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; max-width: 640px }
+.sel-confianza button {
+  min-height: 64px; border: 1px solid var(--line2); border-radius: 8px; background: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2px; text-align: center; padding: 6px 4px; color: var(--tx);
+}
+.sel-confianza button b { font-size: 1.3rem; color: var(--indigo) }
+.sel-confianza button span { font-size: .85rem; line-height: 1.15; color: var(--tx2) }
+.sel-confianza button:hover { border-color: var(--violet) }
+.sel-confianza button[aria-checked="true"] { background: var(--violet); border-color: var(--violet) }
+.sel-confianza button[aria-checked="true"] b, .sel-confianza button[aria-checked="true"] span { color: #fff }
+
+/* ---------- Sección "Evaluá lo que aprendiste" ---------- */
+.eval-pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px }
+.eval-pasos li { background: #fff; border: 1px solid var(--line2); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px }
+.eval-pasos li.hecho { border-color: var(--up) }
+.eval-pasos h3 { font-size: 1.25rem; color: var(--indigo) }
+.eval-pasos p { font-size: 1rem }
+.eval-n { width: 40px; height: 40px; border-radius: 50%; background: var(--violet); color: #fff; font-weight: 700; font-size: 1.2rem; display: grid; place-items: center }
+.eval-pasos li.hecho .eval-n { background: var(--up) }
+.eval-estado { font-weight: 600; color: var(--indigo) !important; margin-top: auto }
+.eval-pasos .btn-s { min-height: 48px; padding: 0 20px; font-weight: 600 }
+.act-completada { align-self: flex-start; margin-top: 6px; font-size: .92rem; font-weight: 600; color: #0B6B4D; background: var(--upsoft); padding: 3px 10px; border-radius: 99px }
+.descarga { margin-top: 14px }
+
+/* ---------- Cuestionario ---------- */
+.quiz, .quiz-resultado { max-width: 760px; display: flex; flex-direction: column; gap: 18px }
+.quiz-avance { height: 8px; background: var(--lav2); border-radius: 99px; overflow: hidden }
+.quiz-avance i { display: block; height: 100%; background: var(--violet); transition: width .25s }
+.quiz-pregunta { font-size: 1.5rem; color: var(--indigo); line-height: 1.25 }
+.quiz-pregunta:focus, .quiz-resultado h2:focus { outline: none }
+.quiz-opciones { display: flex; flex-direction: column; gap: 10px }
+.quiz-opciones button {
+  display: flex; align-items: center; gap: 14px; min-height: 58px; padding: 12px 16px; border: 2px solid var(--line2); border-radius: 9px;
+  background: #fff; font-size: 1.1rem; line-height: 1.35; color: var(--tx); width: 100%;
+}
+.quiz-opciones button:hover:not(:disabled) { border-color: var(--violet); background: var(--lav) }
+.quiz-opciones button[aria-checked="true"] { border-color: var(--violet); background: var(--lav) }
+.quiz-opciones button:disabled { cursor: default }
+.quiz-opciones button.correcta { border-color: var(--up); background: var(--upsoft) }
+.quiz-opciones button.incorrecta { border-color: var(--down); background: var(--downsoft) }
+.quiz-opciones button.apagada { opacity: .6 }
+.quiz-marca {
+  flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line2); display: grid; place-items: center;
+  font-weight: 700; font-size: .9rem; color: #fff;
+}
+.quiz-opciones button[aria-checked="true"] .quiz-marca { border-color: var(--violet); box-shadow: inset 0 0 0 4px #fff; background: var(--violet) }
+.quiz-opciones button.correcta .quiz-marca { border-color: var(--up); background: var(--up); box-shadow: none }
+.quiz-opciones button.incorrecta .quiz-marca { border-color: var(--down); background: var(--down); box-shadow: none }
+.quiz-devolucion { border-radius: 9px; padding: 14px 18px; font-size: 1.05rem; line-height: 1.5 }
+.quiz-devolucion.bien { background: var(--upsoft); color: #0B5A41 }
+.quiz-devolucion.mal { background: var(--downsoft); color: #8E2234 }
+.quiz-acciones { display: flex; gap: 12px; flex-wrap: wrap }
+.quiz-acciones button:disabled { opacity: .45; cursor: not-allowed }
+.quiz-resultado h2 { font-size: 2rem; color: var(--indigo); letter-spacing: -.02em }
+.quiz-falta { color: var(--warn) !important; font-weight: 600; background: var(--warnsoft); padding: 10px 14px; border-radius: 6px }
+.quiz-confianza { background: var(--card2); border: 1px solid var(--line2); border-radius: 10px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px }
+.quiz-confianza h3 { font-size: 1.15rem; color: var(--indigo) }
+.quiz-repaso { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 14px; max-width: 860px }
+.quiz-repaso li { padding: 14px 18px; border-radius: 9px; border-left: 5px solid var(--up); background: var(--card2) }
+.quiz-repaso li.mal { border-left-color: var(--down) }
+.quiz-repaso li::marker { color: var(--indigo); font-weight: 700 }
+.quiz-repaso h3 { font-size: 1.08rem; color: var(--indigo); margin-bottom: 6px }
+.quiz-repaso p { font-size: 1rem }
+.quiz-explicacion { margin-top: 6px }
+
+/* ---------- Tablas (resultados y plan) ---------- */
+.tabla-desliza { overflow-x: auto; -webkit-overflow-scrolling: touch }
+.res-tabla { width: 100%; border-collapse: collapse; font-size: 1rem; background: #fff }
+.res-tabla th, .res-tabla td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top }
+.res-tabla thead th {
+  font-family: var(--fmo); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tx2); font-weight: 600;
+  background: var(--card2); white-space: nowrap;
+}
+.res-tabla tbody th { font-weight: 600; color: var(--indigo) }
+.res-tabla td { font-variant-numeric: tabular-nums }
+.res-tabla tr.alerta th, .res-tabla tr.alerta td { background: var(--downsoft) }
+.res-tabla a { color: var(--violet) }
+.res-barra { display: inline-block; vertical-align: middle; width: 80px; height: 8px; background: var(--lav2); border-radius: 99px; overflow: hidden; margin-right: 8px }
+.res-barra i { display: block; height: 100%; background: var(--violet) }
+.res-notas { margin: 14px 0 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px }
+.res-capacitacion + .res-capacitacion { margin-top: 30px }
+.res-capacitacion h3 { font-size: 1.25rem; color: var(--indigo); margin-bottom: 10px }
+
+/* ---------- Plan de capacitación ---------- */
+.plan-institucion { font-family: var(--fmo); font-size: .85rem !important; letter-spacing: .08em; text-transform: uppercase; color: #B9AEDB !important }
+.plan .cabecera-pagina .hero-botones { margin-top: 22px }
+.plan-indice { padding-bottom: 0 }
+.plan-indice h2 { font-family: var(--fmo); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tx2); margin-bottom: 10px }
+.plan-indice ol { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; counter-reset: plan }
+.plan-indice li { counter-increment: plan }
+.plan-indice button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line2); border-radius: 99px; background: #fff; font-size: 1rem; color: var(--indigo) }
+.plan-indice button::before { content: counter(plan) ". "; color: var(--violet); font-weight: 700 }
+.plan-indice button:hover { border-color: var(--violet) }
+.plan-seccion { scroll-margin-top: 80px; border-bottom: 1px solid var(--line) }
+.plan-seccion > p + p { margin-top: 12px }
+.plan-tit { display: flex; align-items: center; gap: 12px }
+.plan-n { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--violet); color: #fff; font-size: 1.1rem; display: grid; place-items: center }
+.plan-subtit { font-size: 1.2rem; color: var(--indigo); margin: 26px 0 12px }
+.plan-objetivo { margin-top: 16px; font-size: 1.15rem; color: var(--tx) !important; background: var(--lav); border-radius: 9px; padding: 16px 20px }
+.plan-aviso { margin: 16px 0; color: var(--warn) !important; background: var(--warnsoft); border-left: 5px solid var(--train); border-radius: 6px; padding: 12px 16px }
+.plan-ficha { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 14px }
+.plan-ficha.dos { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 18px }
+.plan-ficha li { display: flex; gap: 12px; background: var(--card2); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px }
+.plan-ficha li > span { font-size: 1.6rem; line-height: 1 }
+.plan-ficha h3 { font-size: 1.08rem; color: var(--indigo) }
+.plan-ficha p { margin-top: 3px; font-size: 1rem }
+.plan-modulos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px }
+.plan-modulos li { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 1px solid var(--line2); border-radius: 10px; padding: 16px 18px }
+.plan-cod { flex: none; font-family: var(--fmo); font-weight: 600; font-size: .95rem; color: #fff; background: var(--indigo); border-radius: 6px; padding: 6px 10px }
+.plan-modulos h3 { font-size: 1.15rem; color: var(--indigo) }
+.plan-modulos p { margin-top: 4px }
+.plan-donde { font-size: .95rem }
+.plan-donde a { color: var(--violet); font-weight: 600 }
+.plan-cierre { margin-top: 16px; font-size: 1.08rem }
+.plan-tabla { margin-top: 22px }
+.plan-tabla .act-badge.en-linea { font-size: .75rem }
+.plan-rutas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 20px }
+.plan-rutas > div { background: var(--lav); border-radius: 10px; padding: 16px 20px }
+.plan-rutas h3, .plan-tarjetas h3 { font-size: 1.12rem; color: var(--indigo); margin-bottom: 4px }
+.plan-tarjetas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 14px }
+.plan-tarjetas li { background: var(--card2); border: 1px solid var(--line); border-top: 4px solid var(--violet); border-radius: 10px; padding: 16px 18px }
+.plan-saldos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px }
+.plan-saldos li { border: 2px solid var(--violet); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px }
+.plan-saldos h4 { font-family: var(--fmo); font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: var(--violet) }
+.plan-alcance { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px }
+.plan-alcance .plan-subtit { margin-top: 0 }
+.plan-fuera { margin: 0 0 12px; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; font-size: 1.05rem }
+
+/* ---------- Plan en "Sobre nosotros" ---------- */
+.nos-plan { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 36px; align-items: start }
+.nos-plan-objetivo { font-size: 1.1rem }
+.nos-plan .plan-aviso { margin-bottom: 20px }
+
+/* ---------- Imagen ampliable (infografía) ---------- */
+.img-ampliable { margin: 0 0 8px; display: flex; flex-direction: column; gap: 10px }
+.plan-seccion .img-ampliable { max-width: 520px }
+.img-miniatura {
+  position: relative; display: block; width: 100%; padding: 0; border: 1px solid var(--line2); border-radius: 10px; overflow: hidden;
+  background: var(--card2); cursor: zoom-in;
+}
+.img-miniatura img { display: block; width: 100%; max-height: 560px; object-fit: contain }
+.img-lupa {
+  position: absolute; right: 10px; bottom: 10px; background: rgba(6,8,63,.85); color: #fff; font-size: .95rem; font-weight: 600;
+  padding: 6px 12px; border-radius: 99px;
+}
+.img-miniatura:hover { border-color: var(--violet) }
+.img-ampliable figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; font-weight: 600; color: var(--indigo) }
+.img-dialogo {
+  padding: 0; border: none; border-radius: 10px; max-width: min(920px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+  background: #fff; overflow: auto;
+}
+.img-dialogo::backdrop { background: rgba(6,8,63,.8) }
+.img-dialogo-barra { position: sticky; top: 0; display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 18px; background: var(--indigo); color: #fff }
+.img-dialogo-barra b { margin-right: auto }
+.img-dialogo-barra a { color: #fff; font-weight: 600 }
+.img-dialogo-barra button { width: 44px; height: 44px; border-radius: 6px; color: #fff; font-size: 1.2rem; display: grid; place-items: center }
+.img-dialogo-barra button:hover { background: rgba(255,255,255,.15) }
+.img-dialogo img { display: block; width: 100% }
+
+/* ---------- Adaptable ---------- */
+@media (max-width: 900px) {
+  .eval-pasos, .plan-saldos, .plan-alcance, .plan-rutas, .nos-plan { grid-template-columns: minmax(0, 1fr) }
+}
+@media (max-width: 560px) {
+  .sel-confianza { grid-template-columns: minmax(0, 1fr) }
+  .sel-confianza button { flex-direction: row; justify-content: flex-start; gap: 12px; min-height: 48px; padding: 6px 14px }
+  .plan-ficha.dos { grid-template-columns: minmax(0, 1fr) }
+  .quiz-pregunta { font-size: 1.3rem }
+  .quiz-acciones > * { width: 100% }
+}

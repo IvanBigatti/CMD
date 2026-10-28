@@ -1,8 +1,10 @@
 import { useState, type FormEvent } from 'react'
+import { esEvaluable } from '../../contenido/evaluaciones'
 import { crearResena } from '../../datos/resenas'
 import { useUi } from '../../estado/ui'
 import { abrirSelectorItinerarios } from '../../guia/estadoGuia'
 import { ITINERARIOS, type ClaveItinerario } from '../../guia/itinerarios'
+import { navegar } from '../../sitio/ruta'
 import { SelectorEstrellas } from '../ui/Estrellas'
 
 /** Al terminar una capacitación: felicita y ofrece dejar una reseña (sin registrarse) */
@@ -38,6 +40,12 @@ export function ModalResena({ clave }: { clave: ClaveItinerario }) {
     abrirSelectorItinerarios()
   }
 
+  const evaluable = esEvaluable(clave)
+  const irAEvaluacion = () => {
+    cerrar()
+    navegar(`/capacitaciones/${clave}/evaluacion`)
+  }
+
   return (
     <div className="veil" onClick={(e) => { if (e.target === e.currentTarget && !enviando) cerrar() }}>
       <div className="sheet" role="dialog" aria-modal="true" aria-labelledby="resena-tit">
@@ -46,7 +54,8 @@ export function ModalResena({ clave }: { clave: ClaveItinerario }) {
         {enviada ? (
           <>
             <p className="form-ok" role="status">¡Gracias! Tu reseña ya aparece en “{it.nombre}”.</p>
-            <button type="button" className="btn-s w" onClick={elegirOtra}>Elegir otra capacitación</button>
+            {evaluable && <button type="button" className="btn-s w" onClick={irAEvaluacion}>Hacer la evaluación</button>}
+            <button type="button" className={`${evaluable ? 'btn-o' : 'btn-s'} w`} onClick={elegirOtra}>Elegir otra capacitación</button>
             <button type="button" className="btn-o w" onClick={cerrar}>Seguir usando la cuenta</button>
           </>
         ) : (
@@ -63,6 +72,7 @@ export function ModalResena({ clave }: { clave: ClaveItinerario }) {
             </label>
             {error && <p className="form-error" role="alert">{error}</p>}
             <button type="submit" className="btn-s w" disabled={enviando}>{enviando ? 'Enviando…' : 'Enviar reseña'}</button>
+            {evaluable && <button type="button" className="btn-o w" onClick={irAEvaluacion} disabled={enviando}>Ir a la evaluación</button>}
             <button type="button" className="btn-o w" onClick={cerrar} disabled={enviando}>Ahora no</button>
           </form>
         )}

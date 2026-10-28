@@ -18,5 +18,6 @@ export const NOSOTROS = {
     'Videos cortos que muestran cada operación de punta a punta.',
     'Práctica guiada en el simulador, con errores a propósito para aprender de ellos.',
     'Instructivos con imágenes en cada sección para consultar cuando lo necesites.',
+    'Una evaluación en cada capacitación: cuestionario, desafío práctico en el simulador y autoevaluación.',
   ],
 } as const
