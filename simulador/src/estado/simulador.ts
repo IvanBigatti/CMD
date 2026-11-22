@@ -194,6 +194,7 @@ export const useSimulador = create<EstadoSimulador>()(
       set((s) => {
         const i = s.inst[id]
         s.compra.simbolo = id
+        s.avisoCompra = null
         s.compra.cantidad = String(i.tipo === 'on' ? i.laminaMinima : 10)
         s.compra.limite = ''
       })
@@ -460,6 +461,13 @@ export const useSimulador = create<EstadoSimulador>()(
           return false
         })
         for (const i of Object.values(s.inst)) moverPrecio(i)
+        // KO y KOD son el mismo activo: tienen que moverse juntos
+        const ko = s.inst.KO
+        const kod = s.inst.KOD
+        if (ko?.tipo === 'cedear' && kod?.tipo === 'cedear') {
+          kod.precioUsd = ko.precioUsd
+          kod.variacion = ko.variacion
+        }
         completarFormularios(s)
       })
       if (liquidadas) {

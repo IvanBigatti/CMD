@@ -1,9 +1,11 @@
 import { INDICES_BASE, TC_MEP } from '../mocks/mercado'
 import type { Costos, Instrumento, Lado, TipoInstrumento } from './tipos'
 
-/** Último precio en la moneda en que se opera. CEDEAR = (precio USD / ratio) × TC. */
+/** Último precio en la moneda en que se opera. CEDEAR en pesos = (precio USD / ratio) × TC; en dólares (símbolo con D) = precio USD / ratio. */
 export function precio(i: Instrumento): number {
-  return i.tipo === 'cedear' ? (i.precioUsd / i.ratio) * TC_MEP : i.precio
+  if (i.tipo !== 'cedear') return i.precio
+  const usd = i.precioUsd / i.ratio
+  return i.moneda === 'USD' ? usd : usd * TC_MEP
 }
 
 /** Monto de una cantidad dada. Las ON cotizan cada 100 VN. */

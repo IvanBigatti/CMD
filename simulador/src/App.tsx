@@ -9,6 +9,7 @@ import { useGuia } from './guia/estadoGuia'
 import { ITINERARIOS } from './guia/itinerarios'
 import { EncabezadoSitio } from './sitio/EncabezadoSitio'
 import { Actividad } from './sitio/paginas/Actividad'
+import { AntesDeEmpezar } from './sitio/paginas/AntesDeEmpezar'
 import { Capacitaciones } from './sitio/paginas/Capacitaciones'
 import { Inicio } from './sitio/paginas/Inicio'
 import { Nosotros } from './sitio/paginas/Nosotros'
@@ -21,6 +22,7 @@ function tituloDe(ruta: Ruta, tituloGuia: string): string {
   switch (ruta.pagina) {
     case 'inicio': return SITIO
     case 'capacitaciones': return `Capacitaciones · ${SITIO}`
+    case 'antesDeEmpezar': return `Antes de empezar · ${SITIO}`
     case 'actividad': return `${ITINERARIOS[ruta.clave].nombre} · ${SITIO}`
     case 'nosotros': return `Sobre nosotros · ${SITIO}`
     case 'simulador': return tituloGuia
@@ -31,6 +33,7 @@ function Pagina({ ruta }: { ruta: Ruta }) {
   switch (ruta.pagina) {
     case 'inicio': return <Inicio />
     case 'capacitaciones': return <Capacitaciones />
+    case 'antesDeEmpezar': return <AntesDeEmpezar />
     case 'actividad': return <Actividad clave={ruta.clave} />
     case 'nosotros': return <Nosotros />
     case 'simulador': return <Plataforma />

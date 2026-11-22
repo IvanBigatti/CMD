@@ -11,6 +11,7 @@ export function ModalResena({ clave }: { clave: ClaveItinerario }) {
   const [puntuacion, setPuntuacion] = useState(0)
   const [nombre, setNombre] = useState('')
   const [comentario, setComentario] = useState('')
+  const [costoMas, setCostoMas] = useState('')
   const [error, setError] = useState('')
   const [enviando, setEnviando] = useState(false)
   const [enviada, setEnviada] = useState(false)
@@ -24,7 +25,7 @@ export function ModalResena({ clave }: { clave: ClaveItinerario }) {
     setError('')
     setEnviando(true)
     try {
-      await crearResena({ clave, nombre: nombre.trim(), comentario: comentario.trim(), puntuacion })
+      await crearResena({ clave, nombre: nombre.trim(), comentario: comentario.trim(), puntuacion, costoMas: costoMas.trim() || undefined })
       setEnviada(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'No pudimos guardar la reseña. Probá de nuevo.')
@@ -60,6 +61,11 @@ export function ModalResena({ clave }: { clave: ClaveItinerario }) {
             <label>
               <span>Comentario</span>
               <textarea value={comentario} onChange={(e) => setComentario(e.target.value)} rows={4} maxLength={500} required />
+            </label>
+            <label>
+              <span>¿Qué te costó más? (opcional)</span>
+              <textarea value={costoMas} onChange={(e) => setCostoMas(e.target.value)} rows={3} maxLength={300} />
+              <small className="hint">Esta respuesta es privada: no se muestra en el sitio y la usamos para mejorar el material.</small>
             </label>
             {error && <p className="form-error" role="alert">{error}</p>}
             <button type="submit" className="btn-s w" disabled={enviando}>{enviando ? 'Enviando…' : 'Enviar reseña'}</button>

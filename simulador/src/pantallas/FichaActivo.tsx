@@ -32,7 +32,9 @@ export function FichaActivo() {
     propios = <>
       <Dato k="Ratio de conversión" v={`${i.ratio} : 1`} />
       <Dato k="Acción en EE.UU." v={`US$ ${nf(i.precioUsd)}`} />
-      <Dato k="Tipo de cambio implícito" v={`$ ${nf(TC_MEP)}`} />
+      {i.moneda === 'USD'
+        ? <Dato k="Moneda de cotización" v="Dólares (MEP) · el símbolo termina en D" />
+        : <Dato k="Tipo de cambio implícito" v={`$ ${nf(TC_MEP)}`} />}
       <Dato k="Plazo de liquidación" v="24 hs (T+1)" />
     </>
   else if (i.tipo === 'on')

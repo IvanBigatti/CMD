@@ -5,7 +5,7 @@ import { navegar } from './ruta'
 
 /**
  * Abre el simulador y arranca la guía de una actividad (reinicia la cuenta simulada).
- * El video o el podcast de la actividad quedan chicos en un costado, desde el segundo indicado en `inicio`.
+ * El video o el podcast de la actividad quedan anclados abajo, desde el segundo indicado en `inicio`.
  */
 export function practicar(clave: ClaveItinerario, inicio?: InicioReproductor) {
   useGuia.getState().iniciar(clave)

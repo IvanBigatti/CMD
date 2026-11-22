@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Instructivo } from '../../componentes/ui/Instructivo'
+import { urlGuia } from '../../contenido/guias'
 import { INSTRUCTIVOS_ACTIVIDAD } from '../../contenido/instructivos'
 import { urlVideo } from '../../contenido/videos'
 import { useResenas } from '../../datos/resenas'
@@ -34,6 +35,7 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
   const anterior = ACTIVIDADES[i - 1]
   const siguiente = ACTIVIDADES[i + 1]
   const conGuia = it.pasos.length > 0
+  const guiaPdf = urlGuia(clave)
   const videoRef = useRef<HTMLVideoElement>(null)
   // Si ya se vio parte del video en el simulador, al volver acá retoma desde ese segundo
   const flotante = useReproductorFlotante.getState()
@@ -82,13 +84,18 @@ export function Actividad({ clave }: { clave: ClaveItinerario }) {
           <button type="button" className="btn-s grande w" onClick={() => practicar(clave, { modo: 'video', tiempo: videoRef.current?.currentTime ?? 0 })}>
             Practicar en el simulador
           </button>
-          <p className="nota">Mientras practicás, el video y el podcast quedan en un recuadro al costado para retomarlos.</p>
+          <p className="nota">Mientras practicás, el video y el podcast quedan en una barra abajo, sin tapar la práctica, para retomarlos.</p>
           <p className="nota">Al empezar, la cuenta simulada vuelve a cero y se prepara para esta actividad.</p>
         </aside>
       </section>
 
       <section className="bloque">
         <Instructivo contenido={INSTRUCTIVOS_ACTIVIDAD[clave]} />
+        {guiaPdf && (
+          <p style={{ marginTop: 16 }}>
+            <a className="btn-o" href={guiaPdf} download={`guia-${clave}.pdf`}>Descargar guía (PDF)</a>
+          </p>
+        )}
       </section>
 
       {conGuia && <ResenasActividad clave={clave} />}

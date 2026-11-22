@@ -12,27 +12,27 @@ export interface Testimonio {
 
 export const TESTIMONIOS: Testimonio[] = [
   {
-    nombre: 'Graciela M.', edad: 58, ciudad: 'Rosario', estrellas: 5, actividad: 'Ciclo completo',
-    texto: 'Tenía ahorros en plazo fijo y siempre me dio miedo invertir. Practicar con plata ficticia me sacó el miedo: ahora entiendo qué es disponible, comprometido y a liquidar.',
+    nombre: 'Graciela M.', edad: 24, ciudad: 'Rosario', estrellas: 5, actividad: 'Ciclo completo',
+    texto: 'Tenía la cuenta abierta hace meses y nunca me animé a usarla. Practicar con plata ficticia me sacó el miedo: ahora entiendo qué es disponible, comprometido y a liquidar.',
   },
   {
-    nombre: 'Roberto A.', edad: 63, ciudad: 'Córdoba', estrellas: 5, actividad: 'Dólar MEP',
+    nombre: 'Roberto A.', edad: 22, ciudad: 'Córdoba', estrellas: 5, actividad: 'Dólar MEP',
     texto: 'Por fin entendí cómo se compra el dólar MEP. Lo de "ver por dentro" con las dos patas del bono me aclaró todo. Después lo hice en mi cuenta real sin problemas.',
   },
   {
-    nombre: 'Silvia R.', edad: 51, ciudad: 'CABA', estrellas: 4, actividad: 'Comprar mi primer CEDEAR',
+    nombre: 'Silvia R.', edad: 19, ciudad: 'CABA', estrellas: 4, actividad: 'Comprar mi primera acción o CEDEAR',
     texto: 'Me gustó que me deje equivocarme. Puse una orden límite que no se ejecutó y la guía me explicó por qué. Eso no lo aprendés leyendo.',
   },
   {
-    nombre: 'Jorge L.', edad: 60, ciudad: 'Mendoza', estrellas: 5, actividad: 'Obligaciones Negociables',
+    nombre: 'Jorge L.', edad: 26, ciudad: 'Mendoza', estrellas: 5, actividad: 'Obligaciones Negociables',
     texto: 'No sabía qué era la lámina mínima ni el valor nominal. Con el video y la práctica lo entendí en diez minutos. Muy claro y sin apuro.',
   },
   {
-    nombre: 'Mónica P.', edad: 55, ciudad: 'La Plata', estrellas: 4, actividad: 'Vender y retirar',
+    nombre: 'Mónica P.', edad: 21, ciudad: 'La Plata', estrellas: 4, actividad: 'Vender y retirar',
     texto: 'Siempre me preguntaba por qué no podía sacar la plata apenas vendía. La liquidación a 24 horas ahora tiene sentido. Muy útil.',
   },
   {
-    nombre: 'Héctor D.', edad: 67, ciudad: 'Mar del Plata', estrellas: 5, actividad: 'Ciclo completo',
-    texto: 'Lo hice con mi hija al lado y después solo. Las letras grandes y los pasos de a uno me ayudaron mucho. Recomendable para gente de mi edad.',
+    nombre: 'Héctor D.', edad: 28, ciudad: 'Mar del Plata', estrellas: 5, actividad: 'Ciclo completo',
+    texto: 'Lo hice a mi ritmo, un rato cada día. Los pasos de a uno y poder repetir cuando me trababa me ayudaron mucho. Recomendable si nunca tocaste la app.',
   },
 ]

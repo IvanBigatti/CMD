@@ -55,10 +55,11 @@ export const INSTRUCTIVOS_ACTIVIDAD: Record<ClaveItinerario, ContenidoInstructiv
     ],
   },
   cedear: {
-    titulo: 'Comprar un CEDEAR, paso a paso',
+    titulo: 'Comprar una acción o un CEDEAR, paso a paso',
     pasos: [
       'Entrá a **Cotizaciones** y elegí la pestaña **Cedears**.',
       'Tocá una especie (por ejemplo AAPL) para abrir su ficha y ver precio, ratio y variación.',
+      'Fijate el final del símbolo: la misma empresa puede tener un símbolo para pesos (KO) y otro para dólares, que termina en **D** (KOD). Para pagar con pesos, elegí el que no termina en D.',
       'Tocá **Comprar**. Elegí cantidad o monto, modalidad (a mercado o precio límite) y plazo.',
       'Revisá el detalle de costos (comisión, derechos de mercado e IVA) y confirmá.',
       'Mirá el boleto y después tu **Portafolio**: ahí ves la tenencia y el resultado.',

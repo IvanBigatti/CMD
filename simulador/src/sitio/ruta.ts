@@ -5,6 +5,7 @@ import { ITINERARIOS, type ClaveItinerario } from '../guia/itinerarios'
 export type Ruta =
   | { pagina: 'inicio' }
   | { pagina: 'capacitaciones' }
+  | { pagina: 'antesDeEmpezar' }
   | { pagina: 'actividad'; clave: ClaveItinerario }
   | { pagina: 'simulador' }
   | { pagina: 'nosotros' }
@@ -16,6 +17,7 @@ function leerRuta(): Ruta {
   const [p0, p1] = partes
   if (p0 === 'capacitaciones' && p1 && esClaveItinerario(p1)) return { pagina: 'actividad', clave: p1 }
   if (p0 === 'capacitaciones') return { pagina: 'capacitaciones' }
+  if (p0 === 'antes-de-empezar') return { pagina: 'antesDeEmpezar' }
   if (p0 === 'simulador') return { pagina: 'simulador' }
   if (p0 === 'nosotros') return { pagina: 'nosotros' }
   return { pagina: 'inicio' }

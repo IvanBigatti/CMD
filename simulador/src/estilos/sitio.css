@@ -262,6 +262,7 @@
   .pasos3 { grid-template-columns: minmax(0, 1fr) }
 }
 @media (max-width: 760px) {
+  .btn-s.grande, .btn-o.grande { white-space: normal }
   .sitio-hamburguesa { display: inline-flex }
   .sitio-nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--indigo); flex-direction: column;
@@ -277,4 +278,62 @@
   .act-nav { flex-direction: column }
   .act-nav a { max-width: none }
   .act-nav a.sig { margin-left: 0 }
+}
+
+/* ---------- Antes de empezar ---------- */
+.ab-que { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: start }
+.ab-destacado { font-size: 1.4rem; line-height: 1.3; font-weight: 600; color: var(--tx); margin: -4px 0 18px; max-width: 34ch }
+.ab-texto { margin-top: 16px; max-width: 68ch; font-size: 1.0625rem; line-height: 1.55 }
+.ab-ciclo { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; counter-reset: etapa }
+.ab-ciclo li { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--lav3) }
+.ab-modulo { font-family: var(--fmo); font-size: .85rem; font-weight: 600; letter-spacing: .06em; color: #fff; background: var(--violet); border-radius: 6px; padding: 3px 8px; flex: none }
+.ab-ciclo h3 { font-size: 1.12rem; color: var(--indigo) }
+.ab-ciclo p { color: var(--tx2); margin-top: 2px }
+.ab-afuera { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 40px; margin: 0 }
+.ab-afuera > div { padding: 12px 0; border-bottom: 1px solid var(--line) }
+.ab-afuera dt { font-weight: 700; color: var(--indigo) }
+.ab-afuera dd { margin: 2px 0 0; color: var(--tx2) }
+.ab-saldos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px }
+.ab-saldo { background: #fff; border-radius: 10px; border-top: 5px solid var(--violet); padding: 20px 22px; display: flex; flex-direction: column; gap: 8px }
+.ab-saldo.disponible { border-top-color: var(--up) }
+.ab-saldo.comprometido { border-top-color: var(--train) }
+.ab-saldo h3 { font-family: var(--fmo); font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tx2) }
+.ab-saldo .frase { font-size: 1.25rem; font-weight: 700; color: var(--indigo); line-height: 1.2 }
+.ab-saldo .banco { margin-top: auto; padding-top: 8px; font-size: .95rem; color: var(--tx2) }
+.ab-tabla { width: 100%; font-size: 1.0625rem }
+.ab-tabla th, .ab-tabla td { text-align: left; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top }
+.ab-tabla thead th { font-family: var(--fmo); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: var(--tx3); font-weight: 500 }
+.ab-tabla tbody th { font-weight: 600; color: var(--indigo) }
+.ab-tabla a { color: inherit; text-decoration-color: var(--violet); text-underline-offset: 3px }
+.ab-guia { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: start }
+.ab-pasos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; counter-reset: paso }
+.ab-pasos li { position: relative; padding-left: 52px; counter-increment: paso }
+.ab-pasos li::before { content: counter(paso); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--violet); color: #fff; font-weight: 700; display: grid; place-items: center }
+.ab-pasos h3 { font-size: 1.15rem; color: var(--indigo) }
+.ab-pasos p { margin-top: 2px; color: var(--tx2); max-width: 60ch }
+.ab-reloj { background: var(--warnsoft); border-radius: 10px; padding: 22px 24px }
+.ab-reloj h3 { font-family: var(--fmo); font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--warn) }
+.ab-reloj p { margin-top: 8px; color: var(--tx) }
+.ab-extra { margin-top: 22px; background: var(--card2); border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; max-width: 760px }
+.ab-extra h3 { font-size: 1.1rem; color: var(--indigo) }
+.ab-extra p { margin-top: 4px }
+.ab-recursos { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px }
+.ab-recursos > div { padding: 14px 0; border-bottom: 1px solid var(--lav3) }
+.ab-recursos dt { font-weight: 700; color: var(--indigo); font-size: 1.12rem }
+.ab-recursos dd { margin: 2px 0 0; color: var(--tx2) }
+.ab-recursos a { color: var(--violet-dk); font-weight: 600 }
+.ab-cierre { text-align: left }
+.ab-cierre .ab-texto { margin-bottom: 22px }
+@media (max-width: 900px) {
+  .ab-que, .ab-guia { grid-template-columns: minmax(0, 1fr); gap: 28px }
+  .ab-saldos { grid-template-columns: minmax(0, 1fr) }
+  .ab-ciclo, .ab-recursos { grid-template-columns: minmax(0, 1fr) }
+}
+@media (max-width: 760px) {
+  .ab .cabecera-pagina p { padding-right: 0 }
+  /* En pantallas angostas cada fila de las tablas pasa a ser un bloque, con la etiqueta de la columna adelante */
+  .ab-tabla thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+  .ab-tabla tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--line) }
+  .ab-tabla th, .ab-tabla td { display: block; border: 0; padding: 2px 0 }
+  .ab-tabla td[data-etiqueta]::before { content: attr(data-etiqueta) ": "; font-weight: 600; color: var(--tx3) }
 }

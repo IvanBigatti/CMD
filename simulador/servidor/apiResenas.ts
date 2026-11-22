@@ -16,7 +16,7 @@ const ARCHIVO = join(dirname(fileURLToPath(import.meta.url)), '..', 'datos', 're
 /** Actividades que se pueden reseñar: las mismas claves de ITINERARIOS que tienen práctica guiada */
 const CLAVES = new Set(['mep', 'cedear', 'on', 'venta', 'completo'])
 
-const LIMITES = { nombre: 40, comentario: 500, cuerpo: 10_000 }
+const LIMITES = { nombre: 40, comentario: 500, costoMas: 300, cuerpo: 10_000 }
 
 let db: DatabaseSync | null = null
 
@@ -36,9 +36,14 @@ function abrir(): DatabaseSync {
     );
     CREATE INDEX IF NOT EXISTS resenas_por_clave ON resenas (clave, fecha DESC);
   `)
+  // Campo privado "¿Qué te costó más?": se agrega a las bases que ya existen. No forma parte de COLUMNAS, así que nunca sale por GET.
+  const columnas = db.prepare('PRAGMA table_info(resenas)').all() as { name: string }[]
+  if (!columnas.some((c) => c.name === 'costo_mas'))
+    db.exec(`ALTER TABLE resenas ADD COLUMN costo_mas TEXT CHECK (costo_mas IS NULL OR length(costo_mas) <= ${LIMITES.costoMas})`)
   return db
 }
 
+/** Columnas públicas: costo_mas es privado y no se incluye a propósito */
 const COLUMNAS = 'id, clave, nombre, comentario, puntuacion, fecha'
 
 function listar(clave: string | null) {
@@ -49,7 +54,7 @@ function listar(clave: string | null) {
 }
 
 /** Valida lo que llega del formulario; devuelve el mensaje de error o los datos limpios */
-function validar(datos: unknown): string | { clave: string; nombre: string; comentario: string; puntuacion: number } {
+function validar(datos: unknown): string | { clave: string; nombre: string; comentario: string; puntuacion: number; costoMas: string | null } {
   if (!datos || typeof datos !== 'object') return 'Faltan los datos de la reseña.'
   const d = datos as Record<string, unknown>
   const clave = typeof d.clave === 'string' ? d.clave : ''
@@ -60,15 +65,18 @@ function validar(datos: unknown): string | { clave: string; nombre: string; come
   if (!nombre || nombre.length > LIMITES.nombre) return `Escribí tu nombre (hasta ${LIMITES.nombre} letras).`
   if (!comentario || comentario.length > LIMITES.comentario) return `Escribí un comentario (hasta ${LIMITES.comentario} letras).`
   if (typeof puntuacion !== 'number' || !Number.isInteger(puntuacion) || puntuacion < 1 || puntuacion > 5) return 'Elegí de 1 a 5 estrellas.'
-  return { clave, nombre, comentario, puntuacion }
+  if (d.costoMas != null && typeof d.costoMas !== 'string') return 'El campo “¿Qué te costó más?” no es válido.'
+  const costoMas = typeof d.costoMas === 'string' ? d.costoMas.trim() : ''
+  if (costoMas.length > LIMITES.costoMas) return `“¿Qué te costó más?” admite hasta ${LIMITES.costoMas} letras.`
+  return { clave, nombre, comentario, puntuacion, costoMas: costoMas || null }
 }
 
 function crear(datos: unknown) {
   const r = validar(datos)
   if (typeof r === 'string') return { error: r }
   const fila = abrir()
-    .prepare(`INSERT INTO resenas (clave, nombre, comentario, puntuacion) VALUES (?, ?, ?, ?) RETURNING ${COLUMNAS}`)
-    .get(r.clave, r.nombre, r.comentario, r.puntuacion)
+    .prepare(`INSERT INTO resenas (clave, nombre, comentario, puntuacion, costo_mas) VALUES (?, ?, ?, ?, ?) RETURNING ${COLUMNAS}`)
+    .get(r.clave, r.nombre, r.comentario, r.puntuacion, r.costoMas)
   return { resena: fila }
 }
 

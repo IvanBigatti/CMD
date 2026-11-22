@@ -22,7 +22,7 @@ export function TarjetaPodcast({ clave, it }: { clave: ClaveItinerario; it: Itin
             <audio key={audio} ref={audioRef} src={audio} controls preload="none">
               Tu navegador no puede reproducir este audio.
             </audio>
-            {/* Sigue sonando en un recuadro del simulador, desde donde iba */}
+            {/* Sigue sonando en el reproductor del simulador, desde donde iba */}
             <button
               type="button"
               className="btn-o pod-practicar"

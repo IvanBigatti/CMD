@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { AvisoCaja } from '../../componentes/ui/AvisoCaja'
 import { Instructivo } from '../../componentes/ui/Instructivo'
+import { AVISO_SEGURIDAD } from '../../contenido/seguridad'
 import { INSTRUCTIVOS_SITIO } from '../../contenido/instructivos'
 import { VOCES_PODCAST } from '../../contenido/podcasts'
 import { useResenas } from '../../datos/resenas'
 import { useVozPodcast } from '../../estado/vozPodcast'
 import type { ClaveItinerario } from '../../guia/itinerarios'
 import { ACTIVIDADES } from '../acciones'
+import { href } from '../ruta'
 import { ListaResenas, ResumenResenas } from '../ListaResenas'
 import { TarjetaActividad } from '../TarjetaActividad'
 import { TarjetaPodcast } from '../TarjetaPodcast'
@@ -16,6 +19,8 @@ const SECCIONES = [
   { id: 'cap-podcast', nombre: 'Podcast' },
   { id: 'cap-resenas', nombre: 'Reseñas' },
 ]
+
+const URL_ENCUESTA = 'https://docs.google.com/forms/d/1vjd3Y22Je1jsWWNx0B25sAQ2bg-MRFCOFXXCEqMf6qc/viewform'
 
 const irA = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -70,7 +75,20 @@ export function Capacitaciones() {
     <div className="sitio-pagina">
       <section className="cabecera-pagina">
         <h1>Capacitaciones</h1>
-        <p>Cada actividad tiene un video corto, un podcast para escuchar, un instructivo y una práctica guiada en el simulador. Si es tu primera vez, empezá por <b>Ciclo completo</b>.</p>
+        <p>Cada actividad tiene un video corto, un podcast para escuchar, un instructivo y una práctica guiada en el simulador. Todo es <b>100% online y a tu ritmo</b>. Si es tu primera vez, empezá por <b>Ciclo completo</b>.</p>
+        <AvisoCaja aviso={AVISO_SEGURIDAD} style={{ maxWidth: 640, marginTop: 14 }} />
+        <p style={{ marginTop: 18 }}>
+          <a className="btn-s grande" href={href('/antes-de-empezar')}>Antes de empezar: qué vas a aprender y cómo se usa</a>
+        </p>
+        <p style={{ marginTop: 14 }}>
+          <a
+            className="btn-o"
+            href={URL_ENCUESTA}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Antes de arrancar, contanos de vos (abre Google Forms en una pestaña nueva)"
+          >Antes de arrancar, contanos de vos</a>
+        </p>
         <nav className="cap-secciones" aria-label="Secciones de capacitaciones">
           {SECCIONES.map((s) => (
             <button key={s.id} type="button" onClick={() => irA(s.id)}>{s.nombre}</button>

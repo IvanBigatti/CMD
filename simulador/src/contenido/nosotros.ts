@@ -4,10 +4,10 @@
  */
 export const NOSOTROS = {
   nombreEquipo: 'Equipo de Capacitación',
-  bajada: 'Acompañamos a personas que nunca invirtieron a dar sus primeros pasos en el mercado de capitales, sin arriesgar su dinero.',
+  bajada: 'Ayudamos a quienes tienen interés en invertir, pero poca o ninguna experiencia, a aprender a usar la plataforma de InvertirOnline sin arriesgar su dinero.',
   quienesSomos: [
-    'Somos un equipo que diseña capacitaciones prácticas para quienes ya se manejan con el homebanking y las billeteras virtuales, pero **nunca operaron en el mercado de capitales**.',
-    'Creemos que a invertir se aprende haciendo. Por eso armamos un simulador que replica la plataforma real de InvertirOnline, con dinero y precios ficticios, donde podés equivocarte sin consecuencias.',
+    'Somos un equipo que diseña capacitaciones prácticas para quienes ya se manejan con el homebanking y las billeteras virtuales y quieren empezar a invertir, pero **todavía no se animaron a operar** o abrieron su cuenta y nunca la usaron.',
+    'Creemos que una plataforma se aprende usándola. Por eso armamos un simulador que replica la plataforma real de InvertirOnline, con dinero y precios ficticios, donde podés equivocarte sin consecuencias.',
   ],
   valores: [
     { icono: '🧭', titulo: 'Paso a paso', texto: 'Cada actividad te lleva de la mano, con una guía que te señala dónde hacer clic y por qué.' },

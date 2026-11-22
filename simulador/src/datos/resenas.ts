@@ -17,7 +17,8 @@ export interface Resena {
   fecha: string
 }
 
-export type ResenaNueva = Pick<Resena, 'clave' | 'nombre' | 'comentario' | 'puntuacion'>
+/** `costoMas` es privado: se guarda para mejorar el material y nunca se devuelve ni se muestra */
+export type ResenaNueva = Pick<Resena, 'clave' | 'nombre' | 'comentario' | 'puntuacion'> & { costoMas?: string }
 
 const API = `${import.meta.env.BASE_URL}api/resenas`
 

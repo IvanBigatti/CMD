@@ -3,7 +3,7 @@ import { href, useRuta, type Ruta } from './ruta'
 
 const ENLACES: { ruta: string; texto: string; activo: (r: Ruta) => boolean }[] = [
   { ruta: '/', texto: 'Inicio', activo: (r) => r.pagina === 'inicio' },
-  { ruta: '/capacitaciones', texto: 'Capacitaciones', activo: (r) => r.pagina === 'capacitaciones' || r.pagina === 'actividad' },
+  { ruta: '/capacitaciones', texto: 'Capacitaciones', activo: (r) => r.pagina === 'capacitaciones' || r.pagina === 'actividad' || r.pagina === 'antesDeEmpezar' },
   { ruta: '/simulador', texto: 'Simulador', activo: (r) => r.pagina === 'simulador' },
   { ruta: '/nosotros', texto: 'Sobre nosotros', activo: (r) => r.pagina === 'nosotros' },
 ]

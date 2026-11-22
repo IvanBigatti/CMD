@@ -76,6 +76,8 @@ export function armarOrden(d: DatosOrden, ctx: ContextoOrden): ResultadoOrden {
   if (esCompra) {
     const s = ctx.saldo[i.moneda]
     const disponible = contadoInmediato ? s.disponible : s.disponible + s.aLiquidar
+    if (total > disponible && i.tipo === 'cedear' && i.moneda === 'USD')
+      return error(`**${i.id}** es el mismo CEDEAR que **${i.id.slice(0, -1)}**, pero cotiza en dólares: la **D** al final del símbolo indica que se paga con saldo en dólares (MEP). Necesitás ${dinero(total, 'USD')} y tenés ${dinero(disponible, 'USD')} disponibles en dólares. Si querés pagar con pesos, elegí **${i.id.slice(0, -1)}**.`)
     if (total > disponible)
       return error(`Necesitás ${dinero(total, i.moneda)} y tenés ${dinero(disponible, i.moneda)} disponibles para operaciones en ${contadoInmediato ? 'contado inmediato' : '24 hs'}${i.moneda === 'USD' ? '. Comprá dólar MEP primero.' : '.'}`)
     if (d.modalidad === 'limite' && px < mkt * 0.985)
