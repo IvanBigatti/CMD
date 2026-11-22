@@ -20,7 +20,7 @@ Todas las incongruencias tienen una decisión. Falta aplicarlas. El orden y los 
 - [ ] **Diagnóstico** (I04, I22): describir la encuesta real y sus resultados; quitar "al terminar repetimos la encuesta".
 - [ ] **Retroalimentación** (I16): evaluación en tres capas: logro (preguntas de verificación), satisfacción (estrellas) y mejora ("¿Qué te costó más?").
 - [ ] **Modalidad y duración** (I02, I03): E-Learning 100 % virtual y autoguiado, con dos recorridos y sus tiempos.
-- [ ] **Contenidos** (I05, I24): plazos CI y 24 hs; sumar costos y comisiones.
+- [ ] **Contenidos** (I05, I08, I24): plazos CI y 24 hs; "consulta del estado de las operaciones" en lugar de "consulta y cancelación"; sumar costos y comisiones.
 - [ ] **Estrategias** (I11, I15, I17): videos con HyperFrames; estrellas de 1 a 5 + "¿Qué te costó más?"; párrafo de recursos complementarios.
 
 ### Cambios en el entorno
@@ -39,7 +39,7 @@ Ordenados de menor a mayor esfuerzo:
 10. [x] Guías PDF por módulo (I14).
 11. [x] Pregunta de verificación por módulo (I12, I13).
 12. [x] Error inducido KO / KOD (I07).
-13. [ ] Órdenes pendientes, pantalla de órdenes y cancelación (I08, I09).
+13. [x] ~~Órdenes pendientes, pantalla de órdenes y cancelación (I08, I09)~~ Recortado: el plan pasa a "consulta del estado de las operaciones".
 14. [x] ~~Volver a renderizar el video de CEDEAR~~ No hace falta: la práctica conserva la compra de KO que muestra el video (I07).
 15. [ ] Probar a 375 px y en un celular real (I19). *375 px probado con navegador automatizado; falta un celular real.*
 
@@ -103,8 +103,8 @@ Están ordenadas por el orden en que conviene decidirlas: primero las que condic
 | I05 | Plazos de liquidación | Contado inmediato, 24 y 48 horas | CI y 24 hs ([tipos.ts:7](simulador/src/dominio/tipos.ts#L7)). El entorno es correcto: T+1 desde el 27/05/2024 y RG CNV 1029/2024 | **Resuelta:** se corrige el plan |
 | I06 | Saldo disponible vs. valorizado | Contenido conceptual | Los dos rótulos existen, pero nunca se comparan ([EstadoDeCuenta.tsx:34](simulador/src/pantallas/EstadoDeCuenta.tsx#L34), [EstadoDeCuenta.tsx:109](simulador/src/pantallas/EstadoDeCuenta.tsx#L109)) | **Resuelta:** se construye en el entorno |
 | I07 | Símbolos de un activo según la moneda | Contenido conceptual + "ejemplo principal" de error inducido | Solo AL30 / AL30D dentro de Dólar MEP ([DolarMep.tsx:59](simulador/src/pantallas/DolarMep.tsx#L59)). No hay pares operables en Comprar ni un ejercicio de error inducido | **Resuelta:** se construye en el entorno |
-| I08 | Consulta y cancelación de órdenes | Contenido procedimental | Ausente: las órdenes se ejecutan al instante y no hay lista de órdenes abiertas ([Movimientos.tsx](simulador/src/pantallas/Movimientos.tsx) es una bitácora) | **Resuelta:** se construye en el entorno |
-| I09 | Revisar el estado de una orden antes de recargarla | Criterio de uso | Ausente | **Resuelta:** se cubre con I08 |
+| I08 | Consulta y cancelación de órdenes | Contenido procedimental | Ausente: las órdenes se ejecutan al instante y no hay lista de órdenes abiertas ([Movimientos.tsx](simulador/src/pantallas/Movimientos.tsx) es una bitácora) | **Resuelta (revisada):** se recorta; el plan pasa a "consulta del estado de las operaciones" |
+| I09 | Revisar el estado de una orden antes de recargarla | Criterio de uso | Ausente | **Resuelta (revisada):** se apoya en Movimientos |
 | I10 | "La plataforma nunca pide la clave" | Criterio de uso | Ausente | **Resuelta:** se construye en el entorno |
 
 ### Bloque C: metodología
@@ -176,6 +176,7 @@ Resumen de las orientaciones del curso:
 | 22/11/2026 | I19, I20, I21 | La demo se corre en local con `npm run dev`. Esto asegura la API de reseñas y reduce la dependencia de la conectividad: solo los formularios de Google la necesitan. Tareas de plan B: (1) grabar un video del recorrido guiado; (2) capturas ordenadas del recorrido; (3) la presentación en PDF en pendrive, en la nube y por correo; (4) videos y podcasts ya están en local, en `public/`; (5) capturas de los formularios por si no hay internet; (6) probar a 375 px y en un celular real | **Equipo + entorno** |
 | 22/11/2026 | I16 (revisión) | **Reemplaza la decisión anterior de I16 y la medición del avance de I22.** La encuesta posterior sale del plan. Solo se enlaza la encuesta previa, en su vista para responder (`/viewform`). Se quita del plan "al terminar repetimos la encuesta". La evaluación queda en tres capas: **logro**, con las preguntas de verificación de cada módulo (I12, I13); **satisfacción**, con las estrellas de 1 a 5; y **mejora**, con "¿Qué te costó más?" (I15) | **Plan:** sección 2 (diagnóstico) y sección 5 (retroalimentación). **Entorno:** enlace en [Capacitaciones.tsx](simulador/src/sitio/paginas/Capacitaciones.tsx) |
 | 22/11/2026 | I26 | En la verificación, el reproductor flotante tapaba lo que la guía pedía tocar (el botón "Comprar" del MEP en escritorio; un tercio de la pantalla en celular). Se reemplaza por una **barra fija abajo con espacio reservado**, en celular y en escritorio: una barra compacta (play/pausa, progreso, pestañas Video/Podcast y expandir) que se puede expandir para ver el video. La página reserva la altura del reproductor en cualquiera de sus estados, así que nunca tapa la guía ni ningún botón | **Entorno:** [ReproductorFlotante.tsx](simulador/src/componentes/overlays/ReproductorFlotante.tsx), [reproductorFlotante.ts](simulador/src/estado/reproductorFlotante.ts), estilos y el posicionamiento de la guía |
+| 22/11/2026 | I08, I09 (revisión) | **Reemplaza la decisión anterior de I08 e I09.** Se recorta la cancelación de órdenes para no tocar la lógica de saldos antes de la presentación. En el plan, "consulta y cancelación de órdenes" pasa a "consulta del estado de las operaciones", que Movimientos ya cubre (ahí figuran las órdenes "sin ejecutar"). El criterio "revisar el estado de una orden antes de volver a cargarla" se apoya en Movimientos. La cancelación queda como mejora futura en la mirada crítica | **Plan:** sección 4 (contenidos procedimentales y criterios de uso). **Exposición:** mencionarla como mejora futura |
 | 22/11/2026 | I25 | Para la presentación, el entorno corre solo en local. La publicación en un hosting se menciona oralmente en la clase como el paso para que los participantes accedan | **Exposición:** decirlo antes de que lo pregunten, en "Decisiones tecnológicas y mirada crítica" |
 | 22/11/2026 | I24 | Se agregan las comisiones a los contenidos del plan ("costos de una operación"). En el entorno, la guía de compra señala el desglose de costos que ya muestra el modal de confirmación. Lo respalda la encuesta: las comisiones preocupan al 33,3 % | **Plan:** sección 4. **Entorno:** [itinerarios.ts](simulador/src/guia/itinerarios.ts) (un paso sobre el desglose en [ModalHost.tsx](simulador/src/componentes/overlays/ModalHost.tsx)) |
 

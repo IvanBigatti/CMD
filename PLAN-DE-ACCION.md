@@ -10,7 +10,7 @@ Este plan lleva a la práctica las decisiones de [COHERENCIA-PLAN-ENTORNO.md](CO
 2. **Entorno:** 1.8 enlace a la encuesta previa.
 3. **Entorno:** 3.1 pregunta de verificación → 2.1 página "Antes de empezar" → 2.2 PDF por módulo.
 4. **Entorno:** Fase 5, verificación y revisión independiente.
-5. **Entorno:** 3.3 órdenes pendientes, al final y solo con todo lo anterior verificado (decisión pendiente).
+5. ~~**Entorno:** 3.3 órdenes pendientes~~ Recortado.
 6. **Equipo:** Línea B (documento del plan y presentación), con el prototipo terminado.
 7. **Ambos:** Fase 6, plan B y ensayos.
 
@@ -18,7 +18,7 @@ Este plan lleva a la práctica las decisiones de [COHERENCIA-PLAN-ENTORNO.md](CO
 
 | Ítem | Decisión | Motivo |
 |---|---|---|
-| 3.3 Órdenes pendientes y cancelación (I08, I09) | **A decidir**, va al final | Es el único ítem de esfuerzo L y cambia la lógica del dominio |
+| 3.3 Órdenes pendientes y cancelación (I08, I09) | **Recortado** | Cambia la lógica de saldos; el plan pasa a "consulta del estado de las operaciones" (Movimientos) |
 | 4.2 Volver a renderizar el video de CEDEAR | **Recortado** | El video muestra el camino correcto (la demostración) y la práctica agrega la trampa. Es coherente con la metodología: demostración → práctica |
 | 4.3 Regenerar el podcast de CEDEAR | **Recortado** | El guion no depende del paso nuevo |
 
@@ -37,7 +37,7 @@ Esfuerzo: **S** = menos de una hora · **M** = medio día · **L** = un día o m
 |---|---|---|---|
 | 0.1 | Confirmar la fecha y el horario de la presentación | Equipo | Todo el cronograma |
 | 0.2 | ~~Pasar el enlace del formulario previo~~ Hecho | Equipo | 1.8 |
-| 0.4 | Repartir los roles de la exposición: quién presenta cada uno de los 7 bloques | Equipo | Línea B |
+| 0.4 | Roles en el proyecto: **resuelto**, "los tres (Iván Bigatti, Gabriel Schurrer y Adolfo Pérez) trabajamos en conjunto en todas las tareas". Falta repartir quién presenta cada bloque de la exposición | Equipo | Línea B |
 
 ## Fase 1: Cambios rápidos en el entorno
 
