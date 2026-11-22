@@ -7,7 +7,7 @@ import type { ClaveItinerario } from '../guia/itinerarios'
  * Cómo sumar una imagen (captura de pantalla, infografía, etc.):
  *   1. Copiá el archivo a public/instructivos/ (por ejemplo public/instructivos/comprar.png).
  *   2. Agregá `imagen: { archivo: 'comprar.png', alt: 'Descripción de la imagen' }` en el instructivo.
- * Mientras no haya imagen, se muestra un recuadro "Imagen ilustrativa próximamente".
+ * Si no hay imagen, el instructivo ocupa todo el ancho.
  *
  * Los textos admiten **negrita**.
  */

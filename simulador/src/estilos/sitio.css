@@ -181,12 +181,8 @@
 .instructivo ol li::marker { color: var(--violet); font-weight: 700 }
 .instr-img { margin: 0 }
 .instr-img img { width: 100%; border-radius: 8px; border: 1px solid var(--line); display: block; max-height: 460px; object-fit: contain; background: var(--card2) }
-.instr-vacia {
-  aspect-ratio: 4 / 3; max-height: 300px; width: 100%; border: 2px dashed var(--line2); border-radius: 8px; background: var(--card2);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--tx3); font-size: 1rem; text-align: center; padding: 16px;
-}
-.instr-vacia span:first-child { font-size: 2rem; opacity: .6 }
-.instructivo.plano .instr-vacia { aspect-ratio: auto; min-height: 140px }
+/* Sin imagen, los pasos ocupan todo el ancho */
+.instructivo.sin-imagen { grid-template-columns: minmax(0, 1fr) }
 
 /* ---------- Testimonios y estrellas ---------- */
 .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px }

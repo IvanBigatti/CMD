@@ -1,0 +1,169 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.432
+Hola, te damos la bienvenida a un nuevo episodio de
+
+00:00:03.432 --> 00:00:06.780
+las capacitaciones del simulador de Invertir Online.
+
+00:00:06.780 --> 00:00:09.905
+Hoy vamos a comprar nuestro primer CEDEAR.
+
+00:00:09.905 --> 00:00:13.358
+Vas a entender qué es, cómo se calcula su precio,
+
+00:00:13.358 --> 00:00:16.318
+y qué mirar antes de confirmar una compra.
+
+00:00:17.168 --> 00:00:21.226
+Arranquemos por la pregunta del millón: ¿qué es un CEDEAR?
+
+00:00:21.226 --> 00:00:27.198
+Es un certificado que te permite invertir en una empresa del exterior, como Coca-Cola,
+
+00:00:27.198 --> 00:00:31.226
+Apple o Mercado Libre, desde Argentina y pagando en pesos.
+
+00:00:31.226 --> 00:00:35.546
+No necesitás una cuenta afuera ni comprar dólares antes.
+
+00:00:36.396 --> 00:00:41.500
+En el simulador ya tenés novecientos mil pesos acreditados para practicar.
+
+00:00:41.500 --> 00:00:47.261
+El primer paso es ir a Cotizaciones, que es la lista de todo lo que se puede comprar.
+
+00:00:47.261 --> 00:00:53.062
+Ahí elegís la pestaña de CEDEARs y vas a ver muchas empresas.
+
+00:00:53.062 --> 00:00:58.320
+Para esta práctica elegimos Coca-Cola, porque suele ser de las más tranquilas.
+
+00:00:59.176 --> 00:01:05.391
+Al entrar a la ficha de Coca-Cola aparece el concepto más importante de este episodio:
+
+00:01:05.391 --> 00:01:08.872
+el ratio. Un CEDEAR no es una acción entera.
+
+00:01:08.872 --> 00:01:15.367
+En el caso de Coca-Cola, hacen falta cinco CEDEARs para equivaler a una acción.
+
+00:01:15.367 --> 00:01:20.722
+Por eso el precio en pesos se calcula así: tomás el precio de la acción en dólares,
+
+00:01:20.722 --> 00:01:24.850
+lo dividís por el ratio, y lo multiplicás por el tipo de cambio.
+
+00:01:24.850 --> 00:01:30.695
+No hace falta que hagas la cuenta, pero sí entender que el precio depende de dos cosas:
+
+00:01:30.695 --> 00:01:32.106
+la acción y el dólar.
+
+00:01:32.972 --> 00:01:37.261
+En la misma ficha vas a ver algo que se llama caja de puntas.
+
+00:01:37.261 --> 00:01:41.497
+Muestra dos precios: a cuánto están dispuestos a comprar los demás,
+
+00:01:41.497 --> 00:01:43.837
+y a cuánto están dispuestos a vender.
+
+00:01:43.837 --> 00:01:47.831
+Si comprás a precio de mercado, vas a pagar el precio de venta,
+
+00:01:47.831 --> 00:01:51.636
+que suele ser un poco más alto que el último precio operado.
+
+00:01:51.636 --> 00:01:55.182
+No es un error: así funciona el mercado.
+
+00:01:56.040 --> 00:01:59.038
+Ahora sí, a la orden de compra.
+
+00:01:59.038 --> 00:02:04.575
+El formulario tiene seis datos: el mercado, el plazo, el símbolo de la empresa,
+
+00:02:04.575 --> 00:02:09.201
+cuánto querés comprar, a qué precio, y hasta cuándo vale la orden.
+
+00:02:10.060 --> 00:02:13.112
+Para la cantidad tenés dos opciones.
+
+00:02:13.112 --> 00:02:19.707
+Podés pedir una cantidad de CEDEARs, por ejemplo diez, o podés poner un monto en pesos,
+
+00:02:19.707 --> 00:02:21.753
+por ejemplo doscientos mil.
+
+00:02:21.753 --> 00:02:28.737
+Si usás un monto, el sistema calcula cuántos CEDEARs entran y redondea para abajo.
+
+00:02:29.600 --> 00:02:32.543
+Para el precio también hay dos caminos.
+
+00:02:32.543 --> 00:02:38.168
+A mercado, la orden se ejecuta en el momento, al mejor precio disponible.
+
+00:02:38.168 --> 00:02:43.821
+Con límite, ponés vos el precio máximo que estás dispuesto a pagar, y esperás.
+
+00:02:43.821 --> 00:02:49.582
+Ojo: con límite, la orden puede no ejecutarse nunca si el precio no llega.
+
+00:02:50.436 --> 00:02:53.950
+Antes de enviar, mirá tu dinero disponible.
+
+00:02:53.950 --> 00:02:59.191
+Cambia según el plazo: en contado inmediato puede ser menor que a veinticuatro horas,
+
+00:02:59.191 --> 00:03:02.890
+porque la plata de una venta reciente todavía no se liquidó.
+
+00:03:03.760 --> 00:03:07.315
+Cuando enviás la orden, todavía no se ejecuta.
+
+00:03:07.315 --> 00:03:13.646
+Primero aparece un resumen con los costos: la comisión, los derechos de mercado y el IVA.
+
+00:03:13.646 --> 00:03:19.312
+Este es el momento de mirarlos con atención, porque es lo que realmente vas a pagar.
+
+00:03:19.312 --> 00:03:23.687
+Recién cuando confirmás, la orden sale al mercado.
+
+00:03:24.548 --> 00:03:29.679
+Después de la compra vas a ver el boleto, que es el comprobante de la operación,
+
+00:03:29.679 --> 00:03:32.451
+con el costo total en plata y en porcentaje.
+
+00:03:32.451 --> 00:03:36.943
+Y en Portafolio vas a encontrar tu inversión con el precio de compra,
+
+00:03:36.943 --> 00:03:39.027
+el precio actual y el resultado.
+
+00:03:39.027 --> 00:03:42.843
+Probá cambiar la moneda del portafolio entre pesos y dólares:
+
+00:03:42.843 --> 00:03:47.097
+vas a ver que la misma inversión rinde distinto según cómo la midas.
+
+00:03:47.952 --> 00:03:49.779
+Repasemos.
+
+00:03:49.779 --> 00:03:54.781
+Un CEDEAR es una fracción de una acción del exterior que comprás en pesos.
+
+00:03:54.781 --> 00:03:59.007
+Su precio depende de la acción, del ratio y del dólar.
+
+00:03:59.007 --> 00:04:02.866
+Y antes de confirmar, siempre mirá los costos.
+
+00:04:03.724 --> 00:04:08.284
+Ahora te toca practicar en el simulador, con la guía paso a paso.
+
+00:04:08.284 --> 00:04:11.912
+Gracias por escuchar, y hasta el próximo episodio.

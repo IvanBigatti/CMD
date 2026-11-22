@@ -1,0 +1,223 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:05.598
+Hola, te damos la bienvenida a las capacitaciones del simulador de Invertir Online.
+
+00:00:05.598 --> 00:00:08.433
+Este es el episodio más completo de la serie:
+
+00:00:08.433 --> 00:00:11.457
+vamos a recorrer una inversión de punta a punta,
+
+00:00:11.457 --> 00:00:14.796
+desde que entra la plata hasta que vuelve a tu banco.
+
+00:00:14.796 --> 00:00:18.804
+Si es tu primera vez, es el mejor lugar para empezar.
+
+00:00:18.804 --> 00:00:24.755
+Son ocho tramos, así que buscá un momento tranquilo y tomate el tiempo que necesites.
+
+00:00:25.616 --> 00:00:28.519
+Primer tramo: ingresar dinero.
+
+00:00:28.519 --> 00:00:33.808
+Tu cuenta de inversión se llama cuenta comitente, y no es una cuenta bancaria:
+
+00:00:33.808 --> 00:00:36.318
+existe para comprar y vender títulos.
+
+00:00:36.318 --> 00:00:37.842
+Para que llegue la plata,
+
+00:00:37.842 --> 00:00:40.769
+hacés una transferencia desde tu banco usando el
+
+00:00:40.769 --> 00:00:43.940
+alias que aparece en la pantalla de ingresar dinero.
+
+00:00:43.940 --> 00:00:48.858
+Hay una regla clave: solo podés transferir desde cuentas a tu nombre.
+
+00:00:48.858 --> 00:00:53.057
+Si probás con la cuenta de otra persona, se rechaza.
+
+00:00:53.057 --> 00:00:58.926
+En el simulador lo vas a ver a propósito, y después vas a elegir tu propia cuenta.
+
+00:00:59.796 --> 00:01:03.201
+Segundo tramo: comprar dólar MEP.
+
+00:01:03.201 --> 00:01:07.346
+Es una forma legal de comprar dólares a través de la bolsa,
+
+00:01:07.346 --> 00:01:09.805
+sin límite de monto y sin trámites.
+
+00:01:09.805 --> 00:01:13.390
+Por dentro, el sistema hace dos operaciones con un bono:
+
+00:01:13.390 --> 00:01:18.001
+compra el bono A L treinta en pesos y lo vende en su versión en dólares,
+
+00:01:18.001 --> 00:01:21.843
+el A L treinta D. Esa diferencia es el precio del dólar MEP.
+
+00:01:21.843 --> 00:01:27.604
+Las dos operaciones se hacen en contado inmediato, por eso los dólares llegan en el día.
+
+00:01:28.480 --> 00:01:31.654
+Tercer tramo: elegir qué comprar.
+
+00:01:31.654 --> 00:01:35.296
+En Cotizaciones está todo lo que se puede comprar.
+
+00:01:35.296 --> 00:01:36.975
+Vamos a elegir un CEDEAR,
+
+00:01:36.975 --> 00:01:42.415
+que es un certificado para invertir en una empresa del exterior pagando en pesos.
+
+00:01:42.415 --> 00:01:44.671
+Elegimos Coca-Cola.
+
+00:01:44.671 --> 00:01:51.396
+En su ficha aparece el ratio: hacen falta cinco CEDEARs para equivaler a una acción.
+
+00:01:51.396 --> 00:01:57.008
+Por eso el precio en pesos depende de dos cosas: el precio de la acción y el dólar.
+
+00:01:57.860 --> 00:02:01.876
+En la ficha también está la caja de puntas, con dos precios:
+
+00:02:01.876 --> 00:02:04.839
+a cuánto compran y a cuánto venden los demás.
+
+00:02:04.839 --> 00:02:08.006
+Si comprás a mercado, pagás el precio de venta,
+
+00:02:08.006 --> 00:02:11.578
+que suele ser un poco más alto que el último operado.
+
+00:02:12.432 --> 00:02:15.539
+Cuarto tramo: la orden de compra.
+
+00:02:15.539 --> 00:02:21.816
+Tiene seis datos: mercado, plazo, símbolo, cantidad, precio y vigencia.
+
+00:02:21.816 --> 00:02:27.346
+La cantidad puede ser un número de CEDEARs o un monto en pesos.
+
+00:02:27.346 --> 00:02:32.373
+El precio puede ser a mercado, que se ejecuta en el momento, o con límite,
+
+00:02:32.373 --> 00:02:36.856
+donde ponés tu precio y esperás, aunque puede no ejecutarse nunca.
+
+00:02:36.856 --> 00:02:42.060
+Antes de enviar, mirá tu dinero disponible, que cambia según el plazo.
+
+00:02:42.916 --> 00:02:49.039
+Al enviar la orden aparece el detalle de costos: comisión, derechos de mercado e IVA.
+
+00:02:49.039 --> 00:02:53.577
+Es lo que vas a pagar de verdad, así que miralo con atención.
+
+00:02:53.577 --> 00:02:57.952
+Recién cuando confirmás, la orden sale al mercado.
+
+00:02:58.808 --> 00:03:01.847
+Quinto tramo: seguir tu inversión.
+
+00:03:01.847 --> 00:03:07.512
+Después de comprar, vas a ver el boleto, que es el comprobante con el costo total.
+
+00:03:07.512 --> 00:03:13.382
+En Portafolio está tu inversión, con el precio de compra, el actual y el resultado.
+
+00:03:13.382 --> 00:03:16.277
+Probá cambiar la moneda entre pesos y dólares:
+
+00:03:16.277 --> 00:03:19.676
+la misma inversión rinde distinto según cómo la midas,
+
+00:03:19.676 --> 00:03:23.830
+porque un CEDEAR depende de la acción y del dólar al mismo tiempo.
+
+00:03:24.684 --> 00:03:27.164
+Sexto tramo: vender.
+
+00:03:27.164 --> 00:03:31.780
+La venta tiene su propia pantalla, y el símbolo se elige de una lista,
+
+00:03:31.780 --> 00:03:34.285
+porque solo podés vender lo que tenés.
+
+00:03:34.285 --> 00:03:40.494
+Prestá atención al plazo: el normal es de veinticuatro horas, que se llama te más uno.
+
+00:03:40.494 --> 00:03:45.712
+La venta se hace hoy, pero el dinero se acredita al día hábil siguiente.
+
+00:03:46.576 --> 00:03:49.519
+Séptimo tramo: la liquidación.
+
+00:03:49.519 --> 00:03:54.766
+Después de vender, en el detalle de saldos vas a ver el dinero como a liquidar,
+
+00:03:54.766 --> 00:03:56.028
+no como disponible.
+
+00:03:56.028 --> 00:04:00.036
+Si intentás retirarlo, el sistema no te deja.
+
+00:04:00.036 --> 00:04:04.004
+Es la parte que más confunde, y por eso la vas a probar:
+
+00:04:04.004 --> 00:04:06.625
+vender y cobrar no son el mismo acto.
+
+00:04:06.625 --> 00:04:11.964
+En el simulador, con el botón de la franja amarilla, hacés pasar un día hábil,
+
+00:04:11.964 --> 00:04:14.017
+y el dinero pasa a disponible.
+
+00:04:14.876 --> 00:04:17.466
+Octavo tramo: retirar.
+
+00:04:17.466 --> 00:04:22.752
+Con el dinero disponible, confirmás el retiro y la plata vuelve a tu banco.
+
+00:04:22.752 --> 00:04:26.634
+El ciclo termina donde empezó: con la plata disponible,
+
+00:04:26.634 --> 00:04:29.599
+pero ahora sabiendo qué pasa en cada paso.
+
+00:04:30.456 --> 00:04:33.332
+Repasemos el recorrido completo.
+
+00:04:33.332 --> 00:04:36.878
+Ingresaste dinero desde una cuenta a tu nombre.
+
+00:04:36.878 --> 00:04:41.620
+Compraste dólar MEP, que son dos operaciones con bonos.
+
+00:04:41.620 --> 00:04:46.796
+Invertiste en un CEDEAR mirando el ratio, las puntas y los costos.
+
+00:04:46.796 --> 00:04:49.880
+Seguiste tu inversión en el portafolio.
+
+00:04:49.880 --> 00:04:54.935
+Vendiste, esperaste la liquidación de un día hábil y retiraste.
+
+00:04:55.804 --> 00:04:59.875
+Ahora te toca practicar el ciclo completo en el simulador.
+
+00:04:59.875 --> 00:05:05.283
+Podés hacerlo en varias sesiones: la guía te espera en el paso donde la dejaste.
+
+00:05:05.283 --> 00:05:09.821
+Gracias por escuchar, y mucha suerte con tus primeras inversiones.
