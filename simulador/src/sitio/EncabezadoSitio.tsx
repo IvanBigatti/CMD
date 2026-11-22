@@ -3,9 +3,9 @@ import { href, useRuta, type Ruta } from './ruta'
 
 const ENLACES: { ruta: string; texto: string; activo: (r: Ruta) => boolean }[] = [
   { ruta: '/', texto: 'Inicio', activo: (r) => r.pagina === 'inicio' },
-  { ruta: '/capacitaciones', texto: 'Capacitaciones', activo: (r) => r.pagina === 'capacitaciones' || r.pagina === 'actividad' || r.pagina === 'evaluacion' },
+  { ruta: '/capacitaciones', texto: 'Capacitaciones', activo: (r) => r.pagina === 'capacitaciones' || r.pagina === 'actividad' || r.pagina === 'antesDeEmpezar' },
   { ruta: '/simulador', texto: 'Simulador', activo: (r) => r.pagina === 'simulador' },
-  { ruta: '/nosotros', texto: 'Sobre nosotros', activo: (r) => r.pagina === 'nosotros' || r.pagina === 'plan' },
+  { ruta: '/nosotros', texto: 'Sobre nosotros', activo: (r) => r.pagina === 'nosotros' },
 ]
 
 /** Encabezado del sitio: marca y menú principal (hamburguesa en celular) */
@@ -20,9 +20,7 @@ export function EncabezadoSitio() {
         <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" width={38} height={35} />
         <span>
           <b>Simulador</b>
-          {ruta.pagina === 'simulador'
-            ? <small className="modo">● Modo simulador</small>
-            : <small>InvertirOnline · Capacitación</small>}
+          <small>InvertirOnline · Capacitación</small>
         </span>
       </a>
       <button

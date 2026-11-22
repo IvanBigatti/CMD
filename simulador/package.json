@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "videos": "node scripts/copiar-videos.mjs",
+    "guias": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/generar-guias.mjs",
     "podcasts": ".venv-podcasts/bin/python scripts/generar-podcasts.py"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.88.0",
+    "pdfkit": "^0.21.0",
     "typescript": "~6.0.3",
     "vite": "^8.3.4"
   }

@@ -39,45 +39,111 @@
 }
 .tour-tip .tapme::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #8B6BFF; animation: pulse 1.4s infinite }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1) } 50% { opacity: .3; transform: scale(.7) } }
+.tour-pregunta { display: flex; flex-direction: column; gap: 8px }
+.tour-pregunta .enun { color: var(--tx); font-weight: 600 }
+.tour-pregunta .opciones { display: flex; flex-direction: column; gap: 6px }
+.tour-pregunta .opcion { text-align: left; border: 1px solid var(--line2); border-radius: 6px; padding: 8px 11px; font-size: .86rem; color: var(--tx); background: #fff }
+.tour-pregunta .opcion:hover { border-color: var(--violet) }
+.tour-pregunta .opcion.ok { border-color: #12885E; background: #E9F7F1 }
+.tour-pregunta .opcion.mal { border-color: #C43A4E; background: #FDECEF }
+.tour-pregunta .feedback { font-size: .84rem; line-height: 1.45; min-height: 0 }
+.tour-pregunta .feedback .ok { color: #12885E; font-weight: 600 }
+.tour-pregunta .feedback .mal { color: #C43A4E }
+.mini:disabled { opacity: .42; cursor: not-allowed }
 .mini { border: 1px solid var(--line2); border-radius: 5px; padding: 5px 11px; font-size: .83rem; font-weight: 500; color: var(--tx2) }
 .mini:hover { border-color: var(--violet); color: var(--violet) }
 .mini.pri { background: var(--violet); border-color: var(--violet); color: #fff } .mini.pri:hover { background: var(--violet-dk) }
 
-/* Video flotante: queda sobre el oscurecido de la guía (70) pero debajo del globo (72) y de los modales (90) */
-.vf {
-  position: fixed; left: 16px; bottom: 16px; z-index: 71; width: min(340px, calc(100vw - 32px)); background: var(--indigo);
-  border-radius: 10px; overflow: hidden; box-shadow: var(--shadow);
+/* Reproductor anclado abajo: reserva su alto (--alto-reproductor en <body>). Queda sobre el oscurecido de la guía (70), debajo del globo (72) y de los modales (90) */
+.rp {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 71; background: var(--indigo); color: #fff;
+  display: grid; grid-template-columns: minmax(0, 1fr); box-shadow: 0 -8px 24px -12px rgba(6,8,63,.55); padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-.vf-barra { display: flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; color: #fff }
-.vf-titulo { flex: 1; min-width: 0; font-size: .88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
-.vf-barra button {
-  width: 44px; height: 36px; border-radius: 6px; border: 0; background: transparent; color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer;
+.rp-video { background: var(--indigo); display: flex; justify-content: center }
+.rp video { display: block; background: #000; cursor: pointer; object-fit: contain }
+.rp[data-modo="video"]:not([data-expandido="true"]) { grid-template-columns: auto minmax(0, 1fr); align-items: center }
+.rp[data-modo="video"]:not([data-expandido="true"]) .rp-video { padding-left: 12px }
+.rp[data-modo="video"]:not([data-expandido="true"]) video { width: 96px; height: 54px; border-radius: 4px; object-fit: cover; cursor: zoom-in; outline: 1px solid rgba(255,255,255,.25) }
+/* Desplegado: solo el recuadro del video (a la izquierda) y la barra son opacos; a la derecha se sigue viendo y usando el simulador */
+.rp[data-expandido="true"], .rp[data-modo="podcast"] { background: transparent; box-shadow: none; pointer-events: none }
+.rp[data-expandido="true"] > *, .rp[data-modo="podcast"] > * { pointer-events: auto }
+.rp[data-expandido="true"] .rp-video {
+  justify-self: start; flex-direction: column; align-items: stretch; padding: 0 12px;
+  border-top-right-radius: 12px; box-shadow: 0 -8px 24px -12px rgba(6,8,63,.55);
 }
-.vf-barra button:hover { background: rgba(255,255,255,.16) }
-.vf video { width: 100%; aspect-ratio: 16 / 9; background: #000; display: block }
-.vf-pastilla {
-  position: fixed; left: 16px; bottom: 16px; z-index: 71; min-height: 44px; padding: 0 18px; border-radius: 99px; border: 0;
-  background: var(--violet); color: #fff; font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; box-shadow: var(--shadow);
-  display: flex; align-items: center; gap: 8px;
+.rp-barra { background: var(--indigo) }
+.rp[data-expandido="true"] .rp-barra, .rp[data-modo="podcast"] .rp-barra { box-shadow: 0 -8px 24px -12px rgba(6,8,63,.55) }
+.rp[data-expandido="true"] video { height: min(var(--alto-video, 35vh), calc(100vh - 420px)); aspect-ratio: 16 / 9; max-width: 100% }
+/* Subtítulos del podcast: franja de ancho completo sobre la barra, con el texto centrado en la pantalla.
+   La primera columna (vacía) equilibra la de los botones A−/A+, así el texto queda centrado de verdad */
+.rp-subs {
+  justify-self: stretch; box-sizing: border-box; background: var(--indigo);
+  display: grid; grid-template-columns: 112px minmax(0, 1fr) 112px; align-items: center; gap: 12px; padding: 6px 16px;
+  box-shadow: 0 -8px 24px -12px rgba(6,8,63,.55);
 }
-.vf-pastilla:hover { background: var(--violet-deep) }
-.vf-modos { display: flex; gap: 4px; padding: 0 6px 6px }
-.vf-modos button, .vf-voces button {
-  flex: 1; min-height: 40px; border-radius: 6px; border: 1px solid rgba(255,255,255,.3); background: transparent; color: #fff;
-  font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer;
+.rp-subs::before { content: '' }
+.rp-subs-texto {
+  margin: 0 auto; max-width: 60ch; font-size: var(--letra-subs, 26px); font-weight: 500; color: #fff;
+  min-height: calc(2 * 1.3em); line-height: 1.3; display: flex; align-items: center; justify-content: center; text-align: center; text-wrap: balance;
 }
-.vf-modos button:hover, .vf-voces button:hover { background: rgba(255,255,255,.12) }
-.vf-modos button[aria-pressed="true"], .vf-voces button[aria-checked="true"] { background: #fff; border-color: #fff; color: var(--indigo) }
-.vf-podcast { display: flex; flex-direction: column; gap: 8px; padding: 4px 10px 12px }
-.vf-voces { display: flex; align-items: center; gap: 6px; color: #DAD3F2; font-size: .9rem }
-.vf-voces button { flex: none; padding: 0 14px }
-.vf-podcast audio { width: 100%; display: block }
-
-/* Resultado del desafío práctico */
-.criterios { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px }
-.criterios li { display: flex; gap: 10px; align-items: flex-start; font-size: .98rem; line-height: 1.4; border-radius: 7px; padding: 9px 12px }
-.criterios li.ok { background: var(--upsoft); color: #0B6B4D }
-.criterios li.falta { background: var(--warnsoft); color: var(--warn) }
-.crit-marca { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .85rem; color: #fff }
-.criterios li.ok .crit-marca { background: var(--up) }
-.criterios li.falta .crit-marca { background: var(--train); color: #20160A }
+.rp-subs-letra { justify-self: end; display: flex; gap: 6px }
+.rp-subs-letra button { border: 1px solid rgba(255,255,255,.3) !important; font-weight: 700; font-size: 1rem; min-height: 44px; min-width: 52px }
+.rp-subs-letra button:disabled { opacity: .35; cursor: default; background: transparent }
+@media (max-width: 640px) {
+  .rp-subs { grid-template-columns: minmax(0, 1fr) auto; padding: 10px 8px 6px 12px }
+  .rp-subs::before { display: none }
+  .rp-subs-texto { font-size: min(var(--letra-subs, 26px), 5.4vw) }
+}
+/* Manija para cambiar el alto del video desplegado */
+.rp-manija { height: 16px; display: flex; align-items: center; justify-content: center; cursor: ns-resize; touch-action: none; background: var(--indigo) }
+.rp-manija span { width: 56px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.45); transition: background .15s }
+.rp-manija:hover span, .rp-manija:focus-visible span, body.rp-arrastrando .rp-manija span { background: #fff }
+.rp-manija:focus-visible { outline: 2px solid #fff; outline-offset: -2px }
+body.rp-arrastrando { user-select: none; cursor: ns-resize }
+body.rp-arrastrando .rp video { pointer-events: none }
+@media (max-width: 640px) { .rp-manija { display: none } }
+/* Barra en tres zonas: título a la izquierda, play y progreso al centro, controles contra el borde derecho */
+.rp-barra { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 2.4fr) minmax(max-content, 1fr); align-items: center; gap: 20px; padding: 8px 16px; min-width: 0; min-height: 72px }
+.rp-titulo { min-width: 0; font-size: .92rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.rp-centro { display: flex; align-items: center; gap: 14px; min-width: 0 }
+.rp-prog { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px }
+.rp-tiempo { font-family: var(--fmo); font-size: .78rem; color: #DAD3F2; font-variant-numeric: tabular-nums; min-width: 2.6em }
+.rp-prog .rp-tiempo:last-child { text-align: left }
+.rp-prog input[type="range"] {
+  flex: 1; min-width: 0; height: 44px; margin: 0; cursor: pointer; background: transparent; accent-color: #8B6BFF; appearance: none; -webkit-appearance: none;
+}
+.rp-prog input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, #8B6BFF var(--lleno), rgba(255,255,255,.28) var(--lleno)) }
+.rp-prog input[type="range"]::-moz-range-track { height: 6px; border-radius: 3px; background: rgba(255,255,255,.28) }
+.rp-prog input[type="range"]::-moz-range-progress { height: 6px; border-radius: 3px; background: #8B6BFF }
+.rp-prog input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; margin-top: -5px; border-radius: 50%; background: #fff; border: 0 }
+.rp-prog input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 0 }
+.rp-prog input[type="range"]:disabled { opacity: .5; cursor: default }
+.rp-ctl { display: flex; align-items: center; gap: 8px; justify-self: end }
+.rp button { font: inherit; color: #fff; cursor: pointer; min-height: 44px; min-width: 44px; border-radius: 8px; border: 0; background: transparent }
+.rp button:hover { background: rgba(255,255,255,.14) }
+.rp button:focus-visible, .rp input:focus-visible { outline: 2px solid #fff; outline-offset: 2px }
+.rp-play { flex: none; width: 48px; height: 48px; padding: 0; display: grid; place-items: center; background: #fff !important; color: var(--indigo) !important; border-radius: 50% !important; transition: transform .12s }
+.rp-play:hover { transform: scale(1.06) }
+.rp-play svg { display: block }
+.rp-icono { font-size: 1.5rem; line-height: 1 }
+.rp-accion { border: 1px solid rgba(255,255,255,.3) !important; padding: 0 12px; font-size: .9rem; font-weight: 600; white-space: nowrap }
+.rp-accion span[aria-hidden="true"]:first-child { font-size: 1.1rem }
+.rp-grupo { display: flex; gap: 4px }
+.rp-grupo button { border: 1px solid rgba(255,255,255,.3); padding: 0 12px; font-size: .9rem; font-weight: 600 }
+.rp-grupo button[aria-pressed="true"], .rp-grupo button[aria-checked="true"] { background: #fff; border-color: #fff; color: var(--indigo) }
+@media (max-width: 640px) {
+  .rp-barra { display: flex; flex-wrap: wrap; gap: 0; padding: 0 6px 6px 8px; min-height: 0 }
+  .rp-centro { flex: 1 1 100%; order: -1; gap: 8px; padding-top: 6px }
+  .rp-play { width: 44px; height: 44px }
+  .rp-titulo { display: none }
+  .rp-prog { gap: 8px }
+  .rp-ctl { flex: 1 1 100%; gap: 4px }
+  .rp-txt { display: none }
+  .rp[data-expandido="true"] .rp-video { display: block; justify-self: stretch; padding: 0; border-radius: 0 }
+  .rp[data-expandido="true"] video { width: 100%; height: auto; max-height: 40vh }
+  .rp-grupo button { padding: 0 }
+  .rp-grupo[role="group"] button { width: 44px }
+  .rp-grupo[role="radiogroup"] button { padding: 0 10px }
+  .rp[data-modo="video"]:not([data-expandido="true"]) .rp-video { padding-left: 8px }
+}
+@media (min-width: 641px) and (max-width: 1040px) { .rp-titulo { display: none } .rp-barra { grid-template-columns: minmax(0, 1fr) max-content } }

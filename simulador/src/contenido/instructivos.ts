@@ -7,7 +7,7 @@ import type { ClaveItinerario } from '../guia/itinerarios'
  * Cómo sumar una imagen (captura de pantalla, infografía, etc.):
  *   1. Copiá el archivo a public/instructivos/ (por ejemplo public/instructivos/comprar.png).
  *   2. Agregá `imagen: { archivo: 'comprar.png', alt: 'Descripción de la imagen' }` en el instructivo.
- * Mientras no haya imagen, se muestra un recuadro "Imagen ilustrativa próximamente".
+ * Si no hay imagen, el instructivo ocupa todo el ancho.
  *
  * Los textos admiten **negrita**.
  */
@@ -55,10 +55,11 @@ export const INSTRUCTIVOS_ACTIVIDAD: Record<ClaveItinerario, ContenidoInstructiv
     ],
   },
   cedear: {
-    titulo: 'Comprar un CEDEAR, paso a paso',
+    titulo: 'Comprar una acción o un CEDEAR, paso a paso',
     pasos: [
       'Entrá a **Cotizaciones** y elegí la pestaña **Cedears**.',
       'Tocá una especie (por ejemplo AAPL) para abrir su ficha y ver precio, ratio y variación.',
+      'Fijate el final del símbolo: la misma empresa puede tener un símbolo para pesos (KO) y otro para dólares, que termina en **D** (KOD). Para pagar con pesos, elegí el que no termina en D.',
       'Tocá **Comprar**. Elegí cantidad o monto, modalidad (a mercado o precio límite) y plazo.',
       'Revisá el detalle de costos (comisión, derechos de mercado e IVA) y confirmá.',
       'Mirá el boleto y después tu **Portafolio**: ahí ves la tenencia y el resultado.',

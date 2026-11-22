@@ -22,7 +22,7 @@ function InfoSimbolo() {
           : 'Escribí el símbolo de la especie. Si no lo sabés, buscala en Cotizaciones y entrá desde ahí.'}
       </div>
     )
-  const extra = i.tipo === 'cedear' ? ` · ratio ${i.ratio}:1`
+  const extra = i.tipo === 'cedear' ? ` · ratio ${i.ratio}:1${i.moneda === 'USD' ? ' · cotiza en dólares (se paga con saldo en US$)' : ''}`
     : i.tipo === 'on' ? ` · cotiza cada 100 VN · lámina mínima ${nf(i.laminaMinima, 0)} VN` : ''
   return (
     <div className="siminfo">
@@ -124,7 +124,7 @@ export function Comprar() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 790 }}>{aviso && <AvisoCaja aviso={aviso} style={{ marginTop: 14 }} />}</div>
+      <div style={{ maxWidth: 790 }} data-tour="aviso-compra">{aviso && <AvisoCaja aviso={aviso} style={{ marginTop: 14 }} />}</div>
       <div className="submitrow">
         <button type="button" className="btn-s" style={{ padding: '11px 48px' }} data-tour="btn-comprar-submit" onClick={() => enviarOrden('compra')}>Comprar</button>
       </div>

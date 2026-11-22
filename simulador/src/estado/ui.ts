@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import type { Aviso, Pantalla } from '../dominio/tipos'
-import type { ClaveEvaluable } from '../contenido/evaluaciones'
 import type { ClaveItinerario } from '../guia/itinerarios'
 import { PROXIMAMENTE, type TemaProximamente } from '../mocks/proximamente'
 
@@ -20,18 +19,11 @@ export interface ModalMensaje {
   alCerrar?: AlCerrar
 }
 
-/** Un criterio del desafío práctico, ya revisado contra la cuenta simulada */
-export interface ResultadoCriterio {
-  texto: string
-  cumple: boolean
-}
-
 export type Modal =
   | ModalMensaje
   | { tipo: 'confirmarOrden' }
   | { tipo: 'testPerfil'; pregunta: number; suma: number }
   | { tipo: 'resena'; clave: ClaveItinerario }
-  | { tipo: 'desafio'; clave: ClaveEvaluable; criterios: ResultadoCriterio[] }
 
 interface DatosMensaje {
   titulo: string

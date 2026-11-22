@@ -8,7 +8,6 @@ import { abrirSelectorItinerarios } from '../../guia/estadoGuia'
 import { PERFILES, TEST_PERFIL } from '../../mocks/perfiles'
 import { AvisoCaja } from '../ui/AvisoCaja'
 import { TextoRico } from '../ui/TextoRico'
-import { ModalDesafio } from './ModalDesafio'
 import { ModalResena } from './ModalResena'
 
 function Hoja({ eyebrow, titulo, boton, alTocarBoton, children }: {
@@ -111,6 +110,5 @@ export function ModalHost() {
     case 'confirmarOrden': return <ConfirmarOrden />
     case 'testPerfil': return <TestPerfil key={modal.pregunta} pregunta={modal.pregunta} suma={modal.suma} />
     case 'resena': return <ModalResena clave={modal.clave} />
-    case 'desafio': return <ModalDesafio clave={modal.clave} criterios={modal.criterios} />
   }
 }

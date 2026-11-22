@@ -1,6 +1,16 @@
 import { precio } from '../dominio/mercado'
 import type { Pantalla } from '../dominio/tipos'
-import { agregarMovimiento, type DatosSimulador } from '../estado/simulador'
+import { agregarMovimiento, useSimulador, type DatosSimulador } from '../estado/simulador'
+
+/** Pregunta de opción múltiple para verificar lo aprendido */
+export interface PreguntaGuia {
+  enunciado: string
+  opciones: string[]
+  /** Índice (0-based) de la opción correcta */
+  correcta: number
+  /** Se muestra al elegir mal: dice DÓNDE mirar en pantalla */
+  explicacion: string
+}
 
 export interface PasoGuia {
   titulo: string
@@ -8,8 +18,12 @@ export interface PasoGuia {
   /** Valor del atributo data-tour del elemento a resaltar (null = globo centrado) */
   objetivo: string | null
   pantalla: Pantalla
-  /** 'siguiente': se avanza con el botón · 'clic': hay que hacer clic en el elemento resaltado */
-  accion: 'siguiente' | 'clic'
+  /** 'siguiente': se avanza con el botón · 'clic': hay que hacer clic en el elemento resaltado · 'pregunta': no se avanza hasta acertar */
+  accion: 'siguiente' | 'clic' | 'pregunta'
+  /** Solo para accion 'pregunta' */
+  pregunta?: PreguntaGuia
+  /** Se ejecuta al llegar al paso (por ejemplo, para dejar un formulario listo y que el error sea siempre el mismo) */
+  alEntrar?: () => void
 }
 
 export interface Itinerario {
@@ -28,6 +42,9 @@ const info = (titulo: string, cuerpo: string, objetivo: string | null, pantalla:
   ({ titulo, cuerpo, objetivo, pantalla, accion: 'siguiente' })
 const clic = (titulo: string, cuerpo: string, objetivo: string, pantalla: Pantalla): PasoGuia =>
   ({ titulo, cuerpo, objetivo, pantalla, accion: 'clic' })
+
+const pregunta = (titulo: string, pantalla: Pantalla, objetivo: string | null, p: PreguntaGuia): PasoGuia =>
+  ({ titulo, cuerpo: '', objetivo, pantalla, accion: 'pregunta', pregunta: p })
 
 /* ---------- tramos reutilizables ---------- */
 
@@ -50,6 +67,13 @@ const S_MEP = [
 const S_COMPRA = [
   clic('Andá a Cotizaciones', 'En el menú de arriba, hacé clic en “Cotizaciones” para ver qué se puede comprar.', 'nav-cotizaciones', 'inicio'),
   clic('Buscá los CEDEARs', 'Un CEDEAR te deja comprar una empresa extranjera desde acá, en pesos.', 'tab-cedears', 'mercado'),
+  clic('Probá algo que va a fallar', 'Querés comprar Coca-Cola pagando en pesos. Hacé clic en KOD, que parece la indicada. Quiero que veas qué pasa.', 'inst-KOD', 'mercado'),
+  clic('Comprar', 'Hacé clic en Comprar para ir a la pantalla de orden.', 'btn-comprar', 'activo'),
+  { ...clic('Enviá la orden', 'Dejamos cargadas 100 unidades. Hacé clic en Comprar.', 'btn-comprar-submit', 'comprar'),
+    // También carga el símbolo para que el error inducido ocurra aunque se haya saltado un paso anterior
+    alEntrar: () => useSimulador.getState().actualizarCompra({ simbolo: 'KOD', cantidad: '100' }) },
+  info('Mismo CEDEAR, otro símbolo', 'KO y KOD son la misma empresa, pero cotizan en monedas distintas. La D del final significa dólares: KOD se paga con saldo en dólares y vos tenés pesos. Para pagar en pesos hay que elegir KO.', 'aviso-compra', 'comprar'),
+  clic('Volvé a Cotizaciones', 'Vamos a buscar el símbolo correcto.', 'nav-cotizaciones', 'comprar'),
   clic('Elegí Coca-Cola', 'Vamos con KO, que es la más tranquila del grupo.', 'inst-KO', 'mercado'),
   info('El ratio es la clave', 'Un CEDEAR no es una acción entera: acá hacen falta 5 para equivaler a una acción de Coca-Cola. El precio en pesos sale de dividir el precio en dólares por el ratio y multiplicar por el tipo de cambio.', 'caja-puntas', 'activo'),
   info('Hay dos precios, no uno', 'La caja de puntas muestra a cuánto compran y a cuánto venden los demás. Si comprás a mercado vas a pagar la punta vendedora, que es un poco más cara que el último operado.', 'caja-puntas', 'activo'),
@@ -78,6 +102,7 @@ const S_ON = [
   clic('Probá que falle', 'Dejá 550 VN, que no es múltiplo de la lámina de 100 VN, y mandá la orden. Quiero que veas el rechazo.', 'btn-comprar-submit', 'comprar'),
   info('Ahí está', 'Corregí la cantidad a un múltiplo válido — 1.000 VN sirve — y volvé a mandarla.', 'campo-cantidad', 'comprar'),
   clic('Mandala de nuevo', 'Con la cantidad corregida.', 'btn-comprar-submit', 'comprar'),
+  info('Mirá cuánto pagás de más', 'Además del precio de la obligación negociable, se suman la comisión, los derechos de mercado y el IVA. El total a pagar es lo que se te va a debitar de verdad.', 'costos-confirmacion', 'comprar'),
   clic('Confirmá', 'Revisá el detalle y confirmá.', 'confirmar-orden', 'comprar'),
   info('Ya sos acreedor de YPF', 'Desde ahora te van a pagar intereses dos veces por año, en dólares, hasta el vencimiento.', 'boleto-detalle', 'boleto'),
 ]
@@ -116,12 +141,22 @@ export const ITINERARIOS = {
     pasos: [
       info('Vas a hacer entrar plata y comprar dólares', 'Dos cosas: transferir desde tu banco a la cuenta de inversión, y convertir parte de esos pesos a dólar MEP. Te voy indicando dónde hacer clic.', null, 'inicio'),
       ...S_INGRESO, ...S_MEP,
+      pregunta('Verificá lo que aprendiste', 'inicio', 'detalle-saldos', {
+        enunciado: '¿Dónde quedaron tus dólares y podés usarlos ya?',
+        opciones: [
+          'Quedaron “a liquidar” y están disponibles recién mañana',
+          'Están disponibles en tu saldo en dólares y los podés usar hoy',
+          'No se acreditan hasta que vendas el bono AL30D',
+        ],
+        correcta: 1,
+        explicacion: 'Mirá el “Detalle de saldos” del estado de cuenta: los dólares figuran como disponibles. Las dos patas del MEP van en Contado Inmediato, por eso no hay que esperar.',
+      }),
       info('Listo', 'Tenés pesos y dólares en tu cuenta de inversión. El dólar MEP no fue una compra de moneda: fueron dos operaciones de bonos hechas por vos.', null, 'inicio'),
     ],
   },
   cedear: {
-    nombre: 'Comprar mi primer CEDEAR',
-    descripcion: 'Recorrés el mercado, leés una ficha, entendés el ratio de conversión y ponés una orden de compra con sus costos.',
+    nombre: 'Comprar mi primera acción o CEDEAR',
+    descripcion: 'Recorrés el mercado, leés una ficha, entendés el ratio de conversión, aprendés a no equivocar el símbolo y ponés una orden de compra con sus costos.',
     modulos: 'M4 · M5', duracion: '7 min',
     preparar: (s) => {
       s.saldo.ARS.disponible = 900000
@@ -130,6 +165,12 @@ export const ITINERARIOS = {
     pasos: [
       info('Ya tenés pesos en la cuenta', 'Para esta práctica dejamos $900.000 acreditados. Vamos a comprar una empresa extranjera desde Argentina, en pesos.', null, 'inicio'),
       ...S_COMPRA, ...S_TENENCIA,
+      pregunta('Verificá lo que aprendiste', 'portafolio', null, {
+        enunciado: 'Compraste KO pagando en pesos. Si quisieras comprar Coca-Cola pagando en dólares, ¿qué símbolo elegirías?',
+        opciones: ['KO', 'KOD', 'KOC'],
+        correcta: 1,
+        explicacion: 'Fijate en Cotizaciones, pestaña CEDEARs: la D del final significa dólares (MEP). KOD es la misma empresa cotizando en otra moneda. KOC no existe.',
+      }),
       info('Eso es un CEDEAR', 'Compraste una fracción de una acción del exterior, pagando en pesos. Tu resultado ahora depende de la acción y del dólar al mismo tiempo.', null, 'portafolio'),
     ],
   },
@@ -146,6 +187,12 @@ export const ITINERARIOS = {
     pasos: [
       info('Tenés dólares para invertir', 'Dejamos US$ 3.000 en la cuenta. Vamos a prestárselos a una empresa a cambio de un interés fijo.', null, 'inicio'),
       ...S_ON,
+      pregunta('Verificá lo que aprendiste', 'inicio', null, {
+        enunciado: '¿Cuál es la lámina mínima de la obligación negociable que acabás de comprar (YMCJO)?',
+        opciones: ['10 VN', '100 VN', '1.000 VN'],
+        correcta: 1,
+        explicacion: 'Está en la ficha del activo, en la fila “Lámina mínima”, y también debajo del campo Símbolo en la pantalla de compra. Para YMCJO son 100 VN; 1.000 VN era la cantidad que compraste.',
+      }),
       info('Renta en dólares', 'A diferencia de una acción, acá sabés de antemano cuánto vas a cobrar y cuándo. Por eso es el instrumento de entrada para quien recién empieza.', null, 'inicio'),
     ],
   },
@@ -163,6 +210,12 @@ export const ITINERARIOS = {
     pasos: [
       info('Ya tenés una inversión hecha', 'Compraste 30 CEDEARs de Coca-Cola hace unos días y están en ganancia. Vamos a venderlos y a sacar la plata.', null, 'inicio'),
       ...S_VENTA, ...S_RETIRO,
+      pregunta('Verificá lo que aprendiste', 'inicio', 'detalle-saldos', {
+        enunciado: 'Vendiste con plazo normal (24 hs). ¿Cuándo pudiste retirar esa plata?',
+        opciones: ['Hoy mismo', 'Al día hábil siguiente', 'En 48 horas'],
+        correcta: 1,
+        explicacion: 'Mirá el plazo del formulario de venta y el “Detalle de saldos”: el dinero figuraba “a liquidar” hasta que pasó un día hábil (T+1).',
+      }),
       info('Eso es la liquidación', 'Vender y cobrar no son el mismo acto. Entre uno y otro pasa un día hábil, y durante ese día el dinero existe pero no se toca.', null, 'inicio'),
     ],
   },
@@ -174,6 +227,12 @@ export const ITINERARIOS = {
     pasos: [
       info('El ciclo completo', 'Vamos a recorrer una inversión entera, desde que entra la plata hasta que la sacás. Ocho tramos. Tomate el tiempo que necesites.', null, 'inicio'),
       ...S_INGRESO, ...S_MEP, ...S_COMPRA, ...S_TENENCIA, ...S_VENTA, ...S_RETIRO,
+      pregunta('Verificá lo que aprendiste', 'portafolio', null, {
+        enunciado: 'En Mi Portafolio, ¿en qué columna de la tabla Tenencia leés cuánto ganaste o perdiste con un activo?',
+        opciones: ['Precio', 'Valorizado', 'Resultado'],
+        correcta: 2,
+        explicacion: 'Mirá la tabla Tenencia en Mi Portafolio: “Resultado” muestra el porcentaje y el monto de ganancia o pérdida. “Precio” es la cotización y “Valorizado” es lo que vale hoy tu tenencia.',
+      }),
       info('Cerraste el ciclo', 'Ingresaste dinero, compraste dólar MEP, invertiste, seguiste tu tenencia, vendiste, esperaste la liquidación y retiraste. El ciclo termina donde empezó: con la plata disponible.', null, 'movimientos'),
     ],
   },

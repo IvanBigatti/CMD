@@ -4,7 +4,6 @@ import { montoOperado, precio } from '../dominio/mercado'
 import type { Moneda } from '../dominio/tipos'
 import { useSimulador } from '../estado/simulador'
 import { Estadisticas } from '../componentes/ui/Estadisticas'
-import { PrecioVivo } from '../componentes/ui/PrecioVivo'
 
 export function Portafolio() {
   const moneda = useSimulador((s) => s.monedaVista)
@@ -55,10 +54,10 @@ export function Portafolio() {
                       <td><span className="tickcell">{id}</span><div className="namecell">{i.nombre}</div></td>
                       <td className="n">{nf(p.cantidad, 0)}{i.tipo === 'on' ? ' VN' : ''}</td>
                       <td className="n">
-                        <PrecioVivo valor={precio(i)}>{dinero(precio(i), i.moneda)}</PrecioVivo>
+                        {dinero(precio(i), i.moneda)}
                         <div className="namecell" style={{ maxWidth: 'none' }}>compra {dinero(p.precioPromedio, i.moneda)}</div>
                       </td>
-                      <td className="n"><PrecioVivo valor={valor}>{dinero(valor, i.moneda)}</PrecioVivo></td>
+                      <td className="n">{dinero(valor, i.moneda)}</td>
                       <td className="n" style={{ color }}>
                         {signo}{nf(pct, 2)}%
                         <div className="namecell" style={{ maxWidth: 'none', color, opacity: 0.75 }}>{signo}{dinero(dif, i.moneda)}</div>

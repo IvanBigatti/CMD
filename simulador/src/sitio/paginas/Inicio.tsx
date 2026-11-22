@@ -25,7 +25,7 @@ export function Inicio() {
         <div className="hero-texto">
           <span className="hero-eyebrow">Capacitación práctica · sin riesgo</span>
           <h1>Bienvenido al Simulador de <span>INVERTIR ONLINE</span></h1>
-          <p>Aprendé a invertir sin arriesgar tu dinero. Practicá cada operación en una réplica de la plataforma, con dinero y precios ficticios.</p>
+          <p>Aprendé a operar en la plataforma sin arriesgar tu dinero. Practicá cada operación en una réplica de la plataforma, con dinero y precios ficticios.</p>
           <div className="hero-botones">
             <a className="btn-s grande" href={href('/capacitaciones')}>Empezar una capacitación</a>
             <a className="btn-o grande claro" href={href('/simulador')}>Explorar el simulador</a>

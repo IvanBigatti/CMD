@@ -1,6 +1,6 @@
 import type { Instrumento } from '../dominio/tipos'
 
-/** Las ocho especies del simulador, con precios ficticios */
+/** Las nueve especies del simulador, con precios ficticios */
 export const INSTRUMENTOS: Record<string, Instrumento> = {
   GGAL: { id: 'GGAL', nombre: 'Grupo Financiero Galicia', tipo: 'accion', moneda: 'ARS', precio: 7450, variacion: 2.31, riesgo: 3,
     descripcion: 'Banco privado líder del sistema financiero argentino.' },
@@ -12,6 +12,9 @@ export const INSTRUMENTOS: Record<string, Instrumento> = {
     descripcion: 'CEDEAR de Apple, que cotiza en el Nasdaq.' },
   KO: { id: 'KO', nombre: 'Coca-Cola Company', tipo: 'cedear', moneda: 'ARS', precioUsd: 71.2, ratio: 5, variacion: 0.34, riesgo: 2,
     descripcion: 'CEDEAR de Coca-Cola, que cotiza en el NYSE.' },
+  /** Mismo CEDEAR de Coca-Cola, pero cotiza y liquida en dólares (MEP): la "D" final indica la moneda */
+  KOD: { id: 'KOD', nombre: 'Coca-Cola Company (dólares)', tipo: 'cedear', moneda: 'USD', precioUsd: 71.2, ratio: 5, variacion: 0.34, riesgo: 2,
+    descripcion: 'CEDEAR de Coca-Cola que cotiza en dólares (MEP). Es el mismo activo que KO, pero se paga con saldo en dólares.' },
   TSLA: { id: 'TSLA', nombre: 'Tesla Inc.', tipo: 'cedear', moneda: 'ARS', precioUsd: 342.9, ratio: 15, variacion: -2.61, riesgo: 3,
     descripcion: 'CEDEAR de Tesla. Históricamente muy volátil.' },
   YMCJO: { id: 'YMCJO', nombre: 'YPF ON Clase XXXIX', tipo: 'on', moneda: 'USD', precio: 99.4, variacion: 0.08, riesgo: 1,
@@ -23,4 +26,4 @@ export const INSTRUMENTOS: Record<string, Instrumento> = {
 }
 
 /** Texto de ayuda cuando no se encuentra un símbolo */
-export const SIMBOLOS_SUGERIDOS = 'KO, AAPL, TSLA, GGAL, YPFD, PAMP, YMCJO o PNDCO'
+export const SIMBOLOS_SUGERIDOS = 'KO, KOD, AAPL, TSLA, GGAL, YPFD, PAMP, YMCJO o PNDCO'

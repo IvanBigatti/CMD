@@ -14,4 +14,8 @@
   .acctbtns > button { flex: 1 1 140px }
   .strip { font-size: 10.5px; gap: 6px 10px; padding: 5px 12px }
   .strip > span:first-child, .strip .mono { display: none }
+  .indices { overflow-x: auto }
+  .frow { grid-template-columns: minmax(0, 1fr); gap: 4px }
+  .frow > label { padding-top: 0 }
+  .fsel, .finp { min-width: 0; max-width: 100% }
 }

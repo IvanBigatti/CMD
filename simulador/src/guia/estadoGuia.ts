@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { useDesafio } from '../estado/desafio'
 import { useSimulador } from '../estado/simulador'
 import { useUi } from '../estado/ui'
 import { ITINERARIOS, type ClaveItinerario, type Itinerario } from './itinerarios'
@@ -34,8 +33,6 @@ export const useGuia = create<EstadoGuia>()((set, get) => ({
 
   iniciar: (clave) => {
     const it: Itinerario = ITINERARIOS[clave]
-    // Una práctica guiada reemplaza a cualquier desafío en curso
-    useDesafio.getState().terminar()
     const sim = useSimulador.getState()
     sim.reiniciar(it.preparar)
     sim.irA('inicio')

@@ -7,7 +7,6 @@ import { HORA_SIMULADA, TC_MEP } from '../mocks/mercado'
 import { PERFILES } from '../mocks/perfiles'
 import { BotonProximamente } from '../componentes/ui/BotonProximamente'
 import { GraficoArea } from '../componentes/ui/GraficoArea'
-import { PrecioVivo } from '../componentes/ui/PrecioVivo'
 
 function Dato({ k, v }: { k: string; v: ReactNode }) {
   return <div className="dcrow"><span className="k">{k}</span><span className="v">{v}</span></div>
@@ -33,7 +32,9 @@ export function FichaActivo() {
     propios = <>
       <Dato k="Ratio de conversión" v={`${i.ratio} : 1`} />
       <Dato k="Acción en EE.UU." v={`US$ ${nf(i.precioUsd)}`} />
-      <Dato k="Tipo de cambio implícito" v={`$ ${nf(TC_MEP)}`} />
+      {i.moneda === 'USD'
+        ? <Dato k="Moneda de cotización" v="Dólares (MEP) · el símbolo termina en D" />
+        : <Dato k="Tipo de cambio implícito" v={`$ ${nf(TC_MEP)}`} />}
       <Dato k="Plazo de liquidación" v="24 hs (T+1)" />
     </>
   else if (i.tipo === 'on')
@@ -61,12 +62,10 @@ export function FichaActivo() {
             <div className="sub" style={{ fontSize: '.92rem' }}>{i.nombre}</div>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <div className="big" style={{ fontSize: '1.9rem' }}><PrecioVivo valor={m.px} clave={i.id}>{cur}{nf(m.px)}</PrecioVivo></div>
-            <PrecioVivo valor={i.variacion} clave={i.id}>
-              <span className={`varcell ${i.variacion >= 0 ? 'up' : 'dn'}`} style={{ fontSize: '.95rem' }}>
-                {i.variacion >= 0 ? '▲' : '▼'} {nf(i.variacion, 2)}%
-              </span>
-            </PrecioVivo>
+            <div className="big" style={{ fontSize: '1.9rem' }}>{cur}{nf(m.px)}</div>
+            <span className={`varcell ${i.variacion >= 0 ? 'up' : 'dn'}`} style={{ fontSize: '.95rem' }}>
+              {i.variacion >= 0 ? '▲' : '▼'} {nf(i.variacion, 2)}%
+            </span>
           </div>
           <div style={{ display: 'flex', gap: 10, flex: 'none' }}>
             <button type="button" className="btn-s" data-tour="btn-comprar" onClick={() => prepararCompra(i.id)}>Comprar</button>
@@ -111,8 +110,8 @@ export function FichaActivo() {
                   {puntas.compra.map((c, k) => (
                     <tr key={k}>
                       <td>{nf(c.cantidad, 0)}</td>
-                      <td className="b"><PrecioVivo valor={c.precio} clave={i.id}>{cur}{nf(c.precio)}</PrecioVivo></td>
-                      <td className="a"><PrecioVivo valor={puntas.venta[k].precio} clave={i.id}>{cur}{nf(puntas.venta[k].precio)}</PrecioVivo></td>
+                      <td className="b">{cur}{nf(c.precio)}</td>
+                      <td className="a">{cur}{nf(puntas.venta[k].precio)}</td>
                       <td>{nf(puntas.venta[k].cantidad, 0)}</td>
                     </tr>
                   ))}

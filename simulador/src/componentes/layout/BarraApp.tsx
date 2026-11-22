@@ -16,7 +16,7 @@ export function BarraApp() {
     if (!i) {
       useUi.getState().mensaje({
         titulo: 'No encontramos esa especie',
-        parrafo: `Probá con ${SIMBOLOS_SUGERIDOS}. En el simulador hay ocho especies.`,
+        parrafo: `Probá con ${SIMBOLOS_SUGERIDOS}. En el simulador hay nueve especies.`,
         eyebrow: 'Buscador',
       })
       return

@@ -3,7 +3,9 @@ import { fechaSimulada, formatoFecha } from '../dominio/fechas'
 import { nf } from '../dominio/formato'
 import { useSimulador } from '../estado/simulador'
 import { HORA_SIMULADA, TC_MEP } from '../mocks/mercado'
+import { AVISO_SEGURIDAD } from '../contenido/seguridad'
 import { PERSONA } from '../mocks/persona'
+import { AvisoCaja } from '../componentes/ui/AvisoCaja'
 import { BotonProximamente } from '../componentes/ui/BotonProximamente'
 import { Estadisticas } from '../componentes/ui/Estadisticas'
 import { Saldos } from '../componentes/ui/Saldos'
@@ -25,6 +27,8 @@ export function EstadoDeCuenta() {
         <div className="pmeta">Saldo al {formatoFecha(fechaSimulada(dia))} {HORA_SIMULADA}hs | Cuenta comitente nro: {PERSONA.comitente}</div>
       </div>
 
+      <AvisoCaja aviso={AVISO_SEGURIDAD} style={{ maxWidth: 790 }} />
+
       <div className="acctgrid">
         <div className="panel" data-tour="cuenta-arg">
           <div className="accthd">
@@ -33,6 +37,10 @@ export function EstadoDeCuenta() {
           </div>
           <div className="balrow"><span className="k">Saldo total valorizado</span><span className="v">AR$ {nf(valorCartera(saldo, posiciones, inst, 'ARS'))}</span></div>
           <div className="balrow sec"><span className="k" /><span className="v">US$ {nf(valorCartera(saldo, posiciones, inst, 'USD'))}</span></div>
+          <p className="hint" style={{ marginTop: 6 }}>
+            <strong>Valorizado</strong> es tu efectivo más lo que valen hoy tus inversiones: cambia con los precios.
+            Lo que podés usar o retirar ahora es tu saldo <strong>disponible</strong>.
+          </p>
           <div className="acctbtns">
             <button type="button" className="btn-o" data-tour="btn-miportafolio" onClick={() => irA('portafolio')}>Mi Portafolio</button>
             <button type="button" className="btn-s" data-tour="qa-ingresar" onClick={() => irA('ingresar')}>Ingresar dinero</button>
@@ -109,6 +117,10 @@ export function EstadoDeCuenta() {
                 Tu dinero puede estar en tres estados a la vez. <strong>Disponible</strong> es lo único que podés usar o retirar hoy.{' '}
                 <strong>Comprometido</strong> es lo que ya gastaste en una compra que todavía no liquidó.{' '}
                 <strong>A liquidar</strong> es lo que cobraste por una venta y se acredita el día hábil siguiente.
+              </p>
+              <p style={{ fontSize: '.87rem', color: 'var(--tx2)', lineHeight: 1.5, marginTop: 10 }}>
+                No es lo mismo el saldo <strong>disponible</strong> que el <strong>valorizado</strong>. El disponible es el dinero que podés usar o retirar ahora.
+                El valorizado suma tu efectivo y lo que valen hoy tus inversiones, así que sube y baja con los precios aunque no operes.
               </p>
             </div>
           </div>

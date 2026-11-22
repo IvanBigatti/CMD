@@ -26,3 +26,6 @@ table { border-collapse: collapse; width: 100% }
 :focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 3px }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important } }
+
+/* Espacio que reserva el reproductor anclado abajo (lo mide el propio reproductor); 0 si está cerrado */
+body { padding-bottom: var(--alto-reproductor, 0px) }

@@ -26,3 +26,8 @@ export const PODCASTS: Record<ClaveItinerario, Record<VozPodcast, string> | null
 export function urlPodcast(clave: ClaveItinerario, voz: VozPodcast): string | null {
   return PODCASTS[clave] ? `${import.meta.env.BASE_URL}podcasts/${clave}-${voz}.mp3` : null
 }
+
+/** Ruta pública de los subtítulos (WebVTT) del podcast de una actividad en una voz, o null si todavía no tiene */
+export function urlSubtitulosPodcast(clave: ClaveItinerario, voz: VozPodcast): string | null {
+  return PODCASTS[clave] ? `${import.meta.env.BASE_URL}podcasts/${clave}-${voz}.vtt` : null
+}

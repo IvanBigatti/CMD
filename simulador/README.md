@@ -73,43 +73,6 @@ las muestra todas con filtro.
   backend (por ejemplo Supabase) alcanza con reescribir ese archivo.
 - El build estático (`dist/`) no incluye la API: ahí las reseñas muestran "No pudimos cargar".
 
-## Evaluaciones
-
-Cada capacitación con práctica guiada (`mep`, `cedear`, `on`, `venta`, `completo`) tiene tres
-instrumentos, en la sección "Evaluá lo que aprendiste" de su página:
-
-- **Cuestionario** (`#/capacitaciones/<clave>/evaluacion`): de 6 a 8 preguntas de opción múltiple,
-  una por vez, con la explicación al responder. Se aprueba con el 70 %.
-- **Desafío práctico**: abre el simulador sin guía, con la consigna y el botón "Verificar desafío"
-  en la franja amarilla. La verificación revisa la cuenta simulada (movimientos y posiciones).
-- **Autoevaluación**: "¿qué tan seguro te sentís?", de 1 a 5, antes del video y al terminar el cuestionario.
-
-Dónde está cada cosa:
-
-- **Preguntas, desafíos y frases de autoevaluación**: `src/contenido/evaluaciones.ts`. Se evalúa el
-  uso de la plataforma, no conocimientos financieros. No cambies el `id` de una pregunta que ya
-  tiene respuestas: los resultados se agrupan por ese id.
-- **Base**: `datos/evaluaciones.db` (SQLite, mismo esquema de trabajo que las reseñas).
-- **API**: `servidor/apiEvaluaciones.ts` → `POST /api/evaluaciones` y `GET /api/evaluaciones/resumen`.
-- **Frontend**: `src/datos/evaluaciones.ts` (API) y `src/datos/participante.ts` (código anónimo por
-  navegador, para unir los resultados de una misma persona sin pedir registro).
-- **Progreso en el navegador** (para mostrar los ✓): `src/estado/progresoEvaluacion.ts`.
-- **Resultados para el equipo**: `#/resultados` (no está en el menú). Muestra promedios, aprobados,
-  desafíos superados, confianza antes → después y el % de acierto por pregunta.
-  **No pide contraseña**: antes de publicar el sitio hay que protegerla o sacarla.
-
-## Plan de capacitación
-
-"Sobre nosotros" muestra un resumen del plan con la infografía del ciclo, y `#/nosotros/plan` el plan
-completo (fundamentación, destinatarios, objetivos por módulo, contenidos, metodología, evaluación,
-alcance y recursos), con un botón para guardarlo como PDF.
-
-- **Textos**: `src/contenido/planCapacitacion.ts` (salen de `../ALCANCE.md` y de la presentación
-  "Antes de empezar"; si cambia el alcance, actualizá los tres).
-- **Infografía**: `public/instructivos/completo.png` (es `../A4 · El ciclo de tu inversión.png`).
-- **Presentación para descargar**: `public/materiales/antes-de-empezar.pptx`.
-- **PDF**: usa la impresión del navegador; las reglas están en `src/estilos/impresion.css` (`.imprimir-plan`).
-
 ## Estructura
 
 ```

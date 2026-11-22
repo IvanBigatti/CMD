@@ -3,7 +3,6 @@ import { datosMercado, indices } from '../dominio/mercado'
 import type { TipoInstrumento } from '../dominio/tipos'
 import { useSimulador } from '../estado/simulador'
 import { BotonProximamente } from '../componentes/ui/BotonProximamente'
-import { PrecioVivo } from '../componentes/ui/PrecioVivo'
 
 const NOMBRE_PANEL: Record<TipoInstrumento, string> = { accion: 'Acciones', cedear: 'Cedears', on: 'Obligaciones Negociables' }
 const ETIQUETA_TIPO: Record<TipoInstrumento, string> = { accion: 'ACCIÓN', cedear: 'CEDEAR', on: 'ON' }
@@ -21,10 +20,7 @@ export function Cotizaciones() {
   const dia = useSimulador((s) => s.dia)
   const inst = useSimulador((s) => s.inst)
   const cot = useSimulador((s) => s.cotizaciones)
-  const pulso = useSimulador((s) => s.pulso)
-  const abierto = useSimulador((s) => s.mercadoAbierto)
-  const pausado = useSimulador((s) => s.mercadoPausado)
-  const { setCotizaciones, verActivo, prepararCompra, alternarPausaMercado } = useSimulador.getState()
+  const { setCotizaciones, verActivo, prepararCompra } = useSimulador.getState()
 
   const filtro = cot.buscar.trim().toUpperCase()
   const especies = Object.values(inst)
@@ -38,9 +34,9 @@ export function Cotizaciones() {
   return (
     <section className="page ancha">
       <div className="indices">
-        {indices(dia, pulso).map((ix) => (
+        {indices(dia).map((ix) => (
           <div key={ix.nombre} className="ix">
-            <b>{ix.nombre}:</b> <PrecioVivo valor={ix.valor} className="mono">{nf(ix.valor)}</PrecioVivo> <Variacion v={ix.variacion} />
+            <b>{ix.nombre}:</b> <span className="mono">{nf(ix.valor)}</span> <Variacion v={ix.variacion} />
           </div>
         ))}
       </div>
@@ -77,14 +73,7 @@ export function Cotizaciones() {
         <button type="button" className="viewbtn" aria-pressed="true" title="Vista lista">☰</button>
         <BotonProximamente tema="vistaMosaico" className="viewbtn">▦</BotonProximamente>
         <span className="sp" />
-        {abierto ? (
-          <button type="button" className={`envivo${pausado ? ' pausado' : ''}`} aria-pressed={!pausado}
-            title={pausado ? 'Reanudar los precios en vivo' : 'Congelar los precios (útil para explicar)'} onClick={alternarPausaMercado}>
-            {pausado ? <>❚❚ Pausado</> : <><span className="dot" aria-hidden="true" /> En vivo · simulado</>}
-          </button>
-        ) : (
-          <span className="rtpill">Mercado cerrado</span>
-        )}
+        <span className="rtpill">Precios simulados</span>
         <label>Buscar:{' '}
           <input className="finp" placeholder="Símbolo - Ej: PAMP" style={{ fontSize: '.85rem' }}
             value={cot.buscar} onChange={(e) => setCotizaciones({ buscar: e.target.value })} />
@@ -120,11 +109,11 @@ export function Cotizaciones() {
                           </span>
                         </span>
                       </td>
-                      <td className="num2"><PrecioVivo valor={m.px}>{nf(m.px)}</PrecioVivo></td>
-                      <td><PrecioVivo valor={i.variacion}><Variacion v={i.variacion} /></PrecioVivo></td>
+                      <td className="num2">{nf(m.px)}</td>
+                      <td><Variacion v={i.variacion} /></td>
                       <td className="num2 qbid">{nf(m.qBid, 0)}</td>
-                      <td className="num2 bid"><PrecioVivo valor={m.bid}>{nf(m.bid)}</PrecioVivo></td>
-                      <td className="num2 ask"><PrecioVivo valor={m.ask}>{nf(m.ask)}</PrecioVivo></td>
+                      <td className="num2 bid">{nf(m.bid)}</td>
+                      <td className="num2 ask">{nf(m.ask)}</td>
                       <td className="num2 qask">{nf(m.qAsk, 0)}</td>
                       <td className="num2">{nf(m.apertura)}</td>
                       <td className="num2">{nf(m.min)}</td>
