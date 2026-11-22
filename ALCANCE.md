@@ -1,8 +1,8 @@
 # Proyecto: simulador de capacitación en inversiones
 
 ## Contexto
-Estoy desarrollando, con un equipo, una aplicación sandbox para capacitar a personas
-que nunca operaron en el mercado de capitales. Está modelada sobre la plataforma real
+Estoy desarrollando, con un equipo, una aplicación sandbox para que personas
+interesadas en invertir, con poca o ninguna experiencia, aprendan a usar la plataforma. Está modelada sobre la plataforma real
 de Invertir Online (IOL).
 
 ## Restricción de marca (importante, no la cambies)
@@ -15,8 +15,11 @@ sin intermediación presencial: gestionar el portafolio según el perfil de inve
 operar Dólar MEP, CEDEARs, acciones y obligaciones negociables.
 
 ## Usuarios objetivo
-Adultos de ~45 a 65 años con capacidad de ahorro, que ya se manejan con homebanking
-y billeteras virtuales, pero que nunca operaron en el mercado de capitales.
+Jóvenes de 18 a 24 años (según una encuesta a 12 personas), con buen manejo digital
+(homebanking, billeteras virtuales), interesados en invertir pero con poca o ninguna
+experiencia. Muchos ya tienen una cuenta en IOL que nunca usaron. El público no se
+define por edad. La capacitación enseña a USAR la app y nunca da consejos de inversión.
+Modalidad: 100% virtual, E-Learning autoguiado.
 
 ## ALCANCE DE LA CAPACITACIÓN
 Cubre el ciclo completo de una inversión, desde que se ingresa el dinero hasta que
@@ -81,7 +84,7 @@ Incluye:
 - Ratios de CEDEARs usados: AAPL 20:1, KO 5:1, TSLA 15:1.
 - Persiste la restricción cruzada de 90 días entre dólar oficial y MEP/CCL.
 
-## Criterios de diseño para el público 45-65
+## Criterios de diseño para el público objetivo
 - Anclar cada concepto nuevo a algo que ya conocen del homebanking.
 - Resumen post-operación en lenguaje llano.
 - Nada de gamificación del riesgo: sin confeti, sin rachas, sin rankings.
