@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { FranjaCapacitacion } from './componentes/layout/FranjaCapacitacion'
 import { Plataforma } from './componentes/layout/Plataforma'
+import { AvanceDia } from './componentes/overlays/AvanceDia'
 import { GuiaOverlay } from './componentes/overlays/GuiaOverlay'
 import { CortinaSimulador } from './componentes/overlays/CortinaSimulador'
 import { ModalHost } from './componentes/overlays/ModalHost'
@@ -85,6 +86,7 @@ export default function App() {
       {/* La guía solo se muestra dentro del simulador; si salís, queda en pausa en el mismo paso */}
       {enSimulador && <GuiaOverlay />}
       {enSimulador && <ReproductorFlotante />}
+      {enSimulador && <AvanceDia />}
       <ModalHost />
       <SelectorItinerarios />
       {cortina && <CortinaSimulador key={cortina.id} modo={cortina.modo} alTerminar={() => setCortina(null)} />}

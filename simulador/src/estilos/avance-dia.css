@@ -1,0 +1,53 @@
+/* Avance del día: hoja de calendario que se da vuelta (AvanceDia.tsx) y destello de la fecha en la franja */
+
+.avance-dia {
+  position: fixed; inset: 0; z-index: 150; display: grid; place-items: center; padding: 20px;
+  background: rgba(6, 8, 63, .5); cursor: pointer;
+  animation: avd-fondo 2400ms cubic-bezier(.25, 1, .5, 1) both;
+}
+.avd-tarjeta {
+  width: min(300px, 100%); padding: 22px 24px 20px; border-radius: 14px; text-align: center;
+  background: var(--card, #fff); box-shadow: 0 24px 60px -20px rgba(6, 8, 63, .55);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  animation: avd-tarjeta 2400ms cubic-bezier(.25, 1, .5, 1) both;
+}
+.avd-eyebrow { font-family: var(--fmo); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--violet) }
+
+.avd-calendario { width: 116px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 10px 24px -14px rgba(6, 8, 63, .5) }
+.avd-mes { display: block; padding: 5px 0; background: var(--violet); color: #fff; font-family: var(--fmo); font-size: 12px; font-weight: 600; letter-spacing: .16em }
+.avd-hojas { position: relative; display: block; height: 96px; perspective: 420px; background: #fff }
+.avd-hoja {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #fff; color: var(--indigo); backface-visibility: hidden;
+}
+.avd-hoja b { font-size: 46px; line-height: 1; font-weight: 700; letter-spacing: -.03em }
+.avd-hoja small { margin-top: 4px; font-family: var(--fmo); font-size: 12px; letter-spacing: .12em; color: var(--tx2) }
+/* La hoja de ayer se arranca hacia arriba y deja ver la de hoy */
+.avd-hoja.vieja { transform-origin: 50% 0; animation: avd-arranca 2400ms cubic-bezier(.5, 0, .75, 0) both }
+.avd-hoja.nueva b { animation: avd-hoy 2400ms cubic-bezier(.25, 1, .5, 1) both }
+
+.avd-titulo { font-size: 1.15rem; font-weight: 700; color: var(--indigo) }
+.avd-texto { font-size: .88rem; line-height: 1.45; color: var(--tx2); animation: avd-texto 2400ms ease-out both }
+
+/* Línea de tiempo (2,4 s): entra la tarjeta (0–8%), se arranca la hoja (14–30%), se lee (30–88%), se va (88–100%) */
+@keyframes avd-fondo { 0% { opacity: 0 } 6%, 88% { opacity: 1 } 100% { opacity: 0 } }
+@keyframes avd-tarjeta {
+  0% { opacity: 0; transform: translateY(12px) scale(.96) }
+  8%, 88% { opacity: 1; transform: none }
+  100% { opacity: 0; transform: translateY(-8px) }
+}
+@keyframes avd-arranca {
+  0%, 14% { transform: rotateX(0); opacity: 1; box-shadow: none; filter: none }
+  24% { opacity: 1; box-shadow: 0 10px 14px -6px rgba(6, 8, 63, .45); filter: brightness(.88) }
+  30%, 100% { transform: rotateX(-95deg); opacity: 0; box-shadow: none; filter: brightness(.7) }
+}
+@keyframes avd-hoy { 0%, 26% { transform: scale(.92) } 34% { transform: scale(1.08) } 40%, 100% { transform: none } }
+@keyframes avd-texto { 0%, 26% { opacity: 0; transform: translateY(4px) } 36%, 100% { opacity: 1; transform: none } }
+
+/* La fecha de la franja destella cuando cambia */
+.strip .mono.cambio { border-radius: 4px; animation: avd-destello 1.2s 1.8s ease-out both }
+@keyframes avd-destello { 0% { background: rgba(6, 8, 63, .85); color: #fff; box-shadow: 0 0 0 4px rgba(6, 8, 63, .85) } 100% { background: transparent; box-shadow: 0 0 0 4px transparent } }
+
+@media (prefers-reduced-motion: reduce) {
+  .strip .mono.cambio { animation: none }
+}

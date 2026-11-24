@@ -24,7 +24,8 @@ export function FranjaCapacitacion() {
         <span className="dot" />
         <span>{abierto ? 'Mercado abierto' : 'Mercado cerrado'}</span>
       </span>
-      <span className="mono">{formatoDia(fechaSimulada(dia))} · {HORA_SIMULADA}</span>
+      {/* key: al cambiar el día se vuelve a montar y el destello arranca de nuevo */}
+      <span key={dia} className={`mono${dia > 0 ? ' cambio' : ''}`}>{formatoDia(fechaSimulada(dia))} · {HORA_SIMULADA}</span>
       <button type="button" data-tour="reloj-avanzar" onClick={avanzarDia}>Avanzar 1 día hábil</button>
       <button type="button" className="cambiar" onClick={abrirSelectorItinerarios}>Cambiar capacitación</button>
     </div>
