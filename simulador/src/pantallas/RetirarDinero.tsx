@@ -34,7 +34,7 @@ export function RetirarDinero() {
               value={retiro.monto} onChange={(e) => setMontoRetiro(e.target.value)} />
             <p className="hint">Disponible para retirar: <span className="mono">{dinero(disponible, m)}</span></p>
           </div>
-          {retiro.aviso && <AvisoCaja aviso={retiro.aviso} />}
+          {retiro.aviso && <div data-tour="aviso-retiro"><AvisoCaja aviso={retiro.aviso} /></div>}
           <button type="button" className="btn-s w" data-tour="confirmar-retiro" onClick={retirar}>Confirmar retiro</button>
         </div>
         <div className="panel">

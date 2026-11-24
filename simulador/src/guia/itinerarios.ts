@@ -50,9 +50,11 @@ const pregunta = (titulo: string, pantalla: Pantalla, objetivo: string | null, p
 
 const S_INGRESO = [
   clic('Empezá por acá', 'Para invertir, primero tiene que haber plata en tu cuenta de inversión. En la tarjeta de Argentina, hacé clic en “Ingresar dinero”.', 'qa-ingresar', 'inicio'),
-  info('Esto no es una cuenta bancaria', 'Es una cuenta comitente: existe para comprar y vender títulos. El alias de la izquierda es adonde vas a transferir desde tu banco.', 'origen-list', 'ingresar'),
+  info('Esto no es una cuenta bancaria', 'Es una cuenta comitente: existe para comprar y vender títulos. Este alias es adonde vas a transferir desde tu banco.', 'alias-comitente', 'ingresar'),
   clic('Probá algo que va a fallar', 'Elegí la cuenta de María G. Suárez, que está a nombre de otra persona. Quiero que veas qué pasa.', 'origen-tercero', 'ingresar'),
-  clic('Ahora sí, la tuya', 'Solo podés fondear desde cuentas de tu misma titularidad. Elegí la del Banco Nación.', 'origen-propia', 'ingresar'),
+  clic('Confirmá y mirá qué pasa', 'Con la cuenta de María elegida, hacé clic en “Confirmar transferencia”.', 'confirmar-ingreso', 'ingresar'),
+  info('Rechazada', 'Leé el aviso: no podés fondear tu cuenta desde una cuenta de otra persona. Tiene que estar a tu nombre (mismo CUIT). Es una norma de prevención de lavado.', 'aviso-ingreso', 'ingresar'),
+  clic('Ahora sí, la tuya', 'Elegí la del Banco Nación, que está a tu nombre.', 'origen-propia', 'ingresar'),
   clic('Confirmá la transferencia', 'Ya está cargado un monto de ejemplo, podés cambiarlo. Cuando estés listo, confirmá.', 'confirmar-ingreso', 'ingresar'),
 ]
 
@@ -100,6 +102,7 @@ const S_ON = [
   info('Escribí el símbolo', 'Ya cargamos YMCJO, una obligación negociable de YPF en dólares. Fijate lo que aparece debajo del campo: cotiza cada 100 VN y tiene lámina mínima.', 'campo-simbolo', 'comprar'),
   info('La cantidad va en VN', 'No ponés dólares: ponés valores nominales, y en múltiplos de la lámina mínima. Comprar 1.000 VN no es comprar US$ 1.000.', 'campo-cantidad', 'comprar'),
   clic('Probá que falle', 'Dejá 550 VN, que no es múltiplo de la lámina de 100 VN, y mandá la orden. Quiero que veas el rechazo.', 'btn-comprar-submit', 'comprar'),
+  info('Rechazada', 'Leé el aviso: las obligaciones negociables se compran en múltiplos de la lámina mínima. 550 VN no es múltiplo de 100.', 'aviso-compra', 'comprar'),
   info('Ahí está', 'Corregí la cantidad a un múltiplo válido — 1.000 VN sirve — y volvé a mandarla.', 'campo-cantidad', 'comprar'),
   clic('Mandala de nuevo', 'Con la cantidad corregida.', 'btn-comprar-submit', 'comprar'),
   info('Mirá cuánto pagás de más', 'Además del precio de la obligación negociable, se suman la comisión, los derechos de mercado y el IVA. El total a pagar es lo que se te va a debitar de verdad.', 'costos-confirmacion', 'comprar'),
@@ -125,6 +128,7 @@ const S_RETIRO = [
   clic('Retirar dinero', 'Quiero que veas que no te deja sacar todo.', 'menu-retirar', 'inicio'),
   info('El monto ya está cargado', 'Es el total que vendiste. Confirmá igual: va a fallar, y está bien que falle.', 'monto-retiro', 'retirar'),
   clic('Confirmá igual', 'Adelante, probá.', 'confirmar-retiro', 'retirar'),
+  info('No te deja', 'Leé el aviso: la plata de la venta todavía está “a liquidar”. Solo podés retirar lo disponible, y eso pasa al día hábil siguiente.', 'aviso-retiro', 'retirar'),
   clic('Ahora hacé pasar un día', 'En el mercado real esperarías hasta mañana. Acá hacés clic en este botón.', 'reloj-avanzar', 'retirar'),
   info('Ahora sí está disponible', 'El dinero pasó de “a liquidar” a “disponible”. Eso es la liquidación en T+1. Mirá el panel de la derecha.', 'monto-retiro', 'retirar'),
   clic('Retiralo', 'Confirmá el retiro.', 'confirmar-retiro', 'retirar'),
@@ -141,7 +145,7 @@ export const ITINERARIOS = {
     pasos: [
       info('Vas a hacer entrar plata y comprar dólares', 'Dos cosas: transferir desde tu banco a la cuenta de inversión, y convertir parte de esos pesos a dólar MEP. Te voy indicando dónde hacer clic.', null, 'inicio'),
       ...S_INGRESO, ...S_MEP,
-      pregunta('Verificá lo que aprendiste', 'inicio', 'detalle-saldos', {
+      pregunta('Verificá lo que aprendiste', 'inicio', 'saldo-detalle', {
         enunciado: '¿Dónde quedaron tus dólares y podés usarlos ya?',
         opciones: [
           'Quedaron “a liquidar” y están disponibles recién mañana',
@@ -151,7 +155,7 @@ export const ITINERARIOS = {
         correcta: 1,
         explicacion: 'Mirá el “Detalle de saldos” del estado de cuenta: los dólares figuran como disponibles. Las dos patas del MEP van en Contado Inmediato, por eso no hay que esperar.',
       }),
-      info('Listo', 'Tenés pesos y dólares en tu cuenta de inversión. El dólar MEP no fue una compra de moneda: fueron dos operaciones de bonos hechas por vos.', null, 'inicio'),
+      info('Listo', 'Tenés pesos y dólares en tu cuenta de inversión. El dólar MEP no fue una compra de moneda: fueron dos operaciones de bonos hechas por vos.', 'saldo-detalle', 'inicio'),
     ],
   },
   cedear: {
@@ -210,7 +214,7 @@ export const ITINERARIOS = {
     pasos: [
       info('Ya tenés una inversión hecha', 'Compraste 30 CEDEARs de Coca-Cola hace unos días y están en ganancia. Vamos a venderlos y a sacar la plata.', null, 'inicio'),
       ...S_VENTA, ...S_RETIRO,
-      pregunta('Verificá lo que aprendiste', 'inicio', 'detalle-saldos', {
+      pregunta('Verificá lo que aprendiste', 'inicio', 'saldo-detalle', {
         enunciado: 'Vendiste con plazo normal (24 hs). ¿Cuándo pudiste retirar esa plata?',
         opciones: ['Hoy mismo', 'Al día hábil siguiente', 'En 48 horas'],
         correcta: 1,
