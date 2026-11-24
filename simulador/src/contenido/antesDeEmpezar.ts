@@ -102,7 +102,7 @@ export const ANTES_DE_EMPEZAR = {
     titulo: 'Además del simulador',
     items: [
       { titulo: 'Videos', texto: 'Cinco videos cortos y narrados, uno por itinerario, para ver cómo se hace antes de practicar.' },
-      { titulo: 'Podcasts', texto: 'Cinco podcasts, uno por itinerario, en dos voces a elección (Elena y Tomás). Para escuchar sin mirar la pantalla.' },
+      { titulo: 'Podcasts', texto: 'Cinco podcasts, uno por itinerario, en tres voces a elección (Elena, Tomás e Iván). Para escuchar sin mirar la pantalla.' },
       { titulo: 'Guías en PDF', texto: 'Una guía paso a paso para descargar de cada actividad. La encontrás en la página de cada una.' },
       { titulo: 'Infografía', texto: 'El ciclo completo en una hoja A4, para imprimir y tener al lado mientras practicás.', enlace: { archivo: 'completo.png', texto: 'Ver o descargar la infografía' } },
     ],

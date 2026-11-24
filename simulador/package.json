@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "videos": "node scripts/copiar-videos.mjs",
     "guias": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/generar-guias.mjs",
-    "podcasts": ".venv-podcasts/bin/python scripts/generar-podcasts.py"
+    "podcasts": ".venv-podcasts/bin/python scripts/generar-podcasts.py",
+    "podcasts:ivan": "python3 scripts/generar-voz-ivan.py"
   },
   "dependencies": {
     "immer": "^11.2.9",
