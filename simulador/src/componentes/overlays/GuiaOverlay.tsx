@@ -48,11 +48,21 @@ function posicionar(paso: PasoGuia, ring: HTMLDivElement, tip: HTMLDivElement) {
       ring.style.width = `${r.width + p * 2}px`
       ring.style.height = `${r.height + p * 2}px`
     }
-    let top = r.bottom + 14
-    if (top + th > vh - 10) top = Math.max(10, r.top - th - 14)
+    // Preferencia: abajo, arriba, derecha, izquierda. Solo tapa el objetivo si no entra en ningún lado
+    const techo = (document.querySelector('.cabecera-fija')?.getBoundingClientRect().bottom ?? 0) + 10
+    const gap = 14
+    let top: number
     let left = r.left + r.width / 2 - tw / 2
+    if (r.bottom + gap + th <= vh - 10) top = r.bottom + gap
+    else if (r.top - gap - th >= techo) top = r.top - gap - th
+    else {
+      top = r.top + r.height / 2 - th / 2
+      if (r.right + gap + tw <= vw - 12) left = r.right + gap
+      else if (r.left - gap - tw >= 12) left = r.left - gap - tw
+      else top = r.bottom + gap
+    }
     left = Math.max(12, Math.min(left, vw - tw - 12))
-    top = Math.max(10, Math.min(top, vh - th - 10))
+    top = Math.max(techo, Math.min(top, vh - th - 10))
     tip.style.top = `${top}px`
     tip.style.left = `${left}px`
   } else {

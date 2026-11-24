@@ -12,7 +12,7 @@ export function IngresarDinero() {
       <p className="subt">Transferí desde tu banco o billetera a tu cuenta de inversión</p>
       <div className="grid12">
         <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <div>
+          <div data-tour="alias-comitente">
             <div className="lbl">Alias de tu cuenta comitente</div>
             <div className="mono" style={{ fontSize: '1.14rem', fontWeight: 600, marginTop: 4 }}>{PERSONA.alias}</div>
             <p className="hint" style={{ marginTop: 5 }}>Comitente Nº {PERSONA.comitente} · a nombre de {PERSONA.nombreCompleto}</p>
@@ -31,7 +31,7 @@ export function IngresarDinero() {
               ))}
             </div>
           </div>
-          {ingreso.aviso && <AvisoCaja aviso={ingreso.aviso} />}
+          {ingreso.aviso && <div data-tour="aviso-ingreso"><AvisoCaja aviso={ingreso.aviso} /></div>}
           <div className="field">
             <label htmlFor="inpIngreso">Monto a transferir</label>
             <input className="inp" id="inpIngreso" inputMode="decimal" data-tour="monto-ingreso"
