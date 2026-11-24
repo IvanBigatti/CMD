@@ -12,14 +12,14 @@ export interface CuentaBancaria {
 }
 
 export const PERSONA = {
-  nombreSaludo: 'Iván Nicolás',
-  nombreCompleto: 'Iván N. Imwinkelried',
+  nombreSaludo: 'Julián Andrés',
+  nombreCompleto: 'Julián A. Ferreyra',
   comitente: '418.203',
-  alias: 'rueda.imwinkelried.ars',
+  alias: 'rueda.ferreyra.ars',
   custodia: 'Caja de Valores',
   /** Cuentas desde las que se puede intentar fondear la comitente */
   cuentasOrigen: [
-    { id: 'propia', banco: 'Banco Nación', tipo: 'Caja de ahorro $', titular: 'Iván N. Imwinkelried', mismoTitular: true },
+    { id: 'propia', banco: 'Banco Nación', tipo: 'Caja de ahorro $', titular: 'Julián A. Ferreyra', mismoTitular: true },
     { id: 'tercero', banco: 'Banco Galicia', tipo: 'Caja de ahorro $', titular: 'María G. Suárez', mismoTitular: false },
   ] satisfies CuentaBancaria[],
   /** Cuenta destino de los retiros, por moneda */
