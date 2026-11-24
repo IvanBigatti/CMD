@@ -20,7 +20,9 @@ export function EncabezadoSitio() {
         <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" width={38} height={35} />
         <span>
           <b>Simulador</b>
-          <small>InvertirOnline · Capacitación</small>
+          {ruta.pagina === 'simulador'
+            ? <small className="modo"><span aria-hidden="true">● </span>Modo simulador</small>
+            : <small>InvertirOnline · Capacitación</small>}
         </span>
       </a>
       <button
