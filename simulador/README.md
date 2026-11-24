@@ -2,7 +2,7 @@
 
 Sitio de capacitación con un simulador de la plataforma de InvertirOnline. La persona, las
 cuentas, los precios y los testimonios son datos simulados. Las reseñas de las capacitaciones se
-guardan en una base SQLite local (ver "Reseñas"). Nació como migración de
+guardan en Supabase (ver "Reseñas"). Nació como migración de
 `../InvertOnlineSandBox.html`, que se conserva como referencia.
 
 ## Cómo correrlo
@@ -64,14 +64,13 @@ Al terminar la práctica guiada de una capacitación se ofrece dejar una reseña
 y de 1 a 5 estrellas, sin registrarse). Cada capacitación muestra las suyas y `#/capacitaciones`
 las muestra todas con filtro.
 
-- **Base**: `datos/resenas.db` (SQLite, se versiona). Usa el diario en modo `DELETE` para que todo
-  quede en ese único archivo. Para ver o borrar reseñas: `sqlite3 datos/resenas.db`.
-- **API**: `servidor/apiResenas.ts`, un plugin de Vite que monta `GET` y `POST /api/resenas` en
-  `npm run dev` y `npm run preview`. Usa `node:sqlite` (Node 22.13 o más nuevo); el aviso
-  "SQLite is an experimental feature" es normal.
-- **Frontend**: todo el acceso pasa por `src/datos/resenas.ts`. Para publicar el sitio con otro
-  backend (por ejemplo Supabase) alcanza con reescribir ese archivo.
-- El build estático (`dist/`) no incluye la API: ahí las reseñas muestran "No pudimos cargar".
+- **Base**: tabla `public.resenas` en Supabase (proyecto `cmd-capacitacion-iol`). Se usa la misma
+  base en desarrollo y en producción, así que funciona igual en `npm run dev` y en Vercel.
+- **Permisos**: el público (clave publicable) puede leer y agregar reseñas. No puede editarlas,
+  borrarlas ni leer `costo_mas`, la respuesta privada "¿Qué te costó más?". Para verlas todas,
+  o para borrar alguna, usá el *Table Editor* o el *SQL Editor* del dashboard.
+- **Frontend**: todo el acceso pasa por `src/datos/resenas.ts`, que usa la API REST de Supabase sin
+  dependencias extra. Para cambiar de backend alcanza con reescribir ese archivo.
 
 ## Estructura
 
