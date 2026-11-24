@@ -1,0 +1,79 @@
+/* Entrada y salida del simulador: cortina, marco amarillo y encabezado en modo simulador */
+
+/* ---------- Cortina ---------- */
+.cortina {
+  position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px 16px;
+  background: radial-gradient(120% 90% at 50% 30%, var(--violet-deep) 0%, var(--indigo) 62%);
+  border-bottom: 4px solid var(--train); color: #fff; cursor: pointer; overflow: hidden;
+}
+/* Rejilla tenue tipo pantalla de trading */
+.cortina::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(70% 60% at 50% 45%, #000, transparent);
+}
+.cortina.salir { border-bottom: 0; border-top: 4px solid var(--train) }
+
+.cortina-contenido {
+  position: relative; width: min(460px, 100%); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px;
+  animation: cortina-contenido-entra .4s ease-out both;
+}
+.cortina-logo { border-radius: 50%; box-shadow: 0 0 0 6px rgba(232,178,58,.18), 0 0 40px rgba(100,57,255,.6) }
+.cortina-eyebrow { font-family: var(--fmo); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: #B9AEDB }
+.cortina-titulo { font-size: clamp(1.5rem, 5.5vw, 2.3rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1 }
+.cortina-titulo em { font-style: normal; color: var(--train); display: block }
+
+.cortina-lineas {
+  list-style: none; margin: 8px 0 0; padding: 0; width: 100%; display: grid; gap: 6px; text-align: left;
+  font-family: var(--fmo); font-size: 13px; color: #D9D3F5;
+}
+.cortina-lineas li { display: flex; justify-content: space-between; gap: 10px }
+.cortina-lineas .txt {
+  white-space: nowrap; overflow: hidden;
+  animation: cortina-escribe .5s steps(28, end) both; animation-delay: calc(200ms + var(--i) * 420ms);
+}
+.cortina-lineas .ok { color: #4ADE9B; font-weight: 700; animation: cortina-aparece .2s ease-out both; animation-delay: calc(650ms + var(--i) * 420ms) }
+
+.cortina-barra { width: 100%; height: 6px; margin-top: 6px; background: rgba(255,255,255,.14); border-radius: 99px; overflow: hidden }
+.cortina-barra i {
+  display: block; height: 100%; background: var(--train); border-radius: inherit; box-shadow: 0 0 12px var(--train);
+  animation: cortina-carga var(--cubre) cubic-bezier(.3,.1,.3,1) both;
+}
+.cortina-pie { font-family: var(--fmo); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: #8F87B8 }
+
+/* Se va: al entrar sube como un telón; al salir baja */
+.cortina.sale { animation: cortina-sube var(--sale) cubic-bezier(.7,0,.3,1) forwards; pointer-events: none }
+.cortina.salir.sale { animation-name: cortina-baja }
+.cortina.sale .cortina-contenido { animation: cortina-contenido-sale calc(var(--sale) * .6) ease-in forwards }
+
+@keyframes cortina-sube { to { transform: translateY(-100%) } }
+@keyframes cortina-baja { to { transform: translateY(100%) } }
+@keyframes cortina-escribe { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes cortina-aparece { from { opacity: 0; transform: scale(.6) } }
+@keyframes cortina-carga { from { width: 0 } to { width: 100% } }
+@keyframes cortina-contenido-entra { from { opacity: 0; transform: translateY(10px) scale(.98) } }
+@keyframes cortina-contenido-sale { to { opacity: 0; transform: translateY(-14px) } }
+
+/* ---------- Marco amarillo dentro del simulador ---------- */
+.modo-simulador body::after {
+  content: ''; position: fixed; inset: 0; z-index: 60; pointer-events: none;
+  border: 3px solid var(--train); box-shadow: inset 0 0 22px -8px rgba(232,178,58,.65);
+}
+
+/* ---------- Encabezado en modo simulador ---------- */
+.sitio-header { transition: background-color .4s, box-shadow .4s }
+.modo-simulador .sitio-header { background: #02031A; box-shadow: inset 0 -2px 0 var(--train) }
+.modo-simulador .sitio-nav a[aria-current="page"] { background: var(--train); color: #20160A }
+.sitio-marca small.modo { color: var(--train); font-weight: 600 }
+@media (max-width: 760px) {
+  .modo-simulador .sitio-nav { background: #02031A }
+  /* El subtítulo se oculta en celular, salvo el aviso de modo simulador */
+  .sitio-marca small.modo { display: block }
+}
+
+/* ---------- Utilidad: texto solo para lectores de pantalla ---------- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
