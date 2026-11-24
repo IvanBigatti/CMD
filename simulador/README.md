@@ -32,7 +32,7 @@ botón "atrás" del navegador (`src/sitio/ruta.ts`).
 Todo está en `src/contenido/`:
 
 - `carrusel.ts`: fotos de la portada (archivos en `public/img/inicio/`, créditos en `public/img/CREDITOS.md`).
-- `podcasts.ts`: episodios de cada actividad en las dos voces, con su duración (archivos en `public/podcasts/`). Con `null` se muestra "Podcast próximamente".
+- `podcasts.ts`: episodios de cada actividad en las tres voces, con su duración (archivos en `public/podcasts/`). Con `null` se muestra "Podcast próximamente".
 - `videos.ts`: video de cada actividad (archivos en `public/videos/`). Con `archivo: null` se muestra "Video próximamente".
 - `instructivos.ts`: instructivo de cada página, actividad y pantalla del simulador. Para sumar
   una imagen, copiala a `public/instructivos/` y agregá `imagen: { archivo, alt }`. Sin imagen se
@@ -43,10 +43,10 @@ Todo está en `src/contenido/`:
 
 ## Podcasts
 
-Cada capacitación tiene un podcast en dos voces argentinas, Elena y Tomás, que se elige en la
+Cada capacitación tiene un podcast en tres voces, Elena y Tomás (voces neuronales argentinas) e Iván (la narración de los videos), que se elige en la
 sección Podcast (el navegador recuerda la elección). Los audios se generan con
 [edge-tts](https://github.com/rany2/edge-tts), que usa las voces neuronales de Microsoft Edge:
-es gratis y no necesita API key.
+es gratis y no necesita API key. La voz de Iván no usa edge-tts: `npm run podcasts:ivan` (`scripts/generar-voz-ivan.py`) rearma solo la voz de cada video (sin música), recorta las placas mudas, normaliza a -16 LUFS y arma los subtítulos con los de cada video; necesita ffmpeg y los proyectos de video en `../videos`.
 
 - **Guiones**: `podcasts/guiones/<clave>.txt`, un párrafo por bloque, separados por una línea en
   blanco. Los números y las siglas se escriben como se dicen ("A L treinta", "te más uno").
