@@ -1,11 +1,12 @@
 import { create } from 'zustand'
 import { VOCES_PODCAST, type VozPodcast } from '../contenido/podcasts'
 
-const CLAVE_LS = 'simulador.vozPodcast'
+// v2: al sumar la voz humana como predeterminada, se descartan las elecciones guardadas antes
+const CLAVE_LS = 'simulador.vozPodcast.v2'
 
 function leerVoz(): VozPodcast {
   try {
-    // Un valor guardado que ya no corresponde a una voz disponible vuelve a la primera voz disponible
+    // Sin elección guardada (o con una que ya no existe) se usa la primera voz: la humana
     const guardada = VOCES_PODCAST.find((v) => v.id === localStorage.getItem(CLAVE_LS))
     return guardada ? guardada.id : (VOCES_PODCAST[0]?.id ?? 'elena')
   } catch {

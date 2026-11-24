@@ -3,9 +3,7 @@ import { AvisoCaja } from '../../componentes/ui/AvisoCaja'
 import { Instructivo } from '../../componentes/ui/Instructivo'
 import { AVISO_SEGURIDAD } from '../../contenido/seguridad'
 import { INSTRUCTIVOS_SITIO } from '../../contenido/instructivos'
-import { VOCES_PODCAST } from '../../contenido/podcasts'
 import { useResenas } from '../../datos/resenas'
-import { useVozPodcast } from '../../estado/vozPodcast'
 import type { ClaveItinerario } from '../../guia/itinerarios'
 import { ACTIVIDADES } from '../acciones'
 import { href } from '../ruta'
@@ -26,20 +24,6 @@ const irA = (id: string) => document.getElementById(id)?.scrollIntoView({ behavi
 
 // La exploración libre no tiene contenido para escuchar ni práctica que terminar
 const CON_GUIA = ACTIVIDADES.filter(([, it]) => it.pasos.length > 0)
-
-/** Elige con qué voz se escuchan todos los podcasts */
-function SelectorVoz() {
-  const voz = useVozPodcast((s) => s.voz)
-  const elegir = useVozPodcast((s) => s.elegir)
-  return (
-    <div className="chips" role="radiogroup" aria-label="Voz de los podcasts">
-      <span className="chips-tit">Voz:</span>
-      {VOCES_PODCAST.map((v) => (
-        <button key={v.id} type="button" role="radio" aria-checked={voz === v.id} onClick={() => elegir(v.id)}>{v.nombre}</button>
-      ))}
-    </div>
-  )
-}
 
 /** Todas las reseñas, con filtro por capacitación */
 function SeccionResenas() {
@@ -105,7 +89,6 @@ export function Capacitaciones() {
         <div>
           <h2 className="bloque-tit" id="cap-podcast-tit">Podcast</h2>
           <p className="cap-intro">La misma capacitación en audio, para escuchar cuando no podés mirar la pantalla.</p>
-          <SelectorVoz />
           <div className="pod-lista">
             {CON_GUIA.map(([clave, it]) => <TarjetaPodcast key={clave} clave={clave} it={it} />)}
           </div>
