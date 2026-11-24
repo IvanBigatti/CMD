@@ -43,8 +43,8 @@ Todo está en `src/contenido/`:
 
 ## Podcasts
 
-Cada capacitación tiene un podcast en tres voces, Elena y Tomás (voces neuronales argentinas) e Iván (la narración de los videos), que se elige en la
-sección Podcast (el navegador recuerda la elección). Los audios se generan con
+Cada capacitación tiene un podcast en tres voces: la humana (la narración de los videos, que se muestra como Martín y es la predeterminada) y Elena y Tomás (voces neuronales argentinas), que se eligen en el
+reproductor de cada capacitación (el navegador recuerda la elección). Los audios se generan con
 [edge-tts](https://github.com/rany2/edge-tts), que usa las voces neuronales de Microsoft Edge:
 es gratis y no necesita API key. La voz de Iván no usa edge-tts: `npm run podcasts:ivan` (`scripts/generar-voz-ivan.py`) rearma solo la voz de cada video (sin música), recorta las placas mudas, normaliza a -16 LUFS y arma los subtítulos con los de cada video; necesita ffmpeg y los proyectos de video en `../videos`.
 

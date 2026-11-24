@@ -1,12 +1,12 @@
 import type { ClaveItinerario } from '../guia/itinerarios'
 
-/** Voces disponibles para escuchar los podcasts (Elena y Tomás las genera scripts/generar-podcasts.py; Iván, scripts/generar-voz-ivan.py) */
+/** Voces disponibles para escuchar los podcasts. La humana (id 'ivan', se muestra como Martín) sale de scripts/generar-voz-ivan.py y es la predeterminada; Elena y Tomás, de scripts/generar-podcasts.py */
 export type VozPodcast = 'elena' | 'tomas' | 'ivan'
 
 const TODAS_LAS_VOCES: { id: VozPodcast; nombre: string }[] = [
+  { id: 'ivan', nombre: 'Martín' },
   { id: 'elena', nombre: 'Elena' },
   { id: 'tomas', nombre: 'Tomás' },
-  { id: 'ivan', nombre: 'Iván' },
 ]
 
 /**
